@@ -3,7 +3,7 @@
 import Filter from "../common/Filter";
 import TableData from "./TableData";
 
-const RankingSingles = () => {
+const RankingRaceDoubles = () => {
   return (
     <>
       <Filter />
@@ -14,4 +14,4 @@ const RankingSingles = () => {
   );
 };
 
-export default RankingSingles;
+export default RankingRaceDoubles;

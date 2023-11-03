@@ -1,3 +1,5 @@
-export default function RankingRaceSingles() {
-  return <></>;
+import RankingRaceSingles from "@/components/rankings/race-singles";
+
+export default function RankingRaceSinglesPage() {
+  return <RankingRaceSingles />;
 }
