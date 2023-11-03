@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+const { nextui } = require("@nextui-org/react");
+
+const nextConfig = {
+  plugins: [
+    nextui({
+      addCommonColors: true,
+    }),
+  ],
+};
+
+module.exports = nextConfig;
