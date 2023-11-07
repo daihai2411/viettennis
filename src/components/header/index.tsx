@@ -11,8 +11,6 @@ import MenuDesktop from "./menuDesktop";
 import MenuTablet from "./menuTablet";
 
 export default function AppHeader({ params }: any) {
-  console.log(32423, params);
-
   return (
     <Navbar
       classNames={{
