@@ -4,7 +4,7 @@ import "../globals.css";
 // import { Providers } from "./providers";
 import AppFooter from "@/components/footer";
 import AppHeader from "@/components/header";
-// import { Providers } from "@/redux/provider";
+import { Providers } from "@/redux/provider";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 
@@ -38,9 +38,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AppHeader params={locale} />
-          {/* <Providers> */}
-          {children}
-          {/* </Providers> */}
+          <Providers>{children}</Providers>
           <AppFooter />
         </NextIntlClientProvider>
       </body>

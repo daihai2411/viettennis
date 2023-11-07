@@ -15,14 +15,14 @@ export default function RankingsLayout({
     <>
       <SubHeader
         routers={[
-          { key: "1", title: "Xếp hạng đơn", router: "/vi/rankings/singles" },
-          { key: "2", title: "Xếp hạng đôi", router: "/vi/rankings/doubles" },
+          { key: "1", title: "Xếp hạng đơn", router: "/rankings/singles" },
+          { key: "2", title: "Xếp hạng đôi", router: "/rankings/doubles" },
           {
             key: "3",
             title: "Cuộc đua đơn",
-            router: "/vi/rankings/race-singles",
+            router: "/rankings/race-singles",
           },
-          { key: "4", title: "Đua đôi", router: "/vi/rankings/race-doubles" },
+          { key: "4", title: "Đua đôi", router: "/rankings/race-doubles" },
         ]}
       />
       {children}
