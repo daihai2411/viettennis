@@ -17,12 +17,12 @@ export default function RankingsLayout({
         routers={[
           { key: "1", title: "Xếp hạng đơn", router: "/rankings/singles" },
           { key: "2", title: "Xếp hạng đôi", router: "/rankings/doubles" },
-          {
-            key: "3",
-            title: "Cuộc đua đơn",
-            router: "/rankings/race-singles",
-          },
-          { key: "4", title: "Đua đôi", router: "/rankings/race-doubles" },
+          // {
+          //   key: "3",
+          //   title: "Cuộc đua đơn",
+          //   router: "/rankings/race-singles",
+          // },
+          // { key: "4", title: "Đua đôi", router: "/rankings/race-doubles" },
         ]}
       />
       {children}

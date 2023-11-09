@@ -1,24 +1,51 @@
 "use client";
 
-import { AppDispatch } from "@/redux/store";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import Filter from "../common/Filter";
-import { getListRealEstateAgencyThunk } from "../store/thunk";
-import TableData from "./TableData";
+import { useState } from "react";
+import Filter from "../common/filter";
+import TableData from "../common/table";
+import { columns, renderCell } from "./constants";
+
+export const paramsInit = {
+  pointType: null,
+  groupId: null,
+  key: "",
+  min: null,
+  max: null,
+  pointPointId: 1,
+};
 
 const RankingSingles = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const [params, setParams] = useState(paramsInit);
+  const [sortDescriptor, setSortDescriptor] = useState({});
 
-  useEffect(() => {
-    dispatch(getListRealEstateAgencyThunk({}));
-  }, []);
+  const changeParams = (val: any) => {
+    setParams({ ...params, ...val });
+  };
+
+  const resetParams = () => {
+    setParams({
+      pointType: null,
+      groupId: null,
+      key: "",
+      min: null,
+      max: null,
+      pointPointId: 1,
+    });
+    setSortDescriptor({});
+  };
 
   return (
     <>
-      <Filter />
+      <Filter changeParams={changeParams} resetParams={resetParams} />
       <div className="container mx-auto">
-        <TableData />
+        <TableData
+          params={params}
+          changeParams={changeParams}
+          columns={columns}
+          renderCell={renderCell}
+          sortDescriptor={sortDescriptor}
+          setSortDescriptor={setSortDescriptor}
+        />
       </div>
     </>
   );

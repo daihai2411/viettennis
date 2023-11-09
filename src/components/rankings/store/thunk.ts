@@ -1,19 +1,16 @@
-import service from "@/core/services/rankings/RankingsSinglesService";
+import service from "@/core/services/rankings/RankingsService";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getListRealEstateAgencyThunk = createAsyncThunk(
-  "rankings/singles",
+export const getListAllFilterRankingThunk = createAsyncThunk(
+  "rankings/listAllFilter",
   async (params: any, { rejectWithValue }) => {
     try {
-      const res: any = await service.getListRankPoint(params);
-      console.log(res);
+      const res: any = await service.getListAllFilterRanking();
       return {
-        data: res.data.data,
-        total: res.data.total,
-        page: res.data.page,
-        pageSize: res.data.page_size,
-        count: res.data.count,
+        groups: res.data.groups,
+        pointTypes: res.data.point_types,
+        sort: res.data.sort,
       };
     } catch (error) {
       return rejectWithValue({ loading: axios.isCancel(error) });

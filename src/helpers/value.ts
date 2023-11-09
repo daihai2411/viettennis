@@ -1,5 +1,13 @@
 import { EMPTY_VALUE } from "@/const/value";
 
+export const formatVal = (text: any) => {
+  if (text || text === "" || text === 0) {
+    return text;
+  }
+
+  return EMPTY_VALUE;
+};
+
 export const valByKeyWithDot = (
   data: Record<string, any>,
   keyWithDot: string
@@ -38,4 +46,15 @@ export const formatObjectWithEmptyValue = (
       {}
     );
   }
+};
+
+export const convertCamelCaseToLine = (obj: object) => {
+  const keys = Object.keys(obj);
+  const newObj = {} as any;
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const newKey = key.replace(/([A-Z])/g, "_$1").toLowerCase();
+    newObj[newKey] = obj[key as keyof typeof obj];
+  }
+  return newObj;
 };
