@@ -16,3 +16,11 @@
   }
 }
 
+
+th[aria-sort='ascending'] {
+ color: #2DA46B !important;
+}
+
+th[aria-sort='descending'] {
+  color: #2DA46B !important;
+ }

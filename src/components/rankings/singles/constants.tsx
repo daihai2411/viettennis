@@ -1,52 +1,54 @@
+import { formatVal } from "@/helpers/value";
 import { User } from "@nextui-org/react";
+import { getColorCell } from "../helper";
 
 export const columns = [
-  { name: "Rank", uid: "ranking" },
-  { name: "Player", uid: "player" },
-  { name: "Region", uid: "countryCode" },
-  { name: "Age", uid: "age" },
-  { name: "Tournaments Played", uid: "tournamentsPlayed" },
-  { name: "Points", id: "points" },
+  { name: "Thứ hạng", uid: "id" },
+  { name: "Người chơi ", uid: "name" },
+  { name: "Khu vực", uid: "group_name" },
+  { name: "Tuổi", uid: "year_old" },
+  { name: "Các giải đấu đã chơi", uid: "tournaments_played" },
+  { name: "Điểm", id: "point_vtr" },
 ];
 
 export const renderCell = (user: any, columnKey: any) => {
   const cellValue = user[columnKey];
   switch (columnKey) {
-    case "ranking":
+    case "id":
       return (
-        <div className="flex justify-start items-center gap-2">
-          <div className="text-green-common text-[19px]">{cellValue}</div>
-          <div className="text-center text-neutral-500 text-[19px]">-</div>
+        <div className="text-center flex justify-center text-green-common text-[19px]">
+          {cellValue}
         </div>
       );
-    case "player":
+    case "name":
       return (
         <User
-          name={
-            <div className="justify-start items-start inline-flex gap-1">
-              <div className="text-neutral-500 text-[21px] font-bold uppercase">
-                {user.firstName}
-              </div>
-              <div className="text-neutral-950 text-[21px] font-bold uppercase">
-                {user.lastName}
-              </div>
-            </div>
-          }
+          name={<div className="text-neutral-500 uppercase">{user.name}</div>}
+          description={"@" + user.username}
           avatarProps={{
-            src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+            src: user.avatar,
           }}
         />
       );
-    case "points":
+    case "group_name":
       return (
-        <div className="text-center flex justify-center text-green-common text-[21px] font-black">
+        <div className="text-center flex justify-center text-neutral-500 font-medium text-md">
           {cellValue}
+        </div>
+      );
+    case "point_vtr":
+      return (
+        <div
+          style={{ color: getColorCell(user.rank_point_id) }}
+          className="text-center flex justify-center font-medium text-lg"
+        >
+          {formatVal(cellValue)}
         </div>
       );
 
     default:
       return (
-        <div className="text-center flex justify-center text-neutral-500 text-[21px] font-black">
+        <div className="text-center flex justify-center text-neutral-500 font-medium text-lg">
           {cellValue}
         </div>
       );
