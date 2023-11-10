@@ -1,6 +1,8 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { Params } from ".";
-import useListFilterRankings from "../../useListFilterRankings";
+import useListFilterRankings, {
+  DEFAULT_SELECT,
+} from "../../useListFilterRankings";
 
 const SelectGroupType = ({
   dataFilter,
@@ -13,27 +15,26 @@ const SelectGroupType = ({
 
   const onChange = (val: any) => {
     setDataFilter({
-      groupId: val.target.value,
+      groupId: val.target.value || DEFAULT_SELECT,
     });
   };
+
   return (
-    <>
-      <Select
-        value={dataFilter.groupId}
-        variant="underlined"
-        label="Lọc theo khu vực"
-        placeholder="Tất cả loại khu vực"
-        className="max-w-xs"
-        onChange={onChange}
-        isLoading={loading}
-      >
-        {listGroup.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
-          </SelectItem>
-        ))}
-      </Select>
-    </>
+    <Select
+      selectedKeys={[dataFilter.groupId]}
+      variant="underlined"
+      label="Lọc theo khu vực"
+      placeholder="Tất cả loại khu vực"
+      className="max-w-xs min-w-[180px]"
+      onChange={onChange}
+      isLoading={loading}
+    >
+      {listGroup.map((item) => (
+        <SelectItem key={item.value} value={item.value}>
+          {item.label}
+        </SelectItem>
+      ))}
+    </Select>
   );
 };
 

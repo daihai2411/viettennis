@@ -3,14 +3,15 @@
 import { useState } from "react";
 import Filter from "../common/filter";
 import TableData from "../common/table";
+import { DEFAULT_SELECT } from "../useListFilterRankings";
 import { columns, renderCell } from "./constants";
 
 export const paramsInit = {
-  pointType: null,
-  groupId: null,
+  pointType: DEFAULT_SELECT,
+  groupId: DEFAULT_SELECT,
   key: "",
-  min: null,
-  max: null,
+  min: "",
+  max: "",
   pointPointId: 2,
 };
 
@@ -23,14 +24,7 @@ const RankingDoubles = () => {
   };
 
   const resetParams = () => {
-    setParams({
-      pointType: null,
-      groupId: null,
-      key: "",
-      min: null,
-      max: null,
-      pointPointId: 2,
-    });
+    setParams(paramsInit);
     setSortDescriptor({});
   };
 

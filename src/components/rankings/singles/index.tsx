@@ -6,11 +6,11 @@ import TableData from "../common/table";
 import { columns, renderCell } from "./constants";
 
 export const paramsInit = {
-  pointType: null,
-  groupId: null,
+  pointType: 0,
+  groupId: 0,
   key: "",
-  min: null,
-  max: null,
+  min: "",
+  max: "",
   pointPointId: 1,
 };
 
@@ -23,14 +23,7 @@ const RankingSingles = () => {
   };
 
   const resetParams = () => {
-    setParams({
-      pointType: null,
-      groupId: null,
-      key: "",
-      min: null,
-      max: null,
-      pointPointId: 1,
-    });
+    setParams(paramsInit);
     setSortDescriptor({});
   };
 
