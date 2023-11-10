@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DEFAULT_SELECT } from "../../useListFilterRankings";
 import FilterPoint from "./FilterPoint";
 import GroupBtn from "./GroupBtn";
 import InputSearch from "./InputSearch";
@@ -6,11 +7,19 @@ import SelectGroupType from "./SelectGroupType";
 import SelectKindPoint from "./SelectKindPoint";
 
 export type Params = {
-  pointType?: string | undefined;
-  groupId?: string | undefined;
-  key?: string;
-  min?: string | undefined;
-  max?: string | undefined;
+  pointType: any;
+  groupId: any;
+  key: string;
+  min: string;
+  max: string;
+};
+
+const paramsInit = {
+  pointType: DEFAULT_SELECT,
+  groupId: DEFAULT_SELECT,
+  key: "",
+  min: "",
+  max: "",
 };
 
 const Filter = ({
@@ -20,20 +29,14 @@ const Filter = ({
   changeParams: (object: object) => void;
   resetParams: () => void;
 }) => {
-  const [dataFilter, setDataFilter] = useState<object>({
-    pointType: null,
-    groupId: null,
-    key: "",
-    min: null,
-    max: null,
-  });
+  const [dataFilter, setDataFilter] = useState<Params>(paramsInit);
 
   const handleChangeFilter = (val: object) => {
     setDataFilter({ ...dataFilter, ...val });
   };
 
   const handleReset = () => {
-    setDataFilter({});
+    setDataFilter(paramsInit);
     resetParams();
   };
 
@@ -43,26 +46,30 @@ const Filter = ({
 
   return (
     <>
-      <div className="w-full bg-[#E6E6E6] h-[160px] lg:h-[79px]">
+      <div className="w-full bg-[#E6E6E6]  h-[190px] sm:h-[150px] lg:h-[79px]">
         <div className="container mx-auto flex h-full items-center justify-between">
-          <div className="w-fit m-auto block lg:flex gap-5">
-            <div className="flex gap-5 mb-2 lg:mb-0">
-              <SelectKindPoint
-                dataFilter={dataFilter}
-                setDataFilter={handleChangeFilter}
-              />
-              <SelectGroupType
-                dataFilter={dataFilter}
-                setDataFilter={handleChangeFilter}
-              />
-              <InputSearch
-                dataFilter={dataFilter}
-                setDataFilter={handleChangeFilter}
-              />
-              <FilterPoint
-                dataFilter={dataFilter}
-                setDataFilter={handleChangeFilter}
-              />
+          <div className="w-fit m-auto block lg:flex gap-3 sm:gap-5">
+            <div className="block sm:flex gap-3 sm:gap-5 mb-2 lg:mb-0">
+              <div className="flex gap-3 sm:gap-5">
+                <SelectKindPoint
+                  dataFilter={dataFilter}
+                  setDataFilter={handleChangeFilter}
+                />
+                <SelectGroupType
+                  dataFilter={dataFilter}
+                  setDataFilter={handleChangeFilter}
+                />
+              </div>
+              <div className="flex gap-3 sm:gap-5">
+                <InputSearch
+                  dataFilter={dataFilter}
+                  setDataFilter={handleChangeFilter}
+                />
+                <FilterPoint
+                  dataFilter={dataFilter}
+                  setDataFilter={handleChangeFilter}
+                />
+              </div>
             </div>
             <GroupBtn handleReset={handleReset} handleSearch={handleSearch} />
           </div>

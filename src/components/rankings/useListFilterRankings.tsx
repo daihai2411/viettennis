@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectDataFilter, selectLoading } from "./store/slice";
 import { getListAllFilterRankingThunk } from "./store/thunk";
 
+export const DEFAULT_SELECT = "0";
+
 const useListFilterRankings = () => {
   const dispatch = useDispatch<AppDispatch>();
 
@@ -18,9 +20,9 @@ const useListFilterRankings = () => {
           value: item.id,
         })
       );
-      return [{ label: "Tất cả loại điểm", value: undefined }, ...list];
+      return [{ label: "Tất cả loại điểm", value: DEFAULT_SELECT }, ...list];
     } else {
-      return [];
+      return [{ label: "Tất cả loại điểm", value: DEFAULT_SELECT }];
     }
   }, [dataFilter.pointTypes]);
 
@@ -32,9 +34,9 @@ const useListFilterRankings = () => {
           value: item.id,
         })
       );
-      return [{ label: "Tất cả khu vực", value: undefined }, ...list];
+      return [{ label: "Tất cả khu vực", value: DEFAULT_SELECT }, ...list];
     } else {
-      return [];
+      return [{ label: "Tất cả khu vực", value: DEFAULT_SELECT }];
     }
   }, [dataFilter.groups]);
 

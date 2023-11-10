@@ -1,6 +1,8 @@
-import { Select, SelectItem } from "@nextui-org/react";
+import { Select, SelectItem } from "@nextui-org/select";
 import { Params } from ".";
-import useListFilterRankings from "../../useListFilterRankings";
+import useListFilterRankings, {
+  DEFAULT_SELECT,
+} from "../../useListFilterRankings";
 
 const SelectKindPoint = ({
   dataFilter,
@@ -13,28 +15,26 @@ const SelectKindPoint = ({
 
   const onChange = (val: any) => {
     setDataFilter({
-      pointType: val.target.value,
+      pointType: val.target.value || DEFAULT_SELECT,
     });
   };
 
   return (
-    <>
-      <Select
-        value={dataFilter.pointType}
-        variant="underlined"
-        label="Lọc theo điểm"
-        placeholder="Tất cả loại điểm"
-        className="max-w-xs"
-        onChange={onChange}
-        isLoading={loading}
-      >
-        {listPointType.map((item) => (
-          <SelectItem key={item.value} value={item.value}>
-            {item.label}
-          </SelectItem>
-        ))}
-      </Select>
-    </>
+    <Select
+      selectedKeys={[dataFilter.pointType]}
+      variant="underlined"
+      label="Lọc theo điểm"
+      placeholder="Tất cả loại điểm"
+      className="max-w-xs min-w-[140px]"
+      onChange={onChange}
+      isLoading={loading}
+    >
+      {listPointType.map((item) => (
+        <SelectItem key={item.value} value={item.value}>
+          {item.label}
+        </SelectItem>
+      ))}
+    </Select>
   );
 };
 
