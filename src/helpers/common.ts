@@ -63,3 +63,7 @@ export const removeNullOrUndefinedValueInObject = (obj: any) => {
   }
   return {};
 };
+
+export const genListFollowLength = (length: number) => {
+  return [...Array.from(Array(length).keys())];
+};
