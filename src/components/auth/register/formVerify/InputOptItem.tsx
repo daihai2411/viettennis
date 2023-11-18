@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
-import { keyCodes } from "../constants";
+import { keyCodes } from "../../constants";
 
 type IProps = {
   index: number;

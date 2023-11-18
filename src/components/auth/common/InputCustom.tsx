@@ -12,6 +12,8 @@ type InputProps = {
   className?: string;
   variant?: string;
   keyInput: string;
+  required?: boolean;
+  disable?: boolean;
 };
 
 const InputCustom = ({
@@ -22,20 +24,32 @@ const InputCustom = ({
   type,
   className,
   keyInput,
+  required,
+  disable,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <div className={className || "mb-4"}>
+    <div className={className || "mb-3"}>
+      {label && required ? (
+        <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
+          {label}
+          <div className="text-red-600">*</div>
+        </div>
+      ) : (
+        <div className="block text-small font-medium text-foreground pb-1.5">
+          {label}
+        </div>
+      )}
       <Input
         {...register(keyInput)}
-        label={label}
         placeholder={placeholder}
         variant="bordered"
         labelPlacement="outside"
         type={type !== "password" ? type : isVisible ? "text" : "password"}
+        isDisabled={disable}
         endContent={
           type === "password" ? (
             <button

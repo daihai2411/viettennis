@@ -1,5 +1,3 @@
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 import { NextAuthProvider } from "./Providers";
 
 export default function RootLayout({
@@ -9,9 +7,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          src="https://www.google.com/recaptcha/enterprise.js?render=6LcnZRMpAAAAAEh0oZYmTJhITYPXIdxSAJVFlsXA"
+          async
+          defer
+        ></script>
+      </head>
       <body>
         <NextAuthProvider>{children}</NextAuthProvider>
-        {/* <ToastContainer autoClose={2000} /> */}
       </body>
     </html>
   );

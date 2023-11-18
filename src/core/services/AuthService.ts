@@ -7,18 +7,19 @@ class AuthService extends ServiceBase {
   }
 
   register(params: {
-    phone_number: string;
+    username: string;
+    phone: string;
     password: string;
     password_confirmation: string;
   }) {
     return this.getData(() => authProxy.register(params));
   }
 
-  generateOtp(params: { phone_number: string }) {
+  generateOtp(params: { phone: string }) {
     return this.getData(() => authProxy.generateOtp(params));
   }
 
-  verifyOtp(params: { phone_number: string; otp: string }) {
+  verifyOtp(params: { phone: string; otp: string }) {
     return this.getData(() => authProxy.verifyOtp(params));
   }
 }

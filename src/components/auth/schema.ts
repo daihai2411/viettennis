@@ -12,14 +12,11 @@ export const schemaLogin = {
 export const schemaRegister = {
   username: Yup.string()
     .required("Vui lòng nhập họ và tên để đăng ký")
-    .max(100, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ.")
-    .matches(
-      /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
-      "Tên người dùng chỉ chấp nhận các ký tự văn bản (không chứa chữ số 0-9 và cá ký tự đặc biệt ., # * & ()) "
-    ),
-  nickname: Yup.string()
-    .required("Vui lòng nhập tên nick (ID) để đăng ký")
     .max(100, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ."),
+  // .matches(
+  //   /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
+  //   "Tên người dùng chỉ chấp nhận các ký tự văn bản (không chứa chữ số 0-9 và cá ký tự đặc biệt ., # * & ()) "
+  // ),
   password: Yup.string()
     .required("Vui lòng nhập mật khẩu để đăng ký")
     .min(8, "Mật khẩu cần chứa từ 8 – 35 ký tự, vui lòng nhập giá trị hợp lệ")
@@ -64,13 +61,6 @@ export const schemaRestorePass = {
 };
 
 export const schemaAdditionInformation = {
-  fullName: Yup.string()
-    .required("Vui lòng nhập họ và tên để đăng ký")
-    .max(100, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ.")
-    .matches(
-      /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
-      "Tên người dùng chỉ chấp nhận các ký tự văn bản (không chứa chữ số 0-9 và cá ký tự đặc biệt ., # * & ()) "
-    ),
   email: Yup.string()
     .required("Vui lòng nhập email để đăng ký")
     .max(256, "Tối đa 256 ký tự, vui lòng nhập giá trị hợp lệ.")
@@ -83,26 +73,40 @@ export const schemaAdditionInformation = {
         return email.test(valueTest);
       },
     }),
-  dob: Yup.string().nullable(),
-  address: Yup.string().nullable(),
-  height: Yup.string().nullable(),
-  weight: Yup.string().nullable(),
-  backHand: Yup.number().nullable(),
-  playSince: Yup.string().nullable(),
-  racketSpecs: Yup.string().nullable(),
-  shoesBrand: Yup.string().nullable(),
-  clothesBrand: Yup.string().nullable(),
+  fullName: Yup.string()
+    .required("Vui lòng nhập họ và tên để đăng ký")
+    .max(100, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ."),
+  dob: Yup.string().required("Vui lòng nhập ngày sinh để đăng ký"),
   phone: Yup.string()
     .required("Vui lòng nhập số điện thoại để đăng ký")
     .matches(/^0\d{9}$/, "Số điện thoại không đúng định dạng")
     .length(10, "Số điện thoại không đúng định dạng"),
+  height: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required("Vui lòng nhập chiều cao để đăng ký"),
+  weight: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required("Vui lòng nhập cân nặng để đăng ký"),
+  backHand: Yup.number().required("Vui lòng nhập để đăng ký"),
+  playSince: Yup.string().required("Vui lòng nhập để đăng ký"),
+  racketSpecs: Yup.string().required("Vui lòng nhập để đăng ký"),
+  shoesBrand: Yup.string().required("Vui lòng nhập để đăng ký"),
+  clothesBrand: Yup.string().required("Vui lòng nhập để đăng ký"),
+
+  address: Yup.string().required("Vui lòng nhập để đăng ký"),
+  ward: Yup.string().required("Vui lòng chọn xã/phường để đăng ký"),
+  district: Yup.string().required("Vui lòng chọn quận/huyện nhập để đăng ký"),
+  province: Yup.string().required("Vui lòng chọn tỉnh/thành để đăng ký"),
+
   identifyId: Yup.string()
-    .required("Vui lòng nhập số cccd/ hộ chiếu để đăng ký ")
-    .length(12, "Số cccd/ hộ chiếu không đúng định dạng"),
+    .required("Vui lòng nhập số CMT/CCCD để đăng ký")
+    .length(12, "Số CMT/CCCD không đúng định dạng"),
   identifyDate: Yup.string().required(
-    "Vui lòng nhập ngày cấp cccd/ hộ chiếu để đăng ký"
+    "Vui lòng nhập ngày cấp CMT/CCCD để đăng ký"
   ),
   identifyAddress: Yup.string().required(
-    "Vui lòng nhập nơi cấp cccd/ hộ chiếu để đăng ký "
+    "Vui lòng nhập nơi cấp CMT/CCCD để đăng ký"
   ),
 };

@@ -1,33 +1,37 @@
 "use client";
 
-import { saveSession } from "@/helpers/session";
+import { ToastError } from "@/components/common/Toast";
+import authService from "@/core/services/AuthService";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
 import { Image } from "@nextui-org/image";
-import { SignInResponse, signIn } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-// import { toast } from "react-toastify";
-import { ToastSuccess } from "@/components/common/Toast";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import InputCustom from "../common/InputCustom";
-import { schemaLogin } from "../schema";
+import InputCustom from "../../common/InputCustom";
+import { steps } from "../../constants";
+import { schemaRegister } from "../../schema";
+import {
+  changePassword,
+  changePhoneNumber,
+  changeStep,
+} from "../../store/slice";
 
 interface IFormInput {
   username: string;
   password: string;
+  confirmPassword: string;
+  phoneNumber: string;
 }
 
-const LoginModule = () => {
-  const [loading, setLoading] = useState(false);
+const schemaValidation = () => Yup.object().shape(schemaRegister);
 
-  const schemaValidation = () =>
-    Yup.object().shape({
-      username: schemaLogin.username,
-      password: schemaLogin.password,
-    });
+const FormRegister = () => {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -42,21 +46,23 @@ const LoginModule = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
-    const result: SignInResponse | undefined = await signIn("credentials", {
-      username: data.username,
-      password: data.password,
-      redirect: false,
-    });
+    try {
+      await authService.register({
+        username: data.username,
+        phone: data.phoneNumber,
+        password_confirmation: data.confirmPassword,
+        password: data.password,
+      });
+      await authService.generateOtp({
+        phone: data.phoneNumber,
+      });
 
-    if (result && result?.status === 200) {
-      await saveSession();
-      // console.log(result, "Đăng nhập thành công !");
-      ToastSuccess("Đăng nhập thành công !");
+      dispatch(changePhoneNumber(data.phoneNumber));
+      dispatch(changePassword(data.password));
+      dispatch(changeStep(steps.VERIFY));
+    } catch (error: any) {
       setLoading(false);
-    } else if (result?.status === 401) {
-      // toast.error(result.error);
-      // console.log(result.error);
-      setLoading(false);
+      ToastError(error?.response?.data?.data?.error || "Lỗi tạo tài khoản !");
     }
   });
 
@@ -67,16 +73,23 @@ const LoginModule = () => {
           <Image src="/logo.svg" alt="logo" />
         </div>
         <div className="font-medium text-2xl text-green-common1 mb-4">
-          Đăng nhập để tiếp tục
+          Đăng ký tài khoản
         </div>
-
         <form onSubmit={onSubmit}>
           <InputCustom
             label=""
             register={register}
             errors={errors}
-            placeholder="Tên tài khoản hoặc Email"
+            placeholder="Tên đăng nhập"
             keyInput="username"
+            type="text"
+          />
+          <InputCustom
+            label=""
+            register={register}
+            errors={errors}
+            placeholder="Số điện thoại"
+            keyInput="phoneNumber"
             type="text"
           />
           <InputCustom
@@ -87,20 +100,20 @@ const LoginModule = () => {
             keyInput="password"
             type="password"
           />
-          <div className="flex py-2 px-1 justify-end text-[15px]">
-            <Link
-              className="w-fit cursor-pointer hover:underline"
-              href={"/auth/forgot-password"}
-            >
-              Quên mật khẩu?
-            </Link>
-          </div>
+          <InputCustom
+            label=""
+            register={register}
+            errors={errors}
+            placeholder="Nhập lại mật khẩu"
+            keyInput="confirmPassword"
+            type="password"
+          />
           <Button
             isLoading={loading}
             type="submit"
             className="bg-green-common text-white mb-6 w-full"
           >
-            Đăng nhập
+            Đăng ký
           </Button>
         </form>
         <div className="relative h-6">
@@ -113,30 +126,27 @@ const LoginModule = () => {
           </div>
         </div>
         <div className="w-full grid gap-2">
-          <Button
-            className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("google")}
-          >
+          <Button className="border border-stone-300 bg-gray-50 w-full">
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
-            Đăng nhập bằng Google
+            Đăng ký bằng Google
           </Button>
           <Button className="border border-stone-300 bg-gray-50 w-full">
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
-            Đăng nhập bằng Facebook
+            Đăng ký bằng Facebook
           </Button>
           <Button className="border border-stone-300 bg-gray-50 w-full">
             <Image src="/icon-apple.png" alt="icon social" className="h-5" />
-            Đăng nhập bằng Apple
+            Đăng ký bằng Apple
           </Button>
         </div>
 
         <div className="mt-6 text-sm flex justify-center gap-1 mb-4">
-          <div>Chưa có tài khoản?</div>
+          <div>Bạn đã có tài khoản?</div>
           <Link
-            href={"/auth/register"}
+            href={"/auth/login"}
             className="text-cyan-700 hover:underline cursor-pointer"
           >
-            Đăng ký
+            Đăng nhập
           </Link>
         </div>
       </div>
@@ -144,4 +154,4 @@ const LoginModule = () => {
   );
 };
 
-export default LoginModule;
+export default FormRegister;

@@ -23,4 +23,6 @@ export const STATUS_RESTORE_PASS = {
 export const steps = {
   REGISTER: 1,
   VERIFY: 2,
+  ADDITIONAL_INFO: 3,
+  ADDITIONAL_POINTS: 4,
 };

@@ -1,9 +1,5 @@
-import {
-  Input,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@nextui-org/react";
+import { Input } from "@nextui-org/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover";
 import { FieldErrors, FieldValues } from "react-hook-form";
 import { FaCog } from "react-icons/fa";
 

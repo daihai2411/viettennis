@@ -1,3 +1,4 @@
+import authService from "@/core/services/AuthService";
 import { Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,6 @@ type IProps = {
   disable?: boolean;
   spinner?: React.ReactNode;
   phoneNumber: string;
-  isShowSkipStep?: boolean;
   onSkip?: () => void;
 };
 
@@ -37,14 +37,14 @@ export const CountDown: React.FC<IProps> = ({
 
   const handleReSendOtp = async () => {
     try {
-      // await registerService
-      //   .generateOtp({
-      //     phone_number: phoneNumber,
-      //   })
-      //   .then((data: any) => {
-      //     // ToastAntdSuccess(data?.message)
-      //   })
-      //   .catch(() => {})
+      await authService
+        .generateOtp({
+          phone: phoneNumber,
+        })
+        .then((data: any) => {
+          // ToastAntdSuccess(data?.message)
+        })
+        .catch(() => {});
       setSecond(EXPIRE_TIME);
     } catch (error) {}
   };
