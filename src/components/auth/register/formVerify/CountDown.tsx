@@ -1,3 +1,4 @@
+import { ToastSuccess } from "@/components/common/Toast";
 import authService from "@/core/services/AuthService";
 import { Button } from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -42,7 +43,7 @@ export const CountDown: React.FC<IProps> = ({
           phone: phoneNumber,
         })
         .then((data: any) => {
-          // ToastAntdSuccess(data?.message)
+          ToastSuccess(data?.message);
         })
         .catch(() => {});
       setSecond(EXPIRE_TIME);

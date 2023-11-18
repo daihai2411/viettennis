@@ -1,10 +1,6 @@
-import { useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const CheckRecaptcha = () => {
-  const captchaRef = useRef<any>(null);
-  const token = captchaRef.current?.getValue();
-
+const CheckRecaptcha = ({ captchaRef }) => {
   return (
     <>
       <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">

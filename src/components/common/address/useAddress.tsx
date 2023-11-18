@@ -9,9 +9,13 @@ import {
   selectProvinces,
   selectWards,
 } from "./store/slice";
-import { getProvincesThunk } from "./store/thunk";
+import {
+  getDistrictsThunk,
+  getProvincesThunk,
+  getWardsThunk,
+} from "./store/thunk";
 
-const useAddress = () => {
+const useAddress = ({ provinceCode = undefined, districtCode = undefined }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const dataProvinces = useSelector(selectProvinces);
@@ -24,6 +28,23 @@ const useAddress = () => {
   useEffect(() => {
     dispatch(getProvincesThunk());
   }, []);
+
+  useEffect(() => {
+    if (provinceCode) {
+      dispatch(getDistrictsThunk({ province_code: provinceCode }));
+    }
+  }, [provinceCode]);
+
+  useEffect(() => {
+    if (provinceCode && districtCode) {
+      dispatch(
+        getWardsThunk({
+          province_code: provinceCode,
+          district_code: districtCode,
+        })
+      );
+    }
+  }, [provinceCode, districtCode]);
 
   return {
     dataProvinces,

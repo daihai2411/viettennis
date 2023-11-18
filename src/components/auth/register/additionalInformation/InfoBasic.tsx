@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import InputCustom from "../../common/InputCustom";
 import InputDate from "../../common/InputDate";
+import { selectPhoneNumber } from "../../store/slice";
 
 const InfoBasic = ({ register, errors }) => {
+  const phoneNumber = useSelector(selectPhoneNumber);
+
   return (
     <>
       <InputCustom
@@ -40,7 +44,9 @@ const InfoBasic = ({ register, errors }) => {
         errors={errors}
         placeholder="Nhập số điện thoại"
         keyInput="phone"
+        defaultValue={phoneNumber}
         required
+        disable
       />
     </>
   );

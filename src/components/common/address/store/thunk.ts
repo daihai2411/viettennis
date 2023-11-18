@@ -7,7 +7,7 @@ export const getProvincesThunk = createAsyncThunk(
   async (params, { rejectWithValue }) => {
     try {
       const res: any = await commonProxy.getProvinces(params as any);
-      return res.data;
+      return res.data.data;
     } catch (error) {
       return rejectWithValue({ loading: axios.isCancel(error) });
     }
@@ -16,10 +16,10 @@ export const getProvincesThunk = createAsyncThunk(
 
 export const getDistrictsThunk = createAsyncThunk(
   "address/districts",
-  async (params, { rejectWithValue }) => {
+  async (params: any, { rejectWithValue }) => {
     try {
-      const res: any = await commonProxy.getDistricts(params as any);
-      return res.data;
+      const res: any = await commonProxy.getDistricts(params);
+      return res.data.data;
     } catch (error) {
       return rejectWithValue({ loading: axios.isCancel(error) });
     }
@@ -28,10 +28,10 @@ export const getDistrictsThunk = createAsyncThunk(
 
 export const getWardsThunk = createAsyncThunk(
   "address/wards",
-  async (params, { rejectWithValue }) => {
+  async (params: any, { rejectWithValue }) => {
     try {
-      const res: any = await commonProxy.getWards(params as any);
-      return res.data;
+      const res: any = await commonProxy.getWards(params);
+      return res.data.data;
     } catch (error) {
       return rejectWithValue({ loading: axios.isCancel(error) });
     }

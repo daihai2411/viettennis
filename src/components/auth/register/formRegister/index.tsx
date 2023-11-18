@@ -62,7 +62,10 @@ const FormRegister = () => {
       dispatch(changeStep(steps.VERIFY));
     } catch (error: any) {
       setLoading(false);
-      ToastError(error?.response?.data?.data?.error || "Lỗi tạo tài khoản !");
+      ToastError(
+        Object.values(error?.response?.data?.data).flat().join(",") ||
+          "Lỗi tạo tài khoản !"
+      );
     }
   });
 

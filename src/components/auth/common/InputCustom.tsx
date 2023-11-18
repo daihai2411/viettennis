@@ -14,6 +14,7 @@ type InputProps = {
   keyInput: string;
   required?: boolean;
   disable?: boolean;
+  defaultValue?: string;
 };
 
 const InputCustom = ({
@@ -26,6 +27,7 @@ const InputCustom = ({
   keyInput,
   required,
   disable,
+  defaultValue,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -45,6 +47,7 @@ const InputCustom = ({
       )}
       <Input
         {...register(keyInput)}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         variant="bordered"
         labelPlacement="outside"

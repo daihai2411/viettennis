@@ -1,13 +1,12 @@
 import reducerRegistry from "@/helpers/ReducerRegistry";
 import { RootState } from "@/redux/store";
 import { createSlice } from "@reduxjs/toolkit";
-import { districts, provinces, wards } from "../dummy";
 import { getDistrictsThunk, getProvincesThunk, getWardsThunk } from "./thunk";
 
 const initialState = {
-  dataProvinces: provinces || [],
-  dataDistricts: districts || [],
-  dataWards: wards || [],
+  dataProvinces: [],
+  dataDistricts: [],
+  dataWards: [],
   loadingProvinces: false,
   loadingDistricts: false,
   loadingWards: false,
@@ -18,13 +17,19 @@ const slice = createSlice({
   initialState,
   reducers: {
     resetStore: () => initialState,
+    resetDataDistricts: (state) => {
+      state.dataDistricts = [];
+    },
+    resetDataWards: (state) => {
+      state.dataWards = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getProvincesThunk.pending, (state) => {
       state.loadingProvinces = true;
     });
     builder.addCase(getProvincesThunk.fulfilled, (state, action) => {
-      state.dataProvinces = action.payload as any;
+      state.dataProvinces = action.payload;
       state.loadingProvinces = false;
     });
     builder.addCase(getProvincesThunk.rejected, (state) => {
@@ -36,7 +41,7 @@ const slice = createSlice({
       state.loadingDistricts = true;
     });
     builder.addCase(getDistrictsThunk.fulfilled, (state, action) => {
-      state.dataDistricts = action.payload as any;
+      state.dataDistricts = action.payload;
       state.loadingDistricts = false;
     });
     builder.addCase(getDistrictsThunk.rejected, (state) => {
@@ -48,11 +53,11 @@ const slice = createSlice({
       state.loadingWards = true;
     });
     builder.addCase(getWardsThunk.fulfilled, (state, action) => {
-      state.loadingWards = true;
-      state.dataWards = action.payload as any;
+      state.loadingWards = false;
+      state.dataWards = action.payload;
     });
     builder.addCase(getWardsThunk.rejected, (state) => {
-      state.loadingWards = true;
+      state.loadingWards = false;
     });
   },
 });
@@ -68,5 +73,7 @@ export const selectLoadingDistricts = (state: RootState) =>
   state[slice.name]?.loadingDistricts;
 export const selectLoadingWards = (state: RootState) =>
   state[slice.name]?.loadingWards;
+
+export const { resetDataDistricts, resetDataWards } = slice.actions;
 
 reducerRegistry.register(slice.name, slice.reducer);

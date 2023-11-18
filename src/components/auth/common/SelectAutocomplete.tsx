@@ -3,11 +3,11 @@ import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
 const SelectAutocomplete = ({
   label,
   keyInput,
-  register,
   errors,
   placeholder,
   list = [],
   loading,
+  setValue,
 }) => {
   return (
     <div className="mb-3 select-auto-complete">
@@ -15,16 +15,16 @@ const SelectAutocomplete = ({
         {label}
       </div>
       <Autocomplete
-        {...register(keyInput)}
         placeholder={placeholder}
         variant="bordered"
         labelPlacement="outside-left"
         fullWidth
         isLoading={loading}
+        onSelectionChange={setValue}
       >
-        {list.map((animal: { name: string; id: string }) => (
-          <AutocompleteItem key={animal.id} value={animal.id}>
-            {animal.name}
+        {list.map((item: { name: string; code: string }) => (
+          <AutocompleteItem key={item.code} value={item.code}>
+            {item.name}
           </AutocompleteItem>
         ))}
       </Autocomplete>
