@@ -2,8 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
-import InputCustom from "../common/InputCustom";
-import { STATUS_RESTORE_PASS, schemaRestorePass } from "../constants";
+import { STATUS_RESTORE_PASS } from "../constants";
 
 type IProps = {
   status: string;
@@ -18,8 +17,8 @@ interface IFormInput {
 const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
   const schemaValidation = () =>
     Yup.object().shape({
-      password: schemaRestorePass.password,
-      confirmPassword: schemaRestorePass.confirmPassword,
+      // password: schemaRestorePass.password,
+      // confirmPassword: schemaRestorePass.confirmPassword,
     });
 
   const {
@@ -47,7 +46,7 @@ const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
         ID: duytamdo00
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <InputCustom
+        {/* <InputCustom
           label="password"
           register={register}
           errors={errors}
@@ -58,7 +57,7 @@ const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
           register={register}
           errors={errors}
           placeholder="Xác nhận mật khẩu mới"
-        />
+        /> */}
         <Button
           type="submit"
           className="bg-green-common text-white mb-4 mt-16 w-full"

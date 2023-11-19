@@ -11,7 +11,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const LoginRegister = () => {
-  const { status, data: session } = useSession();
+  const { status, data: session }: any = useSession();
 
   if (status === "authenticated") {
     return (

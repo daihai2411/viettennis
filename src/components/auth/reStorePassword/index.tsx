@@ -11,7 +11,6 @@ import {
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { STATUS_RESTORE_PASS } from "../constants";
-import FormSentInfo from "./FormSentInfo";
 
 type IProps = {
   isForgetPass: boolean;
@@ -37,7 +36,7 @@ const ModalForgetPassword = ({ isForgetPass, setForgetPass }: IProps) => {
             </ModalHeader>
             <Divider />
             <ModalBody>
-              <FormSentInfo status={status} setStatus={setStatus} />
+              {/* <FormSentInfo status={status} setStatus={setStatus} /> */}
             </ModalBody>
           </>
         )}

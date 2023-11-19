@@ -2,8 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
-import InputCustom from "../common/InputCustom";
-import { STATUS_FORGET_PASS, schemaSentInfo } from "../constants";
+import { STATUS_FORGET_PASS } from "../constants";
 
 type IProps = {
   status: string;
@@ -15,10 +14,7 @@ interface IFormInput {
 }
 
 const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
-  const schemaValidation = () =>
-    Yup.object().shape({
-      username: schemaSentInfo.username,
-    });
+  const schemaValidation = () => Yup.object().shape({});
 
   const {
     register,
@@ -44,12 +40,12 @@ const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
         mật khẩu.
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <InputCustom
+        {/* <InputCustom
           label="username"
           register={register}
           errors={errors}
           placeholder="Số điện thoại"
-        />
+        /> */}
         <div
           className={
             status === STATUS_FORGET_PASS.UNSENT ? "opacity-0" : "opacity-1"
