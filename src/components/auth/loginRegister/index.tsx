@@ -1,35 +1,54 @@
 "use client";
 
-import { useDisclosure } from "@nextui-org/react";
-import { useState } from "react";
-import { KIND_POPUP } from "../constants";
-import ModalLogin from "../login/ModalLogin";
-import ModalRegister from "../register/ModalRegister";
-import ModalContent from "./ModalContent";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/dropdown";
+import { User } from "@nextui-org/user";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 const LoginRegister = () => {
-  const [kindPopup, setKindPopup] = useState<string>(KIND_POPUP.LOG_IN);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { status, data: session } = useSession();
+
+  if (status === "authenticated") {
+    return (
+      <Dropdown placement="bottom-start">
+        <DropdownTrigger>
+          <User
+            as="button"
+            avatarProps={{
+              isBordered: false,
+              src: session?.user?.image || "",
+            }}
+            className="transition-transform"
+            description={session?.user?.email || session?.user?.phone}
+            name={session?.user?.name || session?.user?.username}
+          />
+        </DropdownTrigger>
+        <DropdownMenu aria-label="User Actions" variant="flat">
+          <DropdownItem key="profile" className="h-14 gap-2">
+            <p className="font-bold">Bạn đang đăng nhập bằng</p>
+            <p className="font-bold">
+              {session?.user?.email || "@" + session?.user?.username}
+            </p>
+          </DropdownItem>
+          <DropdownItem key="settings">My Settings</DropdownItem>
+          <DropdownItem key="logout" color="danger" onClick={() => signOut()}>
+            Đăng xuất
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    );
+  }
 
   return (
     <>
-      <div className="cursor-pointer" onClick={onOpen}>
+      <Link href={"/auth/login"} className="cursor-pointer">
         Đăng nhập/đăng ký
-      </div>
-      <ModalContent
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        kindPopup={kindPopup}
-        setKindPopup={setKindPopup}
-      >
-        <>
-          {kindPopup === KIND_POPUP.LOG_IN ? (
-            <ModalLogin setKindPopup={setKindPopup} />
-          ) : (
-            <ModalRegister setKindPopup={setKindPopup} />
-          )}
-        </>
-      </ModalContent>
+      </Link>
     </>
   );
 };

@@ -16,9 +16,12 @@ const Page = () => {
     <>
       <div>
         <h1>{t("title")}</h1>
-        <Button onClick={() => switchLang("en")}>English</Button>
-        <Button onClick={() => switchLang("vi")}>Vietnam</Button>
+        <div className="flex gap-3">
+          <Button onClick={() => switchLang("en")}>English</Button>
+          <Button onClick={() => switchLang("vi")}>Vietnam</Button>
+        </div>
       </div>
+      <div className="flex"></div>
     </>
   );
 };

@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../globals.css";
-// import { Providers } from "./providers";
 import AppFooter from "@/components/footer";
 import AppHeader from "@/components/header";
 import { Providers } from "@/redux/provider";
+import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default async function RootLayout({
           <AppHeader params={locale} />
           <Providers>{children}</Providers>
           <AppFooter />
+          <ToastContainer autoClose={2000} />
         </NextIntlClientProvider>
       </body>
     </html>

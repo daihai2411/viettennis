@@ -48,7 +48,7 @@ export default class ProxyBase {
 
   async get(
     path: string,
-    data: Record<string, any>,
+    data?: Record<string, any>,
     type?: string,
     disableCancelToken = false,
     appendCancelToken = "",
@@ -96,7 +96,7 @@ export default class ProxyBase {
 
   async post(
     path: string,
-    data: Record<string, any>,
+    data?: Record<string, any>,
     type?: string,
     config: Record<string, any> = {},
     disableCancelToken: boolean = false,
@@ -226,9 +226,9 @@ const configAccessToken = async (user: any, data?: Record<string, any>) => {
   }
 
   const token =
-    userToken?.auth_token ||
-    data?.auth_token ||
-    (data instanceof FormData ? data?.get("auth_token") : "");
+    userToken?.token ||
+    data?.token ||
+    (data instanceof FormData ? data?.get("token") : "");
 
   if (token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
