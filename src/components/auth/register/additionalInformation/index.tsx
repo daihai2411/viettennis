@@ -75,7 +75,7 @@ const AdditionalInformation = () => {
   watch("phone");
   watch("captcha");
 
-  const captchaDataForm = getValues("captcha");
+  const captchaDataForm = getValues("captcha") || "true";
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
