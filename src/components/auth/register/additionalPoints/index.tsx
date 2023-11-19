@@ -1,9 +1,13 @@
 "use client";
 
+import { ToastError, ToastSuccess } from "@/components/common/Toast";
+import { ROUTERS } from "@/const/router";
+import profileProxy from "@/core/proxies/profile/ProfileProxy";
 import { AppDispatch } from "@/redux/store";
 import { Button, Image, Spinner } from "@nextui-org/react";
-import { useEffect } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectListPersonalPoint,
@@ -11,6 +15,7 @@ import {
 } from "../../store/slice";
 import { getListPersonalPointCriteriaThunk } from "../../store/thunk";
 import InputPoint from "./InputPoint";
+import RowTotalPoints from "./RowTotalPoints";
 
 interface IFormInput {
   fullName: string;
@@ -31,23 +36,43 @@ interface IFormInput {
 }
 
 const AdditionalPoints = () => {
+  const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+
+  const [loadingBtn, setLoadingBtn] = useState(false);
 
   const loading = useSelector(selectLoadingListPersonalPoint);
   const listPersonalPoint = useSelector(selectListPersonalPoint);
-  console.log(listPersonalPoint);
 
   const {
     register,
     formState: { errors },
     handleSubmit,
+    setValue,
   } = useForm<IFormInput>({
     mode: "onBlur",
     shouldFocusError: false,
     reValidateMode: "onBlur",
   });
 
-  const onSubmit: SubmitHandler<any> = (data) => console.log(data);
+  const onSubmit = handleSubmit(async (data) => {
+    setLoadingBtn(true);
+    try {
+      await profileProxy
+        .updatePersonalPoint(data)
+        .then((data: any) => {
+          ToastSuccess(data?.message || "Cập nhật thông tin thành công");
+        })
+        .catch(() => {});
+      router.push(ROUTERS.HOME);
+      setLoadingBtn(false);
+    } catch (error: any) {
+      setLoadingBtn(false);
+      ToastError(
+        Object.values(error?.response?.data?.data).flat().join(",") || "Lỗi"
+      );
+    }
+  });
 
   useEffect(() => {
     dispatch(getListPersonalPointCriteriaThunk({}));
@@ -65,7 +90,7 @@ const AdditionalPoints = () => {
           <div className="font-medium text-2xl text-green-common1 mb-4 mx-auto">
             Nhập điểm số
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={onSubmit}>
             {listPersonalPoint && listPersonalPoint.length
               ? listPersonalPoint.map(
                   (item: {
@@ -83,16 +108,19 @@ const AdditionalPoints = () => {
                         placeholder="Nhập điểm"
                         type="number"
                         isShowQuickSelect={item.id <= 4}
+                        setValueForm={setValue}
                       />
                     </>
                   )
                 )
               : null}
+            <RowTotalPoints />
             <div className="text-black text-opacity-90 text-[13px] mb-3">
               *Lưu ý: Mọi thông tin của bạn sẽ được dùng để xác thực định danh
               trong mọi giải đấu của Viettennis
             </div>
             <Button
+              isLoading={loadingBtn}
               type="submit"
               className="bg-green-common text-white mb-6 w-full"
             >

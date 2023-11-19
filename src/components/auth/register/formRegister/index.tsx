@@ -60,6 +60,7 @@ const FormRegister = () => {
       dispatch(changePhoneNumber(data.phoneNumber));
       dispatch(changePassword(data.password));
       dispatch(changeStep(steps.VERIFY));
+      setLoading(false);
     } catch (error: any) {
       setLoading(false);
       ToastError(

@@ -1,6 +1,8 @@
 import { Input } from "@nextui-org/input";
 import { useState } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { changeValueObjPoint } from "../../store/slice";
 import SelectPoint from "./SelectPoint";
 
 type ItemInputProps = {
@@ -19,6 +21,7 @@ type InputProps = {
   variant?: string;
   isShowQuickSelect: boolean;
   itemInput: ItemInputProps;
+  setValueForm: any;
 };
 
 const InputPoint = ({
@@ -29,8 +32,18 @@ const InputPoint = ({
   placeholder,
   isShowQuickSelect,
   itemInput,
+  setValueForm,
 }: InputProps) => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState(0);
+
+  const onBlur = (e) => {
+    dispatch(
+      changeValueObjPoint({
+        [itemInput.code]: (Number(e.target.value) * itemInput.percent) / 100,
+      })
+    );
+  };
 
   return (
     <div className={className || "mb-4"}>
@@ -39,19 +52,33 @@ const InputPoint = ({
           {itemInput.id}
         </div>
         <div className="col-span-5 sm:col-span-4 flex items-center">
-          <div className="block text-small font-medium text-foreground pb-1.5">
+          <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
             {itemInput.title}
+            <div className="text-red-600">*</div>
           </div>
         </div>
         <div className="col-span-3">
           <Input
             {...register(itemInput.code)}
+            value={value}
             placeholder={placeholder}
             variant="bordered"
             labelPlacement="outside-left"
             type={type}
-            endContent={isShowQuickSelect ? <SelectPoint /> : null}
+            endContent={
+              isShowQuickSelect ? (
+                <SelectPoint
+                  personalPointCriteriaId={itemInput.id}
+                  inputKey={itemInput.code}
+                  valueDefault={value}
+                  setValueForm={setValueForm}
+                  setValue={setValue}
+                />
+              ) : null
+            }
             onChange={(e: any) => setValue(e.target.value)}
+            onBlur={onBlur}
+            isRequired
           />
           {errors[itemInput.code] && (
             <p className="text-red-500 text-xs" role="alert">

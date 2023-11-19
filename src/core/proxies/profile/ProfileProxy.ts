@@ -6,7 +6,7 @@ class Proxy extends ProxyBase {
   }
 
   updatePersonalPoint(params: object) {
-    return this.get("auth/update-personal-point", params);
+    return this.post("auth/update-personal-point", params);
   }
 
   getListPersonalPointCriteria() {

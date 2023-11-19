@@ -25,7 +25,7 @@ const RegisterModule: React.FC = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(changeStep(steps.ADDITIONAL_POINTS));
+      dispatch(changeStep(steps.REGISTER));
     };
   }, []);
 

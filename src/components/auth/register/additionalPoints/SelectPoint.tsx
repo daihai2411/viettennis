@@ -1,36 +1,41 @@
 import { formatVal } from "@/helpers/value";
+import { AppDispatch } from "@/redux/store";
 import { Input } from "@nextui-org/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/popover";
-import { Button } from "@nextui-org/react";
-import { useMemo, useState } from "react";
+import { Button, Spinner } from "@nextui-org/react";
+import { useEffect, useMemo, useState } from "react";
 import { FaCog } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectListPersonalPointDetail,
+  selectLoadingListPersonalPointDetail,
+} from "../../store/slice";
+import { getListPersonalPointDetailByCriteriaThunk } from "../../store/thunk";
 
-const SelectPoint = () => {
-  const dummy = [
-    {
-      value: "500-549",
-      users: "HONG D99, vyhtv, Carom, BAOOAI911, Vinhnx",
-      min: 500,
-      max: 549,
-    },
-    {
-      value: "550-599",
-      users: "HONG D99",
-      min: 550,
-      max: 599,
-    },
-  ];
+const SelectPoint = ({
+  personalPointCriteriaId,
+  inputKey,
+  valueDefault,
+  setValueForm,
+  setValue,
+}) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const loading = useSelector(selectLoadingListPersonalPointDetail);
+  const listPersonalPointDetail = useSelector(selectListPersonalPointDetail);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState(0);
+  const [search, setSearch] = useState(valueDefault);
 
   const list = useMemo(() => {
     if (search) {
-      return dummy.filter((item) => item.min <= search && search <= item.max);
+      return listPersonalPointDetail.filter(
+        (item) => item.min <= search && search <= item.max
+      );
     } else {
-      return dummy;
+      return listPersonalPointDetail;
     }
-  }, [search]);
+  }, [search, listPersonalPointDetail]);
 
   const onChange = (e) => {
     setSearch(e.target?.value);
@@ -38,7 +43,23 @@ const SelectPoint = () => {
 
   const handleSubmit = () => {
     setIsOpen(false);
+    setValueForm(inputKey, search);
+    setValue(search);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      dispatch(
+        getListPersonalPointDetailByCriteriaThunk({
+          personal_point_criteria_id: personalPointCriteriaId,
+        })
+      );
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    setSearch(valueDefault);
+  }, [valueDefault]);
 
   return (
     <>
@@ -51,7 +72,10 @@ const SelectPoint = () => {
       >
         <PopoverTrigger>
           <button className="focus:outline-none" type="button">
-            <FaCog className="text-sm text-default-400 pointer-events-none" />
+            <FaCog
+              title="Tham chiếu (chuẩn tối thiểu)"
+              className="text-sm text-default-400 pointer-events-none"
+            />
           </button>
         </PopoverTrigger>
         <PopoverContent className="w-[240px]">
@@ -65,7 +89,7 @@ const SelectPoint = () => {
               </p>
               <div className="mt-2 flex flex-col gap-2 w-full">
                 <Input
-                  defaultValue="100%"
+                  defaultValue={valueDefault}
                   label="Điểm cá nhân"
                   size="sm"
                   variant="bordered"
@@ -74,15 +98,21 @@ const SelectPoint = () => {
                 />
               </div>
               <div className="mt-2">
-                {list.map((item, index) => (
-                  <div
-                    key={index}
-                    className="text-sm flex gap-2 justify-between py-1"
-                  >
-                    <div className="line-clamp-2">{formatVal(item.users)}</div>
-                    <div className="whitespace-nowrap">{item.value}</div>
-                  </div>
-                ))}
+                {loading ? (
+                  <Spinner className="w-full m-auto" />
+                ) : (
+                  list.map((item, index) => (
+                    <div
+                      key={index}
+                      className="text-sm flex gap-2 justify-between py-1"
+                    >
+                      <div className="line-clamp-2">
+                        {formatVal(item.users)}
+                      </div>
+                      <div className="whitespace-nowrap">{item.value}</div>
+                    </div>
+                  ))
+                )}
               </div>
               <Button
                 type="button"

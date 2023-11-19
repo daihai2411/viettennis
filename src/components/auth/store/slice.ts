@@ -15,6 +15,7 @@ const initialState = {
   loadingListPersonalPoint: false,
   listPersonalPointDetail: [],
   loadingListPersonalPointDetail: false,
+  objPoint: {},
 };
 
 export const slice = createSlice({
@@ -29,6 +30,9 @@ export const slice = createSlice({
     },
     changePassword: (state, { payload }) => {
       state.password = payload;
+    },
+    changeValueObjPoint: (state, { payload }) => {
+      state.objPoint = { ...state.objPoint, ...payload };
     },
   },
   extraReducers(builder) {
@@ -54,7 +58,11 @@ export const slice = createSlice({
     builder.addCase(
       getListPersonalPointDetailByCriteriaThunk.fulfilled,
       (state, action) => {
-        state.listPersonalPointDetail = action.payload;
+        state.listPersonalPointDetail = action.payload.map((item) => ({
+          ...item,
+          max: item.value.split("-")[1],
+          min: item.value.split("-")[0],
+        }));
         state.loadingListPersonalPointDetail = false;
       }
     );
@@ -69,7 +77,12 @@ export const slice = createSlice({
 
 reducerRegistry.register(slice.name, slice.reducer);
 
-export const { changeStep, changePhoneNumber, changePassword } = slice.actions;
+export const {
+  changeStep,
+  changePhoneNumber,
+  changePassword,
+  changeValueObjPoint,
+} = slice.actions;
 
 export const selectStep = (state: RootState) => state[slice.name]?.step;
 export const selectPhoneNumber = (state: RootState) =>
@@ -83,3 +96,5 @@ export const selectListPersonalPoint = (state: RootState) =>
   state[slice.name]?.listPersonalPoint;
 export const selectListPersonalPointDetail = (state: RootState) =>
   state[slice.name]?.listPersonalPointDetail;
+export const selectObjPoints = (state: RootState) =>
+  state[slice.name]?.objPoint;

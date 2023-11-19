@@ -1,6 +1,7 @@
 "use client";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
+import { ROUTERS } from "@/const/router";
 import { saveSession } from "@/helpers/session";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
@@ -48,7 +49,7 @@ const LoginModule = () => {
       username: data.username,
       password: data.password,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: ROUTERS.HOME,
     });
 
     if (result && result?.status === 200) {
@@ -116,14 +117,14 @@ const LoginModule = () => {
         <div className="w-full grid gap-2">
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("google", { callbackUrl: "/" })}
+            onClick={() => signIn("google", { callbackUrl: ROUTERS.HOME })}
           >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Google
           </Button>
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("facebook", { callbackUrl: "/" })}
+            onClick={() => signIn("facebook", { callbackUrl: ROUTERS.HOME })}
           >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
