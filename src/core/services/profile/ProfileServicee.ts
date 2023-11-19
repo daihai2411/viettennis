@@ -10,9 +10,13 @@ class Service extends ServiceBase {
     return this.getData(() => profileProxy.updatePersonalPoint(params));
   }
 
-  getListPersonalPointCriteria(params: object) {
+  getListPersonalPointCriteria() {
+    return this.getData(() => profileProxy.getListPersonalPointCriteria());
+  }
+
+  getListPersonalPointDetailByCriteria(params: object) {
     return this.getData(() =>
-      profileProxy.getListPersonalPointCriteria(params)
+      profileProxy.getListPersonalPointDetailByCriteria(params)
     );
   }
 }

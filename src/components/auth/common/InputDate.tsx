@@ -24,10 +24,11 @@ const InputDate = ({ register, errors, keyInput, label, placeholder }) => {
   const [startDate, setStartDate] = useState<any>(undefined);
 
   // eslint-disable-next-line react/display-name
-  const ExampleCustomInput = forwardRef(({ value, onClick }: any) => (
+  const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref) => (
     <div className={"mb-4"}>
       {label}
       <Input
+        ref={ref}
         value={value}
         {...register(keyInput)}
         placeholder={placeholder}

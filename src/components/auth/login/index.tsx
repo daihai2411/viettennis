@@ -1,5 +1,6 @@
 "use client";
 
+import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import { saveSession } from "@/helpers/session";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
@@ -7,10 +8,9 @@ import { Divider } from "@nextui-org/divider";
 import { Image } from "@nextui-org/image";
 import { SignInResponse, signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-// import { toast } from "react-toastify";
-import { ToastSuccess } from "@/components/common/Toast";
 import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
 import { schemaLogin } from "../schema";
@@ -21,6 +21,8 @@ interface IFormInput {
 }
 
 const LoginModule = () => {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
 
   const schemaValidation = () =>
@@ -45,17 +47,16 @@ const LoginModule = () => {
     const result: SignInResponse | undefined = await signIn("credentials", {
       username: data.username,
       password: data.password,
-      redirect: false,
+      redirect: true,
+      callbackUrl: "/",
     });
 
     if (result && result?.status === 200) {
       await saveSession();
-      // console.log(result, "Đăng nhập thành công !");
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
     } else if (result?.status === 401) {
-      // toast.error(result.error);
-      // console.log(result.error);
+      ToastError(result.error);
       setLoading(false);
     }
   });
@@ -115,12 +116,15 @@ const LoginModule = () => {
         <div className="w-full grid gap-2">
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("google")}
+            onClick={() => signIn("google", { callbackUrl: "/" })}
           >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Google
           </Button>
-          <Button className="border border-stone-300 bg-gray-50 w-full">
+          <Button
+            className="border border-stone-300 bg-gray-50 w-full"
+            onClick={() => signIn("facebook", { callbackUrl: "/" })}
+          >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
           </Button>

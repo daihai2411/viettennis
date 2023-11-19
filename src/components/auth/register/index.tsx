@@ -1,5 +1,7 @@
 "use client";
 
+import { saveSession } from "@/helpers/session";
+import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { steps } from "../constants";
@@ -23,7 +25,7 @@ const RegisterModule: React.FC = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(changeStep(steps.ADDITIONAL_INFO));
+      dispatch(changeStep(steps.ADDITIONAL_POINTS));
     };
   }, []);
 
@@ -32,12 +34,12 @@ const RegisterModule: React.FC = () => {
   };
 
   const onNext = async () => {
-    // signIn("credentials", {
-    //   username: phoneNumber,
-    //   password,
-    //   redirect: false,
-    // });
-    // await saveSession();
+    signIn("credentials", {
+      username: phoneNumber,
+      password,
+      redirect: false,
+    });
+    await saveSession();
     dispatch(changeStep(steps.ADDITIONAL_INFO));
   };
 

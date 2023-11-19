@@ -11,21 +11,15 @@ interface Credential {
   password: string;
 }
 
-type UserSession = {
+interface UserSession {
   phone: string;
   username: string | null;
   token: string;
-
   id: string;
-  name: string | null;
   phone_number: string;
   email: string | null;
-  avatar: string | null;
-  birthday: string | null;
-  address_id: string | null;
   auth_token: string;
-  is_phone_verified: number;
-};
+}
 
 const MAX_AGE = 30 * 24 * 60 * 60; // 30 days
 
@@ -57,12 +51,10 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
           const response = (await authService.login({
             username,
             password,
-          })) as { user: UserSession };
-          console.log("response", response);
+          })) as { data: UserSession };
 
-          return response.user;
+          return response.data;
         } catch (error: any) {
-          console.log("error", error);
           const cookies = new Cookies(req, res);
           cookies.set("auth/login/statusCode", error.response?.status || 401, {
             httpOnly: false,
@@ -92,7 +84,7 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
       }
 
       if (token.user && token.user?.token) {
-        const decoded: any = jwtDecode(token.user?.auth_token);
+        const decoded: any = jwtDecode(token.user?.token);
         // if (Date.now() + 5 * 60 * 1000 >= decoded.exp * 1000) {
         //   return await refreshAccessToken(token);
         // }

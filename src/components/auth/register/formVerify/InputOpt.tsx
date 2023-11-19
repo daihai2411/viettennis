@@ -34,16 +34,6 @@ export const InputOpt: React.FC<IProps> = ({ errors, register, setValue }) => {
           );
         })}
       </div>
-      {/* <FormError
-        errors={errors}
-        field={
-          'opt' +
-          genListFollowLength(NUM_INPUT_OPT).findIndex(
-            (_, index) => errors['opt' + index]?.message,
-          )
-        }
-        alwaysNewLine
-      /> */}
     </div>
   );
 };

@@ -46,7 +46,7 @@ const InfoBasic = ({ register, errors }) => {
         keyInput="phone"
         defaultValue={phoneNumber}
         required
-        disable
+        // disable
       />
     </>
   );

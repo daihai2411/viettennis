@@ -15,5 +15,5 @@ class Service extends ServiceBase {
   }
 }
 
-const profileService = new Service();
-export default profileService;
+const commonService = new Service();
+export default commonService;

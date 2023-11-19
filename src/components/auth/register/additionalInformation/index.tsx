@@ -7,7 +7,7 @@ import { Image } from "@nextui-org/image";
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import profileService from "@/core/services/profile/ProfileServicee";
 import { convertCamelCaseToLine } from "@/helpers/value";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -40,14 +40,13 @@ interface IFormInput {
   province: string | number;
   district: string | number;
   ward: string | number;
+  captcha: string | undefined;
 }
 
 const schemaValidation = () => Yup.object().shape(schemaAdditionInformation);
 
 const AdditionalInformation = () => {
   const dispatch = useDispatch();
-  const captchaRef = useRef<any>(null);
-  const token = captchaRef.current?.getValue();
 
   const phoneNumber = useSelector(selectPhoneNumber);
 
@@ -74,14 +73,19 @@ const AdditionalInformation = () => {
   watch("district");
   watch("ward");
   watch("phone");
+  watch("captcha");
+
+  const captchaDataForm = getValues("captcha");
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
+      const params = { ...data };
+      delete params.captcha;
       await profileService
-        .updateInformation(convertCamelCaseToLine(data))
+        .updateInformation(convertCamelCaseToLine(params))
         .then((data: any) => {
-          ToastSuccess(data?.message);
+          ToastSuccess(data?.message || "Cập nhật thông tin thành công");
         })
         .catch(() => {});
       dispatch(changeStep(steps.ADDITIONAL_POINTS));
@@ -128,7 +132,7 @@ const AdditionalInformation = () => {
                 setValue={setValue}
               />
               <IdentifyCard register={register} errors={errors} />
-              <CheckRecaptcha captchaRef={captchaRef} />
+              <CheckRecaptcha setValue={setValue} />
             </div>
           </div>
           <div className="text-black text-opacity-90 text-[13px] mb-3">
@@ -136,11 +140,11 @@ const AdditionalInformation = () => {
             trong mọi giải đấu của Viettennis
           </div>
           <Button
-            disabled={!token}
+            disabled={!captchaDataForm}
             isLoading={loading}
             type="submit"
             className={`bg-green-common text-white mb-6 w-full ${
-              token ? "opacity-1" : "opacity-70"
+              captchaDataForm ? "opacity-1" : "opacity-70"
             }`}
           >
             Tiếp theo

@@ -9,8 +9,12 @@ class Proxy extends ProxyBase {
     return this.get("auth/update-personal-point", params);
   }
 
-  getListPersonalPointCriteria(params: object) {
-    return this.get("list-personal-point-criteria", params);
+  getListPersonalPointCriteria() {
+    return this.get("list-personal-point-criteria");
+  }
+
+  getListPersonalPointDetailByCriteria(params: object) {
+    return this.get("list-personal-point-detail-by-criteria", params);
   }
 }
 

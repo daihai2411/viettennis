@@ -31,7 +31,7 @@ export const formatObjectWithEmptyValue = (
   params: Record<string, any> = {}
 ) => {
   if (params instanceof FormData) {
-    params.delete("auth_token");
+    params.delete("token");
     return params;
   } else {
     return Object.keys(params).reduce(
