@@ -12,9 +12,10 @@ type Item = {
 
 type IProps = {
   routers: Array<Item>;
+  showTab?: boolean;
 };
 
-const SubHeader: React.FC<IProps> = ({ routers }) => {
+const SubHeader: React.FC<IProps> = ({ routers, showTab = true }) => {
   const pathName = usePathname();
 
   const getRouter = useMemo(() => {
@@ -28,21 +29,23 @@ const SubHeader: React.FC<IProps> = ({ routers }) => {
           {getRouter?.title}
         </div>
       </div>
-      <div className="h-[60px] flex justify-center bg-[#141414] mb-2">
-        {routers.map((item) => (
-          <Link key={item.key} href={item.router}>
-            <div
-              className={`text-center items-center flex text-[17px] font-bold px-5 h-full ${
-                pathName === item.router
-                  ? " border-b-4 border-b-green-common text-white"
-                  : "text-zinc-400 cursor-pointer"
-              }`}
-            >
-              {item.title}
-            </div>
-          </Link>
-        ))}
-      </div>
+      {showTab ? (
+        <div className="h-[60px] flex justify-center bg-[#141414] mb-2">
+          {routers.map((item) => (
+            <Link key={item.key} href={item.router}>
+              <div
+                className={`text-center items-center flex text-[17px] font-bold px-5 h-full ${
+                  pathName === item.router
+                    ? " border-b-4 border-b-green-common text-white"
+                    : "text-zinc-400 cursor-pointer"
+                }`}
+              >
+                {item.title}
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : null}
     </>
   );
 };
