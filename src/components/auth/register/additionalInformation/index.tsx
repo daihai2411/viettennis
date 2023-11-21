@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
-import profileService from "@/core/services/profile/ProfileServicee";
+import profileService from "@/core/services/profile/ProfileService";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
