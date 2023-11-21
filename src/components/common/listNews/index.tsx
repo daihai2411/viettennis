@@ -6,7 +6,7 @@ const ListNews = ({ list = [], header = "", className = "" }) => {
       <div className="mb-6 block border-b-2 border-green-common text-neutral-950 text-2xl font-bold">
         {header}
       </div>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-3">
         {list.map(
           (item: { title: string; image: string; category: string }, index) => (
             <NewsItem
