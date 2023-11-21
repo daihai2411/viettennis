@@ -1,4 +1,4 @@
-import profileService from "@/core/services/profile/ProfileServicee";
+import profileService from "@/core/services/profile/ProfileService";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 

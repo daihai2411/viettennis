@@ -11,7 +11,7 @@ export default function NewsDetailLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div style={{ boxShadow: "0 450px 0 -100px #2DA46B inset" }}>
+    <div style={{ boxShadow: "0 550px 0 -100px #2DA46B inset" }}>
       {children}
     </div>
   );

@@ -9,14 +9,14 @@ const Home = () => {
   return (
     <div className="container mx-auto mt-8">
       <div className="grid grid-cols-8 gap-4">
-        <div className="col-span-6">
+        <div className="col-span-8 lg:col-span-6">
           <Moments />
           <News />
           <NewTournament />
           <Creator />
           <Video />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 hidden lg:block">
           <TopRank />
           <div className="mb-6"></div>
           <TopRank />
