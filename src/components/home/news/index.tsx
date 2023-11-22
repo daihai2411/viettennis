@@ -11,7 +11,7 @@ const News = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getNewsThunk({ paginate: 6 }));
+    dispatch(getNewsThunk({ paginate: 4 }));
   }, []);
 
   return (

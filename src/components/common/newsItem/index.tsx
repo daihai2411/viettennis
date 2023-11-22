@@ -6,7 +6,7 @@ const NewsItem = ({ id, title, image = "", category }) => {
   return (
     <Link
       href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + id}
-      className="w-full group mb-3"
+      className="w-full group mb-3 col-span-4 sm:col-span-2 lg:col-span-1"
     >
       <Image
         alt="image"

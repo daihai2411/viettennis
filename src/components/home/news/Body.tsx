@@ -1,5 +1,7 @@
+import { ROUTERS } from "@/const/router";
 import { Image } from "@nextui-org/image";
 import { Skeleton } from "@nextui-org/react";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import { selectListNewsNext, selectLoading } from "./store/slice";
 
@@ -10,7 +12,11 @@ const Body = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 mb-11">
       {listNewsNext.map((item) => (
-        <div key={item?.id} className="w-full group mb-3">
+        <Link
+          href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + item?.id}
+          key={item?.id}
+          className="w-full group mb-3"
+        >
           <Skeleton isLoaded={!loading} className="flex justify-center">
             <Image
               alt="image"
@@ -30,7 +36,7 @@ const Body = () => {
               {item?.created_by}
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
