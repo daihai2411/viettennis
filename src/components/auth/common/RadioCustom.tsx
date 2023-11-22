@@ -10,11 +10,7 @@ const RadioCustom = ({
 }) => {
   return (
     <div className={className}>
-      <RadioGroup
-        {...register(keyInput)}
-        label={labelRadio}
-        orientation="horizontal"
-      >
+      <RadioGroup {...register(keyInput)} label={labelRadio}>
         {list.map((item: { label: string; value: string }) => (
           <Radio key={item.value} value={item.value}>
             {item.label}

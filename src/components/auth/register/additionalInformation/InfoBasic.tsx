@@ -3,7 +3,7 @@ import InputCustom from "../../common/InputCustom";
 import InputDate from "../../common/InputDate";
 import { selectPhoneNumber } from "../../store/slice";
 
-const InfoBasic = ({ register, errors }) => {
+const InfoBasic = ({ register, errors, setValue }) => {
   const phoneNumber = useSelector(selectPhoneNumber);
 
   return (
@@ -37,6 +37,7 @@ const InfoBasic = ({ register, errors }) => {
         errors={errors}
         placeholder="DD/MM/YYYY"
         keyInput="dob"
+        setValue={setValue}
       />
       <InputCustom
         label="Số điện thoại"

@@ -26,8 +26,6 @@ export const slice = createSlice({
       state.loading = true;
     });
     builder.addCase(getNewsThunk.fulfilled, (state, { payload }) => {
-      console.log(payload);
-
       state.newsFirst = [...payload].shift();
       state.newsSecond = [...payload].find((_, index) => index === 1);
       state.listNewsNext = [...payload].slice(2, 5);

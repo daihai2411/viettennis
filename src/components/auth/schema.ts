@@ -1,38 +1,181 @@
+import { getMessSchema } from "@/helpers/schema";
 import * as Yup from "yup";
 
 export const schemaLogin = {
   username: Yup.string()
-    .required("Vui lòng nhập họ tên tài khoản/ email để đăng nhập")
-    .max(256, "Tối đa 256 ký tự, vui lòng nhập giá trị hợp lệ."),
+    .required(
+      getMessSchema({ type: "MS_01", fieldName: "Tên tài khoản/ email" })
+    )
+    .max(
+      256,
+      getMessSchema({
+        type: "MS_03_03",
+        fieldName: "tên tài khoản/ email",
+        max: 256,
+      })
+    ),
   password: Yup.string()
-    .required("Vui lòng nhập mật khẩu để đăng nhập")
-    .max(35, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ."),
+    .required(getMessSchema({ type: "MS_01", fieldName: "Mật khẩu" }))
+    .min(
+      8,
+      getMessSchema({
+        type: "MS_03_01",
+        fieldName: "mật khẩu",
+        min: 8,
+        max: 35,
+      })
+    )
+    .max(
+      35,
+      getMessSchema({
+        type: "MS_03_01",
+        fieldName: "mật khẩu",
+        min: 8,
+        max: 35,
+      })
+    )
+    .matches(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
+      getMessSchema({ type: "MS_11" })
+    ),
 };
 
 export const schemaRegister = {
   username: Yup.string()
-    .required("Vui lòng nhập họ và tên để đăng ký")
-    .max(100, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ."),
-  // .matches(
-  //   /^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
-  //   "Tên người dùng chỉ chấp nhận các ký tự văn bản (không chứa chữ số 0-9 và cá ký tự đặc biệt ., # * & ()) "
-  // ),
-  password: Yup.string()
-    .required("Vui lòng nhập mật khẩu để đăng ký")
-    .min(8, "Mật khẩu cần chứa từ 8 – 35 ký tự, vui lòng nhập giá trị hợp lệ")
-    .max(35, "Mật khẩu cần chứa từ 8 – 35 ký tự, vui lòng nhập giá trị hợp lệ")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*`])[A-Za-z\d!@#$%^&*`]+$/,
-      "Mật khẩu cần chứa tối thiểu 1 ký tự viết hoa ,1 ký tự viết thường, 1 chữ số"
+    .required(getMessSchema({ type: "MS_01", fieldName: "Tên đăng nhập" }))
+    .max(
+      100,
+      getMessSchema({ type: "MS_03_03", fieldName: "tên đăng nhập", max: 100 })
     ),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref("password"), undefined],
-    "Mật khẩu xác nhận không trùng khớp, vui lòng nhập đúng giá trị mật khẩu đã tạo."
-  ),
+  password: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Mật khẩu" }))
+    .min(
+      8,
+      getMessSchema({
+        type: "MS_03_01",
+        fieldName: "mật khẩu",
+        min: 8,
+        max: 35,
+      })
+    )
+    .max(
+      35,
+      getMessSchema({
+        type: "MS_03_01",
+        fieldName: "mật khẩu",
+        min: 8,
+        max: 35,
+      })
+    )
+    .matches(
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
+      getMessSchema({ type: "MS_11" })
+    ),
+  confirmPassword: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Nhập lại mật khẩu" }))
+    .oneOf(
+      [Yup.ref("password"), ""],
+      getMessSchema({ type: "MS_12", fieldName: "Nhập lại mật khẩu" })
+    ),
   phoneNumber: Yup.string()
-    .required("Vui lòng nhập số điện thoại để đăng ký")
-    .matches(/^0\d{9}$/, "Số điện thoại không đúng định dạng")
-    .length(10, "Số điện thoại không đúng định dạng"),
+    .required(getMessSchema({ type: "MS_01", fieldName: "Số điện thoại" }))
+    .length(
+      10,
+      getMessSchema({
+        type: "MS_03_02",
+        fieldName: "số điện thoại",
+        length: 10,
+      })
+    )
+    .matches(/^0\d{9}$/, getMessSchema({ type: "MS_02_01" })),
+};
+
+export const schemaAdditionInformation = {
+  email: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Email" }))
+    .max(256, getMessSchema({ type: "MS_03_03", fieldName: "email", max: 256 }))
+    .test({
+      message: getMessSchema({ type: "MS_02_01" }),
+      test: (value: any) => {
+        if (!value) return true;
+        const valueTest = (value || "").trim();
+        const email = /^[\w-\\.-\\+]{4,64}@([\w-]+\.)+[\w-]{1,190}$/gi;
+        return email.test(valueTest);
+      },
+    }),
+  fullName: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Họ và tên" }))
+    .matches(
+      /^[A-Za-z]+$/,
+      getMessSchema({ type: "MS_02_02", fieldName: "Họ và tên" })
+    )
+    .max(
+      100,
+      getMessSchema({ type: "MS_03_03", fieldName: "họ và tên", max: 100 })
+    ),
+  dob: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Ngày sinh" })
+  ),
+  phone: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Số điện thoại" }))
+    .length(
+      10,
+      getMessSchema({
+        type: "MS_03_02",
+        fieldName: "số điện thoại",
+        length: 10,
+      })
+    )
+    .matches(/^0\d{9}$/, getMessSchema({ type: "MS_02_01" })),
+  height: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable(),
+  weight: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable(),
+  backHand: Yup.number().nullable(),
+  playSince: Yup.string().nullable(),
+  racketSpecs: Yup.string().nullable(),
+  shoesBrand: Yup.string().nullable(),
+  clothesBrand: Yup.string().nullable(),
+  address: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Địa chỉ" })
+  ),
+  ward: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Tỉnh/Thành phố" })
+  ),
+  district: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Quận/Huyện" })
+  ),
+  province: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Xã/Phường" })
+  ),
+  identifyId: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Số CCCD" }))
+    .length(
+      12,
+      getMessSchema({
+        type: "MS_03_02",
+        fieldName: "số CCCD",
+        length: 12,
+      })
+    ),
+  identifyDate: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Ngày cấp" })
+  ),
+  identifyAddress: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Nơi cấp" })
+  ),
+  termAndPolicy: Yup.bool().oneOf(
+    [true],
+    getMessSchema({
+      type: "MS_01",
+      fieldName: "Điều khoản và chính sách quyền riêng tư",
+    })
+  ),
+  captcha: Yup.string().required(
+    getMessSchema({ type: "MS_01", fieldName: "Xác thực" })
+  ),
 };
 
 export const schemaSentInfo = {
@@ -57,56 +200,5 @@ export const schemaRestorePass = {
   confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), undefined],
     "Mật khẩu xác nhận không trùng khớp, vui lòng nhập đúng giá trị mật khẩu đã tạo."
-  ),
-};
-
-export const schemaAdditionInformation = {
-  email: Yup.string()
-    .required("Vui lòng nhập email để đăng ký")
-    .max(256, "Tối đa 256 ký tự, vui lòng nhập giá trị hợp lệ.")
-    .test({
-      message: "Email không hợp lệ, vui lòng kiểm tra lại",
-      test: (value: any) => {
-        if (!value) return true;
-        const valueTest = (value || "").trim();
-        const email = /^[\w-\\.-\\+]{4,64}@([\w-]+\.)+[\w-]{1,190}$/gi;
-        return email.test(valueTest);
-      },
-    }),
-  fullName: Yup.string()
-    .required("Vui lòng nhập họ và tên để đăng ký")
-    .max(100, "Tối đa 100 ký tự, vui lòng nhập giá trị hợp lệ."),
-  dob: Yup.string().required("Vui lòng nhập ngày sinh để đăng ký"),
-  phone: Yup.string()
-    .required("Vui lòng nhập số điện thoại để đăng ký")
-    .matches(/^0\d{9}$/, "Số điện thoại không đúng định dạng")
-    .length(10, "Số điện thoại không đúng định dạng"),
-  height: Yup.number()
-    .transform((value) => (Number.isNaN(value) ? null : value))
-    .nullable()
-    .required("Vui lòng nhập chiều cao để đăng ký"),
-  weight: Yup.number()
-    .transform((value) => (Number.isNaN(value) ? null : value))
-    .nullable()
-    .required("Vui lòng nhập cân nặng để đăng ký"),
-  backHand: Yup.number().required("Vui lòng nhập để đăng ký"),
-  playSince: Yup.string().required("Vui lòng nhập để đăng ký"),
-  racketSpecs: Yup.string().required("Vui lòng nhập để đăng ký"),
-  shoesBrand: Yup.string().required("Vui lòng nhập để đăng ký"),
-  clothesBrand: Yup.string().required("Vui lòng nhập để đăng ký"),
-
-  address: Yup.string().required("Vui lòng nhập để đăng ký"),
-  ward: Yup.string().required("Vui lòng chọn xã/phường để đăng ký"),
-  district: Yup.string().required("Vui lòng chọn quận/huyện nhập để đăng ký"),
-  province: Yup.string().required("Vui lòng chọn tỉnh/thành để đăng ký"),
-
-  identifyId: Yup.string()
-    .required("Vui lòng nhập số CMT/CCCD để đăng ký")
-    .length(12, "Số CMT/CCCD không đúng định dạng"),
-  identifyDate: Yup.string().required(
-    "Vui lòng nhập ngày cấp CMT/CCCD để đăng ký"
-  ),
-  identifyAddress: Yup.string().required(
-    "Vui lòng nhập nơi cấp CMT/CCCD để đăng ký"
   ),
 };

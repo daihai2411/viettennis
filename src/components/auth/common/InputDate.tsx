@@ -6,7 +6,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const InputDate = ({ register, errors, keyInput, label, placeholder }) => {
+const InputDate = ({
+  register,
+  errors,
+  keyInput,
+  label,
+  placeholder,
+  setValue,
+}) => {
   const months = [
     "Tháng 1",
     "Tháng 2",
@@ -43,6 +50,11 @@ const InputDate = ({ register, errors, keyInput, label, placeholder }) => {
       )}
     </div>
   ));
+
+  const onChange = (date) => {
+    setValue(keyInput, date);
+    setStartDate(date);
+  };
 
   return (
     <>
@@ -103,7 +115,7 @@ const InputDate = ({ register, errors, keyInput, label, placeholder }) => {
         wrapperClassName="!block"
         dateFormat="dd/MM/yyyy"
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={onChange}
         maxDate={new Date()}
       />
     </>

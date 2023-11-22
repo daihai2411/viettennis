@@ -20,6 +20,7 @@ import CheckRecaptcha from "./CheckRecaptcha";
 import IdentifyCard from "./IdentifyCard";
 import InfoAdvenced from "./InfoAdvenced";
 import InfoBasic from "./InfoBasic";
+import TermAndPolicy from "./TermAndPolicy";
 
 interface IFormInput {
   fullName: string;
@@ -75,8 +76,6 @@ const AdditionalInformation = () => {
   watch("phone");
   watch("captcha");
 
-  const captchaDataForm = getValues("captcha") || "true";
-
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
@@ -113,8 +112,16 @@ const AdditionalInformation = () => {
         <form onSubmit={onSubmit}>
           <div className="flex gap-6">
             <div className="w-full">
-              <InfoBasic register={register} errors={errors} />
-              <InfoAdvenced register={register} errors={errors} />
+              <InfoBasic
+                register={register}
+                errors={errors}
+                setValue={setValue}
+              />
+              <InfoAdvenced
+                register={register}
+                errors={errors}
+                setValue={setValue}
+              />
             </div>
             <div className="w-full">
               <InputCustom
@@ -123,7 +130,6 @@ const AdditionalInformation = () => {
                 errors={errors}
                 placeholder="Đang mặc đồ thể thao của hãng nào?"
                 keyInput="clothesBrand"
-                required
               />
               <Address
                 register={register}
@@ -131,21 +137,28 @@ const AdditionalInformation = () => {
                 getValues={getValues}
                 setValue={setValue}
               />
-              <IdentifyCard register={register} errors={errors} />
-              <CheckRecaptcha setValue={setValue} />
+              <IdentifyCard
+                register={register}
+                errors={errors}
+                setValue={setValue}
+              />
+              <CheckRecaptcha setValue={setValue} errors={errors} />
             </div>
           </div>
+          <TermAndPolicy
+            register={register}
+            errors={errors}
+            keyInput="termAndPolicy"
+            setValue={setValue}
+          />
           <div className="text-black text-opacity-90 text-[13px] mb-3">
             *Lưu ý: Mọi thông tin của bạn sẽ được dùng để xác thực định danh
             trong mọi giải đấu của Viettennis
           </div>
           <Button
-            disabled={!captchaDataForm}
             isLoading={loading}
             type="submit"
-            className={`bg-green-common text-white mb-6 w-full ${
-              captchaDataForm ? "opacity-1" : "opacity-70"
-            }`}
+            className={`bg-green-common text-white mb-6 w-full`}
           >
             Tiếp theo
           </Button>
