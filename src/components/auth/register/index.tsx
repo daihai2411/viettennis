@@ -2,7 +2,6 @@
 
 import { saveSession } from "@/helpers/session";
 import { signIn } from "next-auth/react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { steps } from "../constants";
 import {
@@ -23,11 +22,11 @@ const RegisterModule: React.FC = () => {
   const phoneNumber = useSelector(selectPhoneNumber);
   const password = useSelector(selectPassword);
 
-  useEffect(() => {
-    return () => {
-      dispatch(changeStep(steps.REGISTER));
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(changeStep(steps.REGISTER));
+  //   };
+  // }, []);
 
   const onBack = () => {
     dispatch(changeStep(steps.REGISTER));

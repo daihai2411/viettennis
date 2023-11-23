@@ -12,9 +12,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
+import { steps } from "../constants";
 import { schemaLogin } from "../schema";
+import { changePhoneNumber, changeStep } from "../store/slice";
 
 interface IFormInput {
   username: string;
@@ -22,6 +25,7 @@ interface IFormInput {
 }
 
 const LoginModule = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -48,12 +52,22 @@ const LoginModule = () => {
     const result: SignInResponse | undefined = await signIn("credentials", {
       username: data.username,
       password: data.password,
-      redirect: true,
-      callbackUrl: ROUTERS.HOME,
+      redirect: false,
     });
 
     if (result && result?.status === 200) {
-      await saveSession();
+      const user = (await saveSession()) as any;
+      if (!user?.personal_info_updated) {
+        dispatch(changeStep(steps.ADDITIONAL_INFO));
+        dispatch(changePhoneNumber(user?.phone));
+        router.push("/auth/register");
+      } else if (!user?.personal_point_updated) {
+        dispatch(changeStep(steps.ADDITIONAL_POINTS));
+        router.push("/auth/register");
+      } else {
+        router.push("/");
+      }
+
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
     } else if (result?.status === 401) {
