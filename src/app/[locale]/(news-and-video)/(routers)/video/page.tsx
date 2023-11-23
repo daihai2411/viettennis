@@ -1,3 +1,4 @@
+import DevelopPage from "@/components/common/page/DevelopPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const VideoPage = () => {
-  return <div>VideoPage</div>;
+  return <DevelopPage />;
 };
 
 export default VideoPage;
