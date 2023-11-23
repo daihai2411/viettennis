@@ -13,7 +13,8 @@ export const schemaLogin = {
         fieldName: "tên tài khoản/ email",
         max: 256,
       })
-    ),
+    )
+    .matches(/^[a-z0-9_-]+$/, getMessSchema({ type: "MS_11" })),
   password: Yup.string()
     .required(getMessSchema({ type: "MS_01", fieldName: "Mật khẩu" }))
     .min(
@@ -77,7 +78,7 @@ export const schemaRegister = {
       [Yup.ref("password"), ""],
       getMessSchema({ type: "MS_12", fieldName: "Nhập lại mật khẩu" })
     ),
-  phoneNumber: Yup.string()
+  phone: Yup.string()
     .required(getMessSchema({ type: "MS_01", fieldName: "Số điện thoại" }))
     .length(
       10,
@@ -105,10 +106,10 @@ export const schemaAdditionInformation = {
     }),
   fullName: Yup.string()
     .required(getMessSchema({ type: "MS_01", fieldName: "Họ và tên" }))
-    .matches(
-      /^[A-Za-z]+$/,
-      getMessSchema({ type: "MS_02_02", fieldName: "Họ và tên" })
-    )
+    // .matches(
+    //   /[^a-z0-9A-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]/u,
+    //   getMessSchema({ type: "MS_02_02", fieldName: "Họ và tên" })
+    // )
     .max(
       100,
       getMessSchema({ type: "MS_03_03", fieldName: "họ và tên", max: 100 })
@@ -166,13 +167,20 @@ export const schemaAdditionInformation = {
   identifyAddress: Yup.string().required(
     getMessSchema({ type: "MS_01", fieldName: "Nơi cấp" })
   ),
-  termAndPolicy: Yup.bool().oneOf(
-    [true],
-    getMessSchema({
-      type: "MS_01",
-      fieldName: "Điều khoản và chính sách quyền riêng tư",
-    })
-  ),
+  termAndPolicy: Yup.bool()
+    .required(
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Điều khoản và chính sách quyền riêng tư",
+      })
+    )
+    .oneOf(
+      [true],
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Điều khoản và chính sách quyền riêng tư",
+      })
+    ),
   captcha: Yup.string().required(
     getMessSchema({ type: "MS_01", fieldName: "Xác thực" })
   ),

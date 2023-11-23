@@ -39,6 +39,10 @@ export const FORMAT = {
     [en]: "YYYY/MM/DD",
     [vi]: "DD/MM/YYYY",
   },
+  YEAR: {
+    [en]: "YYYY",
+    [vi]: "YYYY",
+  },
 };
 
 export const getCurrentDateTime = (

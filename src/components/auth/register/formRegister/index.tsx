@@ -1,11 +1,13 @@
 "use client";
 
 import { ToastError } from "@/components/common/Toast";
+import { ROUTERS } from "@/const/router";
 import authService from "@/core/services/AuthService";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
 import { Image } from "@nextui-org/image";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -24,7 +26,7 @@ interface IFormInput {
   username: string;
   password: string;
   confirmPassword: string;
-  phoneNumber: string;
+  phone: string;
 }
 
 const schemaValidation = () => Yup.object().shape(schemaRegister);
@@ -49,15 +51,15 @@ const FormRegister = () => {
     try {
       await authService.register({
         username: data.username,
-        phone: data.phoneNumber,
+        phone: data.phone,
         password_confirmation: data.confirmPassword,
         password: data.password,
       });
       await authService.generateOtp({
-        phone: data.phoneNumber,
+        phone: data.phone,
       });
 
-      dispatch(changePhoneNumber(data.phoneNumber));
+      dispatch(changePhoneNumber(data.phone));
       dispatch(changePassword(data.password));
       dispatch(changeStep(steps.VERIFY));
       setLoading(false);
@@ -93,7 +95,7 @@ const FormRegister = () => {
             register={register}
             errors={errors}
             placeholder="Số điện thoại"
-            keyInput="phoneNumber"
+            keyInput="phone"
             type="text"
           />
           <InputCustom
@@ -130,17 +132,23 @@ const FormRegister = () => {
           </div>
         </div>
         <div className="w-full grid gap-2">
-          <Button className="border border-stone-300 bg-gray-50 w-full">
+          <Button
+            className="border border-stone-300 bg-gray-50 w-full"
+            onClick={() => signIn("google", { callbackUrl: ROUTERS.HOME })}
+          >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
-            Đăng ký bằng Google
+            Đăng nhập bằng Google
           </Button>
-          <Button className="border border-stone-300 bg-gray-50 w-full">
+          <Button
+            className="border border-stone-300 bg-gray-50 w-full"
+            onClick={() => signIn("facebook", { callbackUrl: ROUTERS.HOME })}
+          >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
-            Đăng ký bằng Facebook
+            Đăng nhập bằng Facebook
           </Button>
           <Button className="border border-stone-300 bg-gray-50 w-full">
             <Image src="/icon-apple.png" alt="icon social" className="h-5" />
-            Đăng ký bằng Apple
+            Đăng nhập bằng Apple
           </Button>
         </div>
 

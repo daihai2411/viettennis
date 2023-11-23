@@ -35,7 +35,9 @@ const LoginRegister = () => {
               {session?.user?.email || "@" + session?.user?.username}
             </p>
           </DropdownItem>
-          <DropdownItem key="settings">My Settings</DropdownItem>
+          <DropdownItem key="settings">
+            <Link href={"/setting"}>Cài đặt tài khoản</Link>
+          </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={() => signOut()}>
             Đăng xuất
           </DropdownItem>

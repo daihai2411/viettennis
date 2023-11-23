@@ -6,6 +6,7 @@ import { Image } from "@nextui-org/image";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import profileService from "@/core/services/profile/ProfileService";
+import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -79,18 +80,31 @@ const AdditionalInformation = () => {
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
     try {
-      const params = { ...data };
+      const params = { ...data } as any;
       delete params.captcha;
-      await profileService
-        .updateInformation(convertCamelCaseToLine(params))
-        .then((data: any) => {
-          ToastSuccess(data?.message || "Cập nhật thông tin thành công");
-        })
-        .catch(() => {});
-      dispatch(changeStep(steps.ADDITIONAL_POINTS));
+      if (params?.dob) {
+        params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
+      }
+      if (params?.playSince) {
+        params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
+      }
+      if (params?.identifyDate) {
+        params.identifyDate = formatDateTime(
+          params?.identifyDate,
+          FORMAT.DATE_SLASH
+        );
+      }
+      const res = (await profileService.updateInformation(
+        convertCamelCaseToLine(params)
+      )) as any;
+      if (res.success) {
+        ToastSuccess(res?.message || "Cập nhật thông tin thành công");
+        dispatch(changeStep(steps.ADDITIONAL_POINTS));
+      }
+      setLoading(false);
     } catch (error: any) {
       setLoading(false);
-      ToastError(error?.response?.data?.data?.error);
+      ToastError(Object.values(error?.response?.data?.data).flat().join(","));
     }
   });
 
@@ -156,7 +170,7 @@ const AdditionalInformation = () => {
             trong mọi giải đấu của Viettennis
           </div>
           <Button
-            isLoading={loading}
+            // isLoading={loading}
             type="submit"
             className={`bg-green-common text-white mb-6 w-full`}
           >

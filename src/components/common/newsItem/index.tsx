@@ -8,10 +8,11 @@ const NewsItem = ({ id, title, image = "", category }) => {
       href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + id}
       className="w-full group mb-3 col-span-4 sm:col-span-2 lg:col-span-1"
     >
+      {/* group-hover:scale-105  */}
       <Image
         alt="image"
-        width={350}
-        className="w-[350px] h-[209px] mb-4 group-hover:scale-105 mx-auto"
+        width={500}
+        className="h-[209px] mb-4 mx-auto"
         radius="none"
         src={image}
       />

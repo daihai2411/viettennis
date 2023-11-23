@@ -18,10 +18,11 @@ const Body = () => {
           className="w-full group mb-3"
         >
           <Skeleton isLoaded={!loading} className="flex justify-center">
+            {/* group-hover:scale-105  */}
             <Image
               alt="image"
               width={350}
-              className="w-[350px] h-[160px] mb-4 group-hover:scale-105 mx-auto rounded"
+              className="w-[350px] h-[160px] mb-4 mx-auto rounded"
               radius="none"
               src={item?.banner_image}
             />
