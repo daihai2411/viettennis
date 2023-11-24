@@ -57,7 +57,11 @@ const LoginModule = () => {
 
     if (result && result?.status === 200) {
       const user = (await saveSession()) as any;
-      if (!user?.personal_info_updated) {
+      if (!user?.is_verify_phone) {
+        dispatch(changeStep(steps.VERIFY));
+        dispatch(changePhoneNumber(user?.phone));
+        router.push("/auth/register");
+      } else if (!user?.personal_info_updated) {
         dispatch(changeStep(steps.ADDITIONAL_INFO));
         dispatch(changePhoneNumber(user?.phone));
         router.push("/auth/register");
