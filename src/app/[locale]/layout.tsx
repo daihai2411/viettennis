@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/common/ScrollToTop";
 import AppFooter from "@/components/footer";
 import AppHeader from "@/components/header";
 import { Providers } from "@/redux/provider";
@@ -42,6 +43,7 @@ export default async function RootLayout({
           <Providers>{children}</Providers>
           <AppFooter />
           <ToastContainer autoClose={2000} />
+          <ScrollToTop />
         </NextIntlClientProvider>
       </body>
     </html>

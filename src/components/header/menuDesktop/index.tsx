@@ -29,7 +29,11 @@ const MenuDesktop = () => {
                       key={item1.key}
                       className="px-1 py-2 cursor-pointer hover:underline hover:font-bold"
                     >
-                      <Link color="foreground" href={item1.route}>
+                      <Link
+                        color="foreground"
+                        className="font-semibold"
+                        href={item1.route}
+                      >
                         {item1.label}
                       </Link>
                     </div>
@@ -46,7 +50,7 @@ const MenuDesktop = () => {
                 }
               >
                 <div
-                  className="flex items-center cursor-pointer"
+                  className="flex items-center cursor-pointer font-semibold"
                   color="foreground"
                 >
                   {item.label} <FaCaretDown />
@@ -62,7 +66,11 @@ const MenuDesktop = () => {
                 )
               }
             >
-              <Link color="foreground" href={item.route}>
+              <Link
+                color="foreground"
+                className="font-semibold"
+                href={item.route}
+              >
                 {item.label}
               </Link>
             </NavbarItem>
