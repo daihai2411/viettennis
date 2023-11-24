@@ -2,10 +2,10 @@
 
 import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { AppDispatch } from "@/redux/store";
-import { Image, Spinner } from "@nextui-org/react";
+import { Avatar, Image, Spinner } from "@nextui-org/react";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
-import { FaFacebook, FaRegClock, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import ListNewsRecommend from "./ListNewsRecommend";
@@ -38,56 +38,59 @@ const NewsDetailModule = () => {
   return (
     <div className="pt-9 container mx-auto">
       {newsDetail.id ? (
-        <>
-          <div className="w-[50%] mx-auto">
-            <div className="flex text-white text-xs items-center gap-3">
-              <div className="font-bold">{newsDetail?.news_category_value}</div>
-              <div className="flex items-center gap-1">
-                <FaRegClock />
-                <div className="font-extrabold">
-                  {formatDateTime(newsDetail?.publish_date, FORMAT.DATE_SLASH)}
+        <div className="">
+          <div className="flex justify-center font-bold text-4xl leading-10 text-green-950 mb-2">
+            <h1 className="flex justify-center items-center text-center pb-3">
+              {newsDetail?.title}
+            </h1>
+          </div>
+          <div className="flex justify-center mt-4 mb-14">
+            <Avatar className="mr-3 mt-2" name={newsDetail?.created_by} />
+            <div className="">
+              <div className="font-semibold text-base leading-7 text-[#505050]">
+                {newsDetail?.created_by}
+              </div>
+              <div className="font-normal text-sm leading-5 text-[#ABB1BA]">
+                {formatDateTime(
+                  newsDetail?.publish_date,
+                  FORMAT.DATE_TIME_TABLE
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="w-full lg:w-[80%] mx-auto bg-white p-2">
+            <Image
+              radius="lg"
+              alt="image news"
+              src={newsDetail?.banner_image}
+              width={1500}
+            />
+            <div className="flex justify-between mt-2 pb-2 border-b">
+              <div className="italic">{newsDetail?.news_category_value}</div>
+              <div className="gap-2 flex justify-end ">
+                <div className="w-[30px] h-[30px] bg-white group hover:bg-[#117df2] rounded-[20px] justify-center items-center inline-flex">
+                  <FacebookShareButton url={urlShare}>
+                    <FaFacebook className="group-hover:text-white" size={16} />
+                  </FacebookShareButton>
+                </div>
+                <div className="w-[30px] h-[30px] bg-white group hover:bg-[#55acee] rounded-[20px] justify-center items-center inline-flex">
+                  <TwitterShareButton url={urlShare}>
+                    <FaTwitter className="group-hover:text-white" size={16} />
+                  </TwitterShareButton>
                 </div>
               </div>
             </div>
-            <div className="text-white text-[45px] font-bold mt-2 h-[200px] line-clamp-3">
-              {newsDetail?.title}
-            </div>
-            <div className="flex items-center text-white text-base gap-2 mb-2">
-              <span className="font-normal">Bởi</span>
-              <span className="font-bold">
-                {newsDetail?.created_by} - {newsDetail?.news_category_value}
-              </span>
-            </div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-[40px] h-[40px] bg-white group hover:bg-[#117df2] rounded-[20px] justify-center items-center inline-flex">
-                <FacebookShareButton url={urlShare}>
-                  <FaFacebook className="group-hover:text-white" size={22} />
-                </FacebookShareButton>
-              </div>
-              <div className="w-[40px] h-[40px] bg-white group hover:bg-[#55acee] rounded-[20px] justify-center items-center inline-flex">
-                <TwitterShareButton url={urlShare}>
-                  <FaTwitter className="group-hover:text-white" size={22} />
-                </TwitterShareButton>
-              </div>
-            </div>
           </div>
-          <div className="w-[70%] mx-auto bg-white p-2">
-            <Image
-              radius="none"
-              alt="image news"
-              src={newsDetail?.banner_image}
-              width={1200}
-            />
-          </div>
-          <div className="w-[50%] mx-auto mt-10">
+          <div className="mt-10 w-[80%] lg:w-[60%] mx-auto">
             <div dangerouslySetInnerHTML={{ __html: newsDetail?.content }} />
           </div>
-        </>
+        </div>
       ) : (
-        <div className="text-white text-[45px] flex justify-center pb-9">
+        <div className="text-white text-[45px] bg-green-header flex justify-center py-9">
           Tin tức không tồn tại !
         </div>
       )}
+
       <ListNewsRecommend />
     </div>
   );
