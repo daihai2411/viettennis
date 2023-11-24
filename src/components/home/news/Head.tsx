@@ -15,7 +15,7 @@ const Head = () => {
 
   return (
     <>
-      <div className="lg:grid grid-cols-4 gap-4 mt-6 mb-11 hidden ">
+      <div className="lg:grid grid-cols-4 gap-4 mb-11 hidden ">
         <Link
           href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + newsFirst?.id}
           className="col-span-3 rounded-lg group cursor-pointer"

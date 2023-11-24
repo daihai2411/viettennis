@@ -37,7 +37,14 @@ const MenuDesktop = () => {
                 </>
               }
             >
-              <NavbarItem isActive={pathName === item.route}>
+              <NavbarItem
+                isActive={
+                  pathName.includes(item.route) ||
+                  (item.children || []).some((item1) =>
+                    pathName.includes(item1.route)
+                  )
+                }
+              >
                 <div
                   className="flex items-center cursor-pointer"
                   color="foreground"
@@ -47,7 +54,14 @@ const MenuDesktop = () => {
               </NavbarItem>
             </Tooltip>
           ) : (
-            <NavbarItem isActive={pathName === item.route}>
+            <NavbarItem
+              isActive={
+                pathName.includes(item.route) ||
+                (item.children || []).some((item1) =>
+                  pathName.includes(item1.route)
+                )
+              }
+            >
               <Link color="foreground" href={item.route}>
                 {item.label}
               </Link>
