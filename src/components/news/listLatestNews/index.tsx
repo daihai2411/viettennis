@@ -7,7 +7,7 @@ const ListLatestNews = () => {
   const listNews = useSelector(selectListNews);
 
   return (
-    <div className="mt-3">
+    <div className="mt-6">
       <ListNews
         header="Tin mới nhất"
         loading={loading}

@@ -12,7 +12,7 @@ const NewsItem = ({ id, title, image = "", category }) => {
       <Image
         alt="image"
         width={500}
-        className="h-[209px] mb-4 mx-auto"
+        className="h-[270px] sm:h-[145px] md:h-[209px] mb-4 mx-auto"
         radius="none"
         src={image}
       />

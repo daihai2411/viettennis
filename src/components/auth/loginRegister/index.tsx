@@ -48,7 +48,10 @@ const LoginRegister = () => {
 
   return (
     <>
-      <Link href={"/auth/login"} className="cursor-pointer">
+      <Link
+        href={"/auth/login"}
+        className="cursor-pointer font-semibold text-[#585858]"
+      >
         Đăng nhập/đăng ký
       </Link>
     </>
