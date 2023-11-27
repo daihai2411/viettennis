@@ -12,7 +12,7 @@ interface NewsState {
 
 const initialState: NewsState = {
   newsFirst: {},
-  newsSecond: {},
+  newsSecond: [],
   listNewsNext: [],
   loading: false,
 };
@@ -27,8 +27,8 @@ export const slice = createSlice({
     });
     builder.addCase(getNewsThunk.fulfilled, (state, { payload }) => {
       state.newsFirst = [...payload].shift();
-      state.newsSecond = [...payload].find((_, index) => index === 1);
-      state.listNewsNext = [...payload].slice(2, 5);
+      state.newsSecond = [...payload].slice(1, 5);
+      state.listNewsNext = [...payload].slice(5, 8);
       state.loading = false;
     });
     builder.addCase(getNewsThunk.rejected, (state) => {
