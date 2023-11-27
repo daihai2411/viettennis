@@ -16,6 +16,21 @@
   }
 }
 
+*{ 
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+ }
+
+ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p{
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+}
+
+ol, ul {
+  list-style: none;
+}
 
 th[aria-sort='ascending'] {
  color: #2DA46B !important;
@@ -28,3 +43,4 @@ th[aria-sort='descending'] {
  .select-auto-complete .group  {
   display: block !important;
  }
+

@@ -15,10 +15,10 @@ const News = () => {
   }, []);
 
   return (
-    <>
+    <div className="mt-6">
       <Head />
       <Body />
-    </>
+    </div>
   );
 };
 
