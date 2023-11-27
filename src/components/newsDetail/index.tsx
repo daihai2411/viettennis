@@ -36,7 +36,7 @@ const NewsDetailModule = () => {
   }
 
   return (
-    <div className="pt-9 container mx-auto">
+    <div className="pt-9 container mx-auto px-2 lg:px-0">
       {newsDetail.id ? (
         <div className="">
           <div className="flex justify-center font-bold text-4xl leading-10 text-green-950 mb-2">

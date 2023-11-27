@@ -9,7 +9,10 @@ const nextConfig = {
     }),
   ],
   images: {
-    domains: ["lh3.googleusercontent.com"],
+    domains: [
+      "lh3.googleusercontent.com",
+      "seland-dev.s3.ap-southeast-1.amazonaws.com",
+    ],
   },
 };
 
