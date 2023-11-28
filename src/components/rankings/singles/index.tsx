@@ -11,7 +11,7 @@ export const paramsInit = {
   key: "",
   min: "",
   max: "",
-  pointPointId: 1,
+  pointId: 1,
 };
 
 const RankingSingles = () => {

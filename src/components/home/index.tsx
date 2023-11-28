@@ -1,23 +1,23 @@
 import Creator from "./Creator";
-import NewTournament from "./NewTournament";
-import TopRank from "./TopRank";
 import Video from "./Video";
 import News from "./news";
+import TopRankBottom from "./topRank/bottom";
+import TopRank from "./topRank/topRight";
 
 const Home = () => {
   return (
     <div className="container mx-auto mt-8">
       <div className="grid grid-cols-12 gap-4 px-3">
-        <div className="col-span-12 lg:col-span-9">
+        <div className="col-span-12 xl:col-span-9">
           <News />
-          <NewTournament />
+          {/* <NewTournament /> */}
           <Creator />
           <Video />
+          <TopRankBottom />
         </div>
-        <div className="col-span-3 hidden lg:block">
+        <div className="col-span-3 hidden xl:block">
           <TopRank />
           <div className="mb-6"></div>
-          <TopRank />
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ const ListNews = ({ list = [], header = "", loading }) => {
   return (
     <>
       <div className="mb-10 px-2 md:px-0 2xl:px-10">
-        <div className="mb-6 block border-b-2 border-green-common text-neutral-950 text-2xl font-bold">
+        <div className="mb-6 pb-1 block border-b-2 border-green-common text-neutral-950 text-2xl font-bold">
           {header}
         </div>
         {loading ? (

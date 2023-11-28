@@ -9,11 +9,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { selectLoading, selectNewsSecond } from "./store/slice";
+import { selectListNewsNext, selectLoading } from "./store/slice";
 
 const Body = () => {
   const loading = useSelector(selectLoading);
-  const listNewsNext = useSelector(selectNewsSecond);
+  const listNewsNext = useSelector(selectListNewsNext);
 
   return (
     <>
@@ -32,7 +32,7 @@ const Body = () => {
                 <Skeleton isLoaded={!loading}>
                   <div className="aspect-video">
                     <Image
-                      src={item?.banner_image}
+                      src={item?.banner_image || ""}
                       alt="Image news"
                       layout="fill"
                       objectFit="cover"
@@ -68,7 +68,7 @@ const Body = () => {
                 <Skeleton isLoaded={!loading}>
                   <div className="aspect-video w-[115px]">
                     <Image
-                      src={item?.banner_image}
+                      src={item?.banner_image || " "}
                       alt="Image news"
                       objectFit="cover"
                       className="rounder rounded-lg"

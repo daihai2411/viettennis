@@ -13,16 +13,21 @@ const HeadRight = () => {
     <div className="col-span-3 lg:col-span-1">
       <div className="mb-2 lg:mb-6 pb-1 border-b-2 border-green-common text-neutral-950 flex justify-between">
         <h2 className="font-bold lg:text-2xl text-xl">Tin mới nhất</h2>
-        <div className="font-medium text-sm flex items-center hover:text-green-common cursor-pointer">
-          Xem thêm <FaChevronRight size={12} />
-        </div>
+        <Link
+          href={ROUTERS.NEWS_AND_VIDEO.children.NEWS}
+          className="flex items-center"
+        >
+          <div className="font-medium text-sm flex items-center hover:text-green-common gap-1 cursor-pointer">
+            Xem thêm <FaChevronRight size={12} />
+          </div>
+        </Link>
       </div>
       <Skeleton isLoaded={!loading}>
         <ul className="list-outside list-disc ml-6">
           {newsSecond.map((item) => (
             <li
               key={item?.id}
-              className="text-2xl text-green-common border-b-1 borer-[#e6e6e6] pb-4 cursor-pointer"
+              className="text-2xl text-green-common border-b-1 borer-[#e6e6e6] pb-4 cursor-pointer last:border-0"
             >
               <Link
                 href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + item?.id}
