@@ -1,6 +1,6 @@
 import Creator from "./Creator";
 import NewTournament from "./NewTournament";
-import TopRank from "./TopRank";
+import TopRank from "./topRank";
 import Video from "./Video";
 import News from "./news";
 
