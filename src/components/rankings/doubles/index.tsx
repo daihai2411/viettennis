@@ -12,7 +12,7 @@ export const paramsInit = {
   key: "",
   min: "",
   max: "",
-  pointPointId: 2,
+  pointId: 2,
 };
 
 const RankingDoubles = () => {

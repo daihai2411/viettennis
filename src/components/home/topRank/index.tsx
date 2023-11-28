@@ -1,3 +1,4 @@
+import { convertCamelCaseToLine } from "@/helpers/value";
 import { AppDispatch } from "@/redux/store";
 import {
   Card,
@@ -5,12 +6,13 @@ import {
   CardFooter,
   CardHeader,
   Divider,
+  Skeleton,
   User,
 } from "@nextui-org/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTop1, selectTopOther } from "./store/slice";
+import { selectLoading, selectTop1, selectTopOther } from "./store/slice";
 import { getListRankPointThunk } from "./store/thunk";
 import style from "./style.module.scss";
 
@@ -20,14 +22,18 @@ const TopRank = () => {
 
   const top1 = useSelector(selectTop1);
   const topOther = useSelector(selectTopOther);
+  const loading = useSelector(selectLoading);
 
   useEffect(() => {
     dispatch(
-      getListRankPointThunk({
-        paginate: 5,
-      })
+      getListRankPointThunk(
+        convertCamelCaseToLine({
+          paginate: 5,
+          pointId: tab, //point id
+        })
+      )
     );
-  }, []);
+  }, [tab]);
 
   return (
     <div className="h-[800px] w-full rounded-lg">
@@ -70,68 +76,80 @@ const TopRank = () => {
             <p className="text-neutral-900 text-base font-normal leading-[17.12px]">
               Điểm
             </p>
-            <p className="text-green-common text-[34px] font-black leading-9 mb-2">
-              {top1?.point_vtr}
-            </p>
+            <Skeleton isLoaded={!loading}>
+              <p className="text-green-common text-[34px] font-black leading-9 mb-2">
+                {tab === 1 ? top1?.point_vtr : top1?.point_vtr_solo}
+              </p>
+            </Skeleton>
           </div>
-          <Image
-            src={top1?.avatar || ""}
-            alt="avatar"
-            height={120}
-            width={120}
-          />
+          <Skeleton isLoaded={!loading}>
+            <Image
+              src={top1?.avatar || ""}
+              alt="avatar"
+              height={120}
+              width={120}
+            />
+          </Skeleton>
         </CardHeader>
         <Divider />
         <CardBody className="bg-[#E6E6E6] rounded-b-lg">
-          <div className="text-[#767676] text-2xl font-normal">Arya</div>
-          <div className="text-[34px] text-[#141414] font-extrabold mb-6">
-            Sabalenka
-          </div>
+          <Skeleton isLoaded={!loading}>
+            <div className="text-[34px] text-[#141414] font-extrabold">
+              {top1?.name}
+            </div>
+          </Skeleton>
+          <Skeleton isLoaded={!loading}>
+            <div className="text-[#767676] text-2xl font-normal mb-6">
+              {top1?.username ? "@" + top1?.username : ""}
+            </div>
+          </Skeleton>
         </CardBody>
         <CardFooter>
-          <table className={style.tablePoint}>
-            <thead>
-              <tr>
-                <th className="pb-2">Thứ hạng</th>
-                <th className="pb-2">Người chơi</th>
-                <th className="pb-2">Điểm</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topOther.map((item, index) => (
-                <tr
-                  key={item?.id}
-                  className="border-b-1 border-[#E6E6E6] group cursor-pointer"
-                >
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="text-xl text-green-common font-black">
-                        {index + 2}
-                      </div>
-                      <div className="text-neutral-500 text-[19px] font-black leading-3">
-                        -
-                      </div>
-                    </div>
-                  </td>
-                  <td className="group-hover:underline group-hover:text-green-common">
-                    <User
-                      name={item?.name}
-                      description={"@" + item?.username}
-                      avatarProps={{
-                        src: item?.avatar,
-                        size: "sm",
-                      }}
-                    />
-                  </td>
-                  <td>
-                    <div className="text-right text-green-common text-xl font-black leading-tight">
-                      960
-                    </div>
-                  </td>
+          <Skeleton isLoaded={!loading}>
+            <table className={style.tablePoint}>
+              <thead>
+                <tr>
+                  <th className="pb-2">Thứ hạng</th>
+                  <th className="pb-2">Người chơi</th>
+                  <th className="pb-2">Điểm</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {topOther.map((item, index) => (
+                  <tr
+                    key={item?.id}
+                    className="border-b-1 border-[#E6E6E6] group cursor-pointer"
+                  >
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="text-xl text-green-common font-black">
+                          {index + 2}
+                        </div>
+                        <div className="text-neutral-500 text-[19px] font-black leading-3">
+                          -
+                        </div>
+                      </div>
+                    </td>
+                    <td className="group-hover:underline group-hover:text-green-common">
+                      <User
+                        name={item?.name}
+                        description={"@" + item?.username}
+                        avatarProps={{
+                          src: item?.avatar,
+                          size: "sm",
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <div className="text-right text-green-common text-xl font-black leading-tight">
+                        {tab === 1 ? top1?.point_vtr : top1?.point_vtr_solo}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Skeleton>
         </CardFooter>
       </Card>
     </div>
