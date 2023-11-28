@@ -32,7 +32,11 @@ const NewsDetailModule = () => {
   }, []);
 
   if (loading) {
-    return <Spinner />;
+    return (
+      <div className="h-48 items-center flex">
+        <Spinner className="w-full" />
+      </div>
+    );
   }
 
   return (
