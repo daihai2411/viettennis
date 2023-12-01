@@ -2,7 +2,6 @@
 
 import { saveSession } from "@/helpers/session";
 import { signIn } from "next-auth/react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { steps } from "../constants";
 import {
@@ -25,11 +24,11 @@ const RegisterModule: React.FC = () => {
   const email = useSelector(selectEmail);
   const password = useSelector(selectPassword);
 
-  useEffect(() => {
-    return () => {
-      dispatch(changeStep(steps.ADDITIONAL_POINTS));
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(changeStep(steps.ADDITIONAL_POINTS));
+  //   };
+  // }, []);
 
   const onBack = () => {
     dispatch(changeStep(steps.REGISTER));

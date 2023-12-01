@@ -1,7 +1,7 @@
-import DevelopPage from "@/components/common/page/DevelopPage";
+import SettingModule from "@/components/setting";
 
 const SettingPage = () => {
-  return <DevelopPage />;
+  return <SettingModule />;
 };
 
 export default SettingPage;

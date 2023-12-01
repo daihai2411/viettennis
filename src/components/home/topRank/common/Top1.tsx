@@ -23,12 +23,9 @@ const Top1 = ({ tab, data, loading = false }) => {
             </Skeleton>
           </div>
           <Skeleton isLoaded={!loading}>
-            <Image
-              src={data?.avatar || ""}
-              alt="avatar"
-              height={120}
-              width={120}
-            />
+            {data?.avatar && (
+              <Image src={data?.avatar} alt="avatar" height={120} width={120} />
+            )}
           </Skeleton>
         </CardHeader>
         <Divider />
