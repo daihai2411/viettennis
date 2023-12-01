@@ -11,7 +11,7 @@ const MenuTop = () => {
           <Right />
         </div>
       </div>
-      <div className="h-[142px] bg-[#f2f2f2] hidden md:block"></div>
+      {/* <div className="h-[142px] bg-[#f2f2f2] hidden md:block"></div> */}
       <LayoutTablet />
     </>
   );

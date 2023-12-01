@@ -17,7 +17,7 @@ import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
 import { steps } from "../constants";
 import { schemaLogin } from "../schema";
-import { changePhoneNumber, changeStep } from "../store/slice";
+import { changeEmail, changePhoneNumber, changeStep } from "../store/slice";
 
 interface IFormInput {
   username: string;
@@ -60,10 +60,12 @@ const LoginModule = () => {
       if (!user?.is_verify_phone) {
         dispatch(changeStep(steps.VERIFY));
         dispatch(changePhoneNumber(user?.phone));
+        dispatch(changeEmail(user.email));
         router.push("/auth/register");
       } else if (!user?.personal_info_updated) {
         dispatch(changeStep(steps.ADDITIONAL_INFO));
         dispatch(changePhoneNumber(user?.phone));
+        dispatch(changeEmail(user.email));
         router.push("/auth/register");
       } else if (!user?.personal_point_updated) {
         dispatch(changeStep(steps.ADDITIONAL_POINTS));

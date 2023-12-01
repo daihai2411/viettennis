@@ -17,6 +17,7 @@ type IProps = {
   onBack?: () => void;
   onNext?: () => void;
   onSkip?: () => void;
+  email?: string;
 };
 
 export const FormVerify: React.FC<IProps> = ({
@@ -24,6 +25,7 @@ export const FormVerify: React.FC<IProps> = ({
   onBack = () => {},
   onNext = () => {},
   onSkip = () => {},
+  email,
 }) => {
   const [loading, setLoading] = useState(false);
 
@@ -63,12 +65,19 @@ export const FormVerify: React.FC<IProps> = ({
               Nhập mã xác minh
             </div>
           </div>
-
           <div className="mt-5 mb-3">
             Chúng tôi đã gửi mã xác minh gồm 6 chữ số tới số điện thoại
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex justify-center">
             <TextPhoneNumber phoneNumber={phoneNumber} />
+          </div>
+          {email ? (
+            <>
+              <div className="mt-5 mb-3">và địa chỉ email</div>
+              <div className="flex justify-center">{email}</div>
+            </>
+          ) : null}
+          <div className="flex flex-col items-center justify-center">
             <InputOpt errors={errors} register={register} setValue={setValue} />
             <div className="flex justify-center">
               <div className="text-xs mt-5">Mã có hiệu lực trong 5 phút</div>

@@ -2,10 +2,12 @@
 
 import { saveSession } from "@/helpers/session";
 import { signIn } from "next-auth/react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { steps } from "../constants";
 import {
   changeStep,
+  selectEmail,
   selectPassword,
   selectPhoneNumber,
   selectStep,
@@ -20,13 +22,14 @@ const RegisterModule: React.FC = () => {
 
   const step = useSelector(selectStep);
   const phoneNumber = useSelector(selectPhoneNumber);
+  const email = useSelector(selectEmail);
   const password = useSelector(selectPassword);
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(changeStep(steps.REGISTER));
-  //   };
-  // }, []);
+  useEffect(() => {
+    return () => {
+      dispatch(changeStep(steps.ADDITIONAL_POINTS));
+    };
+  }, []);
 
   const onBack = () => {
     dispatch(changeStep(steps.REGISTER));
@@ -44,7 +47,12 @@ const RegisterModule: React.FC = () => {
 
   if (step === steps.VERIFY) {
     return (
-      <FormVerify phoneNumber={phoneNumber} onBack={onBack} onNext={onNext} />
+      <FormVerify
+        phoneNumber={phoneNumber}
+        email={email}
+        onBack={onBack}
+        onNext={onNext}
+      />
     );
   }
 

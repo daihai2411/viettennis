@@ -16,6 +16,7 @@ const initialState = {
   listPersonalPointDetail: [],
   loadingListPersonalPointDetail: false,
   objPoint: {},
+  email: undefined,
 };
 
 export const slice = createSlice({
@@ -33,6 +34,9 @@ export const slice = createSlice({
     },
     changeValueObjPoint: (state, { payload }) => {
       state.objPoint = { ...state.objPoint, ...payload };
+    },
+    changeEmail: (state, { payload }) => {
+      state.email = payload;
     },
   },
   extraReducers(builder) {
@@ -82,6 +86,7 @@ export const {
   changePhoneNumber,
   changePassword,
   changeValueObjPoint,
+  changeEmail,
 } = slice.actions;
 
 export const selectStep = (state: RootState) => state[slice.name]?.step;
@@ -98,3 +103,4 @@ export const selectListPersonalPointDetail = (state: RootState) =>
   state[slice.name]?.listPersonalPointDetail;
 export const selectObjPoints = (state: RootState) =>
   state[slice.name]?.objPoint;
+export const selectEmail = (state: RootState) => state[slice.name]?.emailß;

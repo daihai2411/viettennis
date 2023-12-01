@@ -19,7 +19,6 @@ type InputProps = {
   type?: string;
   className?: string;
   variant?: string;
-  isShowQuickSelect: boolean;
   itemInput: ItemInputProps;
   setValueForm: any;
 };
@@ -30,7 +29,6 @@ const InputPoint = ({
   type,
   className,
   placeholder,
-  isShowQuickSelect,
   itemInput,
   setValueForm,
 }: InputProps) => {
@@ -66,15 +64,13 @@ const InputPoint = ({
             labelPlacement="outside-left"
             type={type}
             endContent={
-              isShowQuickSelect ? (
-                <SelectPoint
-                  personalPointCriteriaId={itemInput.id}
-                  inputKey={itemInput.code}
-                  valueDefault={value}
-                  setValueForm={setValueForm}
-                  setValue={setValue}
-                />
-              ) : null
+              <SelectPoint
+                personalPointCriteriaId={itemInput.id}
+                inputKey={itemInput.code}
+                valueDefault={value}
+                setValueForm={setValueForm}
+                setValue={setValue}
+              />
             }
             onChange={(e: any) => setValue(e.target.value)}
             onBlur={onBlur}

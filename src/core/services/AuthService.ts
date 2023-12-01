@@ -9,6 +9,7 @@ class AuthService extends ServiceBase {
   register(params: {
     username: string;
     phone: string;
+    email: string;
     password: string;
     password_confirmation: string;
   }) {

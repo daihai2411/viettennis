@@ -15,7 +15,7 @@ import * as Yup from "yup";
 import InputCustom from "../../common/InputCustom";
 import { steps } from "../../constants";
 import { schemaAdditionInformation } from "../../schema";
-import { changeStep, selectPhoneNumber } from "../../store/slice";
+import { changeStep, selectEmail, selectPhoneNumber } from "../../store/slice";
 import Address from "./Address";
 import CheckRecaptcha from "./CheckRecaptcha";
 import IdentifyCard from "./IdentifyCard";
@@ -51,6 +51,7 @@ const AdditionalInformation = () => {
   const dispatch = useDispatch();
 
   const phoneNumber = useSelector(selectPhoneNumber);
+  const email = useSelector(selectEmail);
 
   const [loading, setLoading] = useState(false);
 
@@ -68,6 +69,7 @@ const AdditionalInformation = () => {
     resolver: yupResolver(schemaValidation()) as any,
     defaultValues: {
       phone: phoneNumber,
+      email: email,
     },
   });
 
@@ -113,6 +115,12 @@ const AdditionalInformation = () => {
       setValue("phone", phoneNumber);
     }
   }, [phoneNumber]);
+
+  useEffect(() => {
+    if (email) {
+      setValue("email", email);
+    }
+  }, [email]);
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-[#F2F2F2]">
@@ -170,7 +178,7 @@ const AdditionalInformation = () => {
             trong mọi giải đấu của Viettennis
           </div>
           <Button
-            // isLoading={loading}
+            isLoading={loading}
             type="submit"
             className={`bg-green-common text-white mb-6 w-full`}
           >
