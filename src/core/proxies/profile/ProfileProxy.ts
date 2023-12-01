@@ -16,6 +16,10 @@ class Proxy extends ProxyBase {
   getListPersonalPointDetailByCriteria(params: object) {
     return this.get("list-personal-point-detail-by-criteria", params);
   }
+
+  getProfile() {
+    return this.get("auth/get-profile", {});
+  }
 }
 
 const profileProxy = new Proxy();

@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import InputCustom from "../../common/InputCustom";
 import InputDate from "../../common/InputDate";
-import { selectPhoneNumber } from "../../store/slice";
+import { selectEmail, selectPhoneNumber } from "../../store/slice";
 
 const InfoBasic = ({ register, errors, setValue }) => {
   const phoneNumber = useSelector(selectPhoneNumber);
+  const email = useSelector(selectEmail);
 
   return (
     <>
@@ -16,6 +17,8 @@ const InfoBasic = ({ register, errors, setValue }) => {
         keyInput="email"
         type="email"
         required
+        defaultValue={email}
+        // disable
       />
       <InputCustom
         label="Họ và tên"
@@ -47,7 +50,7 @@ const InfoBasic = ({ register, errors, setValue }) => {
         keyInput="phone"
         defaultValue={phoneNumber}
         required
-        // disable
+        disable
       />
     </>
   );

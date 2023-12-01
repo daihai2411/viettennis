@@ -19,6 +19,10 @@ class Service extends ServiceBase {
       profileProxy.getListPersonalPointDetailByCriteria(params)
     );
   }
+
+  getProfile() {
+    return this.getData(() => profileProxy.getProfile());
+  }
 }
 
 const profileService = new Service();

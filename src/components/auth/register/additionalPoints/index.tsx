@@ -4,11 +4,14 @@ import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import { ROUTERS } from "@/const/router";
 import profileProxy from "@/core/proxies/profile/ProfileProxy";
 import { AppDispatch } from "@/redux/store";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, Image, Spinner } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import * as Yup from "yup";
+import { schemaAdditionPoint } from "../../schema";
 import {
   selectListPersonalPoint,
   selectLoadingListPersonalPoint,
@@ -18,22 +21,17 @@ import InputPoint from "./InputPoint";
 import RowTotalPoints from "./RowTotalPoints";
 
 interface IFormInput {
-  fullName: string;
-  email: string;
-  dob: string;
-  address: string;
-  height: string;
-  weight: string;
-  backHand: number;
-  playSince: string;
-  racketSpecs: string;
-  shoesBrand: string;
-  clothesBrand: string;
-  phone: string;
-  identifyId: string;
-  identifyDate: string;
-  identifyAddress: string;
+  back_hand: string;
+  fore_hand: string;
+  service: string;
+  service_return: string;
+  volley_smash: string;
+  strategy: string;
+  experience_psychology: string;
+  physical: string;
 }
+
+const schemaValidation = () => Yup.object().shape(schemaAdditionPoint);
 
 const AdditionalPoints = () => {
   const router = useRouter();
@@ -53,6 +51,7 @@ const AdditionalPoints = () => {
     mode: "onBlur",
     shouldFocusError: false,
     reValidateMode: "onBlur",
+    resolver: yupResolver(schemaValidation()) as any,
   });
 
   const onSubmit = handleSubmit(async (data) => {
@@ -107,7 +106,6 @@ const AdditionalPoints = () => {
                         errors={errors}
                         placeholder="Nhập điểm"
                         type="number"
-                        isShowQuickSelect={item.id <= 4}
                         setValueForm={setValue}
                       />
                     </>

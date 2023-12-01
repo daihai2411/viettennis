@@ -17,6 +17,7 @@ import InputCustom from "../../common/InputCustom";
 import { steps } from "../../constants";
 import { schemaRegister } from "../../schema";
 import {
+  changeEmail,
   changePassword,
   changePhoneNumber,
   changeStep,
@@ -27,6 +28,7 @@ interface IFormInput {
   password: string;
   confirmPassword: string;
   phone: string;
+  email: string;
 }
 
 const schemaValidation = () => Yup.object().shape(schemaRegister);
@@ -52,6 +54,7 @@ const FormRegister = () => {
       await authService.register({
         username: data.username,
         phone: data.phone,
+        email: data.email,
         password_confirmation: data.confirmPassword,
         password: data.password,
       });
@@ -60,6 +63,7 @@ const FormRegister = () => {
       });
 
       dispatch(changePhoneNumber(data.phone));
+      dispatch(changeEmail(data.email));
       dispatch(changePassword(data.password));
       dispatch(changeStep(steps.VERIFY));
       setLoading(false);
@@ -97,6 +101,15 @@ const FormRegister = () => {
             placeholder="Số điện thoại"
             keyInput="phone"
             type="text"
+          />
+          <InputCustom
+            label=""
+            register={register}
+            errors={errors}
+            placeholder="Nhập địa chỉ email"
+            keyInput="email"
+            type="email"
+            required
           />
           <InputCustom
             label=""

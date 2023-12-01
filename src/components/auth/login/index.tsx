@@ -3,6 +3,7 @@
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import { ROUTERS } from "@/const/router";
 import { saveSession } from "@/helpers/session";
+import { AppDispatch } from "@/redux/store";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
@@ -17,7 +18,8 @@ import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
 import { steps } from "../constants";
 import { schemaLogin } from "../schema";
-import { changePhoneNumber, changeStep } from "../store/slice";
+import { changeEmail, changePhoneNumber, changeStep } from "../store/slice";
+import { getProfileThunk } from "../store/thunk";
 
 interface IFormInput {
   username: string;
@@ -25,7 +27,7 @@ interface IFormInput {
 }
 
 const LoginModule = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
@@ -57,13 +59,15 @@ const LoginModule = () => {
 
     if (result && result?.status === 200) {
       const user = (await saveSession()) as any;
-      if (!user?.is_verify_phone) {
+      if (!user?.is_verify_phone && !user?.is_phone_verified) {
         dispatch(changeStep(steps.VERIFY));
         dispatch(changePhoneNumber(user?.phone));
+        dispatch(changeEmail(user.email));
         router.push("/auth/register");
       } else if (!user?.personal_info_updated) {
         dispatch(changeStep(steps.ADDITIONAL_INFO));
         dispatch(changePhoneNumber(user?.phone));
+        dispatch(changeEmail(user.email));
         router.push("/auth/register");
       } else if (!user?.personal_point_updated) {
         dispatch(changeStep(steps.ADDITIONAL_POINTS));
@@ -71,7 +75,7 @@ const LoginModule = () => {
       } else {
         router.push("/");
       }
-
+      dispatch(getProfileThunk({}));
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
     } else if (result?.status === 401) {

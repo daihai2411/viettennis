@@ -36,7 +36,7 @@ const LoginRegister = () => {
             </p>
           </DropdownItem>
           <DropdownItem key="settings">
-            <Link href={"/setting"}>Cài đặt tài khoản</Link>
+            <Link href={"/setting"}>Thông tin tài khoản</Link>
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={() => signOut()}>
             Đăng xuất
