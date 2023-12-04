@@ -34,9 +34,9 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
           { label: "Đánh đôi", value: "2" },
           { label: "Cả hai", value: "3" },
         ]}
-        register={register}
         keyInput="backHand"
         errors={errors}
+        setValue={setValue}
       />
       <InputYear
         label="Bắt đầu chơi tennis từ năm nào?"
