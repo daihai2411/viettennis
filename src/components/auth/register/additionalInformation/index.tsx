@@ -4,15 +4,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 
-import { ToastError } from "@/components/common/Toast";
+import { ToastError, ToastSuccess } from "@/components/common/Toast";
+import profileService from "@/core/services/profile/ProfileService";
 import { FORMAT, formatDateTime } from "@/helpers/datetime";
+import { convertCamelCaseToLine } from "@/helpers/value";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import InputCustom from "../../common/InputCustom";
+import { steps } from "../../constants";
 import { schemaAdditionInformation } from "../../schema";
-import { selectEmail, selectPhoneNumber } from "../../store/slice";
+import { changeStep, selectEmail, selectPhoneNumber } from "../../store/slice";
 import Address from "./Address";
 import CheckRecaptcha from "./CheckRecaptcha";
 import IdentifyCard from "./IdentifyCard";
@@ -94,15 +97,13 @@ const AdditionalInformation = () => {
           FORMAT.DATE_SLASH
         );
       }
-      // const res = (await profileService.updateInformation(
-      //   convertCamelCaseToLine(params)
-      // )) as any;
-      // if (res.success) {
-      //   ToastSuccess(res?.message || "Cập nhật thông tin thành công");
-      //   dispatch(changeStep(steps.ADDITIONAL_POINTS));
-      // }
-      console.log(params);
-
+      const res = (await profileService.updateInformation(
+        convertCamelCaseToLine(params)
+      )) as any;
+      if (res.success) {
+        ToastSuccess(res?.message || "Cập nhật thông tin thành công");
+        dispatch(changeStep(steps.ADDITIONAL_POINTS));
+      }
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
