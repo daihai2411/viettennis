@@ -1,5 +1,6 @@
 "use client";
 
+import { ROUTERS } from "@/const/router";
 import {
   Dropdown,
   DropdownItem,
@@ -36,7 +37,7 @@ const LoginRegister = () => {
             </p>
           </DropdownItem>
           <DropdownItem key="settings">
-            <Link href={"/setting"}>Thông tin tài khoản</Link>
+            <Link href={ROUTERS.PERSONAL_INFO}>Thông tin tài khoản</Link>
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={() => signOut()}>
             Đăng xuất

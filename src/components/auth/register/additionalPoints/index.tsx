@@ -98,17 +98,15 @@ const AdditionalPoints = () => {
                     percent: number;
                     title: string;
                   }) => (
-                    <>
-                      <InputPoint
-                        key={item.id}
-                        itemInput={item}
-                        register={register}
-                        errors={errors}
-                        placeholder="Nhập điểm"
-                        type="number"
-                        setValueForm={setValue}
-                      />
-                    </>
+                    <InputPoint
+                      key={item.id}
+                      itemInput={item}
+                      register={register}
+                      errors={errors}
+                      placeholder="Nhập điểm"
+                      type="number"
+                      setValueForm={setValue}
+                    />
                   )
                 )
               : null}

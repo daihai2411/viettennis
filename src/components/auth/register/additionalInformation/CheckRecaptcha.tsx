@@ -1,8 +1,9 @@
 import ReCAPTCHA from "react-google-recaptcha";
 
-const CheckRecaptcha = ({ setValue, errors }) => {
+const CheckRecaptcha = ({ setValue, errors, clearErrors }) => {
   const onChange = (val) => {
     setValue("captcha", val);
+    clearErrors("captcha");
   };
 
   return (

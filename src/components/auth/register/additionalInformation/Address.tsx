@@ -2,7 +2,7 @@ import useAddress from "@/components/common/address/useAddress";
 import InputCustom from "../../common/InputCustom";
 import SelectAutocomplete from "../../common/SelectAutocomplete";
 
-const Address = ({ register, errors, getValues, setValue }) => {
+const Address = ({ register, errors, getValues, setValue, clearErrors }) => {
   const provinceDataForm = getValues("province");
   const districtDataForm = getValues("district");
 
@@ -41,6 +41,7 @@ const Address = ({ register, errors, getValues, setValue }) => {
           setValue("province", id);
           setValue("district", undefined);
           setValue("ward", undefined);
+          clearErrors("province");
         }}
         errors={errors}
         list={dataProvinces}
@@ -58,6 +59,7 @@ const Address = ({ register, errors, getValues, setValue }) => {
         setValue={(id) => {
           setValue("district", id);
           setValue("ward", undefined);
+          clearErrors("district");
         }}
         errors={errors}
         list={dataDistricts}
@@ -74,6 +76,7 @@ const Address = ({ register, errors, getValues, setValue }) => {
         placeholder="Chọn Xã/Phường"
         setValue={(id) => {
           setValue("ward", id);
+          clearErrors("ward");
         }}
         errors={errors}
         list={dataWards}
