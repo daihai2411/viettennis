@@ -33,7 +33,7 @@ const InputPoint = ({
   setValueForm,
 }: InputProps) => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<any>(undefined);
 
   const onBlur = (e) => {
     dispatch(
@@ -77,7 +77,6 @@ const InputPoint = ({
               setValueForm(itemInput.code, e.target.value);
             }}
             onBlur={onBlur}
-            isRequired
           />
           {errors[itemInput.code] && (
             <p className="text-red-500 text-xs" role="alert">
