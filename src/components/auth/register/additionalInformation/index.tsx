@@ -62,6 +62,7 @@ const AdditionalInformation = () => {
     getValues,
     watch,
     setValue,
+    clearErrors,
   } = useForm<IFormInput>({
     mode: "onBlur",
     shouldFocusError: false,
@@ -138,6 +139,7 @@ const AdditionalInformation = () => {
                 register={register}
                 errors={errors}
                 setValue={setValue}
+                clearErrors={clearErrors}
               />
               <InfoAdvenced
                 register={register}
@@ -158,13 +160,19 @@ const AdditionalInformation = () => {
                 errors={errors}
                 getValues={getValues}
                 setValue={setValue}
+                clearErrors={clearErrors}
               />
               <IdentifyCard
                 register={register}
                 errors={errors}
                 setValue={setValue}
+                clearErrors={clearErrors}
               />
-              <CheckRecaptcha setValue={setValue} errors={errors} />
+              <CheckRecaptcha
+                setValue={setValue}
+                errors={errors}
+                clearErrors={clearErrors}
+              />
             </div>
           </div>
           <TermAndPolicy

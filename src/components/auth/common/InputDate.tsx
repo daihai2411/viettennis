@@ -13,6 +13,7 @@ const InputDate = ({
   label,
   placeholder,
   setValue,
+  clearErrors,
 }) => {
   const months = [
     "Tháng 1",
@@ -54,6 +55,7 @@ const InputDate = ({
   const onChange = (date) => {
     setValue(keyInput, date);
     setStartDate(date);
+    clearErrors(keyInput);
   };
 
   return (

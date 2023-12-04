@@ -146,7 +146,7 @@ export const schemaAdditionInformation = {
   weight: Yup.number()
     .transform((value) => (Number.isNaN(value) ? null : value))
     .nullable(),
-  backHand: Yup.number().nullable(),
+  backHand: Yup.string().nullable(),
   playSince: Yup.string().nullable(),
   racketSpecs: Yup.string().nullable(),
   shoesBrand: Yup.string().nullable(),

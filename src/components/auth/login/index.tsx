@@ -79,7 +79,7 @@ const LoginModule = () => {
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
     } else if (result?.status === 401) {
-      ToastError(result.error);
+      ToastError("Tên đăng nhập hoặc mật khẩu sai, vui lòng thử lại ");
       setLoading(false);
     }
   });

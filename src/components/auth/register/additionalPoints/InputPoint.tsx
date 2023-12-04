@@ -72,7 +72,10 @@ const InputPoint = ({
                 setValue={setValue}
               />
             }
-            onChange={(e: any) => setValue(e.target.value)}
+            onChange={(e: any) => {
+              setValue(e.target.value);
+              setValueForm(itemInput.code, e.target.value);
+            }}
             onBlur={onBlur}
             isRequired
           />

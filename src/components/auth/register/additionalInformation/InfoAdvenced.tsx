@@ -27,7 +27,6 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
         labelRadio={
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
             Bạn thích đánh đơn hay đôi?
-            {/* <div className="text-red-600">*</div> */}
           </div>
         }
         list={[

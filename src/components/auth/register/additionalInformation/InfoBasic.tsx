@@ -3,7 +3,7 @@ import InputCustom from "../../common/InputCustom";
 import InputDate from "../../common/InputDate";
 import { selectEmail, selectPhoneNumber } from "../../store/slice";
 
-const InfoBasic = ({ register, errors, setValue }) => {
+const InfoBasic = ({ register, errors, setValue, clearErrors }) => {
   const phoneNumber = useSelector(selectPhoneNumber);
   const email = useSelector(selectEmail);
 
@@ -18,7 +18,7 @@ const InfoBasic = ({ register, errors, setValue }) => {
         type="email"
         required
         defaultValue={email}
-        // disable
+        disable
       />
       <InputCustom
         label="Họ và tên"
@@ -41,6 +41,7 @@ const InfoBasic = ({ register, errors, setValue }) => {
         placeholder="DD/MM/YYYY"
         keyInput="dob"
         setValue={setValue}
+        clearErrors={clearErrors}
       />
       <InputCustom
         label="Số điện thoại"

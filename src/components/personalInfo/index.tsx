@@ -1,6 +1,6 @@
-const SettingModule = () => {
-  //   const dataProfile = useSelector(selectProfile);
-  //   console.log(dataProfile);
+const PersonalInfoModule = () => {
+  // const dataProfile = useSelector(selectProfile);
+  // console.log(dataProfile);
 
   return (
     <div className="container mx-auto">
@@ -46,4 +46,4 @@ const SettingModule = () => {
   );
 };
 
-export default SettingModule;
+export default PersonalInfoModule;
