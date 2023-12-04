@@ -225,6 +225,8 @@ export const schemaRestorePass = {
 
 export const schemaAdditionPoint = {
   back_hand: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({ type: "MS_01", fieldName: "Thuận tay (Back-hand)" })
     )
@@ -247,6 +249,8 @@ export const schemaAdditionPoint = {
       })
     ),
   fore_hand: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({ type: "MS_01", fieldName: "Trái tay (Fore-hand)" })
     )
@@ -269,6 +273,8 @@ export const schemaAdditionPoint = {
       })
     ),
   service: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({ type: "MS_01", fieldName: "Giao bóng (Service)" })
     )
@@ -291,6 +297,8 @@ export const schemaAdditionPoint = {
       })
     ),
   service_return: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({
         type: "MS_01",
@@ -316,6 +324,8 @@ export const schemaAdditionPoint = {
       })
     ),
   volley_smash: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({
         type: "MS_01",
@@ -341,6 +351,8 @@ export const schemaAdditionPoint = {
       })
     ),
   strategy: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({
         type: "MS_01",
@@ -366,6 +378,8 @@ export const schemaAdditionPoint = {
       })
     ),
   experience_psychology: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({
         type: "MS_01",
@@ -391,6 +405,8 @@ export const schemaAdditionPoint = {
       })
     ),
   physical: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
     .required(
       getMessSchema({
         type: "MS_01",
