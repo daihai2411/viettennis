@@ -89,6 +89,18 @@ export const schemaRegister = {
       })
     )
     .matches(/^0\d{9}$/, getMessSchema({ type: "MS_02_01" })),
+  email: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Email" }))
+    .max(256, getMessSchema({ type: "MS_03_03", fieldName: "email", max: 256 }))
+    .test({
+      message: getMessSchema({ type: "MS_02_01" }),
+      test: (value: any) => {
+        if (!value) return true;
+        const valueTest = (value || "").trim();
+        const email = /^[\w-\\.-\\+]{4,64}@([\w-]+\.)+[\w-]{1,190}$/gi;
+        return email.test(valueTest);
+      },
+    }),
 };
 
 export const schemaAdditionInformation = {
@@ -134,7 +146,7 @@ export const schemaAdditionInformation = {
   weight: Yup.number()
     .transform((value) => (Number.isNaN(value) ? null : value))
     .nullable(),
-  backHand: Yup.number().nullable(),
+  backHand: Yup.string().nullable(),
   playSince: Yup.string().nullable(),
   racketSpecs: Yup.string().nullable(),
   shoesBrand: Yup.string().nullable(),
@@ -209,4 +221,214 @@ export const schemaRestorePass = {
     [Yup.ref("password"), undefined],
     "Mật khẩu xác nhận không trùng khớp, vui lòng nhập đúng giá trị mật khẩu đã tạo."
   ),
+};
+
+export const schemaAdditionPoint = {
+  back_hand: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({ type: "MS_01", fieldName: "Thuận tay (Back-hand)" })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Thuận tay (Back-hand)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Thuận tay (Back-hand)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  fore_hand: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({ type: "MS_01", fieldName: "Trái tay (Fore-hand)" })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Trái tay (Fore-hand)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Trái tay (Fore-hand)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  service: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({ type: "MS_01", fieldName: "Giao bóng (Service)" })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Giao bóng (Service)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Giao bóng (Service)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  service_return: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Trả giao bóng (Service return)",
+      })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Trả giao bóng (Service return)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Trả giao bóng (Service return)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  volley_smash: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Đánh bóng trên lưới (Volley & Smash)",
+      })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Đánh bóng trên lưới (Volley & Smash)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Đánh bóng trên lưới (Volley & Smash)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  strategy: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Chiến thuật/ Lối chơi (Strategy)",
+      })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Chiến thuật/ Lối chơi (Strategy)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Chiến thuật/ Lối chơi (Strategy)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  experience_psychology: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Kinh nghiệm/ Tâm lý thi đấu (Experience & Psychology)",
+      })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Kinh nghiệm/ Tâm lý thi đấu (Experience & Psychology)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Kinh nghiệm/ Tâm lý thi đấu (Experience & Psychology)",
+        min: 500,
+        max: 1200,
+      })
+    ),
+  physical: Yup.number()
+    .transform((value) => (Number.isNaN(value) ? null : value))
+    .nullable()
+    .required(
+      getMessSchema({
+        type: "MS_01",
+        fieldName: "Thể lực (Physical)",
+      })
+    )
+    .min(
+      500,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Thể lực (Physical)",
+        min: 500,
+        max: 1200,
+      })
+    )
+    .max(
+      1200,
+      getMessSchema({
+        type: "MS_04",
+        fieldName: "Thể lực (Physical)",
+        min: 500,
+        max: 1200,
+      })
+    ),
 };

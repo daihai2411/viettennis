@@ -30,7 +30,7 @@ export const slice = createSlice({
     builder.addCase(getNewsThunk.fulfilled, (state, { payload }) => {
       state.list = payload.data;
       state.topLatestNews = payload.data.slice(0, 3);
-      state.totalPage = payload.total;
+      state.totalPage = Math.round(payload.total / payload.page_size);
       state.loading = false;
     });
     builder.addCase(getNewsThunk.rejected, (state) => {

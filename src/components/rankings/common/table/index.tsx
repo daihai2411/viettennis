@@ -51,12 +51,12 @@ const TableData = ({
         })
       )) as any;
       setIsLoading(false);
-      setHasMore(page < res.total);
+      setHasMore(page < Math.round(res.total / res.page_size));
       setPage(res.page);
 
       return {
         items: res.data,
-        cursor: page < res.total,
+        cursor: page < Math.round(res.total / res.page_size),
       };
     },
   });

@@ -16,12 +16,14 @@ const HeadLeft = ({}) => {
     >
       <Skeleton isLoaded={!loading} className="rounded-lg">
         <div className="aspect-video">
-          <Image
-            src={newsFirst?.banner_image}
-            alt="Image news"
-            layout="fill"
-            objectFit="cover"
-          />
+          {newsFirst?.banner_image && (
+            <Image
+              src={newsFirst?.banner_image}
+              alt="Image news"
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
         </div>
       </Skeleton>
       <Skeleton isLoaded={!loading} className="rounded-lg mt-2">

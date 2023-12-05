@@ -1,7 +1,7 @@
 import InputCustom from "../../common/InputCustom";
 import InputDate from "../../common/InputDate";
 
-const IdentifyCard = ({ register, errors, setValue }) => {
+const IdentifyCard = ({ register, errors, setValue, clearErrors }) => {
   return (
     <>
       <InputCustom
@@ -24,6 +24,7 @@ const IdentifyCard = ({ register, errors, setValue }) => {
         placeholder="DD/MM/YYYY"
         keyInput="identifyDate"
         setValue={setValue}
+        clearErrors={clearErrors}
       />
       <InputCustom
         label="Nơi cấp"

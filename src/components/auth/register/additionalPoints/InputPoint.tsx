@@ -19,7 +19,6 @@ type InputProps = {
   type?: string;
   className?: string;
   variant?: string;
-  isShowQuickSelect: boolean;
   itemInput: ItemInputProps;
   setValueForm: any;
 };
@@ -30,12 +29,11 @@ const InputPoint = ({
   type,
   className,
   placeholder,
-  isShowQuickSelect,
   itemInput,
   setValueForm,
 }: InputProps) => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<any>(undefined);
 
   const onBlur = (e) => {
     dispatch(
@@ -66,19 +64,19 @@ const InputPoint = ({
             labelPlacement="outside-left"
             type={type}
             endContent={
-              isShowQuickSelect ? (
-                <SelectPoint
-                  personalPointCriteriaId={itemInput.id}
-                  inputKey={itemInput.code}
-                  valueDefault={value}
-                  setValueForm={setValueForm}
-                  setValue={setValue}
-                />
-              ) : null
+              <SelectPoint
+                personalPointCriteriaId={itemInput.id}
+                inputKey={itemInput.code}
+                valueDefault={value}
+                setValueForm={setValueForm}
+                setValue={setValue}
+              />
             }
-            onChange={(e: any) => setValue(e.target.value)}
+            onChange={(e: any) => {
+              setValue(e.target.value);
+              setValueForm(itemInput.code, e.target.value);
+            }}
             onBlur={onBlur}
-            isRequired
           />
           {errors[itemInput.code] && (
             <p className="text-red-500 text-xs" role="alert">
