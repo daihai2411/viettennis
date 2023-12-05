@@ -26,15 +26,3 @@ export const getListPersonalPointDetailByCriteriaThunk = createAsyncThunk(
     }
   }
 );
-
-export const getProfileThunk = createAsyncThunk(
-  "profile/getProfileThunk",
-  async (params: any, { rejectWithValue }) => {
-    try {
-      const res: any = await profileService.getProfile();
-      return res.data;
-    } catch (error) {
-      return rejectWithValue({ loading: axios.isCancel(error) });
-    }
-  }
-);
