@@ -19,7 +19,6 @@ import InputCustom from "../common/InputCustom";
 import { steps } from "../constants";
 import { schemaLogin } from "../schema";
 import { changeEmail, changePhoneNumber, changeStep } from "../store/slice";
-import { getProfileThunk } from "../store/thunk";
 
 interface IFormInput {
   username: string;
@@ -75,7 +74,6 @@ const LoginModule = () => {
       } else {
         router.push("/");
       }
-      dispatch(getProfileThunk({}));
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
     } else if (result?.status === 401) {
