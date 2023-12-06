@@ -26,6 +26,7 @@ const useUserProfile = (disableCallApi?: boolean) => {
       if (user) {
         getUserProfile(user);
       } else {
+        dispatch(getProfileThunk({}));
       }
     }
   }, []);

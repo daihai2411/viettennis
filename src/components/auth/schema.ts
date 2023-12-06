@@ -13,8 +13,7 @@ export const schemaLogin = {
         fieldName: "tên tài khoản/ email",
         max: 256,
       })
-    )
-    .matches(/^[a-z0-9_-]+$/, getMessSchema({ type: "MS_11" })),
+    ),
   password: Yup.string()
     .required(getMessSchema({ type: "MS_01", fieldName: "Mật khẩu" }))
     .min(

@@ -1,13 +1,20 @@
-import dynamic from "next/dynamic";
+"use client";
 
-const DynamicComponentWithNoSSR = dynamic(() => import("./SingleElimination"), {
-  ssr: false,
-});
+import { useState } from "react";
+import EliminationRound from "./EliminationRound";
+import SingleElimination from "./SingleElimination";
+import TabTournaments from "./TabTournaments";
+import { TAB } from "./constants";
 
 const TournamentsDrawComponent = () => {
+  const [tab, setTab] = useState(TAB.TAB_1);
+
   return (
     <div>
-      <DynamicComponentWithNoSSR />
+      <TabTournaments setTab={setTab} />
+      <div className="container mx-auto">
+        {tab === TAB.TAB_1 ? <EliminationRound /> : <SingleElimination />}
+      </div>
     </div>
   );
 };
