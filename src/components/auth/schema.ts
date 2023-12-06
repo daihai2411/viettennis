@@ -46,8 +46,7 @@ export const schemaRegister = {
     .max(
       100,
       getMessSchema({ type: "MS_03_03", fieldName: "tên đăng nhập", max: 100 })
-    )
-    .matches(/^[a-z0-9_-]+$/, getMessSchema({ type: "MS_02_01" })),
+    ),
   password: Yup.string()
     .required(getMessSchema({ type: "MS_01", fieldName: "Mật khẩu" }))
     .min(
