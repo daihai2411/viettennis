@@ -60,6 +60,7 @@ const FormRegister = () => {
       });
       await authService.generateOtp({
         phone: data.phone,
+        email: data.email,
       });
 
       dispatch(changePhoneNumber(data.phone));

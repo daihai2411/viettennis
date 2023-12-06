@@ -18,7 +18,7 @@ const InfoBasic = ({ register, errors, setValue, clearErrors }) => {
         type="email"
         required
         defaultValue={email}
-        disable
+        disable={email}
       />
       <InputCustom
         label="Họ và tên"
@@ -51,7 +51,7 @@ const InfoBasic = ({ register, errors, setValue, clearErrors }) => {
         keyInput="phone"
         defaultValue={phoneNumber}
         required
-        disable
+        disable={phoneNumber}
       />
     </>
   );

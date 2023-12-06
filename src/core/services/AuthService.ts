@@ -16,7 +16,7 @@ class AuthService extends ServiceBase {
     return this.getData(() => authProxy.register(params));
   }
 
-  generateOtp(params: { phone: string }) {
+  generateOtp(params: { phone: string; email: string }) {
     return this.getData(() => authProxy.generateOtp(params));
   }
 
