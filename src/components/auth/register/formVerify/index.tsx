@@ -17,7 +17,7 @@ type IProps = {
   onBack?: () => void;
   onNext?: () => void;
   onSkip?: () => void;
-  email?: string;
+  email: string;
 };
 
 export const FormVerify: React.FC<IProps> = ({
@@ -83,7 +83,11 @@ export const FormVerify: React.FC<IProps> = ({
               <div className="text-xs mt-5">Mã có hiệu lực trong 5 phút</div>
             </div>
             {!loading ? (
-              <CountDown phoneNumber={phoneNumber} onSkip={onSkip} />
+              <CountDown
+                phoneNumber={phoneNumber}
+                onSkip={onSkip}
+                email={email}
+              />
             ) : (
               <CountDown
                 disable={true}
@@ -91,6 +95,7 @@ export const FormVerify: React.FC<IProps> = ({
                 spinner={<Spinner />}
                 phoneNumber={phoneNumber}
                 onSkip={onSkip}
+                email={email}
               />
             )}
           </div>

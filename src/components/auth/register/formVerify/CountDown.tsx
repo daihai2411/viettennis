@@ -11,6 +11,7 @@ type IProps = {
   spinner?: React.ReactNode;
   phoneNumber: string;
   onSkip?: () => void;
+  email: string;
 };
 
 export const CountDown: React.FC<IProps> = ({
@@ -18,6 +19,7 @@ export const CountDown: React.FC<IProps> = ({
   disable,
   spinner,
   phoneNumber,
+  email,
 }) => {
   const [second, setSecond] = useState<number>(EXPIRE_TIME);
 
@@ -41,6 +43,7 @@ export const CountDown: React.FC<IProps> = ({
       await authService
         .generateOtp({
           phone: phoneNumber,
+          email: email,
         })
         .then((data: any) => {
           ToastSuccess(data?.message);
