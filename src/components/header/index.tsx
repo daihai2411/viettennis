@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   NavbarBrand,
@@ -5,6 +7,8 @@ import {
   NavbarItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Logo from "./Logo";
 import MenuDesktop from "./menuDesktop";
@@ -12,6 +16,16 @@ import MenuTablet from "./menuTablet";
 import MenuTop from "./menuTop";
 
 export default function AppHeader({ params }: any) {
+  const pathname = usePathname();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  }, [pathname]);
+
   return (
     <>
       <MenuTop />
@@ -35,6 +49,8 @@ export default function AppHeader({ params }: any) {
         className="h-[78px] !text-[17px]"
         maxWidth="2xl"
         isBordered
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}
       >
         <NavbarContent className="lg:hidden" justify="start">
           <NavbarMenuToggle />
