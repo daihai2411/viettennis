@@ -51,7 +51,7 @@ export const FormVerify: React.FC<IProps> = ({
       onNext();
     } catch (error: any) {
       setLoading(false);
-      ToastError(error?.response?.data?.data?.error);
+      ToastError(error?.response?.data?.message);
     }
   });
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 
@@ -8,6 +7,7 @@ import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import profileService from "@/core/services/profile/ProfileService";
 import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { convertCamelCaseToLine } from "@/helpers/value";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -107,7 +107,7 @@ const AdditionalInformation = () => {
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
-      ToastError(Object.values(error?.response?.data?.data).flat().join(","));
+      ToastError(error?.response?.data?.message);
     }
   });
 
