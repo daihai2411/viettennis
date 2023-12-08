@@ -19,13 +19,13 @@ const MenuTablet = () => {
       {headers.map((item) => (
         <>
           {item.children && item.disableClick ? (
-            <Accordion isCompact>
+            <Accordion isCompact key={item.key}>
               <AccordionItem
                 title={<div className="py-0 text-lg">{item.label}</div>}
               >
                 {item.children.map((item1) => (
                   <div
-                    key={item1.route}
+                    key={item1.key}
                     className="px-4 py-1 block !text-lg cursor-pointer"
                   >
                     <Link
@@ -53,7 +53,7 @@ const MenuTablet = () => {
           )}
         </>
       ))}
-      <NavbarMenuItem className="px-2 py-2">
+      <NavbarMenuItem key={"login-register"} className="px-2 py-2">
         <LoginRegister />
       </NavbarMenuItem>
     </NavbarMenu>

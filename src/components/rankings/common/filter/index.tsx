@@ -64,10 +64,12 @@ const Filter = ({
                 <InputSearch
                   dataFilter={dataFilter}
                   setDataFilter={handleChangeFilter}
+                  handleSearch={handleSearch}
                 />
                 <FilterPoint
                   dataFilter={dataFilter}
                   setDataFilter={handleChangeFilter}
+                  handleSearch={handleSearch}
                 />
               </div>
             </div>
