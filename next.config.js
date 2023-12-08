@@ -13,6 +13,7 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "seland-dev.s3.ap-southeast-1.amazonaws.com",
       "viettennis.net",
+      "cms-viettennis.tdev.vn",
     ],
   },
 };
