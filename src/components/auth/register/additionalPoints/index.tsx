@@ -67,9 +67,7 @@ const AdditionalPoints = () => {
       setLoadingBtn(false);
     } catch (error: any) {
       setLoadingBtn(false);
-      ToastError(
-        Object.values(error?.response?.data?.data).flat().join(",") || "Lỗi"
-      );
+      ToastError(error?.response?.data?.message || "Lỗi");
     }
   });
 

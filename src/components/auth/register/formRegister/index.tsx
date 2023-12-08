@@ -70,10 +70,7 @@ const FormRegister = () => {
       setLoading(false);
     } catch (error: any) {
       setLoading(false);
-      ToastError(
-        Object.values(error?.response?.data?.data).flat().join(",") ||
-          "Lỗi tạo tài khoản !"
-      );
+      ToastError(error?.response?.data?.message || "Lỗi tạo tài khoản !");
     }
   });
 

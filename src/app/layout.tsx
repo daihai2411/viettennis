@@ -8,7 +8,7 @@ export default function RootLayout({
   params: any;
 }) {
   return (
-    <html>
+    <html suppressHydrationWarning={true}>
       <head lang={locale}>
         <script
           src="https://www.google.com/recaptcha/enterprise.js?render=6LcnZRMpAAAAAEh0oZYmTJhITYPXIdxSAJVFlsXA"
@@ -16,7 +16,7 @@ export default function RootLayout({
           defer
         ></script>
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>

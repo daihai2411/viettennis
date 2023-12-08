@@ -1,13 +1,23 @@
 import { toast } from "react-toastify";
 
 export const ToastError = (error: any) => {
-  toast.error(error);
+  toast.error(
+    <span
+      style={{ whiteSpace: "pre-line" }}
+      dangerouslySetInnerHTML={{
+        __html: error,
+      }}
+    ></span>
+  );
 };
 
 export const ToastSuccess = (mess: string) => {
-  toast.success(mess);
-};
-
-export const ToastInfo = (mess: string) => {
-  toast.success(mess);
+  toast.success(
+    <span
+      style={{ whiteSpace: "pre-line" }}
+      dangerouslySetInnerHTML={{
+        __html: mess,
+      }}
+    ></span>
+  );
 };
