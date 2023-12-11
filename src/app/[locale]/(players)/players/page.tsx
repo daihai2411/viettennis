@@ -1,7 +1,7 @@
-import DevelopPage from "@/components/common/page/DevelopPage";
+import PlayerListModule from "@/components/playerList";
 
 const PlayersPage = () => {
-  return <DevelopPage />;
+  return <PlayerListModule />;
 };
 
 export default PlayersPage;
