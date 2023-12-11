@@ -1,6 +1,5 @@
 "use client";
 
-import LoginRegister from "@/components/auth/loginRegister";
 import { NavbarContent, NavbarItem, Tooltip } from "@nextui-org/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,7 +12,7 @@ const MenuDesktop = () => {
 
   return (
     <NavbarContent
-      className="hidden lg:flex gap-4 !text-[17px]"
+      className="hidden lg:flex gap-10 !text-[17px]"
       justify="center"
     >
       {headers.map((item) => (
@@ -77,9 +76,6 @@ const MenuDesktop = () => {
           )}
         </React.Fragment>
       ))}
-      <NavbarItem>
-        <LoginRegister />
-      </NavbarItem>
     </NavbarContent>
   );
 };

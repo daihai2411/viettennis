@@ -1,0 +1,27 @@
+.bgTwoColorVertical {
+    background: linear-gradient(90deg, #ffffff 50%, #2DA46B 50%);
+}
+
+.bgTwoColorHorizontal {
+    display: flex;
+    justify-content: end;
+    height: 100%;
+    background: linear-gradient(to bottom, #2DA46B 0, #2DA46B 35%, #FFFFFF 35%, #FFFFFF 37%, #E6E6E6 37%, #E6E6E6 100%);
+    border-right: 4px solid white;
+}
+
+.btnRankActive {
+    background-color: #FFFFFF;
+    color: #2DA46B;
+    width: 60px;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.btnRank {
+    background-color: #2DA46B;
+    color: #FFFFFF;
+    width: 60px;
+    font-weight: bold;
+    font-size: smaller;
+}
