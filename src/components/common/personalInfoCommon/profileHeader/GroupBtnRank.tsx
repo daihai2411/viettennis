@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { RANK } from "../constants";
 import style from "../style.module.scss";
 
-const GroupBtnRank = () => {
-  const [active, setActive] = useState(RANK.SINGLES);
-
+const GroupBtnRank = ({ active, setActive }) => {
   const getStyle = (value: number) => {
     if (active === value) {
       return style.btnRankActive;
@@ -23,19 +20,19 @@ const GroupBtnRank = () => {
     <div className="flex border-1.5 border-white w-fit mt-2">
       <div
         className={`${getStyle(
-          RANK.SINGLES
-        )} flex justify-center items-center cursor-pointer py-1`}
-        onClick={() => onClick(RANK.SINGLES)}
-      >
-        Đơn
-      </div>
-      <div
-        className={`${getStyle(
           RANK.DOUBLES
         )} flex justify-center items-center cursor-pointer py-1`}
         onClick={() => onClick(RANK.DOUBLES)}
       >
         Đôi
+      </div>
+      <div
+        className={`${getStyle(
+          RANK.SINGLES
+        )} flex justify-center items-center cursor-pointer py-1`}
+        onClick={() => onClick(RANK.SINGLES)}
+      >
+        Đơn
       </div>
     </div>
   );

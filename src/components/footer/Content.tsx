@@ -4,9 +4,9 @@ import style from "./style.module.scss";
 
 const Content = () => {
   const list = [
-    { id: 1, label: "Về Viettnnis" },
+    { id: 1, label: "Về Viettennis" },
     { id: 1, label: "Quản Trị Viên Diễn Đàn" },
-    { id: 1, label: "Ban Điếu Hành" },
+    { id: 1, label: "Ban Điều Hành" },
     { id: 1, label: "WTA Ventures Board of Managers" },
     { id: 1, label: "Hợp Tác Với Viettennis" },
     { id: 1, label: "Tuyển Dụng" },

@@ -33,3 +33,9 @@ export const TABS = [
     label: "Lịch sử xếp hạng",
   },
 ];
+
+export const BACK_HAND = {
+  SINGER: "1",
+  DOUBLE: "2",
+  ALL: "3",
+};

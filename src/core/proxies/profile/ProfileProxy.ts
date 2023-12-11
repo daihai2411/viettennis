@@ -20,6 +20,10 @@ class Proxy extends ProxyBase {
   getProfile() {
     return this.get("auth/get-profile", {});
   }
+
+  getProfileById(params: { id: number | string }) {
+    return this.get("get-profile-by-id/" + params?.id, {});
+  }
 }
 
 const profileProxy = new Proxy();

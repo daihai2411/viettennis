@@ -7,15 +7,15 @@ import { TAB, TABS } from "../constants";
 import Bio from "../content/Bio";
 import Overview from "../content/Overview";
 
-const ProfileTab = () => {
+const ProfileTab = ({ data, loading }) => {
   const [selected, setSelected] = useState<any>(TAB.OVERVIEW);
 
   const getContent = useMemo(() => {
     switch (selected) {
       case TAB.OVERVIEW:
-        return <Overview />;
+        return <Overview data={data} loading={loading} />;
       case TAB.BIO:
-        return <Bio />;
+        return <Bio data={data} />;
       case TAB.MATCHES:
         return <DevelopPage />;
       case TAB.STATS:
@@ -25,7 +25,7 @@ const ProfileTab = () => {
       default:
         return <DevelopPage />;
     }
-  }, [selected]);
+  }, [selected, data, loading]);
 
   return (
     <>
