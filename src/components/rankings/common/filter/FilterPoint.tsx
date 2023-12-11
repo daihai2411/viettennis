@@ -20,16 +20,14 @@ const FilterPoint = ({ dataFilter, setDataFilter, handleSearch }: IProp) => {
 
   return (
     <div className="py-2">
-      <div className="block text-[#52525b] text-tiny cursor-text will-change-auto origin-top-left transition-all !duration-200 !ease-out motion-reduce:transition-none">
-        Tìm kiếm theo điểm
-      </div>
       <div className="flex gap-3">
         <Input
           value={dataFilter.min}
           variant="underlined"
           size="sm"
           className="w-24"
-          placeholder="Tối thiểu"
+          placeholder="0"
+          label={<div className="whitespace-nowrap">Điểm tối thiểu</div>}
           type="number"
           min={0}
           onChange={(e) => onChange(e, "min")}
@@ -40,7 +38,8 @@ const FilterPoint = ({ dataFilter, setDataFilter, handleSearch }: IProp) => {
           variant="underlined"
           size="sm"
           className="w-24"
-          placeholder="Tối đa"
+          placeholder="0"
+          label={<div className="whitespace-nowrap">Điểm tối đa</div>}
           type="number"
           min={0}
           onChange={(e) => onChange(e, "max")}

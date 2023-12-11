@@ -8,6 +8,13 @@ export const formatVal = (text: any) => {
   return EMPTY_VALUE;
 };
 
+export const checkEmptyVal = (text: any) => {
+  if (text) {
+    return text;
+  }
+  return EMPTY_VALUE;
+};
+
 export const valByKeyWithDot = (
   data: Record<string, any>,
   keyWithDot: string

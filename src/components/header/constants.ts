@@ -6,11 +6,11 @@ export const headers = [
     label: "Giải đấu",
     route: ROUTERS.TOURNAMENTS,
   },
-  {
-    key: 2,
-    label: "Điểm số",
-    route: ROUTERS.SCORES,
-  },
+  // {
+  //   key: 2,
+  //   label: "Điểm số",
+  //   route: ROUTERS.SCORES,
+  // },
   {
     key: 3,
     label: "Xếp hạng",
@@ -62,14 +62,14 @@ export const headers = [
       },
     ],
   },
-  {
-    key: 6,
-    label: "Thống kê",
-    route: ROUTERS.STATS,
-  },
-  {
-    key: 7,
-    label: "WTA",
-    route: ROUTERS.WTA,
-  },
+  // {
+  //   key: 6,
+  //   label: "Thống kê",
+  //   route: ROUTERS.STATS,
+  // },
+  // {
+  //   key: 7,
+  //   label: "WTA",
+  //   route: ROUTERS.WTA,
+  // },
 ];

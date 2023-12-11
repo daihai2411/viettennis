@@ -23,6 +23,10 @@ class Service extends ServiceBase {
   getProfile() {
     return this.getData(() => profileProxy.getProfile());
   }
+
+  getProfileById(params: { id: string | number }) {
+    return this.getData(() => profileProxy.getProfileById(params));
+  }
 }
 
 const profileService = new Service();

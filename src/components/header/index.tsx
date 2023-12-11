@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import LoginRegister from "../auth/loginRegister";
 import Logo from "./Logo";
 import MenuDesktop from "./menuDesktop";
 import MenuTablet from "./menuTablet";
@@ -60,8 +60,8 @@ export default function AppHeader({ params }: any) {
         </NavbarBrand>
         <MenuDesktop />
         <NavbarContent justify="end">
-          <NavbarItem>
-            <AiOutlineSearch className="h-6 w-6" />
+          <NavbarItem className="hidden lg:flex">
+            <LoginRegister />
           </NavbarItem>
         </NavbarContent>
         <MenuTablet />

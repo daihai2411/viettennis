@@ -1,10 +1,18 @@
+import { ROUTERS } from "@/const/router";
 import { CardBody, CardHeader, Divider, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Top1 = ({ tab, data, loading = false }) => {
+  const router = useRouter();
+
+  const redirect = () => {
+    router.push(ROUTERS.PLAYERS + "/" + data?.id);
+  };
+
   return (
     <>
-      <div className="group cursor-pointer">
+      <div className="group cursor-pointer" onClick={redirect}>
         <CardHeader className="flex gap-3 justify-between">
           <div className="flex flex-col ml-2">
             <p className="text-neutral-900 text-2xl font-bold">
