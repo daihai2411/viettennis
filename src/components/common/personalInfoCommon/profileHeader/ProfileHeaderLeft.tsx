@@ -1,6 +1,7 @@
 "use client";
 
-import { Image, Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@nextui-org/react";
+import Image from "next/image";
 import { useState } from "react";
 import { RANK } from "../constants";
 import style from "../style.module.scss";
@@ -31,10 +32,14 @@ const ProfileHeaderLeft = ({ data, loading }) => {
           </div>
         </div>
         <div className="col-span-3">
-          <div className="border-[7px] bg-[#e6e6e6] border-white mt-[30%] mx-4 w-[260px] h-[300px]">
-            {data?.avatar && (
-              <Image alt="avatar" radius="none" src={data?.avatar} />
-            )}
+          <div className=" border-[7px] relative border-white mt-[30%] mx-4 w-[260px] h-[300px]">
+            <Image
+              fill
+              src={data?.avatar || "/empty.jpg"}
+              alt="Image news"
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
         </div>
         <div className="col-span-2"></div>
