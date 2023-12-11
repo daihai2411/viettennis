@@ -1,7 +1,15 @@
+import { ROUTERS } from "@/const/router";
 import { CardFooter, Skeleton, User } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import style from "../style.module.scss";
 
 const TableTopRank = ({ tab, listData, loading = false }) => {
+  const router = useRouter();
+
+  const redirect = (id) => {
+    router.push(ROUTERS.PLAYERS + "/" + id);
+  };
+
   return (
     <>
       <CardFooter>
@@ -23,6 +31,7 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
                 <tr
                   key={item?.id}
                   className="border-b-1 border-[#E6E6E6] cursor-pointer"
+                  onClick={() => redirect(item?.id)}
                 >
                   <td>
                     <div className="flex items-center gap-3">

@@ -75,7 +75,7 @@ const Overview = ({ data, loading }) => {
               </dl>
             </Skeleton>
           </div>
-          <div className="w-full lg:w-[50%]">
+          <div className="w-full lg:w-[50%] h-auto">
             <div className="px-4 sm:px-0">
               <h3 className="text-2xl font-semibold leading-7 text-gray-900">
                 Điểm cá nhân

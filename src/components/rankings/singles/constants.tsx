@@ -1,5 +1,7 @@
+import { ROUTERS } from "@/const/router";
 import { formatVal } from "@/helpers/value";
 import { User } from "@nextui-org/react";
+import Link from "next/link";
 import { getColorCell } from "../helper";
 
 export const columns = [
@@ -22,13 +24,18 @@ export const renderCell = (user: any, columnKey: any) => {
       );
     case "name":
       return (
-        <User
-          name={<div className="text-neutral-500 uppercase">{user.name}</div>}
-          description={"@" + user.username}
-          avatarProps={{
-            src: user.avatar,
-          }}
-        />
+        <Link
+          className="cursor-pointer"
+          href={ROUTERS.PLAYERS + "/" + user.user_id}
+        >
+          <User
+            name={<div className="text-neutral-500 uppercase">{user.name}</div>}
+            description={"@" + user.username}
+            avatarProps={{
+              src: user.avatar,
+            }}
+          />
+        </Link>
       );
     case "group_name":
       return (

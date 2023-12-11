@@ -31,14 +31,11 @@ const ProfileHeaderLeft = ({ data, loading }) => {
           </div>
         </div>
         <div className="col-span-3">
-          <Skeleton
-            isLoaded={!loading}
-            className="border-[7px] border-white mt-[30%] mx-4 w-[260px] h-[300px]"
-          >
+          <div className="border-[7px] bg-[#e6e6e6] border-white mt-[30%] mx-4 w-[260px] h-[300px]">
             {data?.avatar && (
               <Image alt="avatar" radius="none" src={data?.avatar} />
             )}
-          </Skeleton>
+          </div>
         </div>
         <div className="col-span-2"></div>
       </div>

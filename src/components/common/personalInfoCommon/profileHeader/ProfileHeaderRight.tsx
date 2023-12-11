@@ -18,7 +18,7 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
           <div className="flex gap-6">
             <Skeleton isLoaded={!loading} className="">
               <div className="font-medium text-lg mb-1">Chiều cao</div>
-              <div className="mb-[5px] text-3xl font-extrabold">
+              <div className="mb-2 text-3xl font-extrabold">
                 {data?.height ? data?.height + "cm" : "--"}
               </div>
 
@@ -33,7 +33,7 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
             </Skeleton>
             <Skeleton isLoaded={!loading}>
               <div className="font-medium text-lg mb-1">Ngày sinh</div>
-              <div className="mb-[5px] text-3xl font-extrabold">
+              <div className="mb-2 text-3xl font-extrabold">
                 {checkEmptyVal(data?.dob)}
               </div>
 
@@ -51,7 +51,7 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
             </Skeleton>
             {/* <div >
             <div className="font-medium text-lg mb-1">Thông số vợt</div>
-            <div className="mb-[5px] text-3xl font-extrabold">Image</div>
+            <div className="mb-2 text-3xl font-extrabold">Image</div>
             <div className="font-medium text-[13px]">
               Head Extreme Team 2022
             </div>

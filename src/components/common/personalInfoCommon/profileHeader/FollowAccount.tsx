@@ -3,9 +3,9 @@ const FollowAccount = ({ data }) => {
     <>
       <div className="text-[#141414] text-base font-black">
         Theo dõi <br />
-        {data?.fullName}
+        {data?.full_name}
       </div>
-      <div className="bg-green-common rounded-full w-10 h-10"></div>
+      <div className="bg-green-common rounded-full mt-2 w-10 h-10"></div>
     </>
   );
 };
