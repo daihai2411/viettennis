@@ -13,11 +13,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser. I
 
 Runs the app in the production mode.
 
-```bash
-yarn install
-yarn build
-yarn start
-```
+- address : 85.31.234.69
+- password: VTen155D@123#
+
+1. Open terminal
+2. Run "ssh root@85.31.234.69"
+3. Input password: VTen155D@123#
+4. Run "cd /var/var/www/html/viettennis-web/viettennis"
+5. Run "git pull"
+6. Run "npm install"
+7. Run "npm run build"
+8. Run 'pm2 start npm --name "app name" -- start' when first run, and 'pm2 restart "app name"' when have been running
 
 ## Note
 
