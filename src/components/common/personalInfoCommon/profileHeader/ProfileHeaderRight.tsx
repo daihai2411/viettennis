@@ -4,8 +4,8 @@ import { BACK_HAND } from "../constants";
 
 const ProfileHeaderRight = ({ data, loading = true }) => {
   return (
-    <div className="w-[50%] border-l-4 border-white">
-      <div className="w-[636px] h-full text-white pl-[43px] pt-[63px]">
+    <div className="w-full lg:w-[50%] border-none lg:border-solid lg:border-l-4 border-white">
+      <div className="lg:w-[636px] w-auto h-full text-white p-4 lg:pl-[43px] lg:pt-[63px]">
         <Skeleton isLoaded={!loading}>
           <h1 className="text-[52px] leading-[52px] font-black mb-3">
             {checkEmptyVal(data?.full_name)}
@@ -17,16 +17,22 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
         <>
           <div className="flex gap-6">
             <Skeleton isLoaded={!loading} className="">
-              <div className="font-medium text-lg mb-1">Chiều cao</div>
-              <div className="mb-2 text-3xl font-extrabold">
+              <div className="mb-1 text-base md:text-lg font-medium">
+                Chiều cao
+              </div>
+              <div className="mb-2 text-2xl md:text-3xl font-extrabold">
                 {data?.height ? data?.height + "cm" : "--"}
               </div>
 
-              <div className="mb-1 text-lg font-medium">Sở trường</div>
+              <div className="mb-1 text-base md:text-lg font-medium">
+                Sở trường
+              </div>
               <div className="font-medium text-[13px]">
-                {data?.back_hand === BACK_HAND.SINGER
+                {!data?.back_hand
+                  ? "--"
+                  : Number(data?.back_hand) === BACK_HAND.SINGER
                   ? "Đấu đơn"
-                  : data?.back_hand === BACK_HAND.DOUBLE
+                  : Number(data?.back_hand) === BACK_HAND.DOUBLE
                   ? "Đấu đôi"
                   : "Đấu đơn và đấu đôi"}
               </div>
@@ -39,12 +45,16 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
               </div>
             </Skeleton>
             <Skeleton isLoaded={!loading}>
-              <div className="font-medium text-lg mb-1">Ngày sinh</div>
-              <div className="mb-2 text-3xl font-extrabold">
+              <div className="mb-1 text-base md:text-lg font-medium">
+                Ngày sinh
+              </div>
+              <div className="mb-2 text-2xl md:text-3xl font-extrabold">
                 {checkEmptyVal(data?.dob)}
               </div>
 
-              <div className="mb-1 text-lg font-medium">Nơi sinh</div>
+              <div className="mb-1 text-base md:text-lg font-medium">
+                Nơi sinh
+              </div>
               <div className="font-medium text-[13px]">
                 {data?.address
                   ? [

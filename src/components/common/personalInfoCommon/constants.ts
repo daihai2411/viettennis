@@ -35,7 +35,7 @@ export const TABS = [
 ];
 
 export const BACK_HAND = {
-  SINGER: "1",
-  DOUBLE: "2",
-  ALL: "3",
+  SINGER: 1,
+  DOUBLE: 2,
+  ALL: 3,
 };

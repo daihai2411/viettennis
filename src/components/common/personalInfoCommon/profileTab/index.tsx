@@ -29,7 +29,7 @@ const ProfileTab = ({ data, loading }) => {
 
   return (
     <>
-      <div className="h-[60px] flex justify-center bg-[#141414] mb-2">
+      <div className="h-[60px] flex justify-center bg-[#141414] mb-2 overflow-auto">
         <Tabs
           size="lg"
           variant="underlined"
