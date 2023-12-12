@@ -6,7 +6,7 @@ const ProfileHeader = ({ data, loading }) => {
   return (
     <>
       <div
-        className={`my-2 px-0 lg:px-2 mx-2 lg:mx-0 h-auto lg:h-[500px] block lg:flex ${style.bgTwoColorVertical}`}
+        className={`my-2 px-0 md:px-2 mx-2 md:mx-0 h-auto md:h-[500px] block md:flex ${style.bgTwoColorVertical}`}
       >
         <ProfileHeaderLeft data={data} loading={loading} />
         <ProfileHeaderRight data={data} loading={loading} />

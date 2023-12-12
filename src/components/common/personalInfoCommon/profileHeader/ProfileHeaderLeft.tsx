@@ -13,10 +13,10 @@ const ProfileHeaderLeft = ({ data, loading }) => {
 
   return (
     <div
-      className={`${style.bgTwoColorHorizontal} w-full lg:w-[50%] h-[350px] lg:h-full border-r-[0px] border-b-8 border-solid lg:border-b-[0px] lg:border-r-4 border-white
+      className={`${style.bgTwoColorHorizontal} w-full md:w-[50%] h-[350px] md:h-full border-r-[0px] border-b-8 border-solid md:border-b-[0px] md:border-r-4 border-white
       `}
     >
-      <div className="w-full lg:w-[636px] h-full grid grid-cols-7 text-white">
+      <div className="w-full md:w-[636px] h-full grid grid-cols-7 text-white">
         <div className="lg:col-span-2 col-span-3 pl-4 flex justify-between flex-col">
           <div className="mt-4">
             <div className="text-lg leading-tight font-bold">Điểm</div>
@@ -35,7 +35,7 @@ const ProfileHeaderLeft = ({ data, loading }) => {
           </div>
         </div>
         <div className="col-span-3">
-          <div className=" border-[7px] relative border-white mt-[48px] lg:mt-[30%] mx-4 w-[180px] lg:w-[260px] h-[220px] lg:h-[300px]">
+          <div className=" border-[7px] relative border-white mt-[48px] md:mt-[30%] mx-4 w-[180px] lg:w-[260px] h-[220px] lg:h-[300px]">
             <Image
               fill
               src={data?.avatar || "/empty.jpg"}

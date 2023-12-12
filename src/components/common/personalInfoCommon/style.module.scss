@@ -1,6 +1,6 @@
 .bgTwoColorVertical {
     background: linear-gradient(90deg, #ffffff 50%, #2DA46B 50%);
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 768px) {
         background: #2DA46B;
       }
 }
@@ -9,7 +9,7 @@
     display: flex;
     justify-content: end;
     background: linear-gradient(to bottom, #2DA46B 0, #2DA46B 35%, #FFFFFF 35%, #FFFFFF 37%, #E6E6E6 37%, #E6E6E6 100%);
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 768px) {
       background: linear-gradient(to bottom, #2DA46B 0, #2DA46B 50%, #FFFFFF 50%, #FFFFFF 52%, #E6E6E6 52%, #E6E6E6 100%);
     }
 }

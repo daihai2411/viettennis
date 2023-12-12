@@ -6,7 +6,7 @@ import { getListPlayersThunk } from "./thunk";
 const initialState = {
   data: [],
   loading: true,
-  total: null,
+  total: 1,
   initialPage: 1,
 };
 
@@ -20,7 +20,7 @@ export const slice = createSlice({
     });
     builder.addCase(getListPlayersThunk.fulfilled, (state, { payload }) => {
       state.data = payload.data;
-      state.total = payload.total;
+      state.total = Math.round(payload.total / payload.page_size);
       state.initialPage = payload.page;
       state.loading = false;
     });

@@ -8,7 +8,7 @@ const ItemPlayer = ({ item }) => {
   return (
     <Link
       href={ROUTERS.PLAYERS + "/" + item.id}
-      className="mt-10 cursor-pointer"
+      className="mt-10 cursor-pointer group"
     >
       <Card radius="none" shadow="none" className="w-full">
         <CardBody className="relative p-0 pt-[30%]">
@@ -17,7 +17,7 @@ const ItemPlayer = ({ item }) => {
             <div className="text-lg font-bold">#1</div> */}
           </div>
           <div className="absolute top-[50%] left-[50%] w-[40%] -translate-x-1/2 -translate-y-1/2">
-            <div className="aspect-square bg-[#e6e6e6] rounded-full ring-[6px] ring-white object-cover">
+            <div className="aspect-square bg-[#e6e6e6] rounded-full ring-2 ring-white object-cover">
               <Image
                 src={item?.avatar || "/empty.jpg"}
                 alt="Avatar"
@@ -29,7 +29,7 @@ const ItemPlayer = ({ item }) => {
           </div>
         </CardBody>
         <CardFooter className="bg-[#e6e6e6] block py-[22px] mt-2">
-          <div className="text-[#141414] text-[21px] font-semibold capitalize leading-[21px]">
+          <div className="group-hover:underline group-hover:text-green-common mb-1 line-clamp-1 text-[#141414] text-[21px] font-semibold capitalize">
             {checkEmptyVal(item?.full_name)}
           </div>
           <div className="text-[#767676] font-normal text-[13px] capitalize leading-[13px]">
