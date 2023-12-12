@@ -19,7 +19,7 @@ Runs the app in the production mode.
 1. Open terminal
 2. Run "ssh root@85.31.234.69"
 3. Input password: VTen155D@123#
-4. Run "cd /var/var/www/html/viettennis-web/viettennis"
+4. Run "cd /var/www/html/viettennis-web/viettennis"
 5. Run "git pull"
 6. Run "npm install"
 7. Run "npm run build"
