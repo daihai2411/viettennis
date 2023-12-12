@@ -20,7 +20,7 @@ const ItemPlayer = ({ item }) => {
             <div className="aspect-square bg-[#e6e6e6] rounded-full ring-[6px] ring-white object-cover">
               <Image
                 src={item?.avatar || "/empty.jpg"}
-                alt="Image news"
+                alt="Avatar"
                 layout="fill"
                 objectFit="cover"
                 className="rounded-full"

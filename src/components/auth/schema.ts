@@ -227,13 +227,13 @@ export const schemaAdditionPoint = {
     .transform((value) => (Number.isNaN(value) ? null : value))
     .nullable()
     .required(
-      getMessSchema({ type: "MS_01", fieldName: "Thuận tay (Back-hand)" })
+      getMessSchema({ type: "MS_01", fieldName: "Thuận tay (Fore-hand)" })
     )
     .min(
       500,
       getMessSchema({
         type: "MS_04",
-        fieldName: "Thuận tay (Back-hand)",
+        fieldName: "Thuận tay (Fore-hand)",
         min: 500,
         max: 1200,
       })
@@ -242,7 +242,7 @@ export const schemaAdditionPoint = {
       1200,
       getMessSchema({
         type: "MS_04",
-        fieldName: "Thuận tay (Back-hand)",
+        fieldName: "Thuận tay (Fore-hand)",
         min: 500,
         max: 1200,
       })
@@ -251,13 +251,13 @@ export const schemaAdditionPoint = {
     .transform((value) => (Number.isNaN(value) ? null : value))
     .nullable()
     .required(
-      getMessSchema({ type: "MS_01", fieldName: "Trái tay (Fore-hand)" })
+      getMessSchema({ type: "MS_01", fieldName: "Trái tay (Back-hand)" })
     )
     .min(
       500,
       getMessSchema({
         type: "MS_04",
-        fieldName: "Trái tay (Fore-hand)",
+        fieldName: "Trái tay (Back-hand)",
         min: 500,
         max: 1200,
       })
@@ -266,7 +266,7 @@ export const schemaAdditionPoint = {
       1200,
       getMessSchema({
         type: "MS_04",
-        fieldName: "Trái tay (Fore-hand)",
+        fieldName: "Trái tay (Back-hand)",
         min: 500,
         max: 1200,
       })

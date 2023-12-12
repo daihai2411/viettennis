@@ -5,22 +5,7 @@ const Overview = ({ data, loading }) => {
   const listInfo = [
     { title: "Số điện thoại", value: data?.phone, key: "phone" },
     { title: "Địa chỉ email", value: data?.email, key: "email" },
-    {
-      title: "Chiều cao",
-      value: data?.height && data?.height + "cm",
-      key: "height",
-    },
     { title: "Cân nặng", value: data?.weight, key: "weight" },
-    {
-      title: "Chơi tennis từ năm",
-      value: data?.play_since,
-      key: "play_since",
-    },
-    {
-      title: "Thông số kỹ thuật vợt",
-      value: data?.racket_specs,
-      key: "racket_specs",
-    },
     {
       title: "Hãng giày tennis bạn đi",
       value: data?.shoes_brand,

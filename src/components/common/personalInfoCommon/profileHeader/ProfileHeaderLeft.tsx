@@ -11,6 +11,8 @@ import GroupBtnRank from "./GroupBtnRank";
 const ProfileHeaderLeft = ({ data, loading }) => {
   const [active, setActive] = useState(RANK.DOUBLES);
 
+  console.log(data?.avatar);
+
   return (
     <div className={`${style.bgTwoColorHorizontal} w-full lg:w-[50%]`}>
       <div className="w-[636px] h-full grid grid-cols-7 text-white">
@@ -36,7 +38,7 @@ const ProfileHeaderLeft = ({ data, loading }) => {
             <Image
               fill
               src={data?.avatar || "/empty.jpg"}
-              alt="Image news"
+              alt="Avatar"
               layout="fill"
               objectFit="cover"
             />

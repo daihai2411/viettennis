@@ -30,6 +30,13 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
                   ? "Đấu đôi"
                   : "Đấu đơn và đấu đôi"}
               </div>
+
+              <div className="mb-1 mt-4 text-lg font-medium">
+                Chơi tennis từ năm
+              </div>
+              <div className="font-medium text-[13px]">
+                {checkEmptyVal(data?.play_since)}
+              </div>
             </Skeleton>
             <Skeleton isLoaded={!loading}>
               <div className="font-medium text-lg mb-1">Ngày sinh</div>
@@ -48,14 +55,13 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
                     ].join(", ")
                   : "--"}
               </div>
+              <div className="mb-1 mt-4 text-lg font-medium">
+                Thông số kỹ thuật vợt
+              </div>
+              <div className="font-medium text-[13px]">
+                {checkEmptyVal(data?.racket_specs)}
+              </div>
             </Skeleton>
-            {/* <div >
-            <div className="font-medium text-lg mb-1">Thông số vợt</div>
-            <div className="mb-2 text-3xl font-extrabold">Image</div>
-            <div className="font-medium text-[13px]">
-              Head Extreme Team 2022
-            </div>
-          </div> */}
           </div>
         </>
         {/* <div className="mt-[29px] text-lg font-bold leading-[17.10px] mb-2">
