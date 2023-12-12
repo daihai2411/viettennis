@@ -27,6 +27,10 @@ class Service extends ServiceBase {
   getProfileById(params: { id: string | number }) {
     return this.getData(() => profileProxy.getProfileById(params));
   }
+
+  updateAvatar(params: any ) {
+    return this.getData(() => profileProxy.uploadAvatar(params))
+  }
 }
 
 const profileService = new Service();

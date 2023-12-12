@@ -24,6 +24,10 @@ class Proxy extends ProxyBase {
   getProfileById(params: { id: number | string }) {
     return this.get("get-profile-by-id/" + params?.id, {});
   }
+
+  uploadAvatar(params: any) {
+    return this.post("auth/update-avatar", params);
+  }
 }
 
 const profileProxy = new Proxy();

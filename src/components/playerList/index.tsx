@@ -41,6 +41,12 @@ const PlayerListModule = () => {
     });
   }, [currentPage, params]);
 
+  useEffect(() => {
+    return () => {
+      setCurrentPage(1);
+    };
+  }, []);
+
   return (
     <>
       <div className="w-full h-[152.16px] px-4 py-12 mt-3 mb-2 bg-green-common flex-col justify-center items-center">
@@ -54,7 +60,7 @@ const PlayerListModule = () => {
           <Spinner className="mt-6 flex justify-center" />
         ) : (
           <>
-            {total ? (
+            {list.length ? (
               <PlayerList list={list} />
             ) : (
               <div className="flex justify-center mt-6">

@@ -5,7 +5,7 @@ import { BACK_HAND } from "../constants";
 const ProfileHeaderRight = ({ data, loading = true }) => {
   return (
     <div className="w-full md:w-[50%] border-none md:border-solid md:border-l-4 border-white">
-      <div className="md:w-[636px] w-auto h-full text-white p-4 md:pl-[43px] md:pt-[63px]">
+      <div className="xl:w-[636px] w-auto h-full text-white p-4 md:pl-[43px] md:pt-[63px]">
         <Skeleton isLoaded={!loading}>
           <h1 className="text-[52px] leading-[52px] font-black mb-3">
             {checkEmptyVal(data?.full_name)}
