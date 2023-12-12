@@ -22,7 +22,7 @@ const LoginRegister = () => {
             as="button"
             avatarProps={{
               isBordered: false,
-              src: session?.user?.image || "",
+              src: session?.user?.image || session?.user?.avatar || "",
             }}
             className="transition-transform"
             description={session?.user?.email || session?.user?.phone}

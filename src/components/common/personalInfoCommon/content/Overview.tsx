@@ -1,8 +1,29 @@
+import { ROUTERS } from "@/const/router";
 import { checkEmptyVal } from "@/helpers/value";
 import { Skeleton } from "@nextui-org/react";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 const Overview = ({ data, loading }) => {
+  const pathName = usePathname();
+
   const listInfo = [
+    { title: "Số điện thoại", value: data?.phone, key: "phone" },
+    { title: "Địa chỉ email", value: data?.email, key: "email" },
+    { title: "Cân nặng", value: data?.weight, key: "weight" },
+    {
+      title: "Hãng giày tennis bạn đi",
+      value: data?.shoes_brand,
+      key: "shoes_brand",
+    },
+    {
+      title: "Hãng đồ thể thao bạn mặc",
+      value: data?.clothes_brand,
+      key: "clothes_brand",
+    },
+  ];
+
+  const listInfoPersonal = [
     { title: "Số điện thoại", value: data?.phone, key: "phone" },
     { title: "Địa chỉ email", value: data?.email, key: "email" },
     { title: "Cân nặng", value: data?.weight, key: "weight" },
@@ -29,6 +50,13 @@ const Overview = ({ data, loading }) => {
     },
   ];
 
+  const getListData = useMemo(() => {
+    if (pathName === ROUTERS.PERSONAL_INFO) {
+      return listInfoPersonal;
+    }
+    return listInfo;
+  }, []);
+
   return (
     <>
       <div className="container mx-auto">
@@ -44,7 +72,7 @@ const Overview = ({ data, loading }) => {
               className="mt-6 border-t border-gray-100"
             >
               <dl className="divide-y divide-gray-100">
-                {listInfo.map((item) => (
+                {getListData.map((item) => (
                   <div
                     key={item.key}
                     className="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0"
