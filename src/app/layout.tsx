@@ -15,6 +15,7 @@ export default function RootLayout({
           async
           defer
         ></script>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body suppressHydrationWarning={true}>
         <NextAuthProvider>{children}</NextAuthProvider>
