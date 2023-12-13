@@ -14,6 +14,7 @@ const nextConfig = {
       "seland-dev.s3.ap-southeast-1.amazonaws.com",
       "viettennis.net",
       "cms-viettennis.tdev.vn",
+      "cms.viettennis.net",
     ],
   },
 };
