@@ -100,6 +100,7 @@ const LoginModule = () => {
             placeholder="Tên tài khoản hoặc Email"
             keyInput="username"
             type="text"
+            onSubmit={onSubmit}
           />
           <InputCustom
             label=""
@@ -108,6 +109,7 @@ const LoginModule = () => {
             placeholder="Mật khẩu"
             keyInput="password"
             type="password"
+            onSubmit={onSubmit}
           />
           <div className="flex py-2 px-1 justify-end text-[15px]">
             <Link

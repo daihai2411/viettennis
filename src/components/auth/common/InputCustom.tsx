@@ -15,6 +15,7 @@ type InputProps = {
   required?: boolean;
   disable?: boolean;
   defaultValue?: string;
+  onSubmit?: any;
 };
 
 const InputCustom = ({
@@ -28,10 +29,17 @@ const InputCustom = ({
   required,
   disable,
   defaultValue,
+  onSubmit,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && onSubmit) {
+      onSubmit();
+    }
+  };
 
   return (
     <div className={className || "mb-3"}>
@@ -70,6 +78,7 @@ const InputCustom = ({
             false
           )
         }
+        onKeyDown={handleKeyDown}
       />
       {errors[keyInput] && (
         <p className="text-red-500 text-xs" role="alert">

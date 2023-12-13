@@ -1,4 +1,5 @@
 import { ROUTERS } from "@/const/router";
+import { getColorCell } from "@/helpers/common";
 import { CardBody, CardHeader, Divider, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -25,7 +26,10 @@ const Top1 = ({ tab, data, loading = false }) => {
               Điểm
             </p>
             <Skeleton isLoaded={!loading}>
-              <p className="text-green-common text-[34px] font-black leading-9 mb-2">
+              <p
+                className="text-[34px] font-black leading-9 mb-2"
+                style={{ color: getColorCell(data.rank_point_id) }}
+              >
                 {tab === 1 ? data?.point_vtr : data?.point_vtr_solo}
               </p>
             </Skeleton>

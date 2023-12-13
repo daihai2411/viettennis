@@ -11,6 +11,7 @@ const IdentifyCard = ({ register, errors, setValue, clearErrors }) => {
         placeholder="Nhập CMT/CCCD"
         keyInput="identifyId"
         required
+        type="number"
       />
       <InputDate
         label={

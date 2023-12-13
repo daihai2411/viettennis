@@ -1,4 +1,5 @@
 import { ROUTERS } from "@/const/router";
+import { getColorCell } from "@/helpers/common";
 import { CardFooter, Skeleton, User } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import style from "../style.module.scss";
@@ -58,7 +59,10 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
                     />
                   </td>
                   <td>
-                    <div className="text-right text-green-common text-xl font-black leading-tight">
+                    <div
+                      className="text-right text-xl font-black leading-tight"
+                      style={{ color: getColorCell(item.rank_point_id) }}
+                    >
                       {tab === 1 ? item?.point_vtr : item?.point_vtr_solo}
                     </div>
                   </td>

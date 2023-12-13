@@ -1,6 +1,6 @@
 import { ROUTERS } from "@/const/router";
 import { getColorCell } from "@/helpers/common";
-import { formatVal } from "@/helpers/value";
+import { checkEmptyVal, formatVal } from "@/helpers/value";
 import { User } from "@nextui-org/react";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export const renderCell = (user: any, columnKey: any) => {
     case "id":
       return (
         <div className="text-center flex justify-center text-green-common text-[19px]">
-          {cellValue}
+          --
         </div>
       );
     case "name":
@@ -40,7 +40,7 @@ export const renderCell = (user: any, columnKey: any) => {
     case "group_name":
       return (
         <div className="text-center flex justify-center text-neutral-500 font-medium text-md">
-          {cellValue}
+          {checkEmptyVal(cellValue)}
         </div>
       );
     case "point_vtr_solo":
