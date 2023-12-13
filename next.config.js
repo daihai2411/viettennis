@@ -15,6 +15,7 @@ const nextConfig = {
       "viettennis.net",
       "cms-viettennis.tdev.vn",
       "cms.viettennis.net",
+      "diendan.viettennis.net",
     ],
   },
 };

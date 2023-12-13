@@ -9,7 +9,7 @@ const FollowAccount = ({ data }) => {
         {data?.full_name}
       </div>
       <Link
-        href={data?.facebook || "./404"}
+        href={data?.facebook || "/404"}
         target="_blank"
         className="border cursor-pointer border-stone-300 bg-gray-50 rounded-full flex justify-center items-center mt-2 w-10 h-10"
       >

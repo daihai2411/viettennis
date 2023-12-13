@@ -17,12 +17,9 @@ const ProfileHeaderLeft = ({ data, loading }) => {
     >
       <div className="w-full lg:w-[636px] h-full grid grid-cols-7 text-white">
         <div className="lg:col-span-2 col-span-3 pl-4 flex justify-between flex-col">
-          <div className="mt-4">
+          <div className="mt-6">
             <div className="text-lg leading-tight font-bold">Điểm</div>
-            <Skeleton
-              isLoaded={!loading}
-              className="text-8xl leading-[79.68px] font-black"
-            >
+            <Skeleton isLoaded={!loading} className="text-5xl font-black">
               {active === RANK.DOUBLES
                 ? data?.double_point
                 : data?.single_point}

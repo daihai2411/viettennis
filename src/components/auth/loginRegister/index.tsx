@@ -39,7 +39,11 @@ const LoginRegister = () => {
           <DropdownItem key="settings">
             <Link href={ROUTERS.PERSONAL_INFO}>Thông tin tài khoản</Link>
           </DropdownItem>
-          <DropdownItem key="logout" color="danger" onClick={() => signOut()}>
+          <DropdownItem
+            key="logout"
+            color="danger"
+            onClick={() => signOut({ redirect: true, callbackUrl: "/" })}
+          >
             Đăng xuất
           </DropdownItem>
         </DropdownMenu>

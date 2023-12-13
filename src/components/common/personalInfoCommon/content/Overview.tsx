@@ -55,7 +55,7 @@ const Overview = ({ data, loading }) => {
       return listInfoPersonal;
     }
     return listInfo;
-  }, []);
+  }, [data]);
 
   return (
     <>
