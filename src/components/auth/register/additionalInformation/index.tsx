@@ -141,7 +141,7 @@ const AdditionalInformation = () => {
           Nhập các thông tin cá nhân
         </div>
         <form onSubmit={onSubmit}>
-          <div className="flex gap-6">
+          <div className="md:flex gap-6 block">
             <div className="w-full">
               <InfoBasic
                 register={register}
