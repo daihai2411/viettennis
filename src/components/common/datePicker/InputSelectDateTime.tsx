@@ -16,6 +16,7 @@ const InputSelectDateTime = (props: any) => {
     "Tháng 9",
     "Tháng 10",
     "Tháng 11",
+    "Tháng 12",
   ];
 
   return (

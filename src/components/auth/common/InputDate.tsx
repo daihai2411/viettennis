@@ -27,6 +27,7 @@ const InputDate = ({
     "Tháng 9",
     "Tháng 10",
     "Tháng 11",
+    "Tháng 12",
   ];
 
   const [startDate, setStartDate] = useState<any>(undefined);

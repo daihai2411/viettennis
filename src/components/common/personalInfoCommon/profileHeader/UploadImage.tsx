@@ -44,13 +44,13 @@ const UploadImage = ({ avatar }) => {
         isLoaded={!loading}
         className="border-[7px] relative border-white mt-[48px] md:mt-[30%] mx-auto w-[180px] lg:w-[260px] h-[220px] lg:h-[300px]"
       >
-          <Image
-            fill
-            src={avatarState || "/empty.jpg"}
-            alt="Avatar"
-            layout="fill"
-            objectFit="cover"
-          />
+        <Image
+          fill
+          src={avatarState || "/player.jpeg"}
+          alt="Avatar"
+          layout="fill"
+          objectFit="cover"
+        />
       </Skeleton>
 
       {pathName === ROUTERS.PERSONAL_INFO && (
