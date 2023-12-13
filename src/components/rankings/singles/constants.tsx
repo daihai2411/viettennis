@@ -26,7 +26,7 @@ export const renderCell = (user: any, columnKey: any) => {
       return (
         <Link
           className="cursor-pointer"
-          href={ROUTERS.PLAYERS + "/" + user.user_id}
+          href={ROUTERS.PLAYERS + "/" + user.new_user_id}
         >
           <User
             name={<div className="text-neutral-500 uppercase">{user.name}</div>}

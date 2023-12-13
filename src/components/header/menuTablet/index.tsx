@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React from "react";
 import { headers } from "../constants";
 
 const MenuTablet = () => {
@@ -17,9 +18,9 @@ const MenuTablet = () => {
   return (
     <NavbarMenu className="mt-12">
       {headers.map((item) => (
-        <>
+        <React.Fragment key={item.key}>
           {item.children && item.disableClick ? (
-            <Accordion isCompact key={item.key}>
+            <Accordion isCompact>
               <AccordionItem
                 title={<div className="py-0 text-lg">{item.label}</div>}
               >
@@ -40,7 +41,7 @@ const MenuTablet = () => {
               </AccordionItem>
             </Accordion>
           ) : (
-            <NavbarMenuItem key={item.key} className="px-2 py-2 cursor-pointer">
+            <NavbarMenuItem className="px-2 py-2 cursor-pointer">
               <Link
                 style={{ color: pathName === item.route ? "#2DA46B" : "" }}
                 color="foreground"
@@ -51,7 +52,7 @@ const MenuTablet = () => {
               </Link>
             </NavbarMenuItem>
           )}
-        </>
+        </React.Fragment>
       ))}
       <NavbarMenuItem key={"login-register"} className="px-2 py-2">
         <LoginRegister />
