@@ -70,6 +70,7 @@ const InputPoint = ({
                 valueDefault={value}
                 setValueForm={setValueForm}
                 setValue={setValue}
+                titleInput={itemInput.title}
               />
             }
             onChange={(e: any) => {

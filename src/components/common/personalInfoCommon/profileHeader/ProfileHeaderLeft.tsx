@@ -1,5 +1,6 @@
 "use client";
 
+import { getColorCell } from "@/helpers/common";
 import { Skeleton } from "@nextui-org/react";
 import { useState } from "react";
 import { RANK } from "../constants";
@@ -19,10 +20,15 @@ const ProfileHeaderLeft = ({ data, loading }) => {
         <div className="lg:col-span-2 col-span-3 pl-4 flex justify-between flex-col">
           <div className="mt-6">
             <div className="text-lg leading-tight font-bold">Điểm</div>
-            <Skeleton isLoaded={!loading} className="text-5xl font-black">
-              {active === RANK.DOUBLES
-                ? data?.double_point
-                : data?.single_point}
+            <Skeleton isLoaded={!loading}>
+              <div
+                className={`text-5xl font-black ${style.shadowText}`}
+                style={{ color: getColorCell(data?.rank_point_id) }}
+              >
+                {active === RANK.DOUBLES
+                  ? data?.double_point
+                  : data?.single_point}
+              </div>
             </Skeleton>
             <GroupBtnRank active={active} setActive={setActive} />
           </div>

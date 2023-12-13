@@ -6,8 +6,10 @@ import { Image } from "@nextui-org/image";
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import profileService from "@/core/services/profile/ProfileService";
 import { FORMAT, formatDateTime } from "@/helpers/datetime";
+import { saveSession } from "@/helpers/session";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,6 +51,7 @@ const schemaValidation = () => Yup.object().shape(schemaAdditionInformation);
 
 const AdditionalInformation = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const phoneNumber = useSelector(selectPhoneNumber);
   const email = useSelector(selectEmail);
@@ -101,8 +104,13 @@ const AdditionalInformation = () => {
         convertCamelCaseToLine(params)
       )) as any;
       if (res.success) {
+        const user = (await saveSession()) as any;
+        if (!user?.personal_point_updated) {
+          dispatch(changeStep(steps.ADDITIONAL_POINTS));
+        } else {
+          router.push("/");
+        }
         ToastSuccess(res?.message || "Cập nhật thông tin thành công");
-        dispatch(changeStep(steps.ADDITIONAL_POINTS));
       }
       setLoading(false);
     } catch (error: any) {

@@ -1,8 +1,8 @@
 import { ROUTERS } from "@/const/router";
+import { getColorCell } from "@/helpers/common";
 import { formatVal } from "@/helpers/value";
 import { User } from "@nextui-org/react";
 import Link from "next/link";
-import { getColorCell } from "../helper";
 
 export const columns = [
   { name: "Thứ hạng", uid: "id" },

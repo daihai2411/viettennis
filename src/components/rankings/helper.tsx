@@ -1,16 +1,5 @@
 import { Key } from "react";
 
-export const getColorCell = (id: number) => {
-  const POINT_BLUE = 1;
-  const POINT_RED = 2;
-
-  if (id === POINT_BLUE) {
-    return "#1D61BC";
-  } else if (id === POINT_RED) {
-    return "#FF0000";
-  } else "";
-};
-
 export const changeKeySort = (
   column: Key | undefined,
   typeSearch: string | undefined

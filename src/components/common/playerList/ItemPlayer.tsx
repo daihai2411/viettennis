@@ -8,7 +8,7 @@ const ItemPlayer = ({ item }) => {
   return (
     <Link
       href={ROUTERS.PLAYERS + "/" + item.id}
-      className="mt-10 cursor-pointer group"
+      className="mt-2 cursor-pointer group"
     >
       <Card radius="none" shadow="none" className="w-full">
         <CardBody className="relative p-0 pt-[30%]">
