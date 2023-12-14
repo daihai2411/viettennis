@@ -21,7 +21,7 @@ const GroupBtnRank = ({ active, setActive }) => {
       <div
         className={`${getStyle(
           RANK.DOUBLES
-        )} flex justify-center items-center cursor-pointer py-1`}
+        )} flex justify-center items-center cursor-pointer hover:opacity-90 py-1`}
         onClick={() => onClick(RANK.DOUBLES)}
       >
         Đôi
@@ -29,7 +29,7 @@ const GroupBtnRank = ({ active, setActive }) => {
       <div
         className={`${getStyle(
           RANK.SINGLES
-        )} flex justify-center items-center cursor-pointer py-1`}
+        )} flex justify-center items-center cursor-pointer hover:opacity-90 py-1`}
         onClick={() => onClick(RANK.SINGLES)}
       >
         Đơn

@@ -7,7 +7,7 @@ import SelectGroupType from "./SelectGroupType";
 import SelectKindPoint from "./SelectKindPoint";
 
 export type Params = {
-  pointType: any;
+  rankPointId: any;
   groupId: any;
   key: string;
   min: string;
@@ -15,7 +15,7 @@ export type Params = {
 };
 
 const paramsInit = {
-  pointType: DEFAULT_SELECT,
+  rankPointId: DEFAULT_SELECT,
   groupId: DEFAULT_SELECT,
   key: "",
   min: "",

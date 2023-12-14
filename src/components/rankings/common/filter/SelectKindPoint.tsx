@@ -15,13 +15,13 @@ const SelectKindPoint = ({
 
   const onChange = (val: any) => {
     setDataFilter({
-      pointType: val.target.value || DEFAULT_SELECT,
+      rankPointId: val.target.value || DEFAULT_SELECT,
     });
   };
 
   return (
     <Select
-      selectedKeys={[dataFilter.pointType]}
+      selectedKeys={[dataFilter.rankPointId]}
       variant="underlined"
       label="Lọc theo điểm"
       placeholder="Tất cả loại điểm"

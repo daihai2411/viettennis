@@ -29,13 +29,13 @@ const ProfileTab = ({ data, loading }) => {
 
   return (
     <>
-      <div className="h-[60px] flex justify-center bg-[#141414] mb-2 overflow-auto">
+      <div className="h-[60px] block md:flex justify-center bg-[#141414] mb-2 overflow-auto whitespace-nowrap">
         <Tabs
           size="lg"
           variant="underlined"
           classNames={{
             tabList:
-              "gap-10 w-full relative rounded-none p-0 border-b border-divider h-full",
+              "gap-10 w-full relative rounded-none p-0 pt-3 md:pt-0 border-b border-divider h-full px-3",
             cursor: "w-full bg-[#2DA46B]",
             tab: "max-w-fit px-0 h-12 h-full text-[17px] font-bold text-zinc-400",
             tabContent: "group-data-[selected=true]:text-white",

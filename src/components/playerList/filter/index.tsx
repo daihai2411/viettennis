@@ -28,7 +28,7 @@ const Filter = ({
   return (
     <div className="w-full bg-[#E6E6E6] h-[79px]">
       <div className="container mx-auto flex h-full items-center justify-end">
-        <div className="w-fit flex gap-3">
+        <div className="w-fit flex gap-3 pr-2">
           <div className="flex gap-3">
             <InputSearch
               dataFilter={dataFilter}

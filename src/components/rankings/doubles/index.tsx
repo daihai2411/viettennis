@@ -7,7 +7,7 @@ import { DEFAULT_SELECT } from "../useListFilterRankings";
 import { columns, renderCell } from "./constants";
 
 export const paramsInit = {
-  pointType: DEFAULT_SELECT,
+  rankPointId: DEFAULT_SELECT,
   groupId: DEFAULT_SELECT,
   key: "",
   min: "",

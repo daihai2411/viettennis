@@ -7,20 +7,20 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/modal";
-import { FaAngleDown, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 const LayoutTablet = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <div
+      {/* <div
         className="bg-green-common2 py-2 px-3 text-white flex justify-end gap-1 cursor-pointer md:hidden"
         onClick={onOpen}
       >
         <div className="text-[13px] font-extrabold"> Show All Matches</div>
         <FaAngleDown />
-      </div>
+      </div> */}
       <Modal size="full" hideCloseButton isOpen={isOpen} onClose={onClose}>
         <ModalContent>
           {(onClose) => (
