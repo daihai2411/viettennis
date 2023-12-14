@@ -19,7 +19,7 @@ const ItemPlayer = ({ item }) => {
           <div className="absolute top-[50%] left-[50%] w-[40%] -translate-x-1/2 -translate-y-1/2">
             <div className="aspect-square bg-[#e6e6e6] rounded-full ring-2 ring-white object-cover">
               <Image
-                src={item?.avatar || "/player.jpeg"}
+                src={item?.avatar || "/player.png"}
                 alt="Avatar"
                 layout="fill"
                 objectFit="cover"

@@ -24,7 +24,7 @@ const TopRankBottom = () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card
+        {/* <Card
           isBlurred={false}
           shadow="none"
           radius="sm"
@@ -36,7 +36,7 @@ const TopRankBottom = () => {
             listData={topOther}
             loading={loading}
           />
-        </Card>
+        </Card> */}
         <Card
           isBlurred={false}
           shadow="none"

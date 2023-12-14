@@ -17,7 +17,7 @@ const Top1 = ({ tab, data, loading = false }) => {
         <CardHeader className="flex gap-3 justify-between">
           <div className="flex flex-col ml-2">
             <p className="text-neutral-900 text-2xl font-bold">
-              {tab === 1 ? "Đơn" : "Đôi"}
+              {tab === 2 ? "Đơn" : "Đôi"}
             </p>
             <p className="text-green-common text-[64px] mb-[10px] font-black leading-[64px] tracking-[4px]">
               #1

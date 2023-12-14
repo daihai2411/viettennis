@@ -1,4 +1,4 @@
 export const RANK = {
-  SINGLES: 1,
-  DOUBLES: 2,
+  DOUBLES: 1,
+  SINGLES: 2,
 };

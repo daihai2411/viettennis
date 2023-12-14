@@ -1,6 +1,7 @@
 import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
 import { Button, Skeleton } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,9 +9,16 @@ import { ToastError, ToastSuccess } from "../../Toast";
 
 const UploadImage = ({ avatar }) => {
   const pathName = usePathname();
+  const { data: session, update: sessionUpdate } = useSession();
 
   const [avatarState, setAvatarState] = useState(avatar);
   const [loading, setLoading] = useState(false);
+
+  function handleUpdateSession() {
+    sessionUpdate({
+      info: "test",
+    });
+  }
 
   const handleInputChange = async (event) => {
     setLoading(true);
@@ -46,7 +54,7 @@ const UploadImage = ({ avatar }) => {
       >
         <Image
           fill
-          src={avatarState || "/player.jpeg"}
+          src={avatarState || "/player.png"}
           alt="Avatar"
           layout="fill"
           objectFit="cover"

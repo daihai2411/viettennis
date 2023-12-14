@@ -1,6 +1,6 @@
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { AppDispatch } from "@/redux/store";
-import { Card, Divider } from "@nextui-org/react";
+import { Card } from "@nextui-org/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +31,7 @@ const TopRank = () => {
   return (
     <div className="h-[800px] w-full rounded-lg">
       <Image src="/top-rank.png" alt="top rank" height={51} width={358} />
-      <div className="max-w-md mt-3 mb-4">
+      {/* <div className="max-w-md mt-3 mb-4">
         <div className="flex h-5 items-center space-x-4 text-small justify-center">
           <div
             className={`cursor-pointer text-xl font-bold hover:text-green-common ${
@@ -39,7 +39,7 @@ const TopRank = () => {
             }`}
             onClick={() => setTab(1)}
           >
-            Đơn
+            Đôi
           </div>
           <Divider orientation="vertical" className="w-[2px] bg-[#767676]" />
           <div
@@ -48,15 +48,15 @@ const TopRank = () => {
             }`}
             onClick={() => setTab(2)}
           >
-            Đôi
+            Đơn
           </div>
         </div>
-      </div>
+      </div> */}
       <Card
         isBlurred={false}
         shadow="none"
         radius="sm"
-        className="max-w-[400px] border border-[#e6e6e6]"
+        className="max-w-[400px] border border-[#e6e6e6] mt-4"
       >
         <Top1 tab={tab} data={top1} loading={loading} />
         <TableTopRank tab={tab} listData={topOther} loading={loading} />

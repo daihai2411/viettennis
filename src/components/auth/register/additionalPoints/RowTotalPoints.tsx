@@ -18,7 +18,7 @@ const RowTotalPoints = () => {
         <div className="hidden sm:flex items-center text-small justify-center"></div>
         <div className="col-span-8 sm:col-span-7"></div>
         <div className="flex justify-end items-center text-small">100%</div>
-        <div className="flex justify-end items-center text-small">
+        <div className="flex justify-end items-center text-small text-[#0555e4d9]">
           {total.toFixed(2)}
         </div>
       </div>
