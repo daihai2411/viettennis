@@ -71,7 +71,7 @@ export const InputOptItem: React.FC<IProps> = ({
       type="text"
       {...register("opt" + index)}
       ref={inputRef}
-      className="h-12 max-w-[60px] border border-[#d9d9d9] rounded-[4px] outline-none text-center"
+      className="h-10 sm:h-12 w-full border border-[#d9d9d9] rounded-[4px] outline-none text-center"
       value={newValue}
       onChange={onChange}
       onClick={onClick}

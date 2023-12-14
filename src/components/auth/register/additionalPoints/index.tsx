@@ -76,7 +76,7 @@ const AdditionalPoints = () => {
   }, []);
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-[#F2F2F2]">
+    <div className="flex min-h-full flex-col justify-center px-2 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
       {loading ? (
         <Spinner />
       ) : (

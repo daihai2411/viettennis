@@ -49,13 +49,13 @@ const InputPoint = ({
         <div className="hidden sm:flex items-center text-small justify-center">
           {itemInput.id}
         </div>
-        <div className="col-span-5 sm:col-span-4 flex items-center">
+        <div className="col-span-10 sm:col-span-4 flex items-center">
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
             {itemInput.title}
             <div className="text-red-600">*</div>
           </div>
         </div>
-        <div className="col-span-3">
+        <div className="col-span-6 sm:col-span-3">
           <Input
             {...register(itemInput.code)}
             value={value}
@@ -78,6 +78,7 @@ const InputPoint = ({
               setValueForm(itemInput.code, e.target.value);
             }}
             onBlur={onBlur}
+            className="block"
           />
           {errors[itemInput.code] && (
             <p className="text-red-500 text-xs" role="alert">
@@ -85,10 +86,10 @@ const InputPoint = ({
             </p>
           )}
         </div>
-        <div className="flex justify-end items-center text-small">
+        <div className="flex justify-end col-span-2 sm:col-span-1 items-center text-small">
           {itemInput.percent}%
         </div>
-        <div className="flex justify-end items-center text-small">
+        <div className="flex justify-end items-center text-small col-span-2 sm:col-span-1">
           {(value * itemInput.percent) / 100 || "--"}
         </div>
       </div>

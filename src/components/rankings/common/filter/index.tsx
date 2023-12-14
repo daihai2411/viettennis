@@ -46,10 +46,10 @@ const Filter = ({
 
   return (
     <>
-      <div className="w-full bg-[#E6E6E6]  h-[190px] sm:h-[150px] lg:h-[79px]">
+      <div className="w-full bg-[#E6E6E6]  h-[190px] md:h-[150px] lg:h-[79px]">
         <div className="container mx-auto flex h-full items-center justify-between">
           <div className="w-fit m-auto block lg:flex gap-3 sm:gap-5">
-            <div className="block sm:flex gap-3 sm:gap-5 mb-2 lg:mb-0">
+            <div className="block md:flex gap-3 md:gap-5 mb-2 lg:mb-0">
               <div className="flex gap-3 sm:gap-5">
                 <SelectKindPoint
                   dataFilter={dataFilter}

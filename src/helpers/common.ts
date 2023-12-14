@@ -73,8 +73,8 @@ export const getColorCell = (id: number) => {
   const POINT_RED = 2;
 
   if (id === POINT_BLUE) {
-    return "#1D61BC";
+    return "#0555e4d9";
   } else if (id === POINT_RED) {
-    return "#FF0000";
+    return "#d70a0ad9";
   } else return "#000000";
 };

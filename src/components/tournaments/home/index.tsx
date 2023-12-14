@@ -4,7 +4,7 @@ import TableData from "./TableData";
 const TournamentsModule = () => {
   return (
     <div className="mt-3">
-      <DevelopPage />;
+      <DevelopPage />
     </div>
   );
 

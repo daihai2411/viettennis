@@ -57,7 +57,7 @@ export const FormVerify: React.FC<IProps> = ({
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-[#F2F2F2]">
+      <div className="flex min-h-full flex-col justify-center px-2 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
         <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-8 rounded-2xl">
           <div className="flex items-center mb-4 gap-3">
             <FaArrowLeft onClick={onBack} className="cursor-pointer" />

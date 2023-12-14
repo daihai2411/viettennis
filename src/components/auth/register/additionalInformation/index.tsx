@@ -132,7 +132,7 @@ const AdditionalInformation = () => {
   }, [email]);
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-[#F2F2F2]">
+    <div className="flex min-h-full flex-col justify-center px-2 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
       <div className="sm:mx-auto sm:w-full sm:max-w-2xl bg-white p-8 rounded-2xl">
         <div className="flex justify-start mb-4">
           <Image src="/logo.svg" alt="logo" className="h-10" />

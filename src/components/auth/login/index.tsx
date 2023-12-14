@@ -83,7 +83,7 @@ const LoginModule = () => {
   });
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-[#F2F2F2]">
+    <div className="flex min-h-full flex-col justify-center px-4 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
       <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-8 rounded-2xl">
         <div className="flex justify-center mb-11 mt-6">
           <Image src="/logo.svg" alt="logo" />

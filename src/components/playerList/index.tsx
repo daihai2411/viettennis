@@ -50,7 +50,7 @@ const PlayerListModule = () => {
   return (
     <>
       <div className="w-full h-[152.16px] px-4 py-12 mt-3 mb-2 bg-green-common flex-col justify-center items-center">
-        <div className="text-center text-white text-[47.06px] font-bold">
+        <div className="text-center text-white text-4xl sm:text-[47.06px] font-bold">
           Danh sách người chơi
         </div>
       </div>

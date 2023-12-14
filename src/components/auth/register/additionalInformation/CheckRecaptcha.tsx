@@ -12,10 +12,15 @@ const CheckRecaptcha = ({ setValue, errors, clearErrors }) => {
         Xác thực
         <div className="text-red-600">*</div>
       </div>
-      <ReCAPTCHA
-        sitekey={"6Lf6mBMpAAAAACG_TlgS_JpBx4ijA6ttkj0RV_KI"}
-        onChange={onChange}
-      />
+      <div
+        className="captcha scale-75 md:scale-100"
+        style={{ transformOrigin: "0 0" }}
+      >
+        <ReCAPTCHA
+          sitekey={"6Lf6mBMpAAAAACG_TlgS_JpBx4ijA6ttkj0RV_KI"}
+          onChange={onChange}
+        />
+      </div>
       {errors["captcha"] && (
         <p className="text-red-500 text-xs" role="alert">
           {errors["captcha"]?.message as string}

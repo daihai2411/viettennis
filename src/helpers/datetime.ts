@@ -3,7 +3,7 @@ import { EMPTY_VALUE } from "@/const/value";
 import moment from "moment";
 import "moment/locale/vi";
 
-const { en, vi } = languages;
+const { vi } = languages;
 
 export const changeLocaleDateTime = (locale: keyof typeof languages) => {
   moment.locale(locale, {
@@ -16,31 +16,24 @@ export const changeLocaleDateTime = (locale: keyof typeof languages) => {
 
 export const FORMAT = {
   DATE_TIME: {
-    [en]: "DD-MMM-YYYY HH:mm:ss",
     [vi]: "DD-MM-YYYY HH:mm:ss",
   },
   DATE: {
-    [en]: "YYYY-MM-DD",
     [vi]: "YYYY-MM-DD",
   },
   DATE_TIME_TABLE: {
-    [en]: "DD-MMM-YYYY HH:mm",
     [vi]: "DD/MM/YYYY HH:mm",
   },
   HOUR: {
-    [en]: "HH:mm",
     [vi]: "HH:mm",
   },
   DATE_TIME_1: {
-    [en]: "YYYY-MM-DD HH:mm:ss",
     [vi]: "YYYY-MM-DD HH:mm:ss",
   },
   DATE_SLASH: {
-    [en]: "YYYY/MM/DD",
     [vi]: "DD/MM/YYYY",
   },
   YEAR: {
-    [en]: "YYYY",
     [vi]: "YYYY",
   },
 };

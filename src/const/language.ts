@@ -1,7 +1,5 @@
 export const languages = {
-  vi: 'vi',
-  en: 'en',
-}
+  vi: "vi",
+};
 
-export const DEFAULT_LANGUAGE = 'vi'
-export const DEFAULT_LANGUAGE_EN = 'en'
+export const DEFAULT_LANGUAGE = "vi";

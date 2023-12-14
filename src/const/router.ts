@@ -12,7 +12,7 @@ export const ROUTERS = {
   TOURNAMENTS: "/tournaments",
   SCORES: "/scores",
   RANKINGS: {
-    path: "/rankings/singles",
+    path: "/rankings/doubles",
     children: {
       SINGLES: "/rankings/singles",
       DOUBLES: "/rankings/doubles",

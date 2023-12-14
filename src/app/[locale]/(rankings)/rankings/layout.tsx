@@ -15,8 +15,8 @@ export default function RankingsLayout({
     <>
       <SubHeader
         routers={[
-          { key: "1", title: "Xếp hạng đơn", router: "/rankings/singles" },
           { key: "2", title: "Xếp hạng đôi", router: "/rankings/doubles" },
+          { key: "1", title: "Xếp hạng đơn", router: "/rankings/singles" },
           // {
           //   key: "3",
           //   title: "Cuộc đua đơn",

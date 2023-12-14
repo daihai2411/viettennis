@@ -13,7 +13,7 @@ import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export function generateStaticParams() {
-  return [{ locale: "vi" }, { locale: "en" }];
+  return [{ locale: "vi" }];
 }
 
 export const metadata: Metadata = {

@@ -20,7 +20,7 @@ export const InputOpt: React.FC<IProps> = ({ errors, register, setValue }) => {
 
   return (
     <div className="mt-5 w-full">
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-2">
         {genListFollowLength(NUM_INPUT_OPT).map((_, index) => {
           return (
             <InputOptItem

@@ -5,7 +5,6 @@ import { User } from "@nextui-org/react";
 import Link from "next/link";
 
 export const columns = [
-  { name: "Thứ hạng", uid: "id" },
   { name: "Người chơi ", uid: "name" },
   { name: "Khu vực", uid: "group_name" },
   { name: "Tuổi", uid: "year_old" },
@@ -16,12 +15,6 @@ export const columns = [
 export const renderCell = (user: any, columnKey: any) => {
   const cellValue = user[columnKey];
   switch (columnKey) {
-    case "id":
-      return (
-        <div className="text-center flex justify-center text-green-common text-[19px]">
-          --
-        </div>
-      );
     case "name":
       return (
         <Link
