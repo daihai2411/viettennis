@@ -55,7 +55,7 @@ export default function AppHeader({ params }: any) {
         <NavbarContent className="lg:hidden" justify="start">
           <NavbarMenuToggle />
         </NavbarContent>
-        <NavbarBrand>
+        <NavbarBrand className="md:flex justify-center contents">
           <Logo />
         </NavbarBrand>
         <MenuDesktop />

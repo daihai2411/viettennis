@@ -9,7 +9,7 @@ export const columns = [
   { name: "Khu vực", uid: "group_name" },
   { name: "Tuổi", uid: "year_old" },
   { name: "Các giải đấu đã chơi", uid: "tournaments_played" },
-  { name: "Điểm", id: "point_vtr" },
+  { name: "Điểm", id: "point_vtr_solo" },
 ];
 
 export const renderCell = (user: any, columnKey: any) => {
@@ -36,7 +36,7 @@ export const renderCell = (user: any, columnKey: any) => {
           {checkEmptyVal(cellValue)}
         </div>
       );
-    case "point_vtr":
+    case "point_vtr_solo":
       return (
         <div
           style={{ color: getColorCell(user.rank_point_id) }}

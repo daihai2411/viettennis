@@ -4,8 +4,11 @@ import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Link href={ROUTERS.HOME}>
-      <Image src="/logo.svg" alt="logo" />
+    <Link
+      href={ROUTERS.HOME}
+      className="flex justify-center w-full md:mr-0 mr-6"
+    >
+      <Image src="/logo.svg" alt="logo" width={200} />
     </Link>
   );
 };
