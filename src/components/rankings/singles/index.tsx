@@ -6,7 +6,7 @@ import TableData from "../common/table";
 import { columns, renderCell } from "./constants";
 
 export const paramsInit = {
-  pointType: 0,
+  rankPointId: 0,
   groupId: 0,
   key: "",
   min: "",
