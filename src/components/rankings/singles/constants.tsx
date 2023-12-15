@@ -40,7 +40,7 @@ export const renderCell = (user: any, columnKey: any) => {
       return (
         <div
           style={{ color: getColorCell(user.rank_point_id) }}
-          className="text-center flex justify-center font-medium text-lg"
+          className="text-center flex justify-center font-black text-lg"
         >
           {formatVal(cellValue)}
         </div>

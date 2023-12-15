@@ -10,7 +10,7 @@ import {
   ModalHeader,
   Spinner,
 } from "@nextui-org/react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCog } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -34,16 +34,6 @@ const SelectPoint = ({
 
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState(valueDefault);
-
-  const list = useMemo(() => {
-    if (search) {
-      return listPersonalPointDetail.filter(
-        (item) => item.min <= search && search <= item.max
-      );
-    } else {
-      return listPersonalPointDetail;
-    }
-  }, [search, listPersonalPointDetail]);
 
   const onChange = (e) => {
     setSearch(e.target?.value);
@@ -113,8 +103,8 @@ const SelectPoint = ({
                   <div className="">
                     {loading ? (
                       <Spinner className="w-full m-auto" />
-                    ) : list.length ? (
-                      list.map((item, index) => (
+                    ) : listPersonalPointDetail.length ? (
+                      listPersonalPointDetail.map((item, index) => (
                         <div
                           key={index}
                           className="text-sm flex gap-2 justify-between py-2"
