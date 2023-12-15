@@ -2,31 +2,30 @@ import { ROUTERS } from "@/const/router";
 import { checkEmptyVal } from "@/helpers/value";
 import { Skeleton } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 
 const Overview = ({ data, loading }) => {
   const pathName = usePathname();
 
-  const listInfo = [
-    { title: "Số điện thoại", value: data?.phone, key: "phone" },
-    { title: "Địa chỉ email", value: data?.email, key: "email" },
-    { title: "Cân nặng", value: data?.weight, key: "weight" },
-    {
-      title: "Hãng giày tennis bạn đi",
-      value: data?.shoes_brand,
-      key: "shoes_brand",
-    },
-    {
-      title: "Hãng đồ thể thao bạn mặc",
-      value: data?.clothes_brand,
-      key: "clothes_brand",
-    },
-  ];
+  const getData = (val) => {
+    return pathName === ROUTERS.PERSONAL_INFO ? val : "**********";
+  };
 
   const listInfoPersonal = [
-    { title: "Số điện thoại", value: data?.phone, key: "phone" },
-    { title: "Địa chỉ email", value: data?.email, key: "email" },
-    { title: "Cân nặng", value: data?.weight, key: "weight" },
+    { title: "Số điện thoại", value: getData(data?.phone), key: "phone" },
+    { title: "Địa chỉ email", value: getData(data?.email), key: "email" },
+    {
+      title: "Nơi sinh",
+      value: data?.address
+        ? [
+            data?.address,
+            data?.ward_name,
+            data?.district_name,
+            data?.province_name,
+          ].join(", ")
+        : "--",
+      key: "address",
+    },
+    { title: "Sở trường", value: data?.back_hand, key: "back_hand" },
     {
       title: "Hãng giày tennis bạn đi",
       value: data?.shoes_brand,
@@ -37,25 +36,22 @@ const Overview = ({ data, loading }) => {
       value: data?.clothes_brand,
       key: "clothes_brand",
     },
-    { title: "CMT/CCCD", value: data?.identify_id, key: "identify_id" },
+    {
+      title: "CMT/CCCD",
+      value: getData(data?.identify_id),
+      key: "identify_id",
+    },
     {
       title: "Ngày cấp",
-      value: data?.identify_date,
+      value: getData(data?.identify_date),
       key: "identify_date",
     },
     {
       title: "Nơi cấp",
-      value: data?.identify_address,
+      value: getData(data?.identify_address),
       key: "identify_address",
     },
   ];
-
-  const getListData = useMemo(() => {
-    if (pathName === ROUTERS.PERSONAL_INFO) {
-      return listInfoPersonal;
-    }
-    return listInfo;
-  }, [data]);
 
   return (
     <>
@@ -72,15 +68,15 @@ const Overview = ({ data, loading }) => {
               className="mt-6 border-t border-gray-100"
             >
               <dl className="divide-y divide-gray-100">
-                {getListData.map((item) => (
+                {listInfoPersonal.map((item) => (
                   <div
                     key={item.key}
                     className="px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-0"
                   >
-                    <dt className="text-sm font-medium leading-6 text-gray-900">
+                    <dt className="text-lg font-medium leading-6 text-gray-900">
                       {item?.title}
                     </dt>
-                    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:mt-0 flex justify-end">
+                    <dd className="mt-1 text-lg leading-6 text-gray-700 sm:mt-0 flex justify-end">
                       {checkEmptyVal(item.value)}
                     </dd>
                   </div>
@@ -106,10 +102,10 @@ const Overview = ({ data, loading }) => {
                         key={item?.code}
                         className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
                       >
-                        <dt className="text-sm font-medium leading-6 col-span-2 text-gray-900">
+                        <dt className="text-lg font-medium leading-6 col-span-2 text-gray-900">
                           {item?.title}
                         </dt>
-                        <dd className="mt-1 text-sm leading-6 text-gray-700 flex justify-end sm:mt-0">
+                        <dd className="mt-1 text-lg leading-6 text-gray-700 flex justify-end sm:mt-0">
                           {checkEmptyVal(item?.point)}
                         </dd>
                       </div>

@@ -17,72 +17,43 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
           @{checkEmptyVal(data?.username)}
         </Skeleton>
         <>
-          <div className="flex gap-6">
-            <Skeleton isLoaded={!loading} className="">
-              <div className="mb-1 text-base md:text-lg font-medium">
-                Chiều cao
-              </div>
-              <div className="mb-2 text-2xl md:text-3xl font-extrabold">
+          <div className="flex gap-10">
+            <div className="">
+              <div className="text-base md:text-lg font-medium">Chiều cao</div>
+              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
                 {data?.height ? data?.height + "cm" : "--"}
               </div>
-
-              <div className="mb-1 text-base md:text-lg font-medium">
-                Sở trường
+              <div className="text-base md:text-lg font-medium">Cân nặng</div>
+              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
+                {data?.weight ? data?.weight + "kg" : "--"}
               </div>
-              <div className="font-medium text-[13px]">
-                {checkEmptyVal(data?.back_hand)}
+              <div className="text-base md:text-lg font-medium">Giới tính</div>
+              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
+                {checkEmptyVal(data?.gender)}
               </div>
-
-              <div className="mb-1 mt-4 text-lg font-medium">
+            </div>
+            <div>
+              <div className="text-lg font-medium whitespace-nowrap">
                 Chơi tennis từ năm
               </div>
-              <div className="font-medium text-[13px]">
+              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
                 {checkEmptyVal(data?.play_since)}
               </div>
-            </Skeleton>
-            <Skeleton isLoaded={!loading}>
-              <div className="mb-1 text-base md:text-lg font-medium">
+              <div className="text-lg font-medium whitespace-nowrap">
                 Ngày sinh
               </div>
-              <div className="mb-2 text-2xl md:text-3xl font-extrabold">
+              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
                 {checkEmptyVal(data?.dob)}
               </div>
-
-              <div className="mb-1 text-base md:text-lg font-medium">
-                Nơi sinh
-              </div>
-              <div className="font-medium text-[13px]">
-                {data?.address
-                  ? [
-                      data?.address,
-                      data?.ward_name,
-                      data?.district_name,
-                      data?.province_name,
-                    ].join(", ")
-                  : "--"}
-              </div>
-              <div className="mb-1 mt-4 text-lg font-medium">
+              <div className="text-lg font-medium whitespace-nowrap">
                 Thông số kỹ thuật vợt
               </div>
-              <div className="font-medium text-[13px]">
+              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
                 {checkEmptyVal(data?.racket_specs)}
               </div>
-            </Skeleton>
+            </div>
           </div>
         </>
-        {/* <div className="mt-[29px] text-lg font-bold leading-[17.10px] mb-2">
-          Huấn luyện viên tại
-        </div>
-        <div className="w-[166.96px] bg-white h-11 px-3 py-3 flex-col justify-start items-start inline-flex">
-          <div className="flex">
-            <span className="text-neutral-500 text-lg font-black uppercase leading-tight">
-              Anton{" "}
-            </span>
-            <span className="text-black text-lg font-black uppercase leading-tight">
-              Dubrov
-            </span>
-          </div>
-        </div> */}
       </div>
     </div>
   );

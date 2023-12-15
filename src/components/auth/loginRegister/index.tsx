@@ -14,7 +14,7 @@ import Link from "next/link";
 
 const LoginRegister = () => {
   const { status, data: session }: any = useSession();
-  const { dataProfile } = useUserProfile(false);
+  const { dataProfile } = useUserProfile();
 
   if (status === "authenticated") {
     return (

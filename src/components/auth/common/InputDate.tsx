@@ -115,7 +115,7 @@ const InputDate = ({
           </div>
         )}
         className="form-control"
-        wrapperClassName="!block !h-[75px]"
+        wrapperClassName="!block"
         dateFormat="dd/MM/yyyy"
         selected={startDate}
         onChange={onChange}

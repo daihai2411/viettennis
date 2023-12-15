@@ -35,7 +35,6 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
         keyInput="gender"
         errors={errors}
         setValue={setValue}
-        defaultValue="1"
       />
       <RadioCustom
         className="mb-5"

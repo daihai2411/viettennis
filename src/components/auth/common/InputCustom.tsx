@@ -42,7 +42,7 @@ const InputCustom = ({
   };
 
   return (
-    <div className={className || "mb-3"}>
+    <div className={className || "mb-4"}>
       {label && required ? (
         <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
           {label}

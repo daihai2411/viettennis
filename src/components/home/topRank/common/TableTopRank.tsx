@@ -47,7 +47,10 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
                   <td className="">
                     <User
                       name={
-                        <div className="line-clamp-2 hover:underline hover:text-green-common">
+                        <div
+                          title={item?.name}
+                          className="line-clamp-1 hover:underline hover:text-green-common"
+                        >
                           {item?.name}
                         </div>
                       }
