@@ -1,5 +1,4 @@
 import InputCustom from "../../common/InputCustom";
-import InputYear from "../../common/InputYear";
 import RadioCustom from "../../common/RadioCustom";
 
 const InfoAdvenced = ({ register, errors, setValue }) => {
@@ -21,7 +20,22 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
         keyInput="weight"
         type="number"
       />
-
+      <RadioCustom
+        className="mb-5"
+        labelRadio={
+          <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
+            Giới tính
+            <div className="text-red-600">*</div>
+          </div>
+        }
+        list={[
+          { label: "Nam", value: "0" },
+          { label: "Nữ", value: "1" },
+        ]}
+        keyInput="gender"
+        errors={errors}
+        setValue={setValue}
+      />
       <RadioCustom
         className="mb-5"
         labelRadio={
@@ -37,28 +51,6 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
         keyInput="backHand"
         errors={errors}
         setValue={setValue}
-      />
-      <InputYear
-        label="Bắt đầu chơi tennis từ năm nào?"
-        register={register}
-        errors={errors}
-        placeholder="Điền chính xác số năm. Vd: 2000, 2012, 2011"
-        keyInput="playSince"
-        setValue={setValue}
-      />
-      <InputCustom
-        label="Thông số kỹ thuật của vợt"
-        register={register}
-        errors={errors}
-        placeholder="Nhập độ nặng, mặt vợt, độ rung đầu vợt"
-        keyInput="racketSpecs"
-      />
-      <InputCustom
-        label="Giày tennis đang đi của hãng nào?"
-        register={register}
-        errors={errors}
-        placeholder="Giày tennis đang đi của hãng nào?"
-        keyInput="shoesBrand"
       />
     </>
   );

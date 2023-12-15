@@ -32,7 +32,7 @@ const InfoBasic = ({ register, errors, setValue, clearErrors }) => {
       <InputDate
         label={
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
-            Sinh ngày
+            Ngày sinh
             <div className="text-red-600">*</div>
           </div>
         }

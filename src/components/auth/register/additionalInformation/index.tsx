@@ -15,12 +15,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import InputCustom from "../../common/InputCustom";
+import InputYear from "../../common/InputYear";
 import { steps } from "../../constants";
 import { schemaAdditionInformation } from "../../schema";
 import { changeStep, selectEmail, selectPhoneNumber } from "../../store/slice";
 import Address from "./Address";
 import CheckRecaptcha from "./CheckRecaptcha";
-import IdentifyCard from "./IdentifyCard";
 import InfoAdvenced from "./InfoAdvenced";
 import InfoBasic from "./InfoBasic";
 import TermAndPolicy from "./TermAndPolicy";
@@ -45,6 +45,7 @@ interface IFormInput {
   district: string | number;
   ward: string | number;
   captcha: string | undefined;
+  gender: string;
 }
 
 const schemaValidation = () => Yup.object().shape(schemaAdditionInformation);
@@ -156,6 +157,28 @@ const AdditionalInformation = () => {
               />
             </div>
             <div className="w-full">
+              <InputYear
+                label="Bắt đầu chơi tennis từ năm nào?"
+                register={register}
+                errors={errors}
+                placeholder="Điền chính xác số năm. Vd: 2000, 2012, 2011"
+                keyInput="playSince"
+                setValue={setValue}
+              />
+              <InputCustom
+                label="Thông số kỹ thuật của vợt"
+                register={register}
+                errors={errors}
+                placeholder="Nhập độ nặng, mặt vợt, độ rung đầu vợt"
+                keyInput="racketSpecs"
+              />
+              <InputCustom
+                label="Giày tennis đang đi của hãng nào?"
+                register={register}
+                errors={errors}
+                placeholder="Giày tennis đang đi của hãng nào?"
+                keyInput="shoesBrand"
+              />
               <InputCustom
                 label="Đang mặc đồ thể thao của hãng nào?"
                 register={register}
@@ -170,12 +193,12 @@ const AdditionalInformation = () => {
                 setValue={setValue}
                 clearErrors={clearErrors}
               />
-              <IdentifyCard
+              {/* <IdentifyCard
                 register={register}
                 errors={errors}
                 setValue={setValue}
                 clearErrors={clearErrors}
-              />
+              /> */}
               <CheckRecaptcha
                 setValue={setValue}
                 errors={errors}

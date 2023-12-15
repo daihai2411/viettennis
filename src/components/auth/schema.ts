@@ -162,22 +162,25 @@ export const schemaAdditionInformation = {
   province: Yup.string().required(
     getMessSchema({ type: "MS_01", fieldName: "Xã/Phường" })
   ),
-  identifyId: Yup.string()
-    .required(getMessSchema({ type: "MS_01", fieldName: "Số CCCD" }))
-    .length(
-      12,
-      getMessSchema({
-        type: "MS_03_02",
-        fieldName: "số CCCD",
-        length: 12,
-      })
-    ),
-  identifyDate: Yup.string().required(
-    getMessSchema({ type: "MS_01", fieldName: "Ngày cấp" })
-  ),
-  identifyAddress: Yup.string().required(
-    getMessSchema({ type: "MS_01", fieldName: "Nơi cấp" })
-  ),
+  gender: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Giới tính" }))
+    .nullable(),
+  // identifyId: Yup.string()
+  //   .required(getMessSchema({ type: "MS_01", fieldName: "Số CCCD" }))
+  //   .length(
+  //     12,
+  //     getMessSchema({
+  //       type: "MS_03_02",
+  //       fieldName: "số CCCD",
+  //       length: 12,
+  //     })
+  //   ),
+  // identifyDate: Yup.string().required(
+  //   getMessSchema({ type: "MS_01", fieldName: "Ngày cấp" })
+  // ),
+  // identifyAddress: Yup.string().required(
+  //   getMessSchema({ type: "MS_01", fieldName: "Nơi cấp" })
+  // ),
   termAndPolicy: Yup.bool()
     .required(
       getMessSchema({

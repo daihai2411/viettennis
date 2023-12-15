@@ -7,6 +7,7 @@ const RadioCustom = ({
   keyInput,
   errors,
   setValue,
+  defaultValue = "",
 }) => {
   const setSelected = (val) => {
     setValue(keyInput, val);
@@ -14,7 +15,11 @@ const RadioCustom = ({
 
   return (
     <div className={className}>
-      <RadioGroup label={labelRadio} onValueChange={setSelected}>
+      <RadioGroup
+        label={labelRadio}
+        onValueChange={setSelected}
+        defaultValue={defaultValue}
+      >
         {list.map((item: { label: string; value: string }) => (
           <Radio key={item.value} value={item.value}>
             {item.label}
