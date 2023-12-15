@@ -100,7 +100,7 @@ const TableData = () => {
   };
 
   return (
-    <div>
+    <div className="px-2">
       <Table
         selectionMode="single"
         classNames={classNames}

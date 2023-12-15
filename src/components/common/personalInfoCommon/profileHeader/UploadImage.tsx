@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ToastError, ToastSuccess } from "../../Toast";
-import { getProfileThunk } from "../../hooks/store/thunk";
+import { changeAvatarProfile } from "../../hooks/store/slice";
 
 const UploadImage = ({ avatar }) => {
   const pathName = usePathname();
@@ -22,8 +22,8 @@ const UploadImage = ({ avatar }) => {
       const res = (await profileService.updateAvatar({
         avatar: event.target.files[0],
       })) as any;
-      setAvatarState(URL.createObjectURL(event.target.files[0]));
-      dispatch(getProfileThunk({}));
+      dispatch(changeAvatarProfile(res.data?.data));
+      setAvatarState(res.data?.data);
       setLoading(false);
       ToastSuccess(res?.message);
     } catch (error: any) {

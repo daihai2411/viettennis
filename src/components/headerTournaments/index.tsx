@@ -43,7 +43,7 @@ const HeaderTournaments: React.FC<IProps> = ({ routers }) => {
           <div className="text-xs font-bold mt-4">Sep 11 - Sep 17, 2023</div>
         </div>
       </div>
-      <div className="h-[60px] flex justify-center bg-[#141414] mb-2">
+      <div className="h-[60px] flex justify-start sm:justify-center bg-[#141414] mb-2 whitespace-nowrap overflow-auto">
         {routers.map((item) => (
           <Link key={item.key} href={item.router}>
             <div

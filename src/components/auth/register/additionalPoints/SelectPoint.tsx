@@ -85,12 +85,14 @@ const SelectPoint = ({
         size="4xl"
         isOpen={isOpen}
         onOpenChange={(open) => setIsOpen(open)}
+        scrollBehavior={"outside"}
       >
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Người chơi tham khảo, khoảng điểm
+                {titleInput +
+                  " - tham khảo điểm số của những người chơi dưới đây:"}
               </ModalHeader>
               <ModalBody>
                 <div className="px-1 w-full">
@@ -104,11 +106,11 @@ const SelectPoint = ({
                       onChange={onChange}
                     />
                   </div>
-                  <p className="text-base font-medium mt-4 text-foreground">
-                    {titleInput +
-                      " - tham khảo điểm số của những người chơi dưới đây:"}
-                  </p>
-                  <div className="mt-2">
+                  <div className="flex mt-2 gap-2 justify-between py-2 text-base font-medium text-foreground">
+                    Người chơi tham khảo
+                    <div className="whitespace-nowrap">Khoảng điểm</div>
+                  </div>
+                  <div className="">
                     {loading ? (
                       <Spinner className="w-full m-auto" />
                     ) : list.length ? (
