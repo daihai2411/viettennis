@@ -1,4 +1,6 @@
+import { Tooltip } from "@nextui-org/react";
 import { useMemo } from "react";
+import { FaInfoCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { selectObjPoints } from "../../store/slice";
 
@@ -15,13 +17,28 @@ const RowTotalPoints = () => {
   return (
     <div className="mb-6">
       <div className="grid grid-cols-10 gap-4">
-        <div className="hidden sm:flex items-center text-small justify-center"></div>
-        <div className="col-span-10 sm:col-span-4 flex items-center"></div>
-        <div className="col-span-6 sm:col-span-3"></div>
-        <div className="flex justify-end items-center col-span-2 sm:col-span-1 text-small">
-          100%
+        <div className="flex justify-end items-center"></div>
+        <div className="col-span-4 sm:col-span-5">
+          <div className="text-base flex items-center gap-1">
+            Điểm xanh
+            <Tooltip
+              content={
+                <div>
+                  Điểm xanh sẽ được cập nhật lên điểm đỏ <br /> sau các giải đấu
+                </div>
+              }
+            >
+              <div className="">
+                <FaInfoCircle
+                  size={12}
+                  className="text-default-700 cursor-pointer"
+                />
+              </div>
+            </Tooltip>
+          </div>
         </div>
-        <div className="flex justify-end items-center col-span-2 sm:col-span-1 text-small text-[#0555e4d9]">
+
+        <div className="flex justify-end items-center col-span-6 sm:col-span-4 text-2xl font-black text-[#0555e4d9]">
           {total.toFixed(2)}
         </div>
       </div>

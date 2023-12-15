@@ -49,13 +49,13 @@ const InputPoint = ({
         <div className="hidden sm:flex items-center text-small justify-center">
           {itemInput.id}
         </div>
-        <div className="col-span-10 sm:col-span-4 flex items-center">
+        <div className="col-span-10 sm:col-span-5 flex items-center">
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
             {itemInput.title}
             <div className="text-red-600">*</div>
           </div>
         </div>
-        <div className="col-span-6 sm:col-span-3">
+        <div className="col-span-10 sm:col-span-4">
           <Input
             {...register(itemInput.code)}
             value={value}
@@ -85,12 +85,6 @@ const InputPoint = ({
               {errors[itemInput.code]?.message as string}
             </p>
           )}
-        </div>
-        <div className="flex justify-end col-span-2 sm:col-span-1 items-center text-small">
-          {itemInput.percent}%
-        </div>
-        <div className="flex justify-end items-center text-small col-span-2 sm:col-span-1">
-          {(value * itemInput.percent) / 100 || "--"}
         </div>
       </div>
     </div>
