@@ -2,29 +2,22 @@ import { ROUTERS } from "@/const/router";
 import { checkEmptyVal } from "@/helpers/value";
 import { Skeleton } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
+import useUserProfile from "../../hooks/useUserProfile";
 
 const Overview = ({ data, loading }) => {
   const pathName = usePathname();
+  const { dataProfile } = useUserProfile(true);
 
   const getData = (val) => {
-    return pathName === ROUTERS.PERSONAL_INFO ? val : "**********";
+    return pathName === ROUTERS.PERSONAL_INFO ||
+      (dataProfile?.id && dataProfile?.id === data?.id)
+      ? val
+      : "**********";
   };
 
   const listInfoPersonal = [
     { title: "Số điện thoại", value: getData(data?.phone), key: "phone" },
     { title: "Địa chỉ email", value: getData(data?.email), key: "email" },
-    {
-      title: "Nơi sinh",
-      value: data?.address
-        ? [
-            data?.address,
-            data?.ward_name,
-            data?.district_name,
-            data?.province_name,
-          ].join(", ")
-        : "--",
-      key: "address",
-    },
     { title: "Sở trường", value: data?.back_hand, key: "back_hand" },
     {
       title: "Hãng giày tennis bạn đi",
@@ -50,6 +43,18 @@ const Overview = ({ data, loading }) => {
       title: "Nơi cấp",
       value: getData(data?.identify_address),
       key: "identify_address",
+    },
+    {
+      title: "Nơi sinh",
+      value: data?.address
+        ? [
+            data?.address,
+            data?.ward_name,
+            data?.district_name,
+            data?.province_name,
+          ].join(", ")
+        : "--",
+      key: "address",
     },
   ];
 

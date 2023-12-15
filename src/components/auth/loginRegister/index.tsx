@@ -11,10 +11,16 @@ import {
 import { User } from "@nextui-org/user";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const LoginRegister = () => {
+  const router = useRouter();
   const { status, data: session }: any = useSession();
   const { dataProfile } = useUserProfile();
+
+  const onClick = (r: string) => {
+    router.push(r);
+  };
 
   if (status === "authenticated") {
     return (
@@ -39,8 +45,11 @@ const LoginRegister = () => {
               @{dataProfile?.username || session?.user?.username}
             </p>
           </DropdownItem>
-          <DropdownItem key="settings">
-            <Link href={ROUTERS.PERSONAL_INFO}>Thông tin tài khoản</Link>
+          <DropdownItem
+            key="settings"
+            onClick={() => onClick(ROUTERS.PERSONAL_INFO)}
+          >
+            <div>Thông tin tài khoản</div>
           </DropdownItem>
           <DropdownItem
             key="logout"
