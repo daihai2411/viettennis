@@ -1,24 +1,20 @@
 import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
+import { AppDispatch } from "@/redux/store";
 import { Button, Skeleton } from "@nextui-org/react";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ToastError, ToastSuccess } from "../../Toast";
+import { getProfileThunk } from "../../hooks/store/thunk";
 
 const UploadImage = ({ avatar }) => {
   const pathName = usePathname();
-  const { data: session, update: sessionUpdate } = useSession();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [avatarState, setAvatarState] = useState(avatar);
   const [loading, setLoading] = useState(false);
-
-  function handleUpdateSession() {
-    sessionUpdate({
-      info: "test",
-    });
-  }
 
   const handleInputChange = async (event) => {
     setLoading(true);
@@ -27,7 +23,7 @@ const UploadImage = ({ avatar }) => {
         avatar: event.target.files[0],
       })) as any;
       setAvatarState(URL.createObjectURL(event.target.files[0]));
-
+      dispatch(getProfileThunk({}));
       setLoading(false);
       ToastSuccess(res?.message);
     } catch (error: any) {

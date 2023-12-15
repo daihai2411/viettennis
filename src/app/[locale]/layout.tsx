@@ -39,8 +39,10 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning={true}>
       <body className={inter.className} suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <AppHeader params={locale} />
-          <Providers>{children}</Providers>
+          <Providers>
+            <AppHeader params={locale} />
+            {children}
+          </Providers>
           <AppFooter />
           <ToastContainer autoClose={2000} />
           <ScrollToTop />

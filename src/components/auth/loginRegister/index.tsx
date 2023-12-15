@@ -1,5 +1,6 @@
 "use client";
 
+import useUserProfile from "@/components/common/hooks/useUserProfile";
 import { ROUTERS } from "@/const/router";
 import {
   Dropdown,
@@ -13,6 +14,7 @@ import Link from "next/link";
 
 const LoginRegister = () => {
   const { status, data: session }: any = useSession();
+  const { dataProfile } = useUserProfile(false);
 
   if (status === "authenticated") {
     return (
@@ -22,18 +24,19 @@ const LoginRegister = () => {
             as="button"
             avatarProps={{
               isBordered: false,
-              src: session?.user?.image || session?.user?.avatar || "",
+              src:
+                dataProfile?.avatar || session?.user?.avatar || "/player.png",
             }}
             className="transition-transform"
-            description={session?.user?.email || session?.user?.phone}
-            name={session?.user?.name || session?.user?.username}
+            description={dataProfile?.email || session?.user?.email}
+            name={dataProfile?.full_name || session?.user?.username}
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
             <p className="font-bold">Bạn đang đăng nhập bằng</p>
             <p className="font-bold">
-              {session?.user?.email || "@" + session?.user?.username}
+              @{dataProfile?.username || session?.user?.username}
             </p>
           </DropdownItem>
           <DropdownItem key="settings">
@@ -42,7 +45,12 @@ const LoginRegister = () => {
           <DropdownItem
             key="logout"
             color="danger"
-            onClick={() => signOut({ redirect: true, callbackUrl: "/" })}
+            onClick={() =>
+              signOut({
+                redirect: true,
+                callbackUrl: ROUTERS.AUTH.children.LOGIN,
+              })
+            }
           >
             Đăng xuất
           </DropdownItem>

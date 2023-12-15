@@ -4,14 +4,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getProfileThunk } from "./thunk";
 
 const initialState = {
-  dataProfile: {},
+  dataProfile: {} as any,
   isLoadingProfile: false,
 };
 
 export const slice = createSlice({
   name: "components/common",
   initialState,
-  reducers: {},
+  reducers: {
+    changeAvatarProfile: (state, action) => {
+      state.dataProfile.avatar = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(getProfileThunk.pending, (state) => {
       state.isLoadingProfile = true;
@@ -28,7 +32,7 @@ export const slice = createSlice({
 
 reducerRegistry.register(slice.name, slice.reducer);
 
-export const {} = slice.actions;
+export const { changeAvatarProfile } = slice.actions;
 
 export const selectProfile = (state: RootState) =>
   state[slice.name]?.dataProfile;
