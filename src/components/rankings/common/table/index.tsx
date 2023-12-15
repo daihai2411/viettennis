@@ -84,7 +84,6 @@ const TableData = ({
         "group-data-[last=true]:last:before:rounded-none",
       ],
       base: "max-h-[600px] overflow-hidden",
-      table: "min-h-[400px]",
     }),
     []
   );

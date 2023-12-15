@@ -1,6 +1,5 @@
 import { checkEmptyVal } from "@/helpers/value";
 import { Skeleton } from "@nextui-org/react";
-import { BACK_HAND } from "../constants";
 
 const ProfileHeaderRight = ({ data, loading = true }) => {
   return (
@@ -31,13 +30,7 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
                 Sở trường
               </div>
               <div className="font-medium text-[13px]">
-                {!data?.back_hand
-                  ? "--"
-                  : Number(data?.back_hand) === BACK_HAND.SINGER
-                  ? "Đấu đơn"
-                  : Number(data?.back_hand) === BACK_HAND.DOUBLE
-                  ? "Đấu đôi"
-                  : "Đấu đơn và đấu đôi"}
+                {checkEmptyVal(data?.back_hand)}
               </div>
 
               <div className="mb-1 mt-4 text-lg font-medium">
