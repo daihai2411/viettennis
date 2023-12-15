@@ -85,7 +85,7 @@ const SelectPoint = ({
         size="4xl"
         isOpen={isOpen}
         onOpenChange={(open) => setIsOpen(open)}
-        scrollBehavior={"outside"}
+        scrollBehavior={"inside"}
       >
         <ModalContent>
           {(onClose) => (

@@ -18,9 +18,9 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
           <table className={style.tablePoint}>
             <thead>
               <tr>
-                <th className="pb-2">
+                {/* <th className="pb-2">
                   <div className="flex">Thứ hạng</div>
-                </th>
+                </th> */}
                 <th className="pb-2">
                   <div className="flex pl-10">Người chơi</div>
                 </th>
@@ -34,7 +34,7 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
                   className="border-b-1 border-[#E6E6E6] cursor-pointer"
                   onClick={() => redirect(item?.id)}
                 >
-                  <td>
+                  {/* <td>
                     <div className="flex items-center gap-3">
                       <div className="text-xl text-green-common font-black">
                         {index + 2}
@@ -43,7 +43,7 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
                         -
                       </div>
                     </div>
-                  </td>
+                  </td> */}
                   <td className="">
                     <User
                       name={
