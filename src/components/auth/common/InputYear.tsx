@@ -17,7 +17,9 @@ const InputYear = ({
   // eslint-disable-next-line react/display-name
   const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref) => (
     <div className={"mb-4"}>
-      <div className="text-small font-medium text-foreground">{label}</div>
+      <div className="text-small font-medium text-foreground pb-1.5">
+        {label}
+      </div>
       <Input
         ref={ref}
         value={value}
