@@ -33,22 +33,25 @@ const ProfileHeaderRight = ({ data, loading = true }) => {
               </div>
             </div>
             <div>
-              <div className="text-lg font-medium whitespace-nowrap">
+              <div className="text-base md:text-lg font-medium whitespace-nowrap">
                 Chơi tennis từ năm
               </div>
               <div className="mb-4 text-2xl md:text-3xl font-extrabold">
                 {checkEmptyVal(data?.play_since)}
               </div>
-              <div className="text-lg font-medium whitespace-nowrap">
+              <div className="text-base md:text-lg font-medium whitespace-nowrap">
                 Ngày sinh
               </div>
               <div className="mb-4 text-2xl md:text-3xl font-extrabold">
                 {checkEmptyVal(data?.dob)}
               </div>
-              <div className="text-lg font-medium whitespace-nowrap">
+              <div className="text-base md:text-lg font-medium whitespace-nowrap">
                 Thông số kỹ thuật vợt
               </div>
-              <div className="mb-4 text-2xl md:text-3xl font-extrabold">
+              <div
+                title={data?.racket_specs}
+                className="mb-4 text-2xl line-clamp-2 md:text-3xl font-extrabold"
+              >
                 {checkEmptyVal(data?.racket_specs)}
               </div>
             </div>

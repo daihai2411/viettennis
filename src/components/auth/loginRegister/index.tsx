@@ -34,7 +34,7 @@ const LoginRegister = () => {
                 dataProfile?.avatar || session?.user?.avatar || "/player.png",
             }}
             className="transition-transform"
-            description={dataProfile?.email || session?.user?.email}
+            description={dataProfile?.username || session?.user?.username}
             name={dataProfile?.full_name || session?.user?.username}
           />
         </DropdownTrigger>

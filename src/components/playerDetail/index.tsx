@@ -4,7 +4,7 @@ import { AppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PersonalInfoCommon from "../common/personalInfoCommon";
-import { selectData, selectLoading } from "./store/slice";
+import { resetState, selectData, selectLoading } from "./store/slice";
 import { getProfileByIdThunk } from "./store/thunk";
 
 const PlayerDetailModule = ({ playerId }) => {
@@ -18,6 +18,12 @@ const PlayerDetailModule = ({ playerId }) => {
       dispatch(getProfileByIdThunk({ id: playerId }));
     }
   }, [playerId]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetState());
+    };
+  }, []);
 
   return <PersonalInfoCommon data={data} loading={loading} />;
 };

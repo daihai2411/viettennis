@@ -11,7 +11,11 @@ const initialState = {
 export const slice = createSlice({
   name: "playerDetail",
   initialState,
-  reducers: {},
+  reducers: {
+    resetState: (state) => {
+      (state.data = {}), (state.loading = true);
+    },
+  },
   extraReducers(builder) {
     builder.addCase(getProfileByIdThunk.pending, (state) => {
       state.loading = true;
@@ -29,7 +33,7 @@ export const slice = createSlice({
 
 reducerRegistry.register(slice.name, slice.reducer);
 
-export const {} = slice.actions;
+export const { resetState } = slice.actions;
 
 export const selectData = (state: RootState) => state[slice.name]?.data;
 export const selectLoading = (state: RootState) => state[slice.name]?.loading;
