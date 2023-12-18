@@ -7,11 +7,11 @@ import { columns, renderCell } from "./constants";
 
 export const paramsInit = {
   rankPointId: 0,
-  groupId: 0,
+  rankGroupId: 0,
   key: "",
   min: "",
   max: "",
-  pointId: 1,
+  pointType: 1,
 };
 
 const RankingSingles = () => {

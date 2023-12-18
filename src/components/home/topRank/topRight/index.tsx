@@ -22,7 +22,7 @@ const TopRank = () => {
       getListRankPointThunk(
         convertCamelCaseToLine({
           paginate: 5,
-          pointId: tab, //point id
+          pointType: tab, //point id
         })
       )
     );

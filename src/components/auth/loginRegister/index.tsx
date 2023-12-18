@@ -34,8 +34,8 @@ const LoginRegister = () => {
                 dataProfile?.avatar || session?.user?.avatar || "/player.png",
             }}
             className="transition-transform"
-            description={dataProfile?.username || session?.user?.username}
-            name={dataProfile?.full_name || session?.user?.username}
+            description={dataProfile?.full_name || session?.user?.username}
+            name={dataProfile?.username || session?.user?.username}
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">

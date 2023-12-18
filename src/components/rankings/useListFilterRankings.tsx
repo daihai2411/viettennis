@@ -48,7 +48,7 @@ const useListFilterRankings = () => {
     loading,
     listPointType,
     listGroup,
-    sort: dataFilter.sort || [],
+    sortBy: dataFilter.sortBy || [],
   };
 };
 

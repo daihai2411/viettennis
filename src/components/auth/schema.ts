@@ -150,9 +150,7 @@ export const schemaAdditionInformation = {
   racketSpecs: Yup.string().nullable(),
   shoesBrand: Yup.string().nullable(),
   clothesBrand: Yup.string().nullable(),
-  address: Yup.string().required(
-    getMessSchema({ type: "MS_01", fieldName: "Địa chỉ" })
-  ),
+  address: Yup.string().nullable(),
   ward: Yup.string().required(
     getMessSchema({ type: "MS_01", fieldName: "Tỉnh/Thành phố" })
   ),

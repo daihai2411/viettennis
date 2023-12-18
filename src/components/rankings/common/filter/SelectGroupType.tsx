@@ -15,13 +15,13 @@ const SelectGroupType = ({
 
   const onChange = (val: any) => {
     setDataFilter({
-      groupId: val.target.value || DEFAULT_SELECT,
+      rankGroupId: val.target.value || DEFAULT_SELECT,
     });
   };
 
   return (
     <Select
-      selectedKeys={[dataFilter.groupId]}
+      selectedKeys={[dataFilter.rankGroupId]}
       variant="underlined"
       label="Lọc theo khu vực"
       placeholder="Tất cả loại khu vực"

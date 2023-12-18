@@ -157,10 +157,10 @@ const FormRegister = () => {
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
           </Button>
-          <Button className="border border-stone-300 bg-gray-50 w-full">
+          {/* <Button className="border border-stone-300 bg-gray-50 w-full">
             <Image src="/icon-apple.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Apple
-          </Button>
+          </Button> */}
         </div>
 
         <div className="mt-6 text-sm flex justify-center gap-1 mb-4">

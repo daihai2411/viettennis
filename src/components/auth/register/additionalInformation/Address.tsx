@@ -26,7 +26,6 @@ const Address = ({ register, errors, getValues, setValue, clearErrors }) => {
         errors={errors}
         placeholder="Địa chỉ"
         keyInput="address"
-        required
       />
       <SelectAutocomplete
         label={

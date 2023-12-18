@@ -91,7 +91,7 @@ const TableData = ({
   const onSortChange = (descriptor: SortDescriptor) => {
     setPage(0);
     changeParams({
-      sort: changeKeySort(descriptor.column, descriptor.direction),
+      sortBy: changeKeySort(descriptor.column, descriptor.direction),
     });
     setSortDescriptor(descriptor);
     list.reload();

@@ -8,11 +8,11 @@ import { columns, renderCell } from "./constants";
 
 export const paramsInit = {
   rankPointId: DEFAULT_SELECT,
-  groupId: DEFAULT_SELECT,
+  rankGroupId: DEFAULT_SELECT,
   key: "",
   min: "",
   max: "",
-  pointId: 2,
+  pointType: 2,
 };
 
 const RankingDoubles = () => {

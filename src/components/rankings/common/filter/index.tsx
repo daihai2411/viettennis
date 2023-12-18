@@ -8,7 +8,7 @@ import SelectKindPoint from "./SelectKindPoint";
 
 export type Params = {
   rankPointId: any;
-  groupId: any;
+  rankGroupId: any;
   key: string;
   min: string;
   max: string;
@@ -16,7 +16,7 @@ export type Params = {
 
 const paramsInit = {
   rankPointId: DEFAULT_SELECT,
-  groupId: DEFAULT_SELECT,
+  rankGroupId: DEFAULT_SELECT,
   key: "",
   min: "",
   max: "",

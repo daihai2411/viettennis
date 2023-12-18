@@ -1,16 +1,13 @@
-import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
 import { AppDispatch } from "@/redux/store";
 import { Button, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ToastError, ToastSuccess } from "../../Toast";
 import { changeAvatarProfile } from "../../hooks/store/slice";
 
-const UploadImage = ({ avatar }) => {
-  const pathName = usePathname();
+const UploadImage = ({ avatar, isUserLogged }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [avatarState, setAvatarState] = useState(avatar);
@@ -57,7 +54,7 @@ const UploadImage = ({ avatar }) => {
         />
       </Skeleton>
 
-      {pathName === ROUTERS.PERSONAL_INFO && (
+      {isUserLogged && (
         <>
           <Button
             isLoading={loading}

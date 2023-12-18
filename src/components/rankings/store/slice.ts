@@ -10,7 +10,7 @@ interface StateType {
 
 const initialState: StateType = {
   loading: false,
-  data: { groups: [], pointTypes: [], sort: [] },
+  data: { groups: [], pointTypes: [], sortBy: [] },
 };
 
 export const slice = createSlice({

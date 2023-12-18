@@ -9,7 +9,7 @@ import FollowAccount from "./FollowAccount";
 import GroupBtnRank from "./GroupBtnRank";
 import UploadImage from "./UploadImage";
 
-const ProfileHeaderLeft = ({ data, loading }) => {
+const ProfileHeaderLeft = ({ data, loading, isUserLogged }) => {
   const [active, setActive] = useState(RANK.DOUBLES);
 
   return (
@@ -36,7 +36,7 @@ const ProfileHeaderLeft = ({ data, loading }) => {
             <FollowAccount data={data} />
           </div>
         </div>
-        <UploadImage avatar={data?.avatar} />
+        <UploadImage avatar={data?.avatar} isUserLogged={isUserLogged} />
         <div className="col-span-1 lg:col-span-2"></div>
       </div>
     </div>

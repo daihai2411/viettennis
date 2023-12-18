@@ -10,7 +10,7 @@ export const getListAllFilterRankingThunk = createAsyncThunk(
       return {
         groups: res.data.groups,
         pointTypes: res.data.point_types,
-        sort: res.data.sort,
+        sortBy: res.data.sort,
       };
     } catch (error) {
       return rejectWithValue({ loading: axios.isCancel(error) });
