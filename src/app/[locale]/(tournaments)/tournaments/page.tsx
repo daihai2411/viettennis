@@ -1,9 +1,9 @@
-import TournamentsModule from "@/components/tournaments/home";
+import DevelopPage from "@/components/common/page/DevelopPage";
 
 const TournamentsPage = () => {
-  // return <DevelopPage />;
+  return <DevelopPage />;
 
-  return <TournamentsModule />;
+  // return <TournamentsModule />;
 };
 
 export default TournamentsPage;
