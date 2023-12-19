@@ -1,3 +1,4 @@
+import FacebookMessenger from "@/utils/FacebookMessenger";
 import { NextAuthProvider } from "./Providers";
 
 export default function RootLayout({
@@ -9,6 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning={true}>
+      <FacebookMessenger />
       <head lang={locale}>
         <script
           src="https://www.google.com/recaptcha/enterprise.js?render=6LcnZRMpAAAAAEh0oZYmTJhITYPXIdxSAJVFlsXA"
