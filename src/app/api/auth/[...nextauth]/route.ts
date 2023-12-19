@@ -73,16 +73,15 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async signIn({ user, account, profile }: any) {
-      if (account.provider === "google" && profile.email) {
-        // Make API call after successful login
+    async signIn({ account, profile }: any) {
+      if (account?.provider === "google" || account?.provider === "facebook") {
         try {
           const response = (await authService.socialLogin({
-            social_type: "google",
+            social_type: account.provider,
             email: profile.email,
             name: profile.name,
             avatar: profile.picture,
-            social_id: profile.sub,
+            social_id: profile.sub || profile.id,
           })) as any;
 
           if (response.success) {
@@ -93,18 +92,18 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
         } catch (error: any) {
           console.error("API Error:", error);
         }
-      } 
-      return true; // Continue with the sign-in process
+      }
+      return true;
     },
     async session({ session, token }) {
       session.user = <UserSession>token.user;
       return session;
     },
     async jwt({ token, user, account, profile }: any) {
-      if (account?.provider === "google" && profile.email) {
+      if (account?.provider === "google" || account?.provider === "facebook") {
         try {
           const response = (await authService.socialLogin({
-            social_type: "google",
+            social_type: account.provider,
             email: profile.email,
             name: profile.name,
             avatar: profile.picture,
