@@ -31,18 +31,31 @@ const LoginRegister = () => {
             avatarProps={{
               isBordered: false,
               src:
-                dataProfile?.avatar || session?.user?.avatar || "/player.png",
+                dataProfile?.avatar ||
+                session?.user?.avatar ||
+                session?.user?.image ||
+                "/player.png",
             }}
             className="transition-transform"
-            description={dataProfile?.full_name || session?.user?.username}
-            name={dataProfile?.username || session?.user?.username}
+            description={
+              dataProfile?.full_name ||
+              session?.user?.username ||
+              session?.user?.name
+            }
+            name={
+              dataProfile?.username ||
+              session?.user?.username ||
+              session?.user?.name
+            }
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
             <p className="font-bold">Bạn đang đăng nhập bằng</p>
             <p className="font-bold">
-              @{dataProfile?.username || session?.user?.username}
+              {dataProfile?.username ||
+                session?.user?.username ||
+                session?.user?.name}
             </p>
           </DropdownItem>
           <DropdownItem

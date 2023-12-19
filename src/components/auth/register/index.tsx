@@ -2,9 +2,13 @@
 
 import { saveSession } from "@/helpers/session";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { steps } from "../constants";
 import {
+  changeEmail,
+  changePhoneNumber,
   changeStep,
   selectEmail,
   selectPassword,
@@ -18,6 +22,7 @@ import { FormVerify } from "./formVerify";
 
 const RegisterModule: React.FC = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const step = useSelector(selectStep);
   const phoneNumber = useSelector(selectPhoneNumber);
@@ -43,6 +48,32 @@ const RegisterModule: React.FC = () => {
     await saveSession();
     dispatch(changeStep(steps.ADDITIONAL_INFO));
   };
+
+  const handleCheckRedirect = async () => {
+    const user = (await saveSession()) as any;
+    if (user?.id) {
+      if (!user?.is_verify_phone && !user?.is_phone_verified) {
+        dispatch(changeStep(steps.VERIFY));
+        dispatch(changePhoneNumber(user?.phone));
+        dispatch(changeEmail(user?.email));
+        router.push("/auth/register");
+      } else if (!user?.personal_info_updated) {
+        dispatch(changeStep(steps.ADDITIONAL_INFO));
+        dispatch(changePhoneNumber(user?.phone));
+        dispatch(changeEmail(user?.email));
+        router.push("/auth/register");
+      } else if (!user?.personal_point_updated) {
+        dispatch(changeStep(steps.ADDITIONAL_POINTS));
+        router.push("/auth/register");
+      } else {
+        router.push("/");
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleCheckRedirect();
+  }, []);
 
   if (step === steps.VERIFY) {
     return (

@@ -23,6 +23,10 @@ class AuthService extends ServiceBase {
   verifyOtp(params: { phone: string; otp: string }) {
     return this.getData(() => authProxy.verifyOtp(params));
   }
+
+  socialLogin(params: any) {
+    return this.getData(() => authProxy.socialLogin(params));
+  }
 }
 
 const authService = new AuthService();
