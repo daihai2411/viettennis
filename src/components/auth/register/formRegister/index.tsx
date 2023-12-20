@@ -1,7 +1,6 @@
 "use client";
 
 import { ToastError } from "@/components/common/Toast";
-import { ROUTERS } from "@/const/router";
 import authService from "@/core/services/AuthService";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
@@ -152,7 +151,7 @@ const FormRegister = () => {
           </Button>
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("facebook", { callbackUrl: ROUTERS.HOME })}
+            onClick={() => signIn("facebook", { redirect: false })}
           >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
