@@ -94,6 +94,7 @@ const SelectPoint = ({
                       variant="bordered"
                       type="number"
                       onChange={onChange}
+                      min={0}
                     />
                   </div>
                   <div className="flex mt-2 gap-2 justify-between py-2 text-base font-medium text-foreground">

@@ -17,6 +17,7 @@ const nextConfig = {
       "cms.viettennis.net",
       "diendan.viettennis.net",
       "tools.viettennis.net",
+      "i.ytimg.com",
     ],
   },
 };

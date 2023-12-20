@@ -30,7 +30,7 @@ const ScrollToTop = () => {
         <Button
           isIconOnly
           onClick={goToTop}
-          className="fixed bottom-20 right-6 z-20 bg-black text-white rounded-full h-12 w-12 hover:bg-green-common1 hover:!opacity-100"
+          className="fixed bottom-24 right-[30px] z-20 bg-black text-white rounded-full h-12 w-12 hover:bg-green-common1 hover:!opacity-100"
         >
           <BsArrowUp size={22} />
         </Button>

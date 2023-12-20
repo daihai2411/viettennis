@@ -1,6 +1,5 @@
 import authService from "@/core/services/AuthService";
 import Cookies from "cookies";
-import { jwtDecode } from "jwt-decode";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
@@ -74,41 +73,59 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
+    async signIn({ account, profile }: any) {
+      if (account?.provider === "google" || account?.provider === "facebook") {
+        try {
+          const response = (await authService.socialLogin({
+            social_type: account.provider,
+            email: profile.email,
+            name: profile.name,
+            avatar: profile.picture,
+            social_id: profile.sub || profile.id,
+          })) as any;
+
+          if (response.success) {
+            return true;
+          } else {
+            console.error("API Error:", response.message);
+          }
+        } catch (error: any) {
+          console.error("API Error:", error);
+        }
+      }
+      return true;
+    },
     async session({ session, token }) {
       session.user = <UserSession>token.user;
       return session;
     },
-    async jwt({ token, user }: any) {
-      if (user) {
-        token.user = user;
-      }
+    async jwt({ token, user, account, profile }: any) {
+      if (account?.provider === "google" || account?.provider === "facebook") {
+        try {
+          const response = (await authService.socialLogin({
+            social_type: account.provider,
+            email: profile.email,
+            name: profile.name,
+            avatar: profile.picture,
+            social_id: profile.sub,
+          })) as any;
 
-      if (token.user && token.user?.token) {
-        const decoded: any = jwtDecode(token.user?.token);
-        // if (Date.now() + 5 * 60 * 1000 >= decoded.exp * 1000) {
-        //   return await refreshAccessToken(token);
-        // }
+          if (response.success) {
+            token.user = response.data;
+          } else {
+            token.user = user;
+          }
+        } catch (error: any) {
+          token.user = user;
+        }
+      } else if (user) {
+        token.user = user;
       }
 
       return token;
     },
   },
 });
-
-// const refreshAccessToken = async (token: any) => {
-//   try {
-//     const refreshToken: any = await authService.refreshToken({
-//       auth_token: token?.user?.auth_token,
-//     });
-
-//     return {
-//       ...token,
-//       user: refreshToken.user,
-//     };
-//   } catch (error) {
-//     return { ...token };
-//   }
-// };
 
 const handler = (req: any, res: any) =>
   NextAuth(req, res, getOptions(req, res));

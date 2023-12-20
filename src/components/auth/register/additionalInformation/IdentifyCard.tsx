@@ -12,6 +12,7 @@ const IdentifyCard = ({ register, errors, setValue, clearErrors }) => {
         keyInput="identifyId"
         required
         type="number"
+        min={0}
       />
       <InputDate
         label={

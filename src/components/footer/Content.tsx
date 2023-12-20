@@ -48,7 +48,8 @@ const Content = () => {
           <div className="flex justify-center pt-[60px] pb-5">
             <Image alt="logo" src="/logo2.png" height={72} width={318} />
           </div>
-          <div className="py-0 mx-auto mb-5">
+          {/* thay pb-[30px] -> py-0 khi mo code duoi */}
+          <div className="pb-[30px] mx-auto mb-5">
             <nav className="mx-0 lg:mx-10 px-6">
               <ul className="flex flex-col md:flex-row md:flex-wrap justify-center pl-0 my-0">
                 {list.map((item, index) => (
@@ -64,7 +65,7 @@ const Content = () => {
               </ul>
             </nav>
           </div>
-          <div className="py-[30px] max-w-[75%] mx-auto">
+          {/* <div className="py-[30px] max-w-[75%] mx-auto">
             <div className="border-b-2 border-green-common flex justify-center">
               <div className="text-neutral-950 font-semibold text-[19px]">
                 Affiliates
@@ -84,7 +85,7 @@ const Content = () => {
                 ))}
               </ul>
             </nav>
-          </div>
+          </div> */}
         </div>
         <div className={`bg-[#2DA46B] relative ${style.footerMenuOfficial}`}>
           <div className="container mx-auto ">

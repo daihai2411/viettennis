@@ -16,6 +16,7 @@ type InputProps = {
   disable?: boolean;
   defaultValue?: string;
   onSubmit?: any;
+  min?: number | undefined;
 };
 
 const InputCustom = ({
@@ -30,6 +31,7 @@ const InputCustom = ({
   disable,
   defaultValue,
   onSubmit,
+  min,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -79,6 +81,7 @@ const InputCustom = ({
           )
         }
         onKeyDown={handleKeyDown}
+        min={min}
       />
       {errors[keyInput] && (
         <p className="text-red-500 text-xs" role="alert">

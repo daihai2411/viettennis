@@ -1,4 +1,4 @@
-import ListNews from "@/components/common/listNews";
+import ListNews from "@/components/common/listNewsOrVideos";
 import { useSelector } from "react-redux";
 import { selectListNews, selectLoading } from "../store/slice";
 

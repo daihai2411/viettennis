@@ -2,6 +2,7 @@ import ScrollToTop from "@/components/common/ScrollToTop";
 import AppFooter from "@/components/footer";
 import AppHeader from "@/components/header";
 import { Providers } from "@/redux/provider";
+import ChatBoxMesseger from "@/utils/ChatBoxMesseger";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { Inter } from "next/font/google";
@@ -46,6 +47,7 @@ export default async function RootLayout({
           <AppFooter />
           <ToastContainer autoClose={2000} />
           <ScrollToTop />
+          <ChatBoxMesseger />
         </NextIntlClientProvider>
       </body>
     </html>

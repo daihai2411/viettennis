@@ -11,7 +11,7 @@ import { Image } from "@nextui-org/image";
 import { SignInResponse, signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
@@ -48,25 +48,18 @@ const LoginModule = () => {
     resolver: yupResolver(schemaValidation()) as any,
   });
 
-  const onSubmit = handleSubmit(async (data) => {
-    setLoading(true);
-    const result: SignInResponse | undefined = await signIn("credentials", {
-      username: data.username,
-      password: data.password,
-      redirect: false,
-    });
-
-    if (result && result?.status === 200) {
-      const user = (await saveSession()) as any;
+  const handleCheckRedirect = async () => {
+    const user = (await saveSession()) as any;
+    if (user?.id) {
       if (!user?.is_verify_phone && !user?.is_phone_verified) {
         dispatch(changeStep(steps.VERIFY));
         dispatch(changePhoneNumber(user?.phone));
-        dispatch(changeEmail(user.email));
+        dispatch(changeEmail(user?.email));
         router.push("/auth/register");
       } else if (!user?.personal_info_updated) {
         dispatch(changeStep(steps.ADDITIONAL_INFO));
         dispatch(changePhoneNumber(user?.phone));
-        dispatch(changeEmail(user.email));
+        dispatch(changeEmail(user?.email));
         router.push("/auth/register");
       } else if (!user?.personal_point_updated) {
         dispatch(changeStep(steps.ADDITIONAL_POINTS));
@@ -74,6 +67,18 @@ const LoginModule = () => {
       } else {
         router.push("/");
       }
+    }
+  };
+
+  const onSubmit = handleSubmit(async (data) => {
+    setLoading(true);
+    const result: SignInResponse | undefined = await signIn("credentials", {
+      username: data.username,
+      password: data.password,
+      redirect: false,
+    });
+    handleCheckRedirect();
+    if (result && result?.status === 200) {
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
     } else if (result?.status === 401) {
@@ -81,6 +86,10 @@ const LoginModule = () => {
       setLoading(false);
     }
   });
+
+  useEffect(() => {
+    handleCheckRedirect();
+  }, []);
 
   return (
     <div className="flex min-h-full flex-col justify-center px-4 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
@@ -139,7 +148,7 @@ const LoginModule = () => {
         <div className="w-full grid gap-2">
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("google", { callbackUrl: ROUTERS.HOME })}
+            onClick={() => signIn("google", { redirect: false })}
           >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Google

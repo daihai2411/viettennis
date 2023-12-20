@@ -79,6 +79,7 @@ const InputPoint = ({
             }}
             onBlur={onBlur}
             className="block"
+            min={0}
           />
           {errors[itemInput.code] && (
             <p className="text-red-500 text-xs" role="alert">

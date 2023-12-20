@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import ListNews from "../common/listNews";
+import ListNews from "../common/listNewsOrVideos";
 import { selectListNews, selectLoading } from "./store/slice";
 
 const ListNewsRecommend = () => {

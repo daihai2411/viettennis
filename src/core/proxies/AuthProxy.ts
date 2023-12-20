@@ -15,12 +15,16 @@ class AuthProxy extends ProxyBase {
     return this.post("register", params);
   }
 
-  generateOtp(params: { phone: string, email: string }) {
+  generateOtp(params: { phone: string; email: string }) {
     return this.post("generate-otp", params);
   }
 
   verifyOtp(params: { phone: string; otp: string }) {
     return this.post("verify-otp", params);
+  }
+
+  socialLogin(params: any) {
+    return this.post("social-login", params);
   }
 }
 

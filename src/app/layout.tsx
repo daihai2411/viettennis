@@ -8,7 +8,7 @@ export default function RootLayout({
   params: any;
 }) {
   return (
-    <html suppressHydrationWarning={true}>
+    <html>
       <head lang={locale}>
         <script
           src="https://www.google.com/recaptcha/enterprise.js?render=6LcnZRMpAAAAAEh0oZYmTJhITYPXIdxSAJVFlsXA"
@@ -17,7 +17,7 @@ export default function RootLayout({
         ></script>
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
-      <body suppressHydrationWarning={true}>
+      <body>
         <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>

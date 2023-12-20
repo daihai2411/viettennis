@@ -145,7 +145,7 @@ const FormRegister = () => {
         <div className="w-full grid gap-2">
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("google", { callbackUrl: ROUTERS.HOME })}
+            onClick={() => signIn("google", { redirect: false })}
           >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Google
