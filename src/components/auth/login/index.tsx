@@ -1,7 +1,6 @@
 "use client";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
-import { ROUTERS } from "@/const/router";
 import { saveSession } from "@/helpers/session";
 import { AppDispatch } from "@/redux/store";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -155,7 +154,7 @@ const LoginModule = () => {
           </Button>
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("facebook", { callbackUrl: ROUTERS.HOME })}
+            onClick={() => signIn("facebook", { redirect: false })}
           >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
