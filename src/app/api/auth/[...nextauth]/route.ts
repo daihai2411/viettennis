@@ -76,22 +76,26 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
     async signIn({ account, profile }: any) {
       if (account?.provider === "google" || account?.provider === "facebook") {
         try {
-          const response = (await authService.socialLogin({
-            social_type: account.provider,
-            email: profile.email,
-            name: profile.name,
-            avatar: profile.picture,
-            social_id: profile.sub || profile.id,
-          })) as any;
-
+          const response = (await authService.socialLogin(
+            account?.provider === "google"
+              ? {
+                  social_type: account.provider,
+                  email: profile.email,
+                  name: profile.name,
+                  avatar: profile.picture,
+                  social_id: profile.sub,
+                }
+              : {
+                  social_type: account.provider,
+                  email: profile.email,
+                  name: profile.name,
+                  social_id: profile.id,
+                }
+          )) as any;
           if (response.success) {
             return true;
-          } else {
-            console.error("API Error:", response.message);
           }
-        } catch (error: any) {
-          console.error("API Error:", error);
-        }
+        } catch (error: any) {}
       }
       return true;
     },
@@ -102,14 +106,22 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
     async jwt({ token, user, account, profile }: any) {
       if (account?.provider === "google" || account?.provider === "facebook") {
         try {
-          const response = (await authService.socialLogin({
-            social_type: account.provider,
-            email: profile.email,
-            name: profile.name,
-            avatar: profile.picture,
-            social_id: profile.sub,
-          })) as any;
-
+          const response = (await authService.socialLogin(
+            account?.provider === "google"
+              ? {
+                  social_type: account.provider,
+                  email: profile.email,
+                  name: profile.name,
+                  avatar: profile.picture,
+                  social_id: profile.sub,
+                }
+              : {
+                  social_type: account.provider,
+                  email: profile.email,
+                  name: profile.name,
+                  social_id: profile.id,
+                }
+          )) as any;
           if (response.success) {
             token.user = response.data;
           } else {
