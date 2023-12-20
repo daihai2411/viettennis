@@ -65,7 +65,6 @@ const InputPoint = ({
             type={type}
             endContent={
               <SelectPoint
-                personalPointCriteriaId={itemInput.id}
                 inputKey={itemInput.code}
                 valueDefault={value}
                 setValueForm={setValueForm}

@@ -62,11 +62,7 @@ export const slice = createSlice({
     builder.addCase(
       getListPersonalPointDetailByCriteriaThunk.fulfilled,
       (state, action) => {
-        state.listPersonalPointDetail = action.payload.map((item) => ({
-          ...item,
-          max: item.value.split("-")[1],
-          min: item.value.split("-")[0],
-        }));
+        state.listPersonalPointDetail = action.payload;
         state.loadingListPersonalPointDetail = false;
       }
     );

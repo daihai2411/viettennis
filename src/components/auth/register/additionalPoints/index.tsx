@@ -16,8 +16,12 @@ import {
   selectListPersonalPoint,
   selectLoadingListPersonalPoint,
 } from "../../store/slice";
-import { getListPersonalPointCriteriaThunk } from "../../store/thunk";
+import {
+  getListPersonalPointCriteriaThunk,
+  getListPersonalPointDetailByCriteriaThunk,
+} from "../../store/thunk";
 import InputPoint from "./InputPoint";
+import PopupInstructionsPoint from "./PopupInstructionsPoint";
 import RowTotalPoints from "./RowTotalPoints";
 
 interface IFormInput {
@@ -73,6 +77,7 @@ const AdditionalPoints = () => {
 
   useEffect(() => {
     dispatch(getListPersonalPointCriteriaThunk({}));
+    dispatch(getListPersonalPointDetailByCriteriaThunk({}));
   }, []);
 
   return (
@@ -84,8 +89,11 @@ const AdditionalPoints = () => {
           <div className="flex justify-start mb-4">
             <Image src="/logo.svg" alt="logo" className="h-10" />
           </div>
-          <div className="font-medium text-2xl text-green-common1 mb-4 mx-auto">
-            Nhập điểm số
+          <div className="flex justify-between items-center">
+            <div className="font-medium text-2xl text-green-common1 mb-4">
+              Nhập điểm số
+            </div>
+            <PopupInstructionsPoint />
           </div>
           <form onSubmit={onSubmit}>
             {listPersonalPoint && listPersonalPoint.length

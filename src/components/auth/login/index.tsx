@@ -50,7 +50,7 @@ const LoginModule = () => {
   const handleCheckRedirect = async () => {
     const user = (await saveSession()) as any;
     if (user?.id) {
-      if (!user?.is_verify_phone && !user?.is_phone_verified) {
+      if (!user?.is_phone_verified) {
         dispatch(changeStep(steps.VERIFY));
         dispatch(changePhoneNumber(user?.phone));
         dispatch(changeEmail(user?.email));

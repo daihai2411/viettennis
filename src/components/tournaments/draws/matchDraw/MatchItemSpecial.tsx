@@ -70,7 +70,12 @@ const MatchItemSpecial = () => {
           </tbody>
         </table>
       </div>
-      <Modal size="2xl" isOpen={isOpen} onClose={onClose}>
+      <Modal
+        size="2xl"
+        isOpen={isOpen}
+        onClose={onClose}
+        scrollBehavior={"inside"}
+      >
         <ModalContent>
           {(onClose) => (
             <>

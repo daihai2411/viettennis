@@ -1,5 +1,4 @@
 import { formatVal } from "@/helpers/value";
-import { AppDispatch } from "@/redux/store";
 import {
   Button,
   Input,
@@ -12,23 +11,19 @@ import {
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { FaCog } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectListPersonalPointDetail,
   selectLoadingListPersonalPointDetail,
 } from "../../store/slice";
-import { getListPersonalPointDetailByCriteriaThunk } from "../../store/thunk";
 
 const SelectPoint = ({
-  personalPointCriteriaId,
   inputKey,
   valueDefault,
   setValueForm,
   setValue,
   titleInput,
 }) => {
-  const dispatch = useDispatch<AppDispatch>();
-
   const loading = useSelector(selectLoadingListPersonalPointDetail);
   const listPersonalPointDetail = useSelector(selectListPersonalPointDetail);
 
@@ -44,16 +39,6 @@ const SelectPoint = ({
     setValueForm(inputKey, search);
     setValue(search);
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      dispatch(
-        getListPersonalPointDetailByCriteriaThunk({
-          personal_point_criteria_id: personalPointCriteriaId,
-        })
-      );
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     setSearch(valueDefault);
