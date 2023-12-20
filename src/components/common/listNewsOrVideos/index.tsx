@@ -1,7 +1,12 @@
 import { Spinner } from "@nextui-org/react";
-import NewsItem from "../newsItem";
+import NewsOrVideoItem from "../newsOrVideoItem";
 
-const ListNews = ({ list = [], header = "", loading }) => {
+const ListNewsOrVideos = ({
+  list = [],
+  header = "",
+  loading,
+  isVideoPage = false,
+}) => {
   return (
     <>
       <div className="mb-10 px-2 md:px-0 2xl:px-10">
@@ -18,13 +23,16 @@ const ListNews = ({ list = [], header = "", loading }) => {
                 title: string;
                 image: string;
                 category: string;
+                href?: string;
               }) => (
-                <NewsItem
+                <NewsOrVideoItem
                   key={item.id}
                   id={item.id}
                   title={item.title}
                   image={item.image}
                   category={item.category}
+                  isVideoPage={isVideoPage}
+                  href={item.href}
                 />
               )
             )}
@@ -35,4 +43,4 @@ const ListNews = ({ list = [], header = "", loading }) => {
   );
 };
 
-export default ListNews;
+export default ListNewsOrVideos;

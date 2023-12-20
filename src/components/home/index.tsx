@@ -1,5 +1,5 @@
 import Creator from "./Creator";
-import Video from "./Video";
+import Video from "./VideoAndBanner";
 import News from "./news";
 import TopRankBottom from "./topRank/bottom";
 import TopRank from "./topRank/topRight";

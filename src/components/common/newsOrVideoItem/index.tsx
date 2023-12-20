@@ -3,9 +3,19 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
 import Link from "next/link";
 
-const NewsItem = ({ id, title, image = "", category }) => {
+const NewsOrVideoItem = ({
+  id,
+  title,
+  image = "",
+  category,
+  isVideoPage,
+  href,
+}) => {
   return (
-    <Link href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + id}>
+    <Link
+      href={href || ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + id}
+      target={href ? "_blank" : ""}
+    >
       <Card
         shadow="none"
         radius="none"
@@ -26,9 +36,11 @@ const NewsItem = ({ id, title, image = "", category }) => {
             <div className="group-hover:text-green-common cursor-pointer group-hover:underline text-start text-neutral-950 text-base lg:text-xl font-bold line-clamp-3">
               {title}
             </div>
-            <div className="text-xs font-bold text-green-common absolute bottom-0">
-              {category}
-            </div>
+            {!isVideoPage ? (
+              <div className="text-xs font-bold text-green-common absolute bottom-0">
+                {category}
+              </div>
+            ) : null}
           </div>
         </CardFooter>
       </Card>
@@ -36,4 +48,4 @@ const NewsItem = ({ id, title, image = "", category }) => {
   );
 };
 
-export default NewsItem;
+export default NewsOrVideoItem;
