@@ -56,7 +56,20 @@ const PersonalInfoUpdateModule = () => {
     setLoading(true);
     try {
       const params = { ...data } as any;
+
+      if (isNaN(params.gender)) {
+        params.gender = params.genderId;
+      }
+
+      if (isNaN(params.backHand)) {
+        params.backHand = params.backHandId;
+      }
+
       delete params.captcha;
+      delete params.backHandId;
+      delete params.genderId;
+      delete params.personal_points;
+
       if (params?.dob) {
         params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
       }
@@ -76,8 +89,6 @@ const PersonalInfoUpdateModule = () => {
       ToastError(error?.response?.data?.message);
     }
   });
-
-  console.log(dateProfileCamelCase);
 
   useEffect(() => {
     if (dataProfile.id) {

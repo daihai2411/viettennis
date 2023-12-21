@@ -1,3 +1,4 @@
+import { parseDMY } from "@/helpers/value";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 
@@ -63,7 +64,7 @@ const InputDate = ({
 
   useEffect(() => {
     if (defaultValue) {
-      onChange(new Date(defaultValue));
+      onChange(parseDMY(defaultValue));
     }
   }, [defaultValue]);
 
