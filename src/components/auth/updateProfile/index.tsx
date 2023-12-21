@@ -55,6 +55,7 @@ const PersonalInfoUpdateModule = () => {
     setLoading(true);
     try {
       const params = { ...data } as any;
+      console.log("params", params, "data", data);
 
       if (isNaN(params.gender)) {
         params.gender = params.genderId;
@@ -67,6 +68,7 @@ const PersonalInfoUpdateModule = () => {
       if (params?.dob) {
         params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
       }
+
       if (params?.playSince) {
         params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
       }
@@ -75,7 +77,6 @@ const PersonalInfoUpdateModule = () => {
       delete params.backHandId;
       delete params.genderId;
       delete params.personalPoints;
-      console.log("params", params?.dob);
 
       const res = (await profileService.updateInformation(
         convertCamelCaseToLine(params)

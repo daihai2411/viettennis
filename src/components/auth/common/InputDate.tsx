@@ -63,7 +63,6 @@ const InputDate = ({
   };
 
   useEffect(() => {
-    console.log("defaultValue", defaultValue, parseDMY(defaultValue));
     if (defaultValue) {
       onChange(parseDMY(defaultValue));
     }

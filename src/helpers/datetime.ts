@@ -55,9 +55,6 @@ export const formatDateTime = (
   locale: keyof typeof languages = "vi",
   timeZone: string = "00:00"
 ) => {
-  console.log("str", str);
-  console.log(!!str && moment(str).isValid() ? 1 : 2);
-
   return !!str && moment(str).isValid()
     ? moment.utc(str).utcOffset(timeZone).format(format[locale]).toString()
     : EMPTY_VALUE;
