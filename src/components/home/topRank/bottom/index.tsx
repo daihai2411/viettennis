@@ -15,7 +15,7 @@ const TopRankBottom = () => {
 
   return (
     <div className="mt-6">
-      <div className="mb-6 pb-1 border-b-2 border-green-common text-neutral-950 text-2xl font-bold flex justify-between items-center">
+      <div className="mb-6 pb-1 border-b-2 border-green-common text-neutral-950 lg:text-2xl text-xl font-bold flex justify-between items-center">
         Viettennis xếp hạng
         <Link href={ROUTERS.RANKINGS.path} className="flex items-center">
           <div className="font-medium text-sm flex items-center gap-1 hover:text-green-common cursor-pointer">

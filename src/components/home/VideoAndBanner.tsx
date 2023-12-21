@@ -3,7 +3,7 @@ import Videos from "./videos";
 
 const VideoAndBanner = () => {
   return (
-    <div className="grid grid-cols-6 gap-4 mt-6">
+    <div className="grid grid-cols-6 gap-4 mt-6 mb-12">
       <div className="col-span-6 md:col-span-4 rounded-lg">
         <Videos />
       </div>

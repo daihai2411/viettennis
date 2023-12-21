@@ -57,7 +57,8 @@ const TableTopRank = ({ tab, listData, loading = false }) => {
                       description={"@" + item?.username}
                       avatarProps={{
                         src: item?.avatar,
-                        size: "sm",
+                        className:
+                          "w-10 h-10 min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px]",
                       }}
                     />
                   </td>

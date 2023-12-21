@@ -1,4 +1,4 @@
-import Creator from "./Creator";
+import NewTournament from "./NewTournament";
 import Video from "./VideoAndBanner";
 import News from "./news";
 import TopRankBottom from "./topRank/bottom";
@@ -10,8 +10,8 @@ const Home = () => {
       <div className="grid grid-cols-12 gap-4 px-3">
         <div className="col-span-12 xl:col-span-9">
           <News />
-          {/* <NewTournament /> */}
-          <Creator />
+          <NewTournament />
+          {/* <Creator /> */}
           <Video />
           <TopRankBottom />
         </div>
