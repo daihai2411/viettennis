@@ -71,6 +71,11 @@ const PersonalInfoUpdateModule = () => {
       delete params.personal_points;
 
       if (params?.dob) {
+        console.log(
+          params?.dob,
+          formatDateTime(params?.dob, FORMAT.DATE_SLASH)
+        );
+
         params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
       }
       if (params?.playSince) {
