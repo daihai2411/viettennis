@@ -75,8 +75,8 @@ const PersonalInfoUpdateModule = () => {
       delete params.captcha;
       delete params.backHandId;
       delete params.genderId;
-      delete params.personal_points;
-      console.log("params", params);
+      delete params.personalPoints;
+      console.log("params", params?.dob);
 
       const res = (await profileService.updateInformation(
         convertCamelCaseToLine(params)

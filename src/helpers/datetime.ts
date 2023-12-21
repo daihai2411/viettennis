@@ -52,10 +52,13 @@ export const getCurrentDateTime = (
 export const formatDateTime = (
   str: string,
   format: Record<string, string> = FORMAT.DATE_TIME,
-  locale: keyof typeof languages = "vi"
+  locale: keyof typeof languages = "vi",
+  timeZone: string = "00:00"
 ) => {
-  console.log("debug", !!str, moment(str).isValid());
+  console.log("str", str);
+  console.log(!!str && moment(str).isValid() ? 1 : 2);
+
   return !!str && moment(str).isValid()
-    ? moment.utc(str).format(format[locale]).toString()
+    ? moment.utc(str).utcOffset(timeZone).format(format[locale]).toString()
     : EMPTY_VALUE;
 };
