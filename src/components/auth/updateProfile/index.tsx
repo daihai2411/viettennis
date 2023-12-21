@@ -3,8 +3,15 @@
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 
+import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import useUserProfile from "@/components/common/hooks/useUserProfile";
+import { ROUTERS } from "@/const/router";
+import profileService from "@/core/services/profile/ProfileService";
+import { FORMAT, formatDateTime } from "@/helpers/datetime";
+import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Spinner } from "@nextui-org/react";
+import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,13 +21,6 @@ import InputCustom from "../common/InputCustom";
 import InputYear from "../common/InputYear";
 import { IFormInput } from "../interface";
 import { schemaAdditionInformation } from "../schema";
-// import Address from "./Address";
-import { ToastError, ToastSuccess } from "@/components/common/Toast";
-import { ROUTERS } from "@/const/router";
-import profileService from "@/core/services/profile/ProfileService";
-import { FORMAT, formatDateTime } from "@/helpers/datetime";
-import { convertCamelCaseToLine } from "@/helpers/value";
-import { Spinner } from "@nextui-org/react";
 import Address from "./Address";
 import CheckRecaptcha from "./CheckRecaptcha";
 import InfoAdvenced from "./InfoAdvenced";
@@ -56,13 +56,29 @@ const PersonalInfoUpdateModule = () => {
     setLoading(true);
     try {
       const params = { ...data } as any;
-      delete params.captcha;
-      if (params?.dob) {
-        params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
+      if (isNaN(params.gender)) {
+        params.gender = params.genderId;
       }
+
+      if (isNaN(params.backHand)) {
+        params.backHand = params.backHandId;
+      }
+
+      if (params?.dob) {
+        params.dob = moment(params.dob).isValid()
+          ? formatDateTime(params?.dob, FORMAT.DATE_SLASH)
+          : params.dob;
+      }
+
       if (params?.playSince) {
         params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
       }
+
+      delete params.captcha;
+      delete params.backHandId;
+      delete params.genderId;
+      delete params.personalPoints;
+
       const res = (await profileService.updateInformation(
         convertCamelCaseToLine(params)
       )) as any;
@@ -77,8 +93,6 @@ const PersonalInfoUpdateModule = () => {
     }
   });
 
-  console.log(dateProfileCamelCase);
-
   useEffect(() => {
     if (dataProfile.id) {
       reset(dateProfileCamelCase);
@@ -86,7 +100,7 @@ const PersonalInfoUpdateModule = () => {
   }, [dataProfile, reset]);
 
   if (loading || !dataProfile.id) {
-    return <Spinner className="py-6 container mx-auto" />;
+    return <Spinner className="py-6 w-full" />;
   } else
     return (
       <>
