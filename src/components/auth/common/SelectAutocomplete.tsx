@@ -8,6 +8,7 @@ const SelectAutocomplete = ({
   list = [],
   loading,
   setValue,
+  defaultSelectedKey = undefined,
 }) => {
   return (
     <div className="mb-3 select-auto-complete">
@@ -21,6 +22,7 @@ const SelectAutocomplete = ({
         fullWidth
         isLoading={loading}
         onSelectionChange={setValue}
+        defaultSelectedKey={defaultSelectedKey}
       >
         {list.map((item: { name: string; code: string }) => (
           <AutocompleteItem key={item.code} value={item.code}>

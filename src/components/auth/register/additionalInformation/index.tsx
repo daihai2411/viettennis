@@ -17,6 +17,7 @@ import * as Yup from "yup";
 import InputCustom from "../../common/InputCustom";
 import InputYear from "../../common/InputYear";
 import { steps } from "../../constants";
+import { IFormInput } from "../../interface";
 import { schemaAdditionInformation } from "../../schema";
 import { changeStep, selectEmail, selectPhoneNumber } from "../../store/slice";
 import Address from "./Address";
@@ -24,29 +25,6 @@ import CheckRecaptcha from "./CheckRecaptcha";
 import InfoAdvenced from "./InfoAdvenced";
 import InfoBasic from "./InfoBasic";
 import TermAndPolicy from "./TermAndPolicy";
-
-interface IFormInput {
-  fullName: string;
-  email: string;
-  dob: string;
-  address: string;
-  height: string;
-  weight: string;
-  backHand: number;
-  playSince: string;
-  racketSpecs: string;
-  shoesBrand: string;
-  clothesBrand: string;
-  phone: string;
-  identifyId: string;
-  identifyDate: string;
-  identifyAddress: string;
-  province: string | number;
-  district: string | number;
-  ward: string | number;
-  captcha: string | undefined;
-  gender: string;
-}
 
 const schemaValidation = () => Yup.object().shape(schemaAdditionInformation);
 

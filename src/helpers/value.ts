@@ -65,3 +65,25 @@ export const convertCamelCaseToLine = (obj: object) => {
   }
   return newObj;
 };
+
+export const convertLineToCamelCase = (obj: object) => {
+  if (typeof obj !== "object" || obj === null) {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(convertLineToCamelCase);
+  }
+
+  const camelCaseObj = {};
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const camelCaseKey = key.replace(/_([a-z])/g, function (match, group) {
+        return group.toUpperCase();
+      });
+      camelCaseObj[camelCaseKey] = convertLineToCamelCase(obj[key]);
+    }
+  }
+
+  return camelCaseObj;
+};

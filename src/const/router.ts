@@ -31,4 +31,5 @@ export const ROUTERS = {
   STATS: "/stats",
   WTA: "/wta",
   PERSONAL_INFO: "/personal-info",
+  PERSONAL_INFO_UPDATE: "/personal-info-update",
 };

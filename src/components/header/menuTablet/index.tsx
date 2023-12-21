@@ -16,7 +16,7 @@ const MenuTablet = () => {
   const pathName = usePathname();
 
   return (
-    <NavbarMenu className="mt-12">
+    <NavbarMenu className="pt-8">
       {headers.map((item) => (
         <React.Fragment key={item.key}>
           {item.children && item.disableClick ? (

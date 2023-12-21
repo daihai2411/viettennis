@@ -1,8 +1,11 @@
+import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
 import { AppDispatch } from "@/redux/store";
 import { Button, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaCamera } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { ToastError, ToastSuccess } from "../../Toast";
 import { changeAvatarProfile } from "../../hooks/store/slice";
@@ -52,26 +55,39 @@ const UploadImage = ({ avatar, isUserLogged }) => {
           layout="fill"
           objectFit="cover"
         />
+        {isUserLogged && (
+          <>
+            <Button
+              size="sm"
+              radius="sm"
+              startContent={<FaCamera width={20} height={20} />}
+              className="absolute bg-black opacity-70 text-white cursor-pointer right-1 bottom-1"
+            >
+              <label className="cursor-pointer" htmlFor="avatar-upload">
+                Cập nhật avatar
+              </label>
+            </Button>
+            <input
+              type="file"
+              className="hidden"
+              id="avatar-upload"
+              accept="image/png, image/jpeg"
+              onChange={handleInputChange}
+            />
+          </>
+        )}
       </Skeleton>
 
       {isUserLogged && (
-        <>
+        <Link href={ROUTERS.PERSONAL_INFO_UPDATE}>
           <Button
-            isLoading={loading}
             radius="full"
             size="sm"
             className="mt-2 mx-auto flex bg-white text-green-common border border-green-common"
           >
-            <label htmlFor="avatar-upload">Thay đổi ảnh đại diện</label>
+            Cập nhật thông tin cá nhân
           </Button>
-          <input
-            type="file"
-            className="hidden"
-            id="avatar-upload"
-            accept="image/png, image/jpeg"
-            onChange={handleInputChange}
-          />
-        </>
+        </Link>
       )}
     </div>
   );

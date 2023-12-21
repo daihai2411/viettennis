@@ -1,6 +1,6 @@
 import { Input } from "@nextui-org/input";
 
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,6 +11,7 @@ const InputYear = ({
   label,
   placeholder,
   setValue,
+  defaultValue = undefined,
 }) => {
   const [startDate, setStartDate] = useState<any>(undefined);
 
@@ -28,6 +29,7 @@ const InputYear = ({
         variant="bordered"
         labelPlacement="outside"
         onClick={onClick}
+        defaultValue={defaultValue}
       />
       {errors[keyInput] && (
         <p className="text-red-500 text-xs" role="alert">
@@ -41,6 +43,12 @@ const InputYear = ({
     setValue(keyInput, date);
     setStartDate(date);
   };
+
+  useEffect(() => {
+    if (defaultValue) {
+      onChange(new Date(defaultValue));
+    }
+  }, [defaultValue]);
 
   return (
     <DatePicker

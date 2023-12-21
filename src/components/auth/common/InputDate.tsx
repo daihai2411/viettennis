@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
@@ -14,6 +14,7 @@ const InputDate = ({
   placeholder,
   setValue,
   clearErrors,
+  defaultValue = undefined,
 }) => {
   const months = [
     "Tháng 1",
@@ -44,6 +45,7 @@ const InputDate = ({
         variant="bordered"
         labelPlacement="outside"
         onClick={onClick}
+        defaultValue={defaultValue}
       />
       {errors[keyInput] && (
         <p className="text-red-500 text-xs" role="alert">
@@ -58,6 +60,12 @@ const InputDate = ({
     setStartDate(date);
     clearErrors(keyInput);
   };
+
+  useEffect(() => {
+    if (defaultValue) {
+      onChange(new Date(defaultValue));
+    }
+  }, [defaultValue]);
 
   return (
     <>

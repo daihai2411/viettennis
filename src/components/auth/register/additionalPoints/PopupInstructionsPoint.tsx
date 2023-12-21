@@ -15,8 +15,6 @@ const PopupInstructionsPoint = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const listPersonalPointDetail = useSelector(selectListPersonalPointDetail);
 
-  console.log(listPersonalPointDetail);
-
   return (
     <div>
       <div

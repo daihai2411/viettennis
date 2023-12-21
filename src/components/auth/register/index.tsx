@@ -51,8 +51,6 @@ const RegisterModule: React.FC = () => {
 
   const handleCheckRedirect = async () => {
     const user = (await saveSession()) as any;
-    console.log(user);
-
     if (user?.id) {
       if (!user?.is_phone_verified) {
         dispatch(changeStep(steps.VERIFY));

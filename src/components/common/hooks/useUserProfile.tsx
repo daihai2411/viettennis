@@ -1,6 +1,7 @@
 "use client";
 
 import { SESSION_KEY_SESSION_USER, getSessionStorage } from "@/helpers/storage";
+import { convertLineToCamelCase } from "@/helpers/value";
 import { AppDispatch } from "@/redux/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ const useUserProfile = (disableCallApi?: boolean) => {
 
   const dataProfile = useSelector(selectProfile);
   const loading = useSelector(selectLoadingProfile);
+  const dateProfileCamelCase = convertLineToCamelCase(dataProfile);
 
   const getUserProfile = (data = {}) => {
     const sessionUser = getSessionStorage(SESSION_KEY_SESSION_USER);
@@ -34,6 +36,7 @@ const useUserProfile = (disableCallApi?: boolean) => {
   return {
     dataProfile,
     loading,
+    dateProfileCamelCase,
   };
 };
 
