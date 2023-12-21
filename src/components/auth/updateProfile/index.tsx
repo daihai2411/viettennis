@@ -11,6 +11,7 @@ import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Spinner } from "@nextui-org/react";
+import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -55,8 +56,6 @@ const PersonalInfoUpdateModule = () => {
     setLoading(true);
     try {
       const params = { ...data } as any;
-      console.log("params", params, "data", data);
-
       if (isNaN(params.gender)) {
         params.gender = params.genderId;
       }
@@ -66,7 +65,9 @@ const PersonalInfoUpdateModule = () => {
       }
 
       if (params?.dob) {
-        params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
+        params.dob = moment(params.dob).isValid()
+          ? formatDateTime(params?.dob, FORMAT.DATE_SLASH)
+          : params.dob;
       }
 
       if (params?.playSince) {
