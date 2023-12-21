@@ -65,22 +65,19 @@ const PersonalInfoUpdateModule = () => {
         params.backHand = params.backHandId;
       }
 
-      delete params.captcha;
-      delete params.backHandId;
-      delete params.genderId;
-      delete params.personal_points;
-
       if (params?.dob) {
-        console.log(
-          params?.dob,
-          formatDateTime(params?.dob, FORMAT.DATE_SLASH)
-        );
-
         params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
       }
       if (params?.playSince) {
         params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
       }
+
+      delete params.captcha;
+      delete params.backHandId;
+      delete params.genderId;
+      delete params.personal_points;
+      console.log("params", params);
+
       const res = (await profileService.updateInformation(
         convertCamelCaseToLine(params)
       )) as any;
