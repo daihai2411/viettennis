@@ -3,8 +3,14 @@
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
 
+import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import useUserProfile from "@/components/common/hooks/useUserProfile";
+import { ROUTERS } from "@/const/router";
+import profileService from "@/core/services/profile/ProfileService";
+import { FORMAT, formatDateTime } from "@/helpers/datetime";
+import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Spinner } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,13 +20,6 @@ import InputCustom from "../common/InputCustom";
 import InputYear from "../common/InputYear";
 import { IFormInput } from "../interface";
 import { schemaAdditionInformation } from "../schema";
-// import Address from "./Address";
-import { ToastError, ToastSuccess } from "@/components/common/Toast";
-import { ROUTERS } from "@/const/router";
-import profileService from "@/core/services/profile/ProfileService";
-import { FORMAT, formatDateTime } from "@/helpers/datetime";
-import { convertCamelCaseToLine } from "@/helpers/value";
-import { Spinner } from "@nextui-org/react";
 import Address from "./Address";
 import CheckRecaptcha from "./CheckRecaptcha";
 import InfoAdvenced from "./InfoAdvenced";
@@ -99,7 +98,7 @@ const PersonalInfoUpdateModule = () => {
   }, [dataProfile, reset]);
 
   if (loading || !dataProfile.id) {
-    return <Spinner className="py-6 container mx-auto" />;
+    return <Spinner className="py-6 w-full" />;
   } else
     return (
       <>
