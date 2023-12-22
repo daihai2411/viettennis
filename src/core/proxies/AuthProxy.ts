@@ -24,7 +24,7 @@ class AuthProxy extends ProxyBase {
   }
 
   socialLogin(params: any) {
-    return this.post("social-login", params);
+    return this.post("social-login", params, "", {}, true);
   }
 }
 
