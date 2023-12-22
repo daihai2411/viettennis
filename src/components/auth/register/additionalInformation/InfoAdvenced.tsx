@@ -11,7 +11,6 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
         placeholder="Điền số. Ví dụ: 165, 170, ..."
         keyInput="height"
         type="number"
-        min={0}
       />
       <InputCustom
         label="Cân nặng"
@@ -20,7 +19,6 @@ const InfoAdvenced = ({ register, errors, setValue }) => {
         placeholder="Điền số. Ví dụ: 45, 50, 60, ..."
         keyInput="weight"
         type="number"
-        min={0}
       />
       <RadioCustom
         className="mb-5"

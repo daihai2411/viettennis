@@ -80,6 +80,10 @@ const SelectPoint = ({
                       type="number"
                       onChange={onChange}
                       min={0}
+                      onKeyDown={(evt) =>
+                        ["e", "E", "+", "-"].includes(evt.key) &&
+                        evt.preventDefault()
+                      }
                     />
                   </div>
                   <div className="flex mt-2 gap-2 justify-between py-2 text-base font-medium text-foreground">

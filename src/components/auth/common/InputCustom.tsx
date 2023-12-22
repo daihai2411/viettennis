@@ -38,6 +38,9 @@ const InputCustom = ({
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const handleKeyDown = (event) => {
+    if (type === "number") {
+      ["e", "E", "+", "-"].includes(event.key) && event.preventDefault();
+    }
     if (event.key === "Enter" && onSubmit) {
       onSubmit();
     }

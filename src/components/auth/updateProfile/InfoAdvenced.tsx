@@ -11,7 +11,6 @@ const InfoAdvenced = ({ register, errors, setValue, dateProfileCamelCase }) => {
         placeholder="Điền số. Ví dụ: 165, 170, ..."
         keyInput="height"
         type="number"
-        min={0}
         defaultValue={dateProfileCamelCase["height"]}
       />
       <InputCustom
@@ -21,7 +20,6 @@ const InfoAdvenced = ({ register, errors, setValue, dateProfileCamelCase }) => {
         placeholder="Điền số. Ví dụ: 45, 50, 60, ..."
         keyInput="weight"
         type="number"
-        min={0}
         defaultValue={dateProfileCamelCase["weight"]}
       />
       <RadioCustom
