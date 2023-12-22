@@ -94,10 +94,10 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
                 }
           )) as any;
           if (response.success) {
-            ToastSuccess(response.message);
+            ToastSuccess(response?.message);
             return true;
           } else {
-            ToastError(response.message);
+            ToastError(response?.message);
             console.log(
               "🚀 ~ file: route.ts:103 ~ signIn ~ response:",
               response
