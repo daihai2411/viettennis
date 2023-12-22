@@ -1,4 +1,3 @@
-import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import authService from "@/core/services/AuthService";
 import Cookies from "cookies";
 import NextAuth, { NextAuthOptions } from "next-auth";
@@ -94,19 +93,9 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
                 }
           )) as any;
           if (response.success) {
-            ToastSuccess(response?.message);
             return true;
-          } else {
-            ToastError(response?.message);
-            console.log(
-              "🚀 ~ file: route.ts:103 ~ signIn ~ response:",
-              response
-            );
           }
-        } catch (error: any) {
-          ToastError(error?.response?.data?.message);
-          console.log("🚀 ~ file: route.ts:109 ~ signIn ~ error:", error);
-        }
+        } catch (error: any) {}
       }
       return true;
     },
