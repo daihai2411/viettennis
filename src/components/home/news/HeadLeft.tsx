@@ -12,7 +12,7 @@ const HeadLeft = ({}) => {
   return (
     <Link
       href={ROUTERS.NEWS_AND_VIDEO.children.NEWS + "/" + newsFirst?.id}
-      className="col-span-3 lg:col-span-2 rounded-lg group cursor-pointer"
+      className="col-span-4 lg:col-span-3 rounded-lg group cursor-pointer"
     >
       <Skeleton isLoaded={!loading} className="rounded-lg">
         <div className="aspect-video">
