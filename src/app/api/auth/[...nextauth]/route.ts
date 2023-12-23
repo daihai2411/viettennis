@@ -76,7 +76,7 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
     async signIn({ account, profile }: any) {
       if (account?.provider === "google" || account?.provider === "facebook") {
         try {
-          const response = (await authService.socialLogin(
+          const params =
             account?.provider === "google"
               ? {
                   social_type: account.provider,
@@ -90,8 +90,8 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
                   email: profile.email,
                   name: profile.name,
                   social_id: profile.id,
-                }
-          )) as any;
+                };
+          const response = (await authService.socialLogin(params)) as any;
           if (response.success) {
             return true;
           }
@@ -106,7 +106,7 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
     async jwt({ token, user, account, profile }: any) {
       if (account?.provider === "google" || account?.provider === "facebook") {
         try {
-          const response = (await authService.socialLogin(
+          const params =
             account?.provider === "google"
               ? {
                   social_type: account.provider,
@@ -120,8 +120,9 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
                   email: profile.email,
                   name: profile.name,
                   social_id: profile.id,
-                }
-          )) as any;
+                };
+
+          const response = (await authService.socialLogin(params)) as any;
           if (response.success) {
             token.user = response.data;
           } else {

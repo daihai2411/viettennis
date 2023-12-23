@@ -5,16 +5,18 @@ import { getNewsThunk } from "./thunk";
 
 interface NewsState {
   newsFirst: object;
-  newsSecond: object;
-  listNewsNext: any[];
+  newsSecond: any[];
   loading: boolean;
+  listNews: any[];
+  listTop3News: any[];
 }
 
 const initialState: NewsState = {
   newsFirst: {},
   newsSecond: [],
-  listNewsNext: [],
   loading: false,
+  listNews: [],
+  listTop3News: [],
 };
 
 export const slice = createSlice({
@@ -27,9 +29,10 @@ export const slice = createSlice({
     });
     builder.addCase(getNewsThunk.fulfilled, (state, { payload }) => {
       state.newsFirst = [...payload].shift();
-      state.newsSecond = [...payload].slice(1, 5);
-      state.listNewsNext = [...payload].slice(5, 8);
+      state.newsSecond = [...payload].slice(1, 3);
+      state.listNews = payload;
       state.loading = false;
+      state.listTop3News = [...payload].slice(0, 3);
     });
     builder.addCase(getNewsThunk.rejected, (state) => {
       state.loading = false;
@@ -46,5 +49,6 @@ export const selectNewsFirst = (state: RootState) =>
   state[slice.name]?.newsFirst;
 export const selectNewsSecond = (state: RootState) =>
   state[slice.name]?.newsSecond;
-export const selectListNewsNext = (state: RootState) =>
-  state[slice.name]?.listNewsNext;
+export const selectListNews = (state: RootState) => state[slice.name]?.listNews;
+export const selectListTop3News = (state: RootState) =>
+  state[slice.name]?.listTop3News;

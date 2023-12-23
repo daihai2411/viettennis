@@ -43,6 +43,12 @@ const InputPoint = ({
     );
   };
 
+  const handleKeyDown = (event) => {
+    if (type === "number") {
+      ["e", "E", "+", "-"].includes(event.key) && event.preventDefault();
+    }
+  };
+
   return (
     <div className={className || "mb-4"}>
       <div className="grid grid-cols-10 gap-4">
@@ -78,7 +84,7 @@ const InputPoint = ({
             }}
             onBlur={onBlur}
             className="block"
-            min={0}
+            onKeyDown={handleKeyDown}
           />
           {errors[itemInput.code] && (
             <p className="text-red-500 text-xs" role="alert">

@@ -10,7 +10,7 @@ const TermAndPolicy = ({ register, errors, keyInput, setValue }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="my-2">
       <Checkbox
         {...register(keyInput)}
         isSelected={isSelected}

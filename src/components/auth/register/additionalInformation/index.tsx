@@ -135,6 +135,13 @@ const AdditionalInformation = () => {
               />
             </div>
             <div className="w-full">
+              <Address
+                register={register}
+                errors={errors}
+                getValues={getValues}
+                setValue={setValue}
+                clearErrors={clearErrors}
+              />
               <InputYear
                 label="Bắt đầu chơi tennis từ năm nào?"
                 register={register}
@@ -163,13 +170,6 @@ const AdditionalInformation = () => {
                 errors={errors}
                 placeholder="Đang mặc đồ thể thao của hãng nào?"
                 keyInput="clothesBrand"
-              />
-              <Address
-                register={register}
-                errors={errors}
-                getValues={getValues}
-                setValue={setValue}
-                clearErrors={clearErrors}
               />
               {/* <IdentifyCard
                 register={register}

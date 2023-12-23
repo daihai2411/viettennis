@@ -130,6 +130,14 @@ const PersonalInfoUpdateModule = () => {
                   />
                 </div>
                 <div className="w-full">
+                  <Address
+                    register={register}
+                    errors={errors}
+                    getValues={getValues}
+                    setValue={setValue}
+                    clearErrors={clearErrors}
+                    dateProfileCamelCase={dateProfileCamelCase}
+                  />
                   <InputYear
                     label="Bắt đầu chơi tennis từ năm nào?"
                     register={register}
@@ -162,14 +170,6 @@ const PersonalInfoUpdateModule = () => {
                     placeholder="Đang mặc đồ thể thao của hãng nào?"
                     keyInput="clothesBrand"
                     defaultValue={dateProfileCamelCase["clothesBrand"]}
-                  />
-                  <Address
-                    register={register}
-                    errors={errors}
-                    getValues={getValues}
-                    setValue={setValue}
-                    clearErrors={clearErrors}
-                    dateProfileCamelCase={dateProfileCamelCase}
                   />
                   <CheckRecaptcha
                     setValue={setValue}

@@ -29,7 +29,7 @@ const TopRank = () => {
   }, [tab]);
 
   return (
-    <div className="h-[800px] w-full rounded-lg">
+    <div className="h-auto mb-10 w-full rounded-lg">
       <Image src="/top-rank.png" alt="top rank" height={51} width={358} />
       {/* <div className="max-w-md mt-3 mb-4">
         <div className="flex h-5 items-center space-x-4 text-small justify-center">

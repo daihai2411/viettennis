@@ -141,9 +141,11 @@ export const schemaAdditionInformation = {
     .matches(/^0\d{9}$/, getMessSchema({ type: "MS_02_01" })),
   height: Yup.number()
     .transform((value) => (Number.isNaN(value) ? null : value))
+    .min(0, "Định dạng dữ liệu sai (ví dụ: 165)")
     .nullable(),
   weight: Yup.number()
     .transform((value) => (Number.isNaN(value) ? null : value))
+    .min(0, "Định dạng dữ liệu sai (ví dụ: 50)")
     .nullable(),
   backHand: Yup.string().nullable(),
   playSince: Yup.string().nullable(),

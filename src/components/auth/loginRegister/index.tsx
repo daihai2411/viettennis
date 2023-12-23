@@ -50,14 +50,6 @@ const LoginRegister = () => {
           />
         </DropdownTrigger>
         <DropdownMenu aria-label="User Actions" variant="flat">
-          <DropdownItem key="profile" className="h-14 gap-2">
-            <p className="font-bold">Bạn đang đăng nhập bằng</p>
-            <p className="font-bold">
-              {dataProfile?.username ||
-                session?.user?.username ||
-                session?.user?.name}
-            </p>
-          </DropdownItem>
           <DropdownItem
             key="settings"
             onClick={() => onClick(ROUTERS.PERSONAL_INFO)}
