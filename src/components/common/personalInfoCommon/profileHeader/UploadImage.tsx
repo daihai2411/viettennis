@@ -1,9 +1,7 @@
-import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
 import { AppDispatch } from "@/redux/store";
 import { Button, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaCamera } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -77,18 +75,6 @@ const UploadImage = ({ avatar, isUserLogged }) => {
           </>
         )}
       </Skeleton>
-
-      {isUserLogged && (
-        <Link href={ROUTERS.PERSONAL_INFO_UPDATE}>
-          <Button
-            radius="full"
-            size="sm"
-            className="mt-2 mx-auto flex bg-white text-green-common border border-green-common"
-          >
-            Cập nhật thông tin cá nhân
-          </Button>
-        </Link>
-      )}
     </div>
   );
 };

@@ -1,7 +1,19 @@
 import { checkEmptyVal } from "@/helpers/value";
-import { Skeleton } from "@nextui-org/react";
+import {
+  Button,
+  Image,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  Skeleton,
+  useDisclosure,
+} from "@nextui-org/react";
+import useUserProfile from "../../hooks/useUserProfile";
 
 const Overview = ({ data, loading }) => {
+  const { dataProfile } = useUserProfile(true);
   const listInfoPersonal = [
     { title: "Số điện thoại", value: data?.phone, key: "phone" },
     { title: "Địa chỉ email", value: data?.email, key: "email" },
@@ -79,10 +91,20 @@ const Overview = ({ data, loading }) => {
             </Skeleton>
           </div>
           <div className="w-full lg:w-[50%] h-auto">
-            <div className="px-4 sm:px-0">
+            <div className="px-4 flex justify-between sm:px-0">
               <h3 className="text-2xl font-semibold leading-7 text-gray-900">
-                Điểm cá nhân
+                Điểm trình cá nhân
               </h3>
+              {/* dataProfile?.personal_point_updated */}
+              {true ? (
+                <Image
+                  alt="logo VTR"
+                  src="/logo-VTR.svg"
+                  className="flex justify-center items-center w-[200px]"
+                />
+              ) : (
+                <BtnUpdatePoint />
+              )}
             </div>
             <Skeleton
               isLoaded={!loading}
@@ -115,3 +137,54 @@ const Overview = ({ data, loading }) => {
 };
 
 export default Overview;
+
+const BtnUpdatePoint = () => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  return (
+    <>
+      <Button onPress={onOpen} size="sm" className="bg-[#2DA46B] text-white">
+        Chấm trình
+      </Button>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Modal Title
+              </ModalHeader>
+              <ModalBody>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam pulvinar risus non risus hendrerit venenatis.
+                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam pulvinar risus non risus hendrerit venenatis.
+                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                </p>
+                <p>
+                  Magna exercitation reprehenderit magna aute tempor cupidatat
+                  consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
+                  incididunt cillum quis. Velit duis sit officia eiusmod Lorem
+                  aliqua enim laboris do dolor eiusmod. Et mollit incididunt
+                  nisi consectetur esse laborum eiusmod pariatur proident Lorem
+                  eiusmod et. Culpa deserunt nostrud ad veniam.
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
