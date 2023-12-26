@@ -27,7 +27,7 @@ const NewsItem = ({ item, loading }) => {
         <CardFooter className="items-start">
           <Skeleton isLoaded={!loading}>
             <div className="px-1 ">
-              <div className="group-hover:text-green-common cursor-pointer group-hover:underline text-start text-neutral-950 !text-base lg:text-xl font-medium line-clamp-2">
+              <div className="group-hover:text-green-common cursor-pointer group-hover:underline text-start text-neutral-950 !text-base lg:text-xl font-bold line-clamp-2">
                 {item?.title}
               </div>
             </div>

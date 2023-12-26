@@ -10,7 +10,7 @@ const VideoAndBanner = () => {
       <div className="col-span-2 hidden md:block rounded-lg">
         <Image
           radius="none"
-          className="h-full"
+          className="h-full rounded-lg"
           alt="banner"
           src="/banner-left.jpeg"
         />

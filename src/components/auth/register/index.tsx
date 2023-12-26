@@ -1,6 +1,8 @@
 "use client";
 
+import { getProfileThunk } from "@/components/common/hooks/store/thunk";
 import { saveSession } from "@/helpers/session";
+import { AppDispatch } from "@/redux/store";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -13,6 +15,7 @@ import {
   selectEmail,
   selectPassword,
   selectPhoneNumber,
+  selectProfile,
   selectStep,
 } from "../store/slice";
 import AdditionalInformation from "./additionalInformation";
@@ -21,19 +24,14 @@ import FormRegister from "./formRegister";
 import { FormVerify } from "./formVerify";
 
 const RegisterModule: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
 
   const step = useSelector(selectStep);
   const phoneNumber = useSelector(selectPhoneNumber);
   const email = useSelector(selectEmail);
   const password = useSelector(selectPassword);
-
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(changeStep(steps.ADDITIONAL_INFO));
-  //   };
-  // }, []);
+  const dataProfile = useSelector(selectProfile);
 
   const onBack = () => {
     dispatch(changeStep(steps.REGISTER));
@@ -49,8 +47,7 @@ const RegisterModule: React.FC = () => {
     dispatch(changeStep(steps.ADDITIONAL_INFO));
   };
 
-  const handleCheckRedirect = async () => {
-    const user = (await saveSession()) as any;
+  const handleCheckRedirect = async (user) => {
     if (user?.id) {
       if (!user?.is_phone_verified) {
         dispatch(changeStep(steps.VERIFY));
@@ -67,12 +64,21 @@ const RegisterModule: React.FC = () => {
         router.push("/auth/register");
       } else {
         router.push("/");
+        dispatch(getProfileThunk({}));
       }
     }
   };
 
   useEffect(() => {
-    handleCheckRedirect();
+    handleCheckRedirect(dataProfile);
+  }, [dataProfile]);
+
+  useEffect(() => {
+    return () => {
+      if (dataProfile.id) {
+        dispatch(changeStep(steps.REGISTER));
+      }
+    };
   }, []);
 
   if (step === steps.VERIFY) {

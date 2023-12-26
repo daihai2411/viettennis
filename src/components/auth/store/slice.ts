@@ -5,6 +5,7 @@ import { steps } from "../constants";
 import {
   getListPersonalPointCriteriaThunk,
   getListPersonalPointDetailByCriteriaThunk,
+  getProfileCheck,
 } from "./thunk";
 
 const initialState = {
@@ -17,6 +18,8 @@ const initialState = {
   loadingListPersonalPointDetail: false,
   objPoint: {},
   email: undefined,
+  dataProfile: {} as any,
+  isLoadingProfile: false,
 };
 
 export const slice = createSlice({
@@ -37,6 +40,9 @@ export const slice = createSlice({
     },
     changeEmail: (state, { payload }) => {
       state.email = payload;
+    },
+    resetDataProfile: (state) => {
+      state.dataProfile = {};
     },
   },
   extraReducers(builder) {
@@ -72,6 +78,16 @@ export const slice = createSlice({
         state.loadingListPersonalPointDetail = false;
       }
     );
+    builder.addCase(getProfileCheck.pending, (state) => {
+      state.isLoadingProfile = true;
+    });
+    builder.addCase(getProfileCheck.fulfilled, (state, action) => {
+      state.isLoadingProfile = false;
+      state.dataProfile = action.payload;
+    });
+    builder.addCase(getProfileCheck.rejected, (state) => {
+      state.isLoadingProfile = false;
+    });
   },
 });
 
@@ -83,6 +99,7 @@ export const {
   changePassword,
   changeValueObjPoint,
   changeEmail,
+  resetDataProfile,
 } = slice.actions;
 
 export const selectStep = (state: RootState) => state[slice.name]?.step;
@@ -100,3 +117,7 @@ export const selectListPersonalPointDetail = (state: RootState) =>
 export const selectObjPoints = (state: RootState) =>
   state[slice.name]?.objPoint;
 export const selectEmail = (state: RootState) => state[slice.name]?.email;
+export const selectProfile = (state: RootState) =>
+  state[slice.name]?.dataProfile;
+export const selectLoadingProfile = (state: RootState) =>
+  state[slice.name]?.isLoadingProfile;

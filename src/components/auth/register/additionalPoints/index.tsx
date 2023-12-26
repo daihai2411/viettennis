@@ -1,6 +1,7 @@
 "use client";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
+import { getProfileThunk } from "@/components/common/hooks/store/thunk";
 import { ROUTERS } from "@/const/router";
 import profileProxy from "@/core/proxies/profile/ProfileProxy";
 import { AppDispatch } from "@/redux/store";
@@ -65,6 +66,7 @@ const AdditionalPoints = () => {
         .updatePersonalPoint(data)
         .then((data: any) => {
           ToastSuccess(data?.message || "Cập nhật thông tin thành công");
+          dispatch(getProfileThunk({}));
         })
         .catch(() => {});
       router.push(ROUTERS.HOME);
