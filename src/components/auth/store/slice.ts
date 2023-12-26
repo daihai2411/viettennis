@@ -20,6 +20,7 @@ const initialState = {
   email: undefined,
   dataProfile: {} as any,
   isLoadingProfile: false,
+  stepForgetPassword: 1
 };
 
 export const slice = createSlice({

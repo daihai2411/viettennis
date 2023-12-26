@@ -9,7 +9,7 @@ const Newsletter = () => {
   };
   return (
     <>
-      <div className="w-full h-[285.95px] inline-flex justify-between flex-col rounded-[8px] p-8 relative">
+      <div className="w-full h-[285.95px] inline-flex justify-between flex-col rounded-lg p-8 relative">
         <div className={style.bgImage} style={styling}></div>
         <div className="z-10">
           <div className="text-stone-50 text-[33.73px] font-bold mb-4">

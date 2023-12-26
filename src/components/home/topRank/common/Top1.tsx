@@ -36,7 +36,13 @@ const Top1 = ({ tab, data, loading = false }) => {
           </div>
           <Skeleton isLoaded={!loading}>
             {data?.avatar && (
-              <Image src={data?.avatar} alt="avatar" height={120} width={120} />
+              <Image
+                className="rounded-lg"
+                src={data?.avatar}
+                alt="avatar"
+                height={120}
+                width={120}
+              />
             )}
           </Skeleton>
         </CardHeader>

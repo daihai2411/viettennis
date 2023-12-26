@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { STATUS_FORGET_PASS } from "../constants";
@@ -40,12 +40,13 @@ const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
         mật khẩu.
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* <InputCustom
-          label="username"
-          register={register}
-          errors={errors}
-          placeholder="Số điện thoại"
-        /> */}
+        <Input
+          label=""
+          placeholder="Tên nick (ID) hoặc email hoặc số điện thoại"
+          variant="bordered"
+          labelPlacement="outside"
+          className="py-2"
+        />
         <div
           className={
             status === STATUS_FORGET_PASS.UNSENT ? "opacity-0" : "opacity-1"
