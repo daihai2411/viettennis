@@ -94,8 +94,14 @@ const getOptions = (req: any, res: any): NextAuthOptions => ({
           const response = (await authService.socialLogin(params)) as any;
           if (response.success) {
             return true;
+          } else {
+            console.log("--------------- false", response);
+            console.log(account, profile);
           }
-        } catch (error: any) {}
+        } catch (error: any) {
+          console.log("---------------- error", error);
+          console.log(account, profile);
+        }
       }
       return true;
     },
