@@ -1,4 +1,4 @@
-import PlayerListModule from "@/components/tournaments/playerList";
+import PlayerListModule from "@/components/tournaments/detail/playerList";
 
 const PlayerListPage = () => {
   return <PlayerListModule />;

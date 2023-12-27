@@ -1,6 +1,6 @@
 "use client";
 
-import MatchItem from "@/components/tournaments/draws/matchDraw/MatchItem";
+import MatchItem from "@/components/tournaments/detail/draws/matchDraw/MatchItem";
 import dynamic from "next/dynamic";
 import { matches } from "./dummy";
 

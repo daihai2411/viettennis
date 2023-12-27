@@ -1,11 +1,7 @@
-import DevelopPage from "@/components/common/page/DevelopPage";
+import OverviewTournamentModule from "@/components/tournaments/detail/overview";
 
 const OverviewPage = () => {
-  return (
-    <div>
-      <DevelopPage />
-    </div>
-  );
+  return <OverviewTournamentModule  />;
 };
 
 export default OverviewPage;

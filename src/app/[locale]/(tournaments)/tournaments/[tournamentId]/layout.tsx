@@ -1,22 +1,14 @@
 "use client";
 
-import HeaderTournaments from "@/components/headerTournaments";
-import { usePathname } from "next/navigation";
+import HeaderTournaments from "@/components/tournaments/headerTournaments";
 
 export default function TournamentsLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { tournamentId: string };
 }) {
-  const pathname = usePathname();
-
-  // const getPathName = (router) => {
-  //   const arrayPath = pathname.split("/");
-  //   arrayPath.shift();
-  //   arrayPath.push(router);
-  //   return arrayPath.join("/");
-  // };
-
   return (
     <>
       <HeaderTournaments
@@ -40,6 +32,7 @@ export default function TournamentsLayout({
           //   router: "past-winners",
           // },
         ]}
+        tournamentId={params.tournamentId}
       />
       {children}
     </>

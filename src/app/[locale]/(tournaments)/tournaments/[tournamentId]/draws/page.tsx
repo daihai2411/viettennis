@@ -1,4 +1,4 @@
-import TournamentsDrawComponent from "@/components/tournaments/draws";
+import TournamentsDrawComponent from "@/components/tournaments/detail/draws";
 
 const DrawsPage = () => {
   return <TournamentsDrawComponent />;
