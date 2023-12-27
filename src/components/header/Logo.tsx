@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <Link
       href={ROUTERS.HOME}
-      className="flex justify-center w-full md:mr-0 mr-6"
+      className="flex justify-center lg:justify-start w-full md:mr-0 mr-6"
     >
       <Image src="/logo.svg" alt="logo" width={200} />
     </Link>

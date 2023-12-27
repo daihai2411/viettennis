@@ -13,7 +13,11 @@ const ProfileHeader = ({ data, loading, isUserLogged }) => {
           loading={loading}
           isUserLogged={isUserLogged}
         />
-        <ProfileHeaderRight data={data} loading={loading} />
+        <ProfileHeaderRight
+          data={data}
+          loading={loading}
+          isUserLogged={isUserLogged}
+        />
       </div>
     </>
   );

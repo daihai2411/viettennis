@@ -1,13 +1,13 @@
 "use client";
 
 import { ToastError } from "@/components/common/Toast";
+import { ROUTERS } from "@/const/router";
 import authService from "@/core/services/AuthService";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@nextui-org/button";
 import { Divider } from "@nextui-org/divider";
 import { Image } from "@nextui-org/image";
-import { signIn } from "next-auth/react";
-import Link from "next/link";
+import { signIn, signOut } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -164,12 +164,17 @@ const FormRegister = () => {
 
         <div className="mt-6 text-sm flex justify-center gap-1 mb-4">
           <div>Bạn đã có tài khoản?</div>
-          <Link
-            href={"/auth/login"}
+          <div
             className="text-cyan-700 hover:underline cursor-pointer"
+            onClick={() =>
+              signOut({
+                redirect: true,
+                callbackUrl: ROUTERS.AUTH.children.LOGIN,
+              })
+            }
           >
             Đăng nhập
-          </Link>
+          </div>
         </div>
       </div>
     </div>

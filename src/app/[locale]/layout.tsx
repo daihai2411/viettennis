@@ -5,13 +5,46 @@ import { Providers } from "@/redux/provider";
 import ChatBoxMesseger from "@/utils/ChatBoxMesseger";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const avoFont = localFont({
+  src: [
+    {
+      path: "../../fonts/Avo-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/Avo-Bold-Italic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../../fonts/Avo-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/Avo-Medium-Italic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../../fonts/Avo.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../fonts/Avo-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+});
 
 export function generateStaticParams() {
   return [{ locale: "vi" }];
@@ -38,7 +71,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className={avoFont.className} suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
             <AppHeader params={locale} />

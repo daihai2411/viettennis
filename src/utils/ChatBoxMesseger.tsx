@@ -7,7 +7,7 @@ const ChatBoxMesseger = () => {
     <MessengerChat
       pageId="204082679699567"
       language="vi"
-      themeColor={"#000000"}
+      themeColor={"#2DA46B"}
       loggedInGreeting="Xin chào! Hãy chat với chúng tôi"
       loggedOutGreeting="Xin chào! Hãy chat với chúng tôi"
       greetingDialogDisplay={"show"}

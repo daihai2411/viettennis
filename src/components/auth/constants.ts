@@ -26,3 +26,7 @@ export const steps = {
   ADDITIONAL_INFO: 3,
   ADDITIONAL_POINTS: 4,
 };
+
+export const STEP_FORGET_PASSWORD = {
+  
+};

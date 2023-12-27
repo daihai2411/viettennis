@@ -20,6 +20,34 @@
     width: 60px;
     font-weight: bold;
     font-size: smaller;
+    border-bottom: 4px;
+    border-style: solid;
+    border-color: white;
+    padding-bottom: 0px !important;
+}
+
+.btnRankActivePointRed {
+    background-color: #FFFFFF;
+    color: #2DA46B;
+    width: 60px;
+    font-weight: bold;
+    font-size: smaller;
+    border-bottom: 4px;
+    border-style: solid;
+    border-color: #d70a0ad9;
+    padding-bottom: 0px !important;
+}
+
+.btnRankActivePointBlue {
+    background-color: #FFFFFF;
+    color: #2DA46B;
+    width: 60px;
+    font-weight: bold;
+    font-size: smaller;
+    border-bottom: 4px;
+    border-style: solid;
+    border-color: #0555e4d9;
+    padding-bottom: 0px !important;
 }
 
 .btnRank {
@@ -28,6 +56,7 @@
     width: 60px;
     font-weight: bold;
     font-size: smaller;
+    border: 1.5px solid white;
 }
 
 .shadowText {

@@ -1,6 +1,7 @@
 "use client";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
+import { getProfileThunk } from "@/components/common/hooks/store/thunk";
 import { saveSession } from "@/helpers/session";
 import { AppDispatch } from "@/redux/store";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,7 +18,13 @@ import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
 import { steps } from "../constants";
 import { schemaLogin } from "../schema";
-import { changeEmail, changePhoneNumber, changeStep } from "../store/slice";
+import {
+  changeEmail,
+  changePhoneNumber,
+  changeStep,
+  resetDataProfile,
+} from "../store/slice";
+import { getProfileCheck } from "../store/thunk";
 
 interface IFormInput {
   username: string;
@@ -65,6 +72,7 @@ const LoginModule = () => {
         router.push("/auth/register");
       } else {
         router.push("/");
+        dispatch(getProfileThunk({}));
       }
     }
   };
@@ -76,10 +84,12 @@ const LoginModule = () => {
       password: data.password,
       redirect: false,
     });
-    handleCheckRedirect();
+
     if (result && result?.status === 200) {
       ToastSuccess("Đăng nhập thành công !");
       setLoading(false);
+      handleCheckRedirect();
+      dispatch(getProfileCheck({}));
     } else if (result?.status === 401) {
       ToastError("Tên đăng nhập hoặc mật khẩu sai, vui lòng thử lại ");
       setLoading(false);
@@ -170,6 +180,7 @@ const LoginModule = () => {
           <Link
             href={"/auth/register"}
             className="text-cyan-700 hover:underline cursor-pointer"
+            onClick={() => dispatch(resetDataProfile())}
           >
             Đăng ký
           </Link>

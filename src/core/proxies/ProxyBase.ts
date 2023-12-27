@@ -18,7 +18,6 @@ axios.interceptors.response.use(
     }
 
     if (error.response && error.response.status === 401) {
-      console.log("unauthorized!");
     }
 
     return Promise.reject(error);

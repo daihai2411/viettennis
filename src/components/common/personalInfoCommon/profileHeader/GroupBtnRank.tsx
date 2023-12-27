@@ -3,10 +3,17 @@
 import { RANK } from "../constants";
 import style from "../style.module.scss";
 
-const GroupBtnRank = ({ active, setActive }) => {
+const POINT_BLUE = 1;
+const POINT_RED = 2;
+
+const GroupBtnRank = ({ active, setActive, dataRankPointId }) => {
   const getStyle = (value: number) => {
     if (active === value) {
-      return style.btnRankActive;
+      return dataRankPointId === POINT_BLUE
+        ? style.btnRankActivePointBlue
+        : dataRankPointId === POINT_RED
+        ? style.btnRankActivePointRed
+        : style.btnRankActive;
     } else {
       return style.btnRank;
     }
@@ -17,7 +24,7 @@ const GroupBtnRank = ({ active, setActive }) => {
   };
 
   return (
-    <div className="flex border-1.5 border-white w-fit mt-2">
+    <div key={dataRankPointId} className="flex w-fit mt-2">
       <div
         className={`${getStyle(
           RANK.DOUBLES

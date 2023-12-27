@@ -1,5 +1,7 @@
+import ForgetPasswordModule from "@/components/auth/forgetPassword";
+
 const ForgotPassword = () => {
-  return <div>ForgotPassword</div>;
+  return <ForgetPasswordModule />;
 };
 
 export default ForgotPassword;
