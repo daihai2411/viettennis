@@ -144,14 +144,24 @@ const FormRegister = () => {
         <div className="w-full grid gap-2">
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("google", { redirect: false })}
+            onClick={() =>
+              signIn("google", {
+                redirect: true,
+                callbackUrl: ROUTERS.AUTH.children.LOGIN,
+              })
+            }
           >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Google
           </Button>
           <Button
             className="border border-stone-300 bg-gray-50 w-full"
-            onClick={() => signIn("facebook", { redirect: false })}
+            onClick={() =>
+              signIn("facebook", {
+                redirect: true,
+                callbackUrl: ROUTERS.AUTH.children.LOGIN,
+              })
+            }
           >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
