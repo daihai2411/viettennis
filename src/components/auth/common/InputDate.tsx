@@ -36,7 +36,7 @@ const InputDate = ({
 
   // eslint-disable-next-line react/display-name
   const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref) => (
-    <div className={"mb-4"}>
+    <div className="mb-4">
       <div className="text-small font-medium text-foreground">{label}</div>
       <Input
         ref={ref}

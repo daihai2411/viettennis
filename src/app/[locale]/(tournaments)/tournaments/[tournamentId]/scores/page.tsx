@@ -1,11 +1,7 @@
-import DevelopPage from "@/components/common/page/DevelopPage";
+import ScoresTournamentModule from "@/components/tournaments/detail/scores";
 
 const ScoresPage = () => {
-  return (
-    <div>
-      <DevelopPage />
-    </div>
-  );
+  return <ScoresTournamentModule />;
 };
 
 export default ScoresPage;

@@ -1,16 +1,20 @@
 import reducerRegistry from "@/helpers/ReducerRegistry";
 import { RootState } from "@/redux/store";
 import { createSlice } from "@reduxjs/toolkit";
-import { getDetailTournamentThunk } from "./thunk";
+import { getDetailTournamentThunk, getNewsInEventThunk } from "./thunk";
 
 interface NewsState {
   dataDetail: object;
   loading: boolean;
+  listNewsInEvent: any[];
+  loadingListNewsInEvent: boolean;
 }
 
 const initialState: NewsState = {
   dataDetail: {},
   loading: false,
+  listNewsInEvent: [],
+  loadingListNewsInEvent: false,
 };
 
 export const slice = createSlice({
@@ -31,6 +35,16 @@ export const slice = createSlice({
     builder.addCase(getDetailTournamentThunk.rejected, (state) => {
       state.loading = false;
     });
+    builder.addCase(getNewsInEventThunk.pending, (state) => {
+      state.loadingListNewsInEvent = true;
+    });
+    builder.addCase(getNewsInEventThunk.fulfilled, (state, { payload }) => {
+      state.listNewsInEvent = payload;
+      state.loadingListNewsInEvent = false;
+    });
+    builder.addCase(getNewsInEventThunk.rejected, (state) => {
+      state.loadingListNewsInEvent = false;
+    });
   },
 });
 
@@ -41,3 +55,7 @@ export const {} = slice.actions;
 export const selectLoading = (state: RootState) => state[slice.name]?.loading;
 export const selectTournamentDetail = (state: RootState) =>
   state[slice.name]?.dataDetail;
+export const selectLoadingListNewsInEvent = (state: RootState) =>
+  state[slice.name]?.loadingListNewsInEvent;
+export const selectListNewsInEvent = (state: RootState) =>
+  state[slice.name]?.listNewsInEvent;

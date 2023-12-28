@@ -8,7 +8,10 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoading, selectTournamentDetail } from "../detail/store/slice";
-import { getDetailTournamentThunk } from "../detail/store/thunk";
+import {
+  getDetailTournamentThunk,
+  getNewsInEventThunk,
+} from "../detail/store/thunk";
 
 type Item = {
   key: string;
@@ -36,6 +39,7 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
   useEffect(() => {
     if (tournamentId) {
       dispatch(getDetailTournamentThunk({ id: tournamentId }));
+      dispatch(getNewsInEventThunk({ paginate: 8 }));
     }
   }, []);
 
@@ -59,16 +63,12 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
             </h1>
           </Skeleton>
           <Skeleton isLoaded={!loading} className="text-lg font-normal">
-            {tournamentDetail?.district_name && tournamentDetail?.province_name
-              ? [
-                  tournamentDetail?.district_name,
-                  tournamentDetail?.province_name,
-                ].join(", ")
-              : tournamentDetail?.district_name
-              ? tournamentDetail?.district_name
-              : tournamentDetail?.province_name
-              ? tournamentDetail?.province_name
-              : null}
+            {[
+              tournamentDetail?.address,
+              tournamentDetail?.ward_name,
+              tournamentDetail?.district_name,
+              tournamentDetail?.province_name,
+            ].join(", ")}
           </Skeleton>
           <Skeleton isLoaded={!loading} className="text-xs font-bold mt-4">
             {tournamentDetail?.start_date && tournamentDetail?.end_date
