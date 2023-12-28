@@ -19,6 +19,7 @@ const MonthComponent = () => {
     <div className="flex item-center overflow-x-auto">
       {month.map((item) => (
         <Link
+          key={item.id}
           href={item.active}
           className={`${style.filterMonthBtn} ${
             monthActive === item.active
