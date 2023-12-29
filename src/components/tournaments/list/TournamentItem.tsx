@@ -4,8 +4,6 @@ import Link from "next/link";
 import { FaCalendarAlt } from "react-icons/fa";
 
 const TournamentItem = ({ data }) => {
-  console.log(data);
-
   return (
     <Link href={`/tournaments/${data?.id}/overview`} className="mb-1">
       <Card shadow="none" radius="none" className="group">
@@ -23,6 +21,9 @@ const TournamentItem = ({ data }) => {
                 ? data?.start_date + " - " + data?.end_date
                 : null}
             </div>
+            {/* <div className="absolute bottom-2 right-3">
+              <YardComponent id={data?.surface} />
+            </div> */}
           </div>
         </CardBody>
         <CardFooter className="items-start bg-[#E6E6E6]">

@@ -26,3 +26,15 @@ export const getNewsInEventThunk = createAsyncThunk(
     }
   }
 );
+
+export const getTournamentResultThunk = createAsyncThunk(
+  "tournament/getTournamentResultThunk",
+  async (params: any, { rejectWithValue }) => {
+    try {
+      const res: any = await tournamentService.getTournamentResult(params);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue({ loading: axios.isCancel(error) });
+    }
+  }
+);

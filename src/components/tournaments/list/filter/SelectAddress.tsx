@@ -12,7 +12,7 @@ const SelectAddress = () => {
         placeholder="Tỉnh/ thành phố"
         isLoading={loadingProvinces}
         labelPlacement="outside-left"
-        className="max-w-[180px]"
+        className="max-w-[140px]"
       >
         {dataProvinces.map((item: { name: string; code: string }) => (
           <AutocompleteItem key={item.code} value={item.code}>
@@ -23,7 +23,7 @@ const SelectAddress = () => {
       <Autocomplete
         variant="underlined"
         placeholder="Quận huyện"
-        className="max-w-[180px]"
+        className="max-w-[140px]"
         isLoading={loadingDistricts}
         labelPlacement="outside-left"
       >

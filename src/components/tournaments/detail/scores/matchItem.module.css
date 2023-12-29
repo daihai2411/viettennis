@@ -35,7 +35,7 @@
 }
 
 .matchTable tr:first-child th{
-    border-left-color: #2DA46B;
+    border-left-color: #00bc59;
 }
 
 .matchTable th {
@@ -44,12 +44,13 @@
     padding: 0 16px 0 14px;
     position: relative;
     width: 100%;
+    font-weight: 700;
 }
 
 .matchTable td {
     transition: background-color .4s ease;
     color: #141414;
-    font-weight: 900;
+    font-weight: 700;
     width: 32px;
     text-align: center;
     font-size: 14px;

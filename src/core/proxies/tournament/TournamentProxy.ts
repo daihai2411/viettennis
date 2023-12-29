@@ -12,6 +12,10 @@ class Proxy extends ProxyBase {
   getTemplateTournament(params: any) {
     return this.get("tournaments/template", params);
   }
+
+  getTournamentResult(params: any) {
+    return this.get("tournaments/result", params);
+  }
 }
 
 const tournamentProxy = new Proxy();

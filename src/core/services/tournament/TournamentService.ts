@@ -13,6 +13,10 @@ class Service extends ServiceBase {
   getTemplateTournament(params: object) {
     return this.getData(() => tournamentProxy.getTemplateTournament(params));
   }
+
+  getTournamentResult(params: object) {
+    return this.getData(() => tournamentProxy.getTournamentResult(params));
+  }
 }
 
 const tournamentService = new Service();

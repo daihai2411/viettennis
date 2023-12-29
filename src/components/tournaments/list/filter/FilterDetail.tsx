@@ -3,9 +3,11 @@ import SelectAddress from "./SelectAddress";
 
 const FilterDetail = () => {
   return (
-    <div className="bg-[#E6E6E6] py-3 block lg:flex">
-      <SelectAddress />
-      <MonthComponent />
+    <div className="bg-[#E6E6E6] py-3 ">
+      <div className="container mx-auto block xl:flex">
+        <SelectAddress />
+        <MonthComponent />
+      </div>
     </div>
   );
 };

@@ -45,7 +45,7 @@ const SingleElimination = () => {
       options={{
         style: {
           connectorColor: "#ececec",
-          connectorColorHighlight: "#2DA46B",
+          connectorColorHighlight: "#00bc59",
           roundHeader: {
             backgroundColor: "blue",
             fontColor: "#ffffff",

@@ -1,24 +1,35 @@
 "use client";
 
 import VTRComponent from "@/components/common/VTRComponent";
+import YardComponent from "@/components/common/YardComponent";
 import { checkEmptyVal } from "@/helpers/value";
 import { Skeleton } from "@nextui-org/react";
 import { useSelector } from "react-redux";
-import { selectLoading, selectTournamentDetail } from "../store/slice";
+import {
+  selectChildTournament,
+  selectLoading,
+  selectTournamentDetail,
+} from "../store/slice";
 import ListNewsInEvent from "./ListNewsInEvent";
 
 const OverviewTournamentModule = () => {
   const loading = useSelector(selectLoading);
   const tournamentDetail = useSelector(selectTournamentDetail);
-  console.log(tournamentDetail);
+  const childTournament = useSelector(selectChildTournament);
 
   const listComponent = [
     {
-      title: "Level",
-      content: <VTRComponent level={1200} />,
+      title: "Trình thi đấu",
+      content: (
+        <div className="grid gap-3 py-2">
+          {childTournament?.map((item) => (
+            <VTRComponent key={item} level={item} />
+          ))}
+        </div>
+      ),
     },
     {
-      title: "Total $ Commitment",
+      title: "Tổng giải thưởng",
       content: (
         <div className="text-2xl font-bold text-green-common whitespace-nowrap flex justify-center items-center">
           {checkEmptyVal(tournamentDetail?.total_prize)} VNĐ
@@ -26,11 +37,11 @@ const OverviewTournamentModule = () => {
       ),
     },
     {
-      title: "Surface",
-      content: <div></div>,
+      title: "Mặt sân",
+      content: <YardComponent id={tournamentDetail?.surface} />,
     },
     {
-      title: "Singles Draw",
+      title: "Tổng trận đơn",
       content: (
         <div className="text-2xl font-bold text-green-common text-center flex justify-center items-center">
           {checkEmptyVal(tournamentDetail?.point)}
@@ -38,7 +49,7 @@ const OverviewTournamentModule = () => {
       ),
     },
     {
-      title: "Doubles Draw",
+      title: "Tổng trận đội",
       content: (
         <div className="text-2xl font-bold text-green-common text-center flex justify-center items-center">
           {checkEmptyVal(tournamentDetail?.point)}
@@ -52,7 +63,7 @@ const OverviewTournamentModule = () => {
       <div className="lg:flex justify-center gap-14 hidden">
         {listComponent.map((item) => (
           <div key={item.title} className="">
-            <div className="text-lg font-bold flex justify-center mb-[10px]">
+            <div className="text-lg font-bold flex justify-center mb-[10px] whitespace-nowrap">
               {item.title}
             </div>
             <>{item.content}</>
@@ -68,10 +79,16 @@ const OverviewTournamentModule = () => {
             <div className="text-lg font-bold flex justify-center my-[10px]">
               {item.title}
             </div>
-            <Skeleton isLoaded={!loading}>{item.content}</Skeleton>
+            <Skeleton className="flex items-center" isLoaded={!loading}>
+              {item.content}
+            </Skeleton>
           </div>
         ))}
       </div>
+      <div
+        className="mt-14 px-2 md:px-0 2xl:px-10"
+        dangerouslySetInnerHTML={{ __html: tournamentDetail?.overview }}
+      />
       <ListNewsInEvent />
     </div>
   );

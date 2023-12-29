@@ -1,5 +1,4 @@
 import { useState } from "react";
-import MatchItemSpecial from "./matchDraw/MatchItemSpecial";
 import MatchList from "./matchDraw/MatchList";
 
 const TABS = {
@@ -82,9 +81,9 @@ const EliminationRound = () => {
           <MatchList listData={getArrayDummy(4)} />
         )}
       </div>
-      <div className="w-full sm:w-[460px] cursor-pointer flex mx-auto">
+      {/* <div className="w-full sm:w-[460px] cursor-pointer flex justify-start">
         <MatchItemSpecial />
-      </div>
+      </div> */}
     </div>
   );
 };

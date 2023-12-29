@@ -11,6 +11,7 @@ import { selectLoading, selectTournamentDetail } from "../detail/store/slice";
 import {
   getDetailTournamentThunk,
   getNewsInEventThunk,
+  getTournamentResultThunk,
 } from "../detail/store/thunk";
 
 type Item = {
@@ -40,6 +41,7 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
     if (tournamentId) {
       dispatch(getDetailTournamentThunk({ id: tournamentId }));
       dispatch(getNewsInEventThunk({ paginate: 8 }));
+      dispatch(getTournamentResultThunk({ tournament_parent: tournamentId }));
     }
   }, []);
 
