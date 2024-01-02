@@ -44,7 +44,7 @@ const ScoresTournamentModule = () => {
 
   return (
     <div className="">
-      <TabsTournament setTab={setTab} className="bg-default-100" />
+      <TabsTournament setTab={setTab} className="bg-[#e6e6e6]" />
       <TabsRound
         tabRound={tabRound}
         list={tabsRoundName}

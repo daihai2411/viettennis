@@ -17,6 +17,10 @@ class Service extends ServiceBase {
   getTournamentResult(params: object) {
     return this.getData(() => tournamentProxy.getTournamentResult(params));
   }
+
+  getFullFilterTournament() {
+    return this.getData(() => tournamentProxy.getFullFilterTournament());
+  }
 }
 
 const tournamentService = new Service();

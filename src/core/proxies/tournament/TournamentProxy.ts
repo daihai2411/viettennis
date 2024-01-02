@@ -16,6 +16,10 @@ class Proxy extends ProxyBase {
   getTournamentResult(params: any) {
     return this.get("tournaments/result", params);
   }
+
+  getFullFilterTournament() {
+    return this.get("tournaments/all-filters");
+  }
 }
 
 const tournamentProxy = new Proxy();

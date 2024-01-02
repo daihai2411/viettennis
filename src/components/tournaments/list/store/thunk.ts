@@ -13,3 +13,15 @@ export const getListTournamentThunk = createAsyncThunk(
     }
   }
 );
+
+export const getFullFilterTournamentThunk = createAsyncThunk(
+  "tournament/getFullFilterTournament",
+  async (params: any, { rejectWithValue }) => {
+    try {
+      const res: any = await tournamentService.getFullFilterTournament();
+      return res.data;
+    } catch (error) {
+      return rejectWithValue({ loading: axios.isCancel(error) });
+    }
+  }
+);

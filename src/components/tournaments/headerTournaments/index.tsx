@@ -13,6 +13,7 @@ import {
   getNewsInEventThunk,
   getTournamentResultThunk,
 } from "../detail/store/thunk";
+import SocialTournaments from "./SocialTournaments";
 
 type Item = {
   key: string;
@@ -57,7 +58,7 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
           className="rounder-none"
         />
       </div>
-      <div className="w-full px-4 py-12 mt-3 mb-2 bg-green-common flex-col justify-center items-center">
+      <div className="w-full px-4 py-6 mt-3 mb-2 bg-green-common flex-col justify-center items-center">
         <div className="text-center text-white">
           <Skeleton isLoaded={!loading}>
             <h1 className="text-[43.66px] font-medium mb-1">
@@ -72,13 +73,14 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
               tournamentDetail?.province_name,
             ].join(", ")}
           </Skeleton>
-          <Skeleton isLoaded={!loading} className="text-xs font-bold mt-4">
+          <Skeleton isLoaded={!loading} className="text-xs font-bold mt-4 mb-5">
             {tournamentDetail?.start_date && tournamentDetail?.end_date
               ? tournamentDetail?.start_date +
                 " - " +
                 tournamentDetail?.end_date
               : null}
           </Skeleton>
+          <SocialTournaments tournamentDetail={tournamentDetail} />
         </div>
       </div>
       <div className="h-[60px] flex justify-start sm:justify-center bg-[#141414] mb-2 whitespace-nowrap overflow-auto">

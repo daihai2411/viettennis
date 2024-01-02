@@ -49,7 +49,7 @@ const OverviewTournamentModule = () => {
       ),
     },
     {
-      title: "Tổng trận đội",
+      title: "Tổng trận đôi",
       content: (
         <div className="text-2xl font-bold text-green-common text-center flex justify-center items-center">
           {checkEmptyVal(tournamentDetail?.point)}

@@ -21,7 +21,7 @@ const TabsRound = ({ tabRound, setTabRound, list }) => {
   }, []);
 
   return (
-    <div className="mb-10 bg-default-100">
+    <div className="mb-10 bg-[#e6e6e6]">
       <div className="flex justify-center h-16 items-center container mx-auto">
         <Tabs radius="none" size="lg" onSelectionChange={onSelectionChange}>
           {list?.length &&

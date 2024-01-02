@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { TOURNAMENT_TYPE } from "../../constants";
 import TabsTournament from "../common/TabsTournament";
 import { selectChildTournamentDetail } from "../store/slice";
+import FilterPlayerList from "./FilterPlayerList";
 import ItemPlayer from "./common/ItemPlayer";
 import ItemPlayerDouble from "./common/ItemPlayerDouble";
 
@@ -28,6 +29,7 @@ const PlayerListModule = () => {
     <div className="">
       <TabsTournament setTab={setTab} />
       <div className="container mx-auto">
+        <FilterPlayerList />
         {getListPlayer?.length ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {getTournamentType === TOURNAMENT_TYPE.SINGER

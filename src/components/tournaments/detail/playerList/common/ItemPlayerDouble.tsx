@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const ItemPlayerDouble = ({ item }) => {
   return (
-    <div className="mt-2 cursor-pointer">
+    <div className="mt-2">
       <Card radius="none" shadow="none" className="w-full">
         <CardBody className="relative p-0 pt-[30%]">
           <div className="bg-green-common min-h-[100px] p-3 block text-white">
@@ -39,7 +39,7 @@ const ItemPlayerDouble = ({ item }) => {
         <CardFooter className="bg-[#e6e6e6] block py-[22px] mt-2">
           <Link
             href={ROUTERS.PLAYERS + "/" + item?.first_player?.id}
-            className="hover:underline hover:text-green-common mb-1 line-clamp-1 text-[#141414] text-[21px] font-semibold capitalize"
+            className="border-solid border-b-3 hover:border-green-common border-[#e6e6e6] hover:text-green-common mb-1 line-clamp-1 text-[#141414] text-[21px] font-semibold capitalize"
           >
             {checkEmptyVal(item?.first_player?.full_name)}
           </Link>
@@ -48,7 +48,7 @@ const ItemPlayerDouble = ({ item }) => {
           </div>
           <Link
             href={ROUTERS.PLAYERS + "/" + item?.second_player?.id}
-            className="hover:underline hover:text-green-common mb-1 line-clamp-1 text-[#141414] text-[21px] font-semibold capitalize"
+            className="border-solid border-b-3 hover:border-green-common border-[#e6e6e6] hover:text-green-common mb-1 line-clamp-1 text-[#141414] text-[21px] font-semibold capitalize"
           >
             {checkEmptyVal(item?.second_player?.full_name)}
           </Link>

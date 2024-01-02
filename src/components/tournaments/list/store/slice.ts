@@ -1,16 +1,20 @@
 import reducerRegistry from "@/helpers/ReducerRegistry";
 import { RootState } from "@/redux/store";
 import { createSlice } from "@reduxjs/toolkit";
-import { getListTournamentThunk } from "./thunk";
+import { getFullFilterTournamentThunk, getListTournamentThunk } from "./thunk";
 
 interface NewsState {
   list: any[];
   loading: boolean;
+  filter: object;
+  loadingFilter: boolean;
 }
 
 const initialState: NewsState = {
   list: [],
   loading: false,
+  filter: {},
+  loadingFilter: false,
 };
 
 export const slice = createSlice({
@@ -28,6 +32,19 @@ export const slice = createSlice({
     builder.addCase(getListTournamentThunk.rejected, (state) => {
       state.loading = false;
     });
+    builder.addCase(getFullFilterTournamentThunk.pending, (state) => {
+      state.loadingFilter = true;
+    });
+    builder.addCase(
+      getFullFilterTournamentThunk.fulfilled,
+      (state, { payload }) => {
+        state.filter = payload;
+        state.loadingFilter = false;
+      }
+    );
+    builder.addCase(getFullFilterTournamentThunk.rejected, (state) => {
+      state.loadingFilter = false;
+    });
   },
 });
 
@@ -38,3 +55,7 @@ export const {} = slice.actions;
 export const selectLoading = (state: RootState) => state[slice.name]?.loading;
 export const selectListTournament = (state: RootState) =>
   state[slice.name]?.list;
+export const selectLoadingFilter = (state: RootState) =>
+  state[slice.name]?.loadingFilter;
+export const selectFilterTournament = (state: RootState) =>
+  state[slice.name]?.filter;

@@ -1,10 +1,15 @@
 "use client";
 
+import { AppDispatch } from "@/redux/store";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getFullFilterTournamentThunk } from "../store/thunk";
 import FilterDetail from "./FilterDetail";
 import FilterPoint from "./FilterLevel";
 
 const Filter = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -17,6 +22,10 @@ const Filter = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    dispatch(getFullFilterTournamentThunk({}));
   }, []);
 
   return (
