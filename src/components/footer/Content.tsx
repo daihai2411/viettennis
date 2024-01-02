@@ -31,8 +31,16 @@ const Content = () => {
   ];
 
   const list3 = [
-    { id: 1, label: "Điều khoản và điều kiện" },
-    { id: 1, label: "Thông báo về quyền riêng tư" },
+    {
+      id: 1,
+      label: "Điều khoản và điều kiện",
+      router: "/page/term_and_conditions",
+    },
+    {
+      id: 1,
+      label: "Thông báo về quyền riêng tư",
+      router: "/page/privacy_policy",
+    },
     { id: 1, label: "Trợ giúp trợ năng" },
     { id: 1, label: "Chính sách truyền thông xã hội" },
     { id: 1, label: "Đối tác chính thức" },
@@ -56,7 +64,8 @@ const Content = () => {
                   <li key={index} className="list-none list-item">
                     <Link
                       className="text-[#141414] hover:underline text-base flex justify-center px-5 py-3 leading-5 cursor-pointer font-semibold font-['Google Sans'] leading-tight"
-                      href={"./"}
+                      href={"/page/support"}
+                      scroll={true}
                     >
                       {item.label}
                     </Link>
@@ -96,7 +105,8 @@ const Content = () => {
                     <li key={index} className="list-none list-item">
                       <Link
                         className="text-white hover:underline text-sm font-bold flex justify-center px-3 py-3 leading-5 cursor-pointer font-['Google Sans'] leading-tight"
-                        href={"./"}
+                        href={item.router || "/page/support"}
+                        scroll={true}
                       >
                         {item.label}
                       </Link>

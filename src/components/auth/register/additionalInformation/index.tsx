@@ -61,7 +61,6 @@ const AdditionalInformation = () => {
   watch("ward");
   watch("phone");
   watch("captcha");
-  watch("dob");
 
   const onSubmit = handleSubmit(async (data) => {
     setLoading(true);
