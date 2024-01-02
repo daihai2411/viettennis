@@ -2,15 +2,15 @@ import ProxyBase from "../ProxyBase";
 
 class Proxy extends ProxyBase {
   getProvinces(params: any) {
-    return this.get("getProvinces", params);
+    return this.get("get-provinces", params);
   }
 
   getDistricts(params: any) {
-    return this.get("getDistricts", params, undefined, true);
+    return this.get("get-districts", params, undefined, true);
   }
 
   getWards(params: any) {
-    return this.get("getWards", params);
+    return this.get("get-wards", params);
   }
 }
 
