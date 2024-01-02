@@ -86,7 +86,10 @@ const NewsDetailModule = () => {
             </div>
           </div>
           <div className="mt-10 w-[80%] lg:w-[60%] mx-auto">
-            <div dangerouslySetInnerHTML={{ __html: newsDetail?.content }} />
+            <div
+              className="default"
+              dangerouslySetInnerHTML={{ __html: newsDetail?.content }}
+            />
           </div>
         </div>
       ) : (
