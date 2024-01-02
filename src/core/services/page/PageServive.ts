@@ -2,18 +2,10 @@ import pageProxy from "@/core/proxies/page/PageProxy";
 import ServiceBase from "../ServiceBase";
 
 class Service extends ServiceBase {
-  getContentPrivacyPolicy(params: object) {
-    return this.getData(() => pageProxy.getContentPrivacyPolicy(params));
-  }
-
-  getContentTermAndConditions(params: object) {
-    return this.getData(() => pageProxy.getContentTermAndConditions(params));
-  }
-
-  getContentSupport(params: object) {
-    return this.getData(() => pageProxy.getContentSupport(params));
+  getPageSupport(params) {
+    return this.getData(() => pageProxy.getPageSupport(params));
   }
 }
 
-const playersService = new Service();
-export default playersService;
+const pageService = new Service();
+export default pageService;
