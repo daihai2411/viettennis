@@ -9,7 +9,7 @@ import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../globals.css";
+import "../globals.scss";
 
 const avoFont = localFont({
   src: [
