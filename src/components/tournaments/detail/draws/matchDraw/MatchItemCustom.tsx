@@ -1,25 +1,65 @@
+import { ROUTERS } from "@/const/router";
+import { checkEmptyVal } from "@/helpers/value";
+import Link from "next/link";
+import { FaCheck } from "react-icons/fa6";
 import style from "./matchItemCustom.module.css";
 
-const MatchItemCustom = ({ participants }) => {
+const MatchItemCustom = ({ item }) => {
+  const redirectPage = (id) => {
+    return ROUTERS.PLAYERS + "/" + id;
+  };
+
   return (
     <div className={style.tournament_drawMatchTable}>
       <table className={style.matchTable}>
         <tbody>
           <tr>
-            <th>
-              <div className="flex items-center">{participants[0]?.name}</div>
+            <th className="flex items-center justify-between">
+              <div>
+                <Link
+                  href={redirectPage(item?.game_detail[0]?.first_player?.id)}
+                  className="flex items-center font-medium hover:underline hover:text-green-common"
+                >
+                  {checkEmptyVal(item?.game_detail[0]?.first_player?.full_name)}
+                </Link>
+                <Link
+                  href={redirectPage(item?.game_detail[0]?.second_player?.id)}
+                  className="flex items-center font-medium hover:underline hover:text-green-common"
+                >
+                  {checkEmptyVal(
+                    item?.game_detail[0]?.second_player?.full_name
+                  )}
+                </Link>
+              </div>
+              {item?.game_detail[0]?.is_win ? <FaCheck /> : null}
             </th>
-            <td>6</td>
-            <td>8</td>
-            <td>3</td>
+            <td>{checkEmptyVal(item?.game_detail[0]?.game_set_one)}</td>
+            <td>{checkEmptyVal(item?.game_detail[0]?.game_set_two)}</td>
+            <td>{checkEmptyVal(item?.game_detail[0]?.game_set_three)}</td>
           </tr>
           <tr>
-            <th>
-              <div className="flex items-center">{participants[1]?.name}</div>
+            <th className="flex items-center justify-between">
+              <div>
+                <Link
+                  href={redirectPage(item?.game_detail[1]?.second_player?.id)}
+                  className="flex items-center font-medium hover:underline hover:text-green-common"
+                >
+                  {checkEmptyVal(item?.game_detail[1]?.first_player?.full_name)}
+                </Link>
+                <Link
+                  href={redirectPage(item?.game_detail[1]?.second_player?.id)}
+                  className="flex items-center font-medium hover:underline hover:text-green-common"
+                >
+                  {checkEmptyVal(
+                    item?.game_detail[1]?.second_player?.full_name
+                  )}
+                </Link>
+              </div>
+              {item?.game_detail[1]?.is_win ? <FaCheck /> : null}
             </th>
-            <td>26</td>
-            <td>8</td>
-            <td>3</td>
+            <td>{checkEmptyVal(item?.game_detail[1]?.game_set_one)}</td>
+            <td>{checkEmptyVal(item?.game_detail[1]?.game_set_two)}</td>
+            <td>{checkEmptyVal(item?.game_detail[1]?.game_set_three)}</td>
           </tr>
         </tbody>
       </table>

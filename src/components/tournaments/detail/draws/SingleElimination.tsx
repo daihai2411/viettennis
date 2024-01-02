@@ -22,7 +22,7 @@ const SVGViewer = dynamic(
   { ssr: false }
 );
 
-const SingleElimination = () => {
+const SingleElimination = ({ listData }) => {
   const finalWidth = Math.max(window?.innerWidth - 50, 1900);
   const finalHeight = Math.max(window?.innerHeight - 100, 1900);
 
@@ -39,98 +39,103 @@ const SingleElimination = () => {
     }
   };
 
+  console.log(listData);
+
   return (
-    <SingleEliminationBracket
-      matches={matches as any}
-      options={{
-        style: {
-          connectorColor: "#ececec",
-          connectorColorHighlight: "#00bc59",
-          roundHeader: {
-            backgroundColor: "blue",
-            fontColor: "#ffffff",
-            roundTextGenerator,
+    <>
+      <SingleEliminationBracket
+        // matches={matches as any}
+        matches={matches as any}
+        options={{
+          style: {
+            connectorColor: "#ececec",
+            connectorColorHighlight: "#00bc59",
+            roundHeader: {
+              backgroundColor: "blue",
+              fontColor: "#ffffff",
+              roundTextGenerator,
+            },
+            svgBackground: "red",
           },
-          svgBackground: "red",
-        },
-      }}
-      svgWrapper={({ children, ...props }: any) => (
-        <SVGViewer
-          background="#fafafa"
-          SVGBackground="#fafafa"
-          width={finalWidth}
-          height={finalHeight}
-          {...props}
-        >
-          {children}
-        </SVGViewer>
-      )}
-      onMatchClick={(match) => console.log(match)}
-      onPartyClick={(match) => console.log(match)}
-      matchComponent={({
-        match,
-        onMatchClick,
-        onPartyClick,
-        onMouseEnter,
-        onMouseLeave,
-        topParty,
-        bottomParty,
-        topWon,
-        bottomWon,
-        topHovered,
-        bottomHovered,
-        topText,
-        bottomText,
-        connectorColor,
-        computedStyles,
-        teamNameFallback,
-        resultFallback,
-      }) => (
-        // <div className="border-[2px] flex flex-col justify-around border-[#ececec]">
-        //   <div
-        //     className="hover:bg-green-common flex justify-between hover:text-white group shadow-sm"
-        //     onMouseEnter={() => onMouseEnter(topParty.id)}
-        //   >
-        //     {/* <div>{topParty.name || teamNameFallback}</div>
-        //     <div>{topParty.resultText ?? resultFallback(topParty)}</div> */}
-        //     <div className="">{topParty.name || teamNameFallback}</div>
-        //     <div className="flex items-center h-full">
-        //       <div
-        //         className="w-10 bg-[#f2f2f2]  group-hover:bg-green-400
-        //        text-center"
-        //       >
-        //         6
-        //       </div>
-        //       <div className="w-10 text-center">26</div>
-        //       <div
-        //         className="w-10 bg-[#f2f2f2] group-hover:bg-green-400
-        //         text-center"
-        //       >
-        //         16
-        //       </div>
-        //     </div>
-        //   </div>
-        //   <div
-        //     style={{ height: "1px", width: "100%", background: "#ececec" }}
-        //   />
-        //   <div
-        //     className="hover:bg-green-common hover:text-white group shadow-sm"
-        //     onMouseEnter={() => onMouseEnter(bottomParty.id)}
-        //     style={{ display: "flex" }}
-        //   >
-        //     <div>{bottomParty.name || teamNameFallback}</div>
-        //     <div>{bottomParty.resultText ?? resultFallback(topParty)}</div>
-        //   </div>
-        // </div>
-        <>
-          {/* <div>{topParty.name || teamNameFallback}</div>
+        }}
+        svgWrapper={({ children, ...props }: any) => (
+          <SVGViewer
+            background="#fafafa"
+            SVGBackground="#fafafa"
+            width={finalWidth}
+            height={finalHeight}
+            {...props}
+          >
+            {children}
+          </SVGViewer>
+        )}
+        onMatchClick={(match) => console.log(match)}
+        onPartyClick={(match) => console.log(match)}
+        matchComponent={({
+          match,
+          onMatchClick,
+          onPartyClick,
+          onMouseEnter,
+          onMouseLeave,
+          topParty,
+          bottomParty,
+          topWon,
+          bottomWon,
+          topHovered,
+          bottomHovered,
+          topText,
+          bottomText,
+          connectorColor,
+          computedStyles,
+          teamNameFallback,
+          resultFallback,
+        }) => (
+          // <div className="border-[2px] flex flex-col justify-around border-[#ececec]">
+          //   <div
+          //     className="hover:bg-green-common flex justify-between hover:text-white group shadow-sm"
+          //     onMouseEnter={() => onMouseEnter(topParty.id)}
+          //   >
+          //     {/* <div>{topParty.name || teamNameFallback}</div>
+          //     <div>{topParty.resultText ?? resultFallback(topParty)}</div> */}
+          //     <div className="">{topParty.name || teamNameFallback}</div>
+          //     <div className="flex items-center h-full">
+          //       <div
+          //         className="w-10 bg-[#f2f2f2]  group-hover:bg-green-400
+          //        text-center"
+          //       >
+          //         6
+          //       </div>
+          //       <div className="w-10 text-center">26</div>
+          //       <div
+          //         className="w-10 bg-[#f2f2f2] group-hover:bg-green-400
+          //         text-center"
+          //       >
+          //         16
+          //       </div>
+          //     </div>
+          //   </div>
+          //   <div
+          //     style={{ height: "1px", width: "100%", background: "#ececec" }}
+          //   />
+          //   <div
+          //     className="hover:bg-green-common hover:text-white group shadow-sm"
+          //     onMouseEnter={() => onMouseEnter(bottomParty.id)}
+          //     style={{ display: "flex" }}
+          //   >
+          //     <div>{bottomParty.name || teamNameFallback}</div>
+          //     <div>{bottomParty.resultText ?? resultFallback(topParty)}</div>
+          //   </div>
+          // </div>
+          <>
+            {/* <div>{topParty.name || teamNameFallback}</div>
           <div>{topParty.resultText ?? resultFallback(topParty)}</div>
           <div>{bottomParty.name || teamNameFallback}</div>
           <div>{bottomParty.resultText ?? resultFallback(topParty)}</div> */}
-          <MatchItem />
-        </>
-      )}
-    />
+            <MatchItem />
+          </>
+        )}
+      />
+    </>
   );
 };
 export default SingleElimination;

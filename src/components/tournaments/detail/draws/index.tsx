@@ -1,20 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import EliminationRound from "./EliminationRound";
-import SingleElimination from "./SingleElimination";
-import TabTournaments from "./TabTournaments";
-import { TAB } from "./constants";
+import { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+import TabsTournament from "../common/TabsTournament";
+import { selectDataScoresDraw } from "../store/slice";
+import Content from "./Content";
 
 const TournamentsDrawComponent = () => {
-  const [tab, setTab] = useState(TAB.TAB_1);
+  const dataScoresDraw = useSelector(selectDataScoresDraw);
+
+  const [tab, setTab] = useState(undefined);
+
+  const listData = useMemo(() => {
+    if (tab) {
+      return dataScoresDraw[tab]?.game_result;
+    }
+  }, [tab, dataScoresDraw]);
 
   return (
     <div>
-      <TabTournaments setTab={setTab} />
-      <div className="container mx-auto">
-        {tab === TAB.TAB_1 ? <EliminationRound /> : <SingleElimination />}
-      </div>
+      <TabsTournament setTab={setTab} className="bg-[#e6e6e6]" />
+      <Content listData={listData} />
     </div>
   );
 };
