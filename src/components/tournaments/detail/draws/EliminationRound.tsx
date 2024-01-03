@@ -2,12 +2,12 @@ import { useState } from "react";
 import MatchList from "./matchDraw/MatchList";
 
 const TABS = {
-  ROUND_1: 1,
-  PLAY_OFF: 2,
+  ROUND_1: 0,
+  PLAY_OFF: 1,
 };
 
 const EliminationRound = ({ listData }) => {
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(0);
 
   const onClick = (val) => {
     setTab(val);
@@ -55,15 +55,8 @@ const EliminationRound = ({ listData }) => {
           </div>
         </div>
         <div className="lg:hidden h-full flex justify-center px-3">
-          {tab === 1 ? (
-            <MatchList listData={Object.values(listData[0]?.round_detail)} />
-          ) : (
-            <MatchList listData={Object.values(listData[1]?.round_detail)} />
-          )}
+          <MatchList listData={Object.values(listData[tab]?.round_detail)} />
         </div>
-        {/* <div className="w-full sm:w-[460px] cursor-pointer flex justify-start">
-        <MatchItemSpecial />
-      </div> */}
       </div>
     );
   }

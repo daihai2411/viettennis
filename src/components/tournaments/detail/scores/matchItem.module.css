@@ -39,9 +39,8 @@
 }
 
 .matchTable th {
-    height: 52px;
     border-left: 4px solid #141414;
-    padding: 0 16px 0 14px;
+    padding: 4px 16px 4px 14px;
     position: relative;
     width: 100%;
     font-weight: 700;

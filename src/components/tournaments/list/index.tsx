@@ -1,4 +1,4 @@
-import TableData from "./TableData";
+import TournamentList from "./TournamentList";
 import Filter from "./filter";
 
 const TournamentsModule = () => {
@@ -6,7 +6,7 @@ const TournamentsModule = () => {
     <>
       <Filter />
       <div className="mx-auto container">
-        <TableData />
+        <TournamentList />
       </div>
     </>
   );

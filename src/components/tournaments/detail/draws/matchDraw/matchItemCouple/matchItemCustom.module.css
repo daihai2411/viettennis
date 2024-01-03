@@ -10,7 +10,6 @@
 .tournament_drawMatchTable {
     position: relative;
     margin: 12px 4px 12px 0;
-    border: 2px solid #ececec;
     transition: border .4s ease;
 }
 
@@ -22,28 +21,8 @@
     margin-bottom: 24px;
 }
 
-/* .tournament_drawMatchTable::before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    background: #ccc;
-    right: -28px;
-    width: 15px;
-}
-
-.tournament_drawMatchTable::before {
-    content: "";
-    position: absolute;
-    top: calc(50% - 1px);
-    right: -15px;
-    width: 11px;
-    border: 2px solid #ccc;
-    border-bottom: none;
-    border-left: none;
-    z-index: 0;
-} */
-
 .tournament_drawMatchTable .matchTable {
+    border: 2px solid #ececec;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.04);
     position: relative;
     width: 100%;
@@ -68,9 +47,8 @@
 }
 
 .matchTable th {
-    height: 52px;
     border-left: 4px solid #141414;
-    padding: 0 16px 0 14px;
+    padding: 4px 16px 4px 14px;
     position: relative;
     width: 100%;
 }

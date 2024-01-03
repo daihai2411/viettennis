@@ -13,6 +13,7 @@ const SelectAddress = () => {
         isLoading={loadingProvinces}
         labelPlacement="outside-left"
         className="max-w-[140px]"
+        isClearable={false}
       >
         {dataProvinces.map((item: { name: string; code: string }) => (
           <AutocompleteItem key={item.code} value={item.code}>
@@ -26,6 +27,7 @@ const SelectAddress = () => {
         className="max-w-[140px]"
         isLoading={loadingDistricts}
         labelPlacement="outside-left"
+        isClearable={false}
       >
         {dataDistricts.map((animal) => (
           <AutocompleteItem key={animal.value} value={animal.value}>
