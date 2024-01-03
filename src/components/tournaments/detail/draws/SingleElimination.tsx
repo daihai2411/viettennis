@@ -1,6 +1,5 @@
 "use client";
 
-import MatchItem from "@/components/tournaments/detail/draws/matchDraw/MatchItem";
 import dynamic from "next/dynamic";
 import { matches } from "./dummy";
 
@@ -131,7 +130,7 @@ const SingleElimination = ({ listData }) => {
           <div>{topParty.resultText ?? resultFallback(topParty)}</div>
           <div>{bottomParty.name || teamNameFallback}</div>
           <div>{bottomParty.resultText ?? resultFallback(topParty)}</div> */}
-            <MatchItem />
+            {/* <MatchItem /> */}
           </>
         )}
       />
