@@ -7,7 +7,7 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/react";
-import MatchList from "./MatchList";
+import MatchList from "../MatchList";
 import style from "./matchItemSpecial.module.css";
 
 const MatchItemSpecial = () => {

@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import EliminationRound from "./EliminationRound";
-import SingleElimination from "./SingleElimination";
 import { TAB } from "./constants";
 
 import { Spinner } from "@nextui-org/react";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import { useSelector } from "react-redux";
 import { selectLoading } from "../store/slice";
+import EvenCouple from "./template/evenCouple";
 
 const Content = ({ listData }) => {
   const loading = useSelector(selectLoading);
@@ -19,12 +19,11 @@ const Content = ({ listData }) => {
 
   const getDataRoundTwo = useMemo(() => {
     if (listData && listData.length) {
-      return listData
-        .slice(2)
-        .map((item) => Object.values(item.round_detail))
-        .flat()
-        ?.map((item) => item?.game_detail)
-        .flat();
+      return listData.slice(2);
+      // .map((item) => Object.values(item.round_detail))
+      // .flat()
+      // ?.map((item) => item?.game_detail)
+      // .flat();
     }
     return [];
   }, [listData]);
@@ -52,7 +51,8 @@ const Content = ({ listData }) => {
             {tab === TAB.TAB_1 ? (
               <EliminationRound listData={listData} />
             ) : (
-              <SingleElimination listData={getDataRoundTwo} />
+              // <SingleElimination listData={getDataRoundTwo} />
+              <EvenCouple listData={getDataRoundTwo} />
             )}
           </>
         )}
