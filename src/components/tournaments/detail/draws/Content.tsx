@@ -51,7 +51,6 @@ const Content = ({ listData }) => {
             {tab === TAB.TAB_1 ? (
               <EliminationRound listData={listData} />
             ) : (
-              // <SingleElimination listData={getDataRoundTwo} />
               <EvenCouple listData={getDataRoundTwo} />
             )}
           </>
