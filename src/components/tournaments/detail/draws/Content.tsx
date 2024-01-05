@@ -1,11 +1,13 @@
-import { useMemo, useState } from "react";
-import EliminationRound from "./EliminationRound";
-import { TAB } from "./constants";
+"use client";
 
 import { Spinner } from "@nextui-org/react";
 import { Tab, Tabs } from "@nextui-org/tabs";
+import { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectLoading } from "../store/slice";
+import EliminationRound from "./EliminationRound";
+import GroupBtnTab from "./GroupBtnTab";
+import { TAB } from "./constants";
 import EvenCouple from "./template/evenCouple";
 
 const Content = ({ listData }) => {
@@ -32,6 +34,8 @@ const Content = ({ listData }) => {
     <>
       <div className="flex justify-center mb-14 bg-[#e6e6e6] h-16 items-center">
         <Tabs
+          key={tab}
+          defaultSelectedKey={tab}
           radius="none"
           classNames={{
             tabList: "bg-[#e6e6e6]",
@@ -56,6 +60,7 @@ const Content = ({ listData }) => {
           </>
         )}
       </div>
+      <GroupBtnTab tab={tab} onSelectionChange={onSelectionChange} />
     </>
   );
 };

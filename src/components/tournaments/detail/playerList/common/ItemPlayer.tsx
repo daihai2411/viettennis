@@ -1,4 +1,5 @@
 import { ROUTERS } from "@/const/router";
+import { getColorCell } from "@/helpers/common";
 import { checkEmptyVal } from "@/helpers/value";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
@@ -32,8 +33,15 @@ const ItemPlayer = ({ item }) => {
           <div className="group-hover:underline group-hover:text-green-common mb-1 line-clamp-1 text-[#141414] text-[21px] font-semibold capitalize">
             {checkEmptyVal(item?.first_player?.full_name)}
           </div>
-          <div className="text-[#767676] font-normal text-[13px] capitalize leading-[13px]">
-            {item?.second_player?.full_name}
+          <div className="text-[#767676] flex item-center gap-1 font-normal text-[13px] capitalize leading-[13px]">
+            <div
+              className="font-black"
+              style={{ color: getColorCell(item?.first_player?.rank_point_id) }}
+            >
+              {checkEmptyVal(item?.first_player?.rank_point)}
+            </div>
+            {" - "}
+            {checkEmptyVal(item?.first_player?.province)}
           </div>
         </CardFooter>
       </Card>

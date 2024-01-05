@@ -1,4 +1,5 @@
 import { ROUTERS } from "@/const/router";
+import { getColorCell } from "@/helpers/common";
 import { checkEmptyVal } from "@/helpers/value";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
@@ -43,7 +44,14 @@ const ItemPlayerDouble = ({ item }) => {
           >
             {checkEmptyVal(item?.first_player?.full_name)}
           </Link>
-          <div className="text-[#767676] font-normal text-[13px] capitalize leading-[13px]">
+          <div className="text-[#767676] flex item-center gap-1 font-normal text-[13px] capitalize leading-[13px]">
+            <div
+              className="font-black"
+              style={{ color: getColorCell(item?.first_player?.rank_point_id) }}
+            >
+              {checkEmptyVal(item?.first_player?.rank_point)}
+            </div>
+            {" - "}
             {checkEmptyVal(item?.first_player?.province)}
           </div>
           <Link
@@ -52,7 +60,16 @@ const ItemPlayerDouble = ({ item }) => {
           >
             {checkEmptyVal(item?.second_player?.full_name)}
           </Link>
-          <div className="text-[#767676] font-normal text-[13px] capitalize leading-[13px]">
+          <div className="text-[#767676] flex item-center gap-1 font-normal text-[13px] capitalize leading-[13px]">
+            <div
+              className="font-black"
+              style={{
+                color: getColorCell(item?.second_player?.rank_point_id),
+              }}
+            >
+              {checkEmptyVal(item?.second_player?.rank_point)}
+            </div>
+            {" - "}
             {checkEmptyVal(item?.second_player?.province)}
           </div>
         </CardFooter>

@@ -1,3 +1,4 @@
+import { AppDispatch } from "@/redux/store";
 import { useState } from "react";
 import MatchList from "./matchDraw/MatchList";
 
@@ -7,6 +8,7 @@ const TABS = {
 };
 
 const EliminationRound = ({ listData }) => {
+
   const [tab, setTab] = useState(0);
 
   const onClick = (val) => {
@@ -33,8 +35,13 @@ const EliminationRound = ({ listData }) => {
           </div>
         </div>
         <div className="hidden lg:flex gap-20 justify-center h-full">
-          <MatchList listData={Object.values(listData[0]?.round_detail)} />
-          <MatchList listData={Object.values(listData[1]?.round_detail)} />
+          <MatchList
+            listData={Object.values(listData[0]?.round_detail)}
+          />
+          <MatchList
+            noSpacing={true}
+            listData={Object.values(listData[1]?.round_detail)}
+          />
         </div>
         <div className="lg:hidden h-full flex mx-auto justify-center mb-3 border-1.5 border-green-common w-full sm:w-[460px]">
           <div
@@ -55,7 +62,10 @@ const EliminationRound = ({ listData }) => {
           </div>
         </div>
         <div className="lg:hidden h-full flex justify-center px-3">
-          <MatchList listData={Object.values(listData[tab]?.round_detail)} />
+          <MatchList
+            noSpacing={tab ? true : false}
+            listData={Object.values(listData[tab]?.round_detail)}
+          />
         </div>
       </div>
     );

@@ -1,4 +1,5 @@
 import { FaCalendarAlt } from "react-icons/fa";
+import { MONTH } from "../constants";
 import TournamentItem from "./TournamentItem";
 
 const TournamentMonth = ({ dataMonth }) => {
@@ -8,7 +9,7 @@ const TournamentMonth = ({ dataMonth }) => {
         <div className="h-14 w-20 bg-[#e6e6e6] mr-6 flex justify-center items-center">
           <FaCalendarAlt size={32} />
         </div>
-        <div className="text-[38px] font-bold">{dataMonth?.month}</div>
+        <div className="text-[38px] font-bold">{MONTH[dataMonth?.month]}</div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         {dataMonth?.data

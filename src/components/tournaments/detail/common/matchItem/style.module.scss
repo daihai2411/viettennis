@@ -1,0 +1,8 @@
+.matchDrawActive {
+    background-color: #2DA46B;
+    color: white;
+}
+
+.matchDrawActive td:nth-last-of-type(odd) {
+    background-color: hsla(0,0%,100%,.1) !important;
+}
