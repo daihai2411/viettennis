@@ -11,9 +11,9 @@ const SelectYear = () => {
       <>
         <Select
           variant="underlined"
-          label=""
           placeholder="Chọn năm"
           className="max-w-[110px]"
+          labelPlacement="outside-left"
           isLoading={loading}
         >
           {data.years.map((item) => (
