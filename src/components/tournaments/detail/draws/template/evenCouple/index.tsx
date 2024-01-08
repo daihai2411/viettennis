@@ -21,6 +21,7 @@ const EvenCouple = ({ listData }) => {
                 key={item?.round_id}
                 listData={Object.values(item?.round_detail)}
                 className="w-[460px] min-w-[460px]"
+                noSpacing={item?.round_id === 1}
               />
             ))}
           </div>
@@ -29,7 +30,9 @@ const EvenCouple = ({ listData }) => {
     );
   }
 
-  return null;
+  return (
+    <div className="flex justify-center">Không có dữ liệu sơ đồ thi đấu</div>
+  );
 };
 
 export default EvenCouple;

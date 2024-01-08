@@ -3,7 +3,13 @@
 import { Tab, Tabs } from "@nextui-org/tabs";
 import { useEffect } from "react";
 
-const TabsRound = ({ tabRound, setTabRound, list }) => {
+const TabsRound = ({
+  tabRound,
+  setTabRound,
+  list,
+  className = "",
+  classNameCoverTab = "",
+}) => {
   const onSelectionChange = (val) => {
     setTabRound(val);
   };
@@ -21,8 +27,10 @@ const TabsRound = ({ tabRound, setTabRound, list }) => {
   }, []);
 
   return (
-    <div className="mb-10 bg-[#e6e6e6]">
-      <div className="flex justify-center h-16 items-center container mx-auto">
+    <div className={`mb-10 bg-[#e6e6e6] overflow-x-auto ${className}`}>
+      <div
+        className={`flex justify-center h-16 items-center container mx-auto ${classNameCoverTab}`}
+      >
         <Tabs
           radius="none"
           classNames={{
