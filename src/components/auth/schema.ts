@@ -125,6 +125,12 @@ export const schemaAdditionInformation = {
       100,
       getMessSchema({ type: "MS_03_03", fieldName: "họ và tên", max: 100 })
     ),
+  username: Yup.string()
+    .required(getMessSchema({ type: "MS_01", fieldName: "Tên đăng nhập" }))
+    .max(
+      100,
+      getMessSchema({ type: "MS_03_03", fieldName: "tên đăng nhập", max: 100 })
+    ),
   dob: Yup.string().required(
     getMessSchema({ type: "MS_01", fieldName: "Ngày sinh" })
   ),

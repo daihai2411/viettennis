@@ -19,4 +19,5 @@ export interface IFormInput {
   ward: string | number;
   captcha: string | undefined;
   gender: string;
+  username: string;
 }

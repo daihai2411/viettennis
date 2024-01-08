@@ -20,7 +20,8 @@ const initialState = {
   email: undefined,
   dataProfile: {} as any,
   isLoadingProfile: false,
-  stepForgetPassword: 1
+  stepForgetPassword: 1,
+  username: undefined,
 };
 
 export const slice = createSlice({
@@ -44,6 +45,9 @@ export const slice = createSlice({
     },
     resetDataProfile: (state) => {
       state.dataProfile = {};
+    },
+    changeUsername: (state, { payload }) => {
+      state.username = payload;
     },
   },
   extraReducers(builder) {
@@ -101,6 +105,7 @@ export const {
   changeValueObjPoint,
   changeEmail,
   resetDataProfile,
+  changeUsername,
 } = slice.actions;
 
 export const selectStep = (state: RootState) => state[slice.name]?.step;
@@ -122,3 +127,4 @@ export const selectProfile = (state: RootState) =>
   state[slice.name]?.dataProfile;
 export const selectLoadingProfile = (state: RootState) =>
   state[slice.name]?.isLoadingProfile;
+export const selectUsername = (state: RootState) => state[slice.name]?.username;

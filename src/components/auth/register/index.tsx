@@ -12,6 +12,7 @@ import {
   changeEmail,
   changePhoneNumber,
   changeStep,
+  changeUsername,
   selectEmail,
   selectPassword,
   selectPhoneNumber,
@@ -53,11 +54,13 @@ const RegisterModule: React.FC = () => {
         dispatch(changeStep(steps.VERIFY));
         dispatch(changePhoneNumber(user?.phone));
         dispatch(changeEmail(user?.email));
+        dispatch(changeUsername(user?.username));
         router.push("/auth/register");
       } else if (!user?.personal_info_updated) {
         dispatch(changeStep(steps.ADDITIONAL_INFO));
         dispatch(changePhoneNumber(user?.phone));
         dispatch(changeEmail(user?.email));
+        dispatch(changeUsername(user?.username));
         router.push("/auth/register");
       } else if (!user?.personal_point_updated) {
         dispatch(changeStep(steps.ADDITIONAL_POINTS));

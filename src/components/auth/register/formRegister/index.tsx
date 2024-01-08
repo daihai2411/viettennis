@@ -20,6 +20,7 @@ import {
   changePassword,
   changePhoneNumber,
   changeStep,
+  changeUsername,
 } from "../../store/slice";
 
 interface IFormInput {
@@ -64,6 +65,7 @@ const FormRegister = () => {
 
       dispatch(changePhoneNumber(data.phone));
       dispatch(changeEmail(data.email));
+      dispatch(changeUsername(data.username));
       dispatch(changePassword(data.password));
       dispatch(changeStep(steps.VERIFY));
       setLoading(false);

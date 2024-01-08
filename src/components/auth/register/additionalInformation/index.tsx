@@ -19,7 +19,12 @@ import InputYear from "../../common/InputYear";
 import { steps } from "../../constants";
 import { IFormInput } from "../../interface";
 import { schemaAdditionInformation } from "../../schema";
-import { changeStep, selectEmail, selectPhoneNumber } from "../../store/slice";
+import {
+  changeStep,
+  selectEmail,
+  selectPhoneNumber,
+  selectUsername,
+} from "../../store/slice";
 import Address from "./Address";
 import CheckRecaptcha from "./CheckRecaptcha";
 import InfoAdvenced from "./InfoAdvenced";
@@ -34,6 +39,7 @@ const AdditionalInformation = () => {
 
   const phoneNumber = useSelector(selectPhoneNumber);
   const email = useSelector(selectEmail);
+  const username = useSelector(selectUsername);
 
   const [loading, setLoading] = useState(false);
 
@@ -53,6 +59,7 @@ const AdditionalInformation = () => {
     defaultValues: {
       phone: phoneNumber,
       email: email,
+      username: username,
     },
   });
 
@@ -109,6 +116,12 @@ const AdditionalInformation = () => {
       setValue("email", email);
     }
   }, [email]);
+
+  useEffect(() => {
+    if (username) {
+      setValue("username", username);
+    }
+  }, [username]);
 
   return (
     <div className="flex min-h-full flex-col justify-center px-2 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">

@@ -31,6 +31,17 @@ const InfoBasic = ({
         required
         defaultValue={dateProfileCamelCase["fullName"]}
       />
+      <InputCustom
+        label="Username"
+        register={register}
+        errors={errors}
+        placeholder="Nhập username"
+        keyInput="username"
+        type="text"
+        required
+        disable={dateProfileCamelCase["username"]}
+        defaultValue={dateProfileCamelCase["username"]}
+      />
       <InputDate
         label={
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
