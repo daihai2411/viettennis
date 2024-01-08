@@ -1,4 +1,5 @@
 import { Checkbox } from "@nextui-org/react";
+import Link from "next/link";
 import { useState } from "react";
 
 const TermAndPolicy = ({ register, errors, keyInput, setValue }) => {
@@ -17,13 +18,21 @@ const TermAndPolicy = ({ register, errors, keyInput, setValue }) => {
         onValueChange={onValueChange}
       >
         <div className="inline-block text-base">
-          <div className="inline-block hover:underline text-[#1677ff]">
+          <Link
+            href={"/page/term_and_conditions"}
+            className="inline-block hover:underline text-[#1677ff]"
+            target="_blank"
+          >
             Điều khoản
-          </div>{" "}
+          </Link>{" "}
           và{" "}
-          <div className="inline-block hover:underline text-[#1677ff]">
+          <Link
+            href={"/page/privacy_policy"}
+            className="inline-block hover:underline text-[#1677ff]"
+            target="_blank"
+          >
             chính sách quyền riêng tư
-          </div>
+          </Link>
         </div>
       </Checkbox>
       {errors[keyInput] && (
