@@ -6,7 +6,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ScrollSpy from "react-ui-scrollspy";
 import TournamentMonth from "./TournamentMonth";
-import { selectListTournament, selectLoading } from "./store/slice";
+import {
+  selectListFilter,
+  selectListTournament,
+  selectLoading,
+} from "./store/slice";
 import { getListTournamentThunk } from "./store/thunk";
 
 const TournamentList = () => {
@@ -14,10 +18,11 @@ const TournamentList = () => {
 
   const loading = useSelector(selectLoading);
   const list = useSelector(selectListTournament);
+  const listFilter = useSelector(selectListFilter);
 
   useEffect(() => {
-    dispatch(getListTournamentThunk({}));
-  }, []);
+    dispatch(getListTournamentThunk(listFilter));
+  }, [listFilter]);
 
   return (
     <div className="px-2 py-10">

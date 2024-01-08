@@ -36,6 +36,9 @@ export const FORMAT = {
   YEAR: {
     [vi]: "YYYY",
   },
+  MONTH_YEAR_TEXT: {
+    [vi]: "[tháng] MM [năm] YYYY",
+  },
 };
 
 export const getCurrentDateTime = (

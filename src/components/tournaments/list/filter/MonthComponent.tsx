@@ -33,12 +33,12 @@ const MonthComponent = () => {
           }`}
         >
           <span
-            className={`hidden whitespace-nowrap leading-[23px] md:block ${style.monthLong}`}
+            className={`hidden whitespace-nowrap leading-[23px] lg:block ${style.monthLong}`}
           >
             {item.title}
           </span>
           <span
-            className={`md:hidden whitespace-nowrap leading-[23px] block ${style.monthShort}`}
+            className={`lg:hidden whitespace-nowrap leading-[23px] block ${style.monthShort}`}
           >
             {item.titleShort}
           </span>
