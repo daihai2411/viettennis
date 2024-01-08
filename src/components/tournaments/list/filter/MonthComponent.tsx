@@ -8,19 +8,20 @@ const MonthComponent = () => {
       id: index + 1,
       title: "Tháng " + (index + 1),
       titleShort: "Th " + (index + 1),
-      active: "#month-" + (index + 1),
+      active: "month-" + (index + 1),
     }));
   }, []);
 
-  const monthActive = "#month-10";
-  const monthCurrent = "#month-12";
+  const monthActive = "month-10";
+  const monthCurrent = "month-12";
 
   return (
     <div className="flex item-center overflow-x-auto">
       {month.map((item) => (
         <Link
+          data-to-scrollspy-id={item.active}
           key={item.id}
-          href={item.active}
+          href={"#" + item.active}
           className={`${style.filterMonthBtn} ${
             monthActive === item.active
               ? "bg-green-common text-white"

@@ -17,6 +17,10 @@
   }
 }
 
+html {
+  scroll-padding-top: 240px; /* height of your navbar */
+}
+
 th[aria-sort='ascending'] {
  color: #2DA46B !important;
 }

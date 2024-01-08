@@ -1,4 +1,5 @@
-import { Select, SelectItem } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { selectFilterTournament, selectLoadingFilter } from "../store/slice";
 
@@ -6,22 +7,32 @@ const SelectYear = () => {
   const loading = useSelector(selectLoadingFilter);
   const data = useSelector(selectFilterTournament);
 
+  const getList = useMemo(() => {
+    if (data.years) {
+      return data.years.map((item) => ({
+        value: item.value,
+        label: item.value.toString(),
+      }));
+    }
+    return [];
+  }, [data.years]);
+
   if (data.years)
     return (
       <>
-        <Select
+        <Autocomplete
           variant="underlined"
           placeholder="Chọn năm"
-          className="max-w-[110px]"
-          labelPlacement="outside-left"
           isLoading={loading}
+          className="max-w-[140px]"
+          labelPlacement="outside-left"
         >
-          {data.years.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
-              {item.value}
-            </SelectItem>
+          {getList.map((item) => (
+            <AutocompleteItem key={item.value} value={item.value}>
+              {item.label}
+            </AutocompleteItem>
           ))}
-        </Select>
+        </Autocomplete>
       </>
     );
 
