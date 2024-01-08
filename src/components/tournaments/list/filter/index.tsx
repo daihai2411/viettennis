@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getFullFilterTournamentThunk } from "../store/thunk";
 import FilterDetail from "./FilterDetail";
-import FilterPoint from "./FilterLevel";
+import FilterPoint from "./FilterPoint";
 
 const Filter = () => {
   const dispatch = useDispatch<AppDispatch>();
