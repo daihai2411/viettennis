@@ -29,11 +29,17 @@ const TournamentList = () => {
       {loading ? (
         <Spinner className="mx-auto w-full py-4" />
       ) : (
-        <ScrollSpy>
-          {list.map((item, index) => (
-            <TournamentMonth key={index} dataMonth={item} />
-          ))}
-        </ScrollSpy>
+        <>
+          {list && list.length ? (
+            <ScrollSpy>
+              {list.map((item, index) => (
+                <TournamentMonth key={index} dataMonth={item} />
+              ))}
+            </ScrollSpy>
+          ) : (
+            <div className="flex justify-center">Không có dữ liệu giải đấu</div>
+          )}
+        </>
       )}
     </div>
   );

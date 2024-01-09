@@ -12,7 +12,7 @@ const InfoUser = ({ data }) => {
     <div className="flex gap-1 font-medium">
       <Link
         href={redirectPage(data?.id)}
-        className="flex items-center hover:underline"
+        className="flex items-center hover:underline line-clamp-1"
       >
         {checkEmptyVal(data?.full_name)}
       </Link>
