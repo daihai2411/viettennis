@@ -1,7 +1,7 @@
 "use client";
 
+import SurfaceComponent from "@/components/common/SurfaceComponent";
 import VTRComponent from "@/components/common/VTRComponent";
-import YardComponent from "@/components/common/YardComponent";
 import { checkEmptyVal } from "@/helpers/value";
 import { Skeleton } from "@nextui-org/react";
 import { useSelector } from "react-redux";
@@ -38,7 +38,7 @@ const OverviewTournamentModule = () => {
     },
     {
       title: "Mặt sân",
-      content: <YardComponent id={tournamentDetail?.surface} />,
+      content: <SurfaceComponent id={tournamentDetail?.surface} />,
     },
     {
       title: "Tổng trận đơn",

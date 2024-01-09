@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import GroupInfoUser from "../../../common/matchItem/GroupInfoUser";
-import { selectMatchDrawActive } from "../../slice";
+import { selectMatchDrawActive, selectMatchDrawSearch } from "../../slice";
 import style from "./matchItem.module.css";
 
 const MatchItem = ({ item, changeMatchDrawActive }) => {
   const matchDrawActive = useSelector(selectMatchDrawActive);
+  const matchDrawSearch = useSelector(selectMatchDrawSearch);
 
   if (item?.is_go_straight_ahead) {
     return (
@@ -15,7 +16,8 @@ const MatchItem = ({ item, changeMatchDrawActive }) => {
         <table className={style.matchTable}>
           <tbody>
             <GroupInfoUser
-            matchDrawActive={matchDrawActive}
+              matchDrawActive={matchDrawActive}
+              matchDrawSearch={matchDrawSearch}
               changeMatchDrawActive={changeMatchDrawActive}
               data={item?.game_detail[0]}
             />
@@ -41,12 +43,14 @@ const MatchItem = ({ item, changeMatchDrawActive }) => {
       <table className={style.matchTable}>
         <tbody>
           <GroupInfoUser
-          matchDrawActive={matchDrawActive}
+            matchDrawActive={matchDrawActive}
+            matchDrawSearch={matchDrawSearch}
             changeMatchDrawActive={changeMatchDrawActive}
             data={item?.game_detail[0]}
           />
           <GroupInfoUser
-          matchDrawActive={matchDrawActive}
+            matchDrawActive={matchDrawActive}
+            matchDrawSearch={matchDrawSearch}
             changeMatchDrawActive={changeMatchDrawActive}
             data={item?.game_detail[1]}
           />

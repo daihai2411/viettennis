@@ -17,7 +17,7 @@ const InfoUser = ({ data }) => {
         {checkEmptyVal(data?.full_name)}
       </Link>
       {" - "}
-      <div style={{ color: getColorCell(data?.rank_point_id) }}>
+      <div style={{ color: getColorCell(data?.rank_point_type) }}>
         {checkEmptyVal(data?.rank_point)}
       </div>
     </div>

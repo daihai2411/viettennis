@@ -8,14 +8,18 @@ const GroupInfoUser = ({
   data,
   changeMatchDrawActive = (val) => {},
   matchDrawActive = null,
+  matchDrawSearch = null,
 }) => {
   const isActive = useMemo(() => {
-    return matchDrawActive && matchDrawActive === data?.id;
-  }, [matchDrawActive, data?.id]);
+    return (
+      (matchDrawActive && matchDrawActive === data?.couple_id) ||
+      (matchDrawSearch && matchDrawSearch === data?.couple_id)
+    );
+  }, [matchDrawActive, data?.couple_id, matchDrawSearch]);
 
   return (
     <tr
-      onMouseEnter={() => changeMatchDrawActive(data?.id)}
+      onMouseEnter={() => changeMatchDrawActive(data?.couple_id)}
       onMouseLeave={() => changeMatchDrawActive(null)}
       className={isActive ? style.matchDrawActive : ""}
     >

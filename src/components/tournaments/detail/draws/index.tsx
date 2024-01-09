@@ -5,11 +5,15 @@ import { useSelector } from "react-redux";
 import SearchPlayer from "../common/SearchPlayer";
 import TabsRound from "../common/TabsRound";
 import TabsTournament from "../common/TabsTournament";
-import { selectDataScoresDraw } from "../store/slice";
+import {
+  selectChildTournamentDetail,
+  selectDataScoresDraw,
+} from "../store/slice";
 import Content from "./Content";
 
 const TournamentsDrawComponent = () => {
   const dataScoresDraw = useSelector(selectDataScoresDraw);
+  const childTournamentDetail = useSelector(selectChildTournamentDetail);
 
   const [tab, setTab] = useState(undefined);
   const [tabRound, setTabRound] = useState(0);
@@ -38,6 +42,18 @@ const TournamentsDrawComponent = () => {
     }
   }, [listData, tabRound]);
 
+  const getListPlayer = useMemo(() => {
+    if (tab) {
+      return childTournamentDetail[tab]?.players
+        .map((item) => ({
+          first_player: { ...item.first_player, couple_id: item.couple_id },
+          second_player: { ...item.second_player, couple_id: item.couple_id },
+        }))
+        .map((item) => Object.values(item))
+        .flat();
+    }
+  }, [tab, childTournamentDetail]);
+
   return (
     <div>
       <TabsTournament setTab={setTab} className="bg-[#e6e6e6] mb-0" />
@@ -48,7 +64,7 @@ const TournamentsDrawComponent = () => {
         className="block md:hidden !mb-0 !bg-white"
         classNameCoverTab="!justify-start"
       />
-      <SearchPlayer />
+      <SearchPlayer data={getListPlayer} />
       <Content listData={listData} dataTabsRound={dataTabsRound} />
     </div>
   );

@@ -68,7 +68,6 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
           <Skeleton isLoaded={!loading} className="text-lg font-normal">
             {[
               tournamentDetail?.address,
-              tournamentDetail?.ward_name,
               tournamentDetail?.district_name,
               tournamentDetail?.province_name,
             ].join(", ")}

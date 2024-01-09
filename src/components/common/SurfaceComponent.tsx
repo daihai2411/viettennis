@@ -12,7 +12,7 @@ const MAP_NAME_SURFACE = {
   [SURFACE_TYPE.GRASS]: "Sân cỏ",
 };
 
-const YardComponent = ({ id }) => {
+const SurfaceComponent = ({ id, className = "", classImage = "" }) => {
   const getBg = () => {
     if (id === SURFACE_TYPE.CLAY) {
       return "#d88000";
@@ -27,9 +27,15 @@ const YardComponent = ({ id }) => {
     return (
       <div
         style={{ background: getBg() }}
-        className="flex gap-1 px-2 py-[6px] items-center"
+        className={`flex gap-1 px-2 py-[6px] items-center ${className}`}
       >
-        <Image radius="none" alt="icon yard" src="/icon-yard.svg" width={60} />
+        <Image
+          radius="none"
+          alt="icon yard"
+          src="/icon-yard.svg"
+          width={60}
+          className={classImage}
+        />
         <div className="text-white font-semibold text-xs whitespace-nowrap">
           {MAP_NAME_SURFACE[id]}
         </div>
@@ -38,4 +44,4 @@ const YardComponent = ({ id }) => {
   return <></>;
 };
 
-export default YardComponent;
+export default SurfaceComponent;

@@ -43,7 +43,6 @@ const TableData = ({
       if (cursor) {
         setIsLoading(false);
       }
-
       const res = (await service.getListRankPoint(
         convertCamelCaseToLine({
           ...params,

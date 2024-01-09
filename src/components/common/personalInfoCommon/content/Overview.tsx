@@ -46,14 +46,9 @@ const Overview = ({ data, loading }) => {
     {
       title: "Nơi sinh",
       value: data?.address
-        ? [
-            data?.address,
-            data?.ward_name,
-            data?.district_name,
-            data?.province_name,
-          ].join(", ")
-        : data?.ward_name
-        ? [data?.ward_name, data?.district_name, data?.province_name].join(", ")
+        ? [data?.address, data?.district_name, data?.province_name].join(", ")
+        : data?.district_name
+        ? [data?.district_name, data?.province_name].join(", ")
         : "--",
       key: "address",
     },

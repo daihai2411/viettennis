@@ -1,3 +1,4 @@
+import SurfaceComponent from "@/components/common/SurfaceComponent";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +11,7 @@ const TournamentItem = ({ data }) => {
         <CardBody className="overflow-visible p-0 mb-2">
           <div className="h-[160px] relative">
             <Image
-              src={"/bg-tournaments.jpeg"}
+              src={data?.banner || "/bg-tournaments.jpeg"}
               alt="Image news"
               layout="fill"
               objectFit="cover"
@@ -21,9 +22,13 @@ const TournamentItem = ({ data }) => {
                 ? data?.start_date + " - " + data?.end_date
                 : null}
             </div>
-            {/* <div className="absolute bottom-2 right-3">
-              <YardComponent id={data?.surface} />
-            </div> */}
+            <div className="absolute bottom-2 right-3">
+              <SurfaceComponent
+                className="!py-1 !px-1"
+                id={data?.surface}
+                classImage="!w-8"
+              />
+            </div>
           </div>
         </CardBody>
         <CardFooter className="items-start bg-[#E6E6E6]">

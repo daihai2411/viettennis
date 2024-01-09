@@ -49,9 +49,7 @@ const Content = ({ listData, dataTabsRound }) => {
         {loading ? (
           <Spinner className="flex justify-center" />
         ) : (
-          <>
-            <EvenCouple listData={listData} />
-          </>
+          <EvenCouple listData={listData} />
         )}
       </div>
       <div className="container mx-auto md:hidden">
