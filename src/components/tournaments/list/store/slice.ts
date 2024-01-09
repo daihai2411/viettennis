@@ -10,6 +10,7 @@ interface NewsState {
   loading: boolean;
   filter: object;
   loadingFilter: boolean;
+  monthActive: string;
 }
 
 const initialState: NewsState = {
@@ -18,6 +19,7 @@ const initialState: NewsState = {
   loading: false,
   filter: {},
   loadingFilter: false,
+  monthActive: `month-${new Date().getMonth() + 1}`,
 };
 
 export const slice = createSlice({
@@ -26,6 +28,9 @@ export const slice = createSlice({
   reducers: {
     changeListFilter: (state, action) => {
       state.listFilter = action.payload;
+    },
+    changeMonthActive: (state, action) => {
+      state.monthActive = action.payload;
     },
   },
   extraReducers(builder) {
@@ -57,7 +62,7 @@ export const slice = createSlice({
 
 reducerRegistry.register(slice.name, slice.reducer);
 
-export const { changeListFilter } = slice.actions;
+export const { changeListFilter, changeMonthActive } = slice.actions;
 
 export const selectLoading = (state: RootState) => state[slice.name]?.loading;
 export const selectListTournament = (state: RootState) =>
@@ -68,3 +73,5 @@ export const selectLoadingFilter = (state: RootState) =>
   state[slice.name]?.loadingFilter;
 export const selectFilterTournament = (state: RootState) =>
   state[slice.name]?.filter;
+export const selectMonthActive = (state: RootState) =>
+  state[slice.name]?.monthActive;

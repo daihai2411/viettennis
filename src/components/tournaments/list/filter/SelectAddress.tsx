@@ -5,10 +5,11 @@ import { changeListFilter, selectListFilter } from "../store/slice";
 
 const SelectAddress = () => {
   const dispatch = useAppDispatch();
-  const { dataProvinces, loadingProvinces, dataDistricts, loadingDistricts } =
-    useAddress({});
 
   const listFilter = useAppSelector(selectListFilter);
+
+  const { dataProvinces, loadingProvinces, dataDistricts, loadingDistricts } =
+    useAddress({ provinceCode: listFilter.province_id });
 
   const handleProvince = (key) => {
     dispatch(changeListFilter({ ...listFilter, province_id: key || "" }));
@@ -40,9 +41,9 @@ const SelectAddress = () => {
         labelPlacement="outside-left"
         onSelectionChange={handleDistrict}
       >
-        {dataDistricts.map((animal) => (
-          <AutocompleteItem key={animal.value} value={animal.value}>
-            {animal.label}
+        {dataDistricts.map((item) => (
+          <AutocompleteItem key={item.code} value={item.code}>
+            {item.name}
           </AutocompleteItem>
         ))}
       </Autocomplete>

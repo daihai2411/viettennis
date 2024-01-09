@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { selectMonthActive } from "../store/slice";
 import style from "./style.module.scss";
 
 const MonthComponent = () => {
+  const monthActive = useSelector(selectMonthActive);
+
   const month = useMemo(() => {
     return new Array(12).fill(null).map((_, index) => ({
       id: index + 1,
@@ -12,8 +16,7 @@ const MonthComponent = () => {
     }));
   }, []);
 
-  const monthActive = "month-10";
-  const monthCurrent = "month-12";
+  const monthCurrent = `month-${new Date().getMonth() + 1}`;
 
   return (
     <div className="flex item-center overflow-x-auto">

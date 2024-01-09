@@ -6,7 +6,7 @@ const FilterDetail = () => {
   return (
     <div className="bg-[#E6E6E6]">
       <div className="container mx-auto p-3">
-        <div className="flex gap-3 mb-3">
+        <div className="flex gap-3 mb-3 justify-center">
           <SelectAddress />
           <SelectYear />
         </div>

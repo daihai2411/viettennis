@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/redux/hooks";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/react";
-import { useMemo } from "react";
+import { Fragment, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import {
   changeListFilter,
@@ -9,48 +9,70 @@ import {
   selectLoadingFilter,
 } from "../store/slice";
 
-const SelectYear = () => {
+const SelectYear = ({ years, defaultYear }) => {
   const dispatch = useAppDispatch();
 
-  const loading = useSelector(selectLoadingFilter);
-  const data = useSelector(selectFilterTournament);
   const listFilter = useSelector(selectListFilter);
-
-  const getList = useMemo(() => {
-    if (data.years) {
-      return data.years.map((item) => ({
-        value: item.value,
-        label: item.value.toString(),
-      }));
-    }
-    return [];
-  }, [data.years]);
 
   const handleYear = (key) => {
     dispatch(changeListFilter({ ...listFilter, year: key || "" }));
   };
 
-  if (data.years)
-    return (
-      <>
-        <Autocomplete
-          variant="underlined"
-          placeholder="Năm"
-          isLoading={loading}
-          className="max-w-[140px]"
-          labelPlacement="outside-left"
-          onSelectionChange={handleYear}
-        >
-          {getList.map((item) => (
-            <AutocompleteItem key={item.value} value={item.value}>
-              {item.label}
-            </AutocompleteItem>
-          ))}
-        </Autocomplete>
-      </>
-    );
+  useEffect(() => {
+    if (defaultYear) {
+      handleYear(defaultYear);
+    }
+  }, [defaultYear]);
 
-  return null;
+  return (
+    <Fragment key={defaultYear}>
+      <Autocomplete
+        variant="underlined"
+        placeholder="Năm"
+        className="max-w-[140px]"
+        labelPlacement="outside-left"
+        defaultItems={years}
+        defaultSelectedKey={defaultYear}
+        onSelectionChange={handleYear}
+      >
+        {(item: any) => (
+          <AutocompleteItem key={item.value} value={item.value}>
+            {item.label}
+          </AutocompleteItem>
+        )}
+      </Autocomplete>
+    </Fragment>
+  );
 };
 
-export default SelectYear;
+const withData = (Component) => {
+  const HocComponent = () => {
+    const data = useSelector(selectFilterTournament);
+    const loading = useSelector(selectLoadingFilter);
+
+    const getYears = useMemo(() => {
+      if (data.years) {
+        return [...data.years]
+          .sort((a, b) => a.value - b.value)
+          .map((item) => ({
+            value: item.value.toString(),
+            label: item.value.toString(),
+          }));
+      }
+      return [];
+    }, [data.years]);
+
+    if (loading) return null;
+
+    return (
+      <Component
+        years={getYears}
+        defaultYear={getYears[getYears.length - 1]?.value}
+      />
+    );
+  };
+
+  return HocComponent;
+};
+
+export default withData(SelectYear);
