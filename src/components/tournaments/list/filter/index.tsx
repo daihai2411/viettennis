@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getFullFilterTournamentThunk } from "../store/thunk";
 import FilterDetail from "./FilterDetail";
-import FilterPoint from "./FilterLevel";
+import FilterPoint from "./FilterPoint";
 
 const Filter = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,11 +33,13 @@ const Filter = () => {
     //78px: height menu header
     //128px: total 2 menu header
     <div
+      id="tournament-filter"
       style={{
         position: "sticky",
         top: scrollPosition <= 50 ? 128 - scrollPosition : 78,
         zIndex: 20,
       }}
+      className="max-md:!top-[78px]"
     >
       <FilterDetail />
       <FilterPoint />
