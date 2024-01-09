@@ -11,7 +11,7 @@ const TestLayoutModule = ({ layoutNumber }) => {
 
   return (
     <div>
-      <Content listData={mapLayout[layoutNumber]} />
+      <Content listData={mapLayout[layoutNumber]} dataTabsRound={{}} />
     </div>
   );
 };
