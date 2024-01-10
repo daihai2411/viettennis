@@ -1,5 +1,4 @@
 import { Button } from "@nextui-org/react";
-import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosTennisball } from "react-icons/io";
 import { STATUS_PLAYER } from "../../constants";
@@ -27,21 +26,19 @@ const list = [
   },
 ];
 
-const FilterPlayerList = () => {
-  const [isActive, setIsActive] = useState(STATUS_PLAYER.ALL);
-
+const FilterPlayerList = ({ filterPlayer, setFilterPlayer }) => {
   return (
-    <div className="flex justify-end gap-4 mb-3">
+    <div className="flex justify-end gap-1 sm:gap-4 mb-3">
       {list.map((item) => (
         <Button
           size="sm"
           startContent={item.startContent}
           radius="full"
-          className="font-semibold text-[#6e6e6e] gap-1 hover:text-white hover:bg-green-common2 text-base"
+          className="font-semibold text-[#6e6e6e] gap-1 hover:text-white hover:bg-green-common2 text-xs sm:text-base"
           key={item.value}
-          onClick={() => setIsActive(item.value)}
+          onClick={() => setFilterPlayer(item.value)}
           style={
-            isActive === item.value
+            filterPlayer === item.value
               ? { backgroundColor: "#2DA46B", color: "white" }
               : {}
           }

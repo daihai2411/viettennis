@@ -12,7 +12,7 @@ const TournamentItem = ({ data }) => {
           <div className="h-[160px] relative">
             <Image
               src={data?.banner || "/bg-tournaments.jpeg"}
-              alt="Image news"
+              alt="Image banner"
               layout="fill"
               objectFit="cover"
             />

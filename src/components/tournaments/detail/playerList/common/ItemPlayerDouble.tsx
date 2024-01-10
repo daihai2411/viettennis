@@ -10,9 +10,11 @@ const ItemPlayerDouble = ({ item }) => {
     <div className="mt-2">
       <Card radius="none" shadow="none" className="w-full">
         <CardBody className="relative p-0 pt-[30%]">
-          <div className="bg-green-common min-h-[100px] p-3 block text-white">
-            <div className="text-sm font-medium">Tổng điểm</div>
-            <div className="text-lg font-bold">{item?.total_point}</div>
+          <div className="bg-green-common min-h-[100px] p-3 block text-white relative">
+            <div className="bottom-0 sm:bottom-auto absolute items-center gap-1 flex sm:block">
+              <div className="text-sm font-medium">Tổng điểm</div>
+              <div className="text-lg font-bold">{item?.total_point}</div>
+            </div>
           </div>
           <div className="absolute top-[50%] left-[75%] w-[35%] -translate-x-1/2 -translate-y-1/2">
             <div className="aspect-square bg-[#e6e6e6] rounded-full ring-2 ring-white object-cover">
@@ -47,7 +49,9 @@ const ItemPlayerDouble = ({ item }) => {
           <div className="text-[#767676] flex item-center gap-1 font-normal text-[13px] capitalize leading-[13px]">
             <div
               className="font-black"
-              style={{ color: getColorCell(item?.first_player?.rank_point_id) }}
+              style={{
+                color: getColorCell(item?.first_player?.rank_point_type),
+              }}
             >
               {checkEmptyVal(item?.first_player?.rank_point)}
             </div>
@@ -64,7 +68,7 @@ const ItemPlayerDouble = ({ item }) => {
             <div
               className="font-black"
               style={{
-                color: getColorCell(item?.second_player?.rank_point_id),
+                color: getColorCell(item?.second_player?.rank_point_type),
               }}
             >
               {checkEmptyVal(item?.second_player?.rank_point)}
