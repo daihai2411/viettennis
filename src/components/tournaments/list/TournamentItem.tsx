@@ -3,6 +3,7 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCalendarAlt } from "react-icons/fa";
+import TournamentLive from "./tournamentLive";
 
 const TournamentItem = ({ data }) => {
   return (
@@ -16,6 +17,7 @@ const TournamentItem = ({ data }) => {
               layout="fill"
               objectFit="cover"
             />
+            <TournamentLive />
             <div className="absolute flex gap-1 items-center bg-[#141414] text-white bottom-2 left-3 text-xs p-1">
               <FaCalendarAlt />
               {data?.start_date && data?.end_date

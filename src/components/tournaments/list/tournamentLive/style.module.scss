@@ -1,0 +1,45 @@
+.ball {
+    width: 32px;
+    height: 16px;
+    position: relative;
+    margin-bottom: 2px;
+}
+
+@keyframes a {
+    0%   {transform: translateX(0) rotate(0deg);}
+    100% {transform: translateX(100%) rotate(160deg);}
+  }
+
+.iconBall {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    animation: a .75s linear infinite alternate;
+}
+
+.iconBall:first-child {
+    animation-delay: -.36s;
+    z-index: 4;
+    background-color: #4d3968;
+}
+
+.iconBall:nth-child(2) {
+    opacity: .4;
+    animation-delay: -.24s;
+    z-index: 3;
+}
+
+.iconBall:nth-child(3) {
+    opacity: .2;
+    animation-delay: -.12s;
+    z-index: 2;
+}
+
+.iconBall:nth-child(4) {
+    opacity: .1;
+    animation-delay: 0s;
+    z-index: 1; 
+}

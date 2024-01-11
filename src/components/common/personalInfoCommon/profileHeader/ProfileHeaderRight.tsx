@@ -10,7 +10,7 @@ const ProfileHeaderRight = ({ data, loading = true, isUserLogged }) => {
         <Skeleton isLoaded={!loading}>
           <h1
             title={data?.full_name}
-            className="text-4xl leading-9 sm:text-[52px] sm:leading-[60px] line-clamp-1 font-black mb-3"
+            className="text-4xl leading-[52px] sm:text-[52px] sm:leading-[75px] line-clamp-1 font-black mb-3"
           >
             {checkEmptyVal(data?.full_name)}
           </h1>
@@ -55,7 +55,7 @@ const ProfileHeaderRight = ({ data, loading = true, isUserLogged }) => {
               </div>
               <div
                 title={data?.racket_specs}
-                className="mb-4 text-2xl line-clamp-1 md:text-3xl font-extrabold"
+                className="mb-4 text-2xl line-clamp-1 md:text-3xl font-extrabold leading-[44px]"
               >
                 {checkEmptyVal(data?.racket_specs)}
               </div>
