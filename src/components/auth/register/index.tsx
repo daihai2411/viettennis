@@ -1,6 +1,8 @@
 "use client";
 
+import { ToastSuccess } from "@/components/common/Toast";
 import { getProfileThunk } from "@/components/common/hooks/store/thunk";
+import authService from "@/core/services/AuthService";
 import { saveSession } from "@/helpers/session";
 import { AppDispatch } from "@/redux/store";
 import { signIn } from "next-auth/react";
@@ -55,6 +57,17 @@ const RegisterModule: React.FC = () => {
         dispatch(changePhoneNumber(user?.phone));
         dispatch(changeEmail(user?.email));
         dispatch(changeUsername(user?.username));
+        try {
+          await authService
+            .generateOtp({
+              phone: user?.phone,
+              email: user?.email,
+            })
+            .then((data: any) => {
+              ToastSuccess(data?.message);
+            })
+            .catch(() => {});
+        } catch (error: any) {}
         router.push("/auth/register");
       } else if (!user?.personal_info_updated) {
         dispatch(changeStep(steps.ADDITIONAL_INFO));
