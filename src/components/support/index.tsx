@@ -22,13 +22,6 @@ const SupportModule = ({ pageId }) => {
   return (
     <div className="container mx-auto">
       <div className="mt-10 w-[80%] lg:w-[60%] mx-auto">
-        <Skeleton
-          className="mt-10 text-xl font-extrabold mb-10"
-          isLoaded={!loading}
-        >
-          {data?.title}
-        </Skeleton>
-
         {loading ? (
           <Skeleton isLoaded={!loading} className="h-64" />
         ) : data?.content ? (

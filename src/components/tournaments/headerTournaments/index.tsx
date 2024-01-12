@@ -66,11 +66,9 @@ const HeaderTournaments: React.FC<IProps> = ({ routers, tournamentId }) => {
             </h1>
           </Skeleton>
           <Skeleton isLoaded={!loading} className="text-lg font-normal">
-            {[
-              tournamentDetail?.address,
-              tournamentDetail?.district_name,
-              tournamentDetail?.province_name,
-            ].join(", ")}
+            {tournamentDetail?.sponsor}
+            {" - "}
+            {tournamentDetail?.address}
           </Skeleton>
           <Skeleton isLoaded={!loading} className="text-xs font-bold mt-4 mb-5">
             {tournamentDetail?.start_date && tournamentDetail?.end_date
