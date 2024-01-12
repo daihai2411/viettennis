@@ -35,6 +35,7 @@ const InfoBasic = ({ register, errors, setValue, clearErrors }) => {
         required
       />
       <InputCustom
+        key={username}
         label="Username"
         register={register}
         errors={errors}
