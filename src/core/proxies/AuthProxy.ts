@@ -19,7 +19,7 @@ class AuthProxy extends ProxyBase {
     return this.post("generate-otp", params);
   }
 
-  verifyOtp(params: { phone: string; otp: string }) {
+  verifyOtp(params: { phone: string; otp: string; email: string }) {
     return this.post("verify-otp", params);
   }
 

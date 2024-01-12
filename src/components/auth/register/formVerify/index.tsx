@@ -46,6 +46,7 @@ export const FormVerify: React.FC<IProps> = ({
       await authService.verifyOtp({
         phone: phoneNumber,
         otp,
+        email: email,
       });
       ToastSuccess("Tài khoản đã xác minh.");
       onNext();
@@ -65,15 +66,25 @@ export const FormVerify: React.FC<IProps> = ({
               Nhập mã xác minh
             </div>
           </div>
-          <div className="mt-5 mb-3">
-            Chúng tôi đã gửi mã xác minh gồm 6 chữ số tới số điện thoại
-          </div>
-          <div className="flex justify-center">
-            <TextPhoneNumber phoneNumber={phoneNumber} />
-          </div>
+          {phoneNumber ? (
+            <>
+              <div className="mt-5 mb-3">
+                Chúng tôi đã gửi mã xác minh gồm 6 chữ số tới số điện thoại
+              </div>
+              <div className="flex justify-center">
+                <TextPhoneNumber phoneNumber={phoneNumber} />
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
           {email ? (
             <>
-              <div className="mt-5 mb-3">và địa chỉ email</div>
+              <div className="mt-5 mb-3">
+                {phoneNumber
+                  ? "và địa chỉ email"
+                  : "Chúng tôi đã gửi mã xác minh gồm 6 chữ số tới địa chỉ email"}
+              </div>
               <div className="flex justify-center">{email}</div>
             </>
           ) : null}
