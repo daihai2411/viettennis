@@ -59,6 +59,10 @@ export const formatDateTime = (
   timeZone: string = "00:00"
 ) => {
   return !!str && moment(str).isValid()
-    ? moment.utc(str).utcOffset(timeZone).format(format[locale]).toString()
+    ? moment
+        .parseZone(str)
+        .utcOffset(timeZone)
+        .format(format[locale])
+        .toString()
     : EMPTY_VALUE;
 };
