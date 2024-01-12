@@ -1,6 +1,7 @@
 import reducerRegistry from "@/helpers/ReducerRegistry";
 import { RootState } from "@/redux/store";
 import { createSlice } from "@reduxjs/toolkit";
+import { DATA_MONTH_TEMPLATE } from "../../constants";
 import { getFullFilterTournamentThunk, getListTournamentThunk } from "./thunk";
 
 interface NewsState {
@@ -37,7 +38,15 @@ export const slice = createSlice({
       state.loading = true;
     });
     builder.addCase(getListTournamentThunk.fulfilled, (state, { payload }) => {
-      state.list = payload;
+      const dataMonth = payload.map((item) => item.month);
+      state.list = dataMonth?.length
+        ? [
+            ...payload,
+            ...DATA_MONTH_TEMPLATE.filter(
+              (item) => !dataMonth.includes(item.month)
+            ),
+          ]
+        : [];
       state.loading = false;
     });
     builder.addCase(getListTournamentThunk.rejected, (state) => {

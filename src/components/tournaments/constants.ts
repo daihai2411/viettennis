@@ -24,3 +24,18 @@ export const MONTH = {
   "11": "Tháng 11",
   "12": "Tháng 12",
 };
+
+export const DATA_MONTH_TEMPLATE = [
+  { month: "01", data: [] },
+  { month: "02", data: [] },
+  { month: "03", data: [] },
+  { month: "04", data: [] },
+  { month: "05", data: [] },
+  { month: "06", data: [] },
+  { month: "07", data: [] },
+  { month: "08", data: [] },
+  { month: "09", data: [] },
+  { month: "10", data: [] },
+  { month: "11", data: [] },
+  { month: "12", data: [] },
+];

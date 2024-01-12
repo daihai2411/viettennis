@@ -5,7 +5,7 @@ import Right from "./Right";
 const MenuTop = () => {
   return (
     <>
-      <div className="h-[50px] bg-green-common2 hidden md:block">
+      <div className="h-[50px] bg-green-common2 hidden lg:block">
         <div className="container mx-auto flex justify-between">
           <Left />
           <Right />

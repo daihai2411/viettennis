@@ -48,21 +48,23 @@ const TournamentMonth = ({ dataMonth }) => {
   return (
     <div ref={ref} id={elementId} className="my-16">
       <div className="flex mb-8">
-        <div className="h-14 w-20 bg-[#e6e6e6] mr-6 flex justify-center items-center">
-          <FaCalendarAlt size={32} />
+        <div className="px-2 py-2 sm:px-4 sm:py-4 bg-[#e6e6e6] mr-2 sm:mr-3 md:mr-5 flex justify-center items-center">
+          <FaCalendarAlt className="h-4 w-4 sm:h-6 sm:w-6" />
         </div>
-        <div className="text-[38px] font-bold capitalize">
+        <div className="text-2xl sm:text-3xl md:text-[38px] font-bold capitalize flex items-center">
           {getMonthYear(dataMonth?.month)}
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 pb-5">
-        {dataMonth?.data
-          ? dataMonth?.data.map((item) => (
-              <>
-                <TournamentItem data={item} />
-              </>
-            ))
-          : null}
+        {dataMonth?.data && dataMonth?.data.length ? (
+          dataMonth?.data.map((item) => (
+            <TournamentItem key={item?.id} data={item} />
+          ))
+        ) : (
+          <div className="font-bold">
+            Không tìm thấy dữ liệu giải đấu trong tháng
+          </div>
+        )}
       </div>
     </div>
   );
