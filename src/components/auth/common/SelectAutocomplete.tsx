@@ -11,7 +11,7 @@ const SelectAutocomplete = ({
   defaultSelectedKey = undefined,
 }) => {
   return (
-    <div className="mb-3 select-auto-complete">
+    <div className="mb-4 select-auto-complete">
       <div className="block text-small font-medium text-foreground">
         {label}
       </div>
