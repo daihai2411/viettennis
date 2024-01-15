@@ -12,7 +12,7 @@ const TournamentItem = ({ data }) => {
         <CardBody className="overflow-visible p-0 mb-2">
           <div className="h-[160px] relative">
             <Image
-              src={data?.banner || "/bg-tournaments.jpeg"}
+              src={"/banner.png"}
               alt="Image banner"
               layout="fill"
               objectFit="cover"
