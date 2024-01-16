@@ -1,6 +1,6 @@
 import { ROUTERS } from "@/const/router";
 import { getColorCell } from "@/helpers/common";
-import { checkEmptyVal } from "@/helpers/value";
+import { checkEmptyVal, formatVal } from "@/helpers/value";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +15,9 @@ const ItemPlayer = ({ item }) => {
         <CardBody className="relative p-0 pt-[30%]">
           <div className="bg-green-common min-h-[100px] p-3 block text-white">
             <div className="text-sm font-medium">Tổng điểm</div>
-            <div className="text-lg font-bold">{item?.total_point}</div>
+            <div className="text-lg font-bold">
+              {formatVal(item?.total_point)}
+            </div>
           </div>
           <div className="absolute top-[50%] left-[74%] sm:left-[67%] w-[40%] -translate-x-1/2 -translate-y-1/2">
             <div className="aspect-square bg-[#e6e6e6] rounded-full ring-2 ring-white object-cover">
@@ -38,7 +40,7 @@ const ItemPlayer = ({ item }) => {
               className="font-black"
               style={{ color: getColorCell(item?.first_player?.rank_point_id) }}
             >
-              {checkEmptyVal(item?.first_player?.rank_point)}
+              {formatVal(item?.first_player?.rank_point)}
             </div>
             {" - "}
             {checkEmptyVal(item?.first_player?.province)}

@@ -1,6 +1,6 @@
 import { ROUTERS } from "@/const/router";
 import { getColorCell } from "@/helpers/common";
-import { checkEmptyVal } from "@/helpers/value";
+import { checkEmptyVal, formatVal } from "@/helpers/value";
 import Link from "next/link";
 
 const InfoUser = ({ data }) => {
@@ -18,7 +18,7 @@ const InfoUser = ({ data }) => {
       </Link>
       {" - "}
       <div style={{ color: getColorCell(data?.rank_point_type) }}>
-        {checkEmptyVal(data?.rank_point)}
+        {formatVal(data?.rank_point)}
       </div>
     </div>
   );
