@@ -41,7 +41,7 @@ const Filter = ({
   };
 
   const handleSearch = () => {
-    changeParams(dataFilter);
+    changeParams({ ...dataFilter, page: 1 });
   };
 
   return (
