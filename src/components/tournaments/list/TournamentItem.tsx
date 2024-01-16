@@ -10,9 +10,9 @@ const TournamentItem = ({ data }) => {
     <Link href={`/tournaments/${data?.id}/overview`} className="mb-1">
       <Card shadow="none" radius="none" className="group">
         <CardBody className="overflow-visible p-0 mb-2">
-          <div className="h-[160px] relative">
+          <div className="h-[200px] relative">
             <Image
-              src={data?.banner || "/bg-tournaments.jpeg"}
+              src={"/banner.png"}
               alt="Image banner"
               layout="fill"
               objectFit="cover"
