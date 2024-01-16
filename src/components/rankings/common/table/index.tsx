@@ -14,7 +14,7 @@ import {
 } from "@nextui-org/react";
 import { useInfiniteScroll } from "@nextui-org/use-infinite-scroll";
 import { useAsyncList } from "@react-stately/data";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { changeKeySort } from "../../helper";
 
 type IProp = {
@@ -34,9 +34,10 @@ const TableData = ({
   sortDescriptor,
   setSortDescriptor,
 }: IProp) => {
+  const ref = useRef({ page: 0 });
+
   const [isLoading, setIsLoading] = useState(true);
   const [hasMore, setHasMore] = useState(false);
-  const [page, setPage] = useState(0);
 
   let list = useAsyncList({
     async load({ cursor }: any) {
@@ -46,23 +47,25 @@ const TableData = ({
       const res = (await service.getListRankPoint(
         convertCamelCaseToLine({
           ...params,
-          page: page + 1,
+          page: ref.current.page + 1,
         })
       )) as any;
       setIsLoading(false);
-      setHasMore(page < Math.round(res.total / res.page_size));
-      setPage(res.page);
+      setHasMore(ref.current.page < Math.round(res.total / res.page_size));
+      ref.current.page = res.page;
 
       return {
         items: res.data,
-        cursor: page < Math.round(res.total / res.page_size),
+        cursor: ref.current.page < Math.round(res.total / res.page_size),
       };
     },
   });
 
   const [loaderRef, scrollRef] = useInfiniteScroll({
     hasMore,
-    onLoadMore: list.loadMore,
+    onLoadMore: () => {
+      if (!list.isLoading) list.loadMore();
+    },
   });
 
   const classNames = useMemo(
@@ -88,7 +91,7 @@ const TableData = ({
   );
 
   const onSortChange = (descriptor: SortDescriptor) => {
-    setPage(0);
+    ref.current.page = 0;
     changeParams({
       sortBy: changeKeySort(descriptor.column, descriptor.direction),
     });
@@ -97,7 +100,7 @@ const TableData = ({
   };
 
   useEffect(() => {
-    setPage(0);
+    ref.current.page = 0;
     list.reload();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(params)]);
