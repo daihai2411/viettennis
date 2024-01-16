@@ -6,3 +6,6 @@
 .matchDrawActive td:nth-last-of-type(odd) {
     background-color: hsla(0,0%,100%,.1) !important;
 }
+.shadowText {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}

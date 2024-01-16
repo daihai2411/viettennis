@@ -1,6 +1,6 @@
 import { ROUTERS } from "@/const/router";
 import { getColorCell } from "@/helpers/common";
-import { checkEmptyVal } from "@/helpers/value";
+import { checkEmptyVal, formatVal } from "@/helpers/value";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,9 @@ const ItemPlayerDouble = ({ item }) => {
           <div className="bg-green-common min-h-[100px] p-3 block text-white relative">
             <div className="bottom-0 sm:bottom-auto absolute items-center gap-1 flex sm:block">
               <div className="text-sm font-medium">Tổng điểm</div>
-              <div className="text-lg font-bold">{item?.total_point}</div>
+              <div className="text-lg font-bold">
+                {formatVal(item?.total_point)}
+              </div>
             </div>
           </div>
           <div className="absolute top-[50%] left-[75%] w-[35%] -translate-x-1/2 -translate-y-1/2">
@@ -53,7 +55,7 @@ const ItemPlayerDouble = ({ item }) => {
                 color: getColorCell(item?.first_player?.rank_point_type),
               }}
             >
-              {checkEmptyVal(item?.first_player?.rank_point)}
+              {formatVal(item?.first_player?.rank_point)}
             </div>
             {" - "}
             {checkEmptyVal(item?.first_player?.province)}
@@ -71,7 +73,7 @@ const ItemPlayerDouble = ({ item }) => {
                 color: getColorCell(item?.second_player?.rank_point_type),
               }}
             >
-              {checkEmptyVal(item?.second_player?.rank_point)}
+              {formatVal(item?.second_player?.rank_point)}
             </div>
             {" - "}
             {checkEmptyVal(item?.second_player?.province)}
