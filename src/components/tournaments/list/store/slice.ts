@@ -40,13 +40,12 @@ export const slice = createSlice({
     builder.addCase(getListTournamentThunk.fulfilled, (state, { payload }) => {
       const dataMonth = payload.map((item) => item.month);
       state.list = dataMonth?.length
-        ? [
-            ...payload,
-            ...DATA_MONTH_TEMPLATE.filter(
-              (item) => !dataMonth.includes(item.month)
-            ),
-          ]
-        : [];
+        ? DATA_MONTH_TEMPLATE.map((item) =>
+            dataMonth.includes(item.month)
+              ? payload.find((item1) => item1.month === item.month)
+              : item
+          )
+        : DATA_MONTH_TEMPLATE;
       state.loading = false;
     });
     builder.addCase(getListTournamentThunk.rejected, (state) => {
