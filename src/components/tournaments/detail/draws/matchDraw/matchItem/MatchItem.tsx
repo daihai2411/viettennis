@@ -25,7 +25,7 @@ const MatchItem = ({ item, changeMatchDrawActive }) => {
         </table>
         {item?.is_go_straight_ahead ? (
           <div className="text-[#3E3E3E] text-xs font-normal pl-[6px]">
-            Vào thẳng tứ kết
+            Vào thẳng
           </div>
         ) : null}
       </div>
