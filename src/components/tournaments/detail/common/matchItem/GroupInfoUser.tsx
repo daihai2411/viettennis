@@ -17,8 +17,6 @@ const GroupInfoUser = ({
     );
   }, [matchDrawActive, data?.couple_id, matchDrawSearch]);
 
-  console.log(data);
-
   return (
     <tr
       onMouseEnter={() => changeMatchDrawActive(data?.couple_id)}
