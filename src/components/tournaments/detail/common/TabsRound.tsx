@@ -27,27 +27,29 @@ const TabsRound = ({
   }, []);
 
   return (
-    <div className={`mb-10 bg-[#e6e6e6] overflow-x-auto ${className}`}>
+    <div className={`mb-10 bg-[#e6e6e6] ${className}`}>
       <div
-        className={`flex justify-center h-16 items-center container mx-auto ${classNameCoverTab}`}
+        className={`flex justify-center h-16 items-center mx-auto px-4 ${classNameCoverTab}`}
       >
-        <Tabs
-          radius="none"
-          classNames={{
-            tabList: "bg-[#e6e6e6]",
-          }}
-          size="lg"
-          onSelectionChange={onSelectionChange}
-        >
-          {list?.length &&
-            list.map((item: any) => (
-              <Tab
-                key={item?.id}
-                title={<div className="font-medium">{item?.title}</div>}
-                value={item.id}
-              />
-            ))}
-        </Tabs>
+        <div className="overflow-x-auto">
+          <Tabs
+            radius="none"
+            classNames={{
+              tabList: "bg-[#e6e6e6]",
+            }}
+            size="lg"
+            onSelectionChange={onSelectionChange}
+          >
+            {list?.length &&
+              list.map((item: any) => (
+                <Tab
+                  key={item?.id}
+                  title={<div className="font-medium">{item?.title}</div>}
+                  value={item.id}
+                />
+              ))}
+          </Tabs>
+        </div>
       </div>
     </div>
   );
