@@ -61,22 +61,24 @@ const PlayerListModule = () => {
         ) : (
           <>
             {list.length ? (
-              <PlayerList list={list} />
+              <>
+                <PlayerList list={list} />
+                <Pagination
+                  showControls
+                  className="mt-10"
+                  total={total}
+                  initialPage={initialPage}
+                  classNames={{
+                    cursor: "bg-[#2DA46B]",
+                  }}
+                  onChange={setCurrentPage}
+                />
+              </>
             ) : (
               <div className="flex justify-center mt-6">
                 Không tìm thấy người chơi
               </div>
             )}
-            <Pagination
-              showControls
-              className="mt-10"
-              total={total}
-              initialPage={initialPage}
-              classNames={{
-                cursor: "bg-[#2DA46B]",
-              }}
-              onChange={setCurrentPage}
-            />
           </>
         )}
       </div>

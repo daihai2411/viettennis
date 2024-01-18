@@ -7,6 +7,12 @@ import { selectObjPoints } from "../../store/slice";
 const RowTotalPoints = () => {
   const objPoint = useSelector(selectObjPoints);
 
+  function roundExcel(number, numDigits) {
+    let divisor = Math.pow(10, numDigits);
+    let roundedNumber = Math.round(number * divisor) / divisor;
+    return roundedNumber;
+  }
+
   const total = useMemo(() => {
     return Object.values(objPoint).reduce(
       (accumulator, current) => Number(accumulator) + Number(current),
@@ -39,7 +45,7 @@ const RowTotalPoints = () => {
         </div>
 
         <div className="flex justify-end items-center col-span-6 sm:col-span-4 text-2xl font-black text-[#0555e4d9]">
-          {total.toFixed(2)}
+          {roundExcel(total, -1)}
         </div>
       </div>
     </div>
