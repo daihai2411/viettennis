@@ -39,7 +39,7 @@ const Filter = () => {
         top: scrollPosition <= 50 ? 128 - scrollPosition : 78,
         zIndex: 20,
       }}
-      className="max-md:!top-[78px]"
+      className="max-lg:!top-[78px]"
     >
       <FilterDetail />
       <FilterPoint />

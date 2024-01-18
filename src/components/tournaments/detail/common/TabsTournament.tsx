@@ -27,19 +27,21 @@ const TabsTournament = ({ setTab, className = "mb-10 bg-[#e6e6e6]" }) => {
 
   return (
     <div className={className}>
-      <div className="flex justify-center h-16 items-center container mx-auto">
-        <Tabs
-          radius="none"
-          size="lg"
-          onSelectionChange={onSelectionChange}
-          classNames={{
-            tabList: "bg-[#e6e6e6]",
-          }}
-        >
-          {childTournament.map((item) => (
-            <Tab key={item} title={<VTRComponent level={item} />} />
-          ))}
-        </Tabs>
+      <div className="flex justify-center h-16 items-center mx-auto px-4">
+        <div className="overflow-x-auto">
+          <Tabs
+            radius="none"
+            size="lg"
+            onSelectionChange={onSelectionChange}
+            classNames={{
+              tabList: "bg-[#e6e6e6]",
+            }}
+          >
+            {childTournament.map((item) => (
+              <Tab key={item} title={<VTRComponent level={item} />} />
+            ))}
+          </Tabs>
+        </div>
       </div>
     </div>
   );

@@ -29,7 +29,6 @@ const FormSentInfo: React.FC<IProps> = ({ status, setStatus }) => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     setStatus(STATUS_FORGET_PASS.SENT);
-    console.log(data);
   };
 
   return (
