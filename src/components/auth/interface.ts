@@ -11,9 +11,9 @@ export interface IFormInput {
   shoesBrand: string;
   clothesBrand: string;
   phone: string;
-  identifyId: string;
-  identifyDate: string;
-  identifyAddress: string;
+  identifyId?: string;
+  identifyDate?: string;
+  identifyAddress?: string;
   province: string | number;
   district: string | number;
   ward: string | number;

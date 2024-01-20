@@ -5,7 +5,6 @@ import { Image } from "@nextui-org/image";
 
 import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import profileService from "@/core/services/profile/ProfileService";
-import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { saveSession } from "@/helpers/session";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -74,18 +73,14 @@ const AdditionalInformation = () => {
     try {
       const params = { ...data } as any;
       delete params.captcha;
-      if (params?.dob) {
-        params.dob = formatDateTime(params?.dob, FORMAT.DATE_SLASH);
-      }
-      if (params?.playSince) {
-        params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
-      }
-      if (params?.identifyDate) {
-        params.identifyDate = formatDateTime(
-          params?.identifyDate,
-          FORMAT.DATE_SLASH
-        );
-      }
+      console.log("debug params", params);
+
+      // if (params?.identifyDate) {
+      //   params.identifyDate = formatDateTime(
+      //     params?.identifyDate,
+      //     FORMAT.DATE_SLASH
+      //   );
+      // }
       const res = (await profileService.updateInformation(
         convertCamelCaseToLine(params)
       )) as any;

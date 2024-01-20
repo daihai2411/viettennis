@@ -7,11 +7,9 @@ import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import useUserProfile from "@/components/common/hooks/useUserProfile";
 import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
-import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Spinner } from "@nextui-org/react";
-import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -63,16 +61,7 @@ const PersonalInfoUpdateModule = () => {
       if (isNaN(params.backHand)) {
         params.backHand = params.backHandId;
       }
-
-      if (params?.dob) {
-        params.dob = moment(params.dob).isValid()
-          ? formatDateTime(params?.dob, FORMAT.DATE_SLASH)
-          : params.dob;
-      }
-
-      if (params?.playSince) {
-        params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
-      }
+      console.log("debug update", params);
 
       delete params.captcha;
       delete params.backHandId;

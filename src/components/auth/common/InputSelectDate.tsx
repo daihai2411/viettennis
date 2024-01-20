@@ -37,6 +37,7 @@ const InputSelectDate = ({
         value={dateState}
         onChange={changeDate}
         maxDate={new Date()}
+        locale="vi"
       />
     </PopoverContent>
   );
