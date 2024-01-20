@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import InputCustom from "../../common/InputCustom";
-import InputYear from "../../common/InputYear";
+import InputSelectYear from "../../common/InputSelectYear";
 import { steps } from "../../constants";
 import { IFormInput } from "../../interface";
 import { schemaAdditionInformation } from "../../schema";
@@ -155,9 +155,8 @@ const AdditionalInformation = () => {
                 setValue={setValue}
                 clearErrors={clearErrors}
               />
-              <InputYear
+              <InputSelectYear
                 label="Bắt đầu chơi tennis từ năm nào?"
-                register={register}
                 errors={errors}
                 placeholder="Điền chính xác số năm. Vd: 2000, 2012, 2011"
                 keyInput="playSince"

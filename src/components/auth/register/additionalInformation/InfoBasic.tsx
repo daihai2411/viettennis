@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import InputCustom from "../../common/InputCustom";
-import InputDate from "../../common/InputDate";
+import InputSelectDate from "../../common/InputSelectDate";
 import {
   selectEmail,
   selectPhoneNumber,
@@ -46,7 +46,7 @@ const InfoBasic = ({ register, errors, setValue, clearErrors }) => {
         defaultValue={username}
         disable={username}
       />
-      <InputDate
+      <InputSelectDate
         label={
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
             Ngày sinh

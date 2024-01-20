@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
-import InputYear from "../common/InputYear";
+import InputSelectYear from "../common/InputSelectYear";
 import { IFormInput } from "../interface";
 import { schemaAdditionInformation } from "../schema";
 import Address from "./Address";
@@ -138,9 +138,8 @@ const PersonalInfoUpdateModule = () => {
                     clearErrors={clearErrors}
                     dateProfileCamelCase={dateProfileCamelCase}
                   />
-                  <InputYear
+                  <InputSelectYear
                     label="Bắt đầu chơi tennis từ năm nào?"
-                    register={register}
                     errors={errors}
                     placeholder="Điền chính xác số năm. Vd: 2000, 2012, 2011"
                     keyInput="playSince"

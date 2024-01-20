@@ -6,7 +6,7 @@ const SelectAutocomplete = ({
   errors,
   placeholder,
   list = [],
-  loading,
+  loading = false,
   setValue,
   defaultSelectedKey = undefined,
 }) => {
