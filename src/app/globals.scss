@@ -33,10 +33,28 @@ th[aria-sort='descending'] {
   display: block !important;
  }
 
- .react-datepicker-popper {
-  z-index: 10 !important;
- }
 
  .grecaptcha-badge {
   display: none !important;
+ }
+
+//custom css calendar
+ .react-calendar {
+  border: none !important;
+ }
+
+ .react-calendar__tile--active {
+  background: #2DA46B !important;
+  border-radius: 6px !important;
+  font-weight: bold !important;
+ }
+
+ .react-calendar__tile--active:enabled:hover,
+ .react-calendar__tile--active:enabled:focus {
+  background: #2DA46B !important;
+  color: white !important;
+ }
+
+ .react-calendar button:enabled:hover {
+  border-radius: 6px !important;
  }

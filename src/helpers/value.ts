@@ -88,7 +88,10 @@ export const convertLineToCamelCase = (obj: object) => {
   return camelCaseObj;
 };
 
-export const parseDMY = (s) => {
-  const [d, m, y] = s.split(/\D/);
-  return new Date(y, m - 1, d);
+export const parseDMY = (dateString) => {
+  if (dateString) {
+    const [d, m, y] = dateString.split(/\D/);
+    return new Date(y, m - 1, d);
+  }
+  return dateString;
 };

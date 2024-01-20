@@ -1,5 +1,5 @@
 import InputCustom from "../../common/InputCustom";
-import InputDate from "../../common/InputDate";
+import InputSelectDate from "../../common/InputSelectDate";
 
 const IdentifyCard = ({ register, errors, setValue, clearErrors }) => {
   return (
@@ -14,7 +14,7 @@ const IdentifyCard = ({ register, errors, setValue, clearErrors }) => {
         type="number"
         min={0}
       />
-      <InputDate
+      <InputSelectDate
         label={
           <div className="flex gap-1 text-small font-medium text-foreground pb-1.5">
             Ngày cấp

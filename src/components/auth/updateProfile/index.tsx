@@ -7,18 +7,16 @@ import { ToastError, ToastSuccess } from "@/components/common/Toast";
 import useUserProfile from "@/components/common/hooks/useUserProfile";
 import { ROUTERS } from "@/const/router";
 import profileService from "@/core/services/profile/ProfileService";
-import { FORMAT, formatDateTime } from "@/helpers/datetime";
 import { convertCamelCaseToLine } from "@/helpers/value";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Spinner } from "@nextui-org/react";
-import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import InputCustom from "../common/InputCustom";
-import InputYear from "../common/InputYear";
+import InputSelectYear from "../common/InputSelectYear";
 import { IFormInput } from "../interface";
 import { schemaAdditionInformation } from "../schema";
 import Address from "./Address";
@@ -63,16 +61,7 @@ const PersonalInfoUpdateModule = () => {
       if (isNaN(params.backHand)) {
         params.backHand = params.backHandId;
       }
-
-      if (params?.dob) {
-        params.dob = moment(params.dob).isValid()
-          ? formatDateTime(params?.dob, FORMAT.DATE_SLASH)
-          : params.dob;
-      }
-
-      if (params?.playSince) {
-        params.playSince = formatDateTime(params?.playSince, FORMAT.YEAR);
-      }
+      console.log("debug update", params);
 
       delete params.captcha;
       delete params.backHandId;
@@ -138,9 +127,8 @@ const PersonalInfoUpdateModule = () => {
                     clearErrors={clearErrors}
                     dateProfileCamelCase={dateProfileCamelCase}
                   />
-                  <InputYear
+                  <InputSelectYear
                     label="Bắt đầu chơi tennis từ năm nào?"
-                    register={register}
                     errors={errors}
                     placeholder="Điền chính xác số năm. Vd: 2000, 2012, 2011"
                     keyInput="playSince"
