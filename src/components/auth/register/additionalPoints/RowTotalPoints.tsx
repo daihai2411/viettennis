@@ -22,7 +22,7 @@ const RowTotalPoints = () => {
 
   return (
     <div className="mb-6">
-      <div className="grid grid-cols-10 gap-4">
+      <div className="sm:grid grid-cols-10 gap-4 hidden">
         <div className="flex justify-end items-center"></div>
         <div className="col-span-4 sm:col-span-5">
           <div className="text-base flex items-center gap-1">
@@ -43,7 +43,30 @@ const RowTotalPoints = () => {
             </Tooltip>
           </div>
         </div>
-
+        <div className="flex justify-end items-center col-span-6 sm:col-span-4 text-2xl font-black text-[#0555e4d9]">
+          {roundExcel(total, -1)}
+        </div>
+      </div>
+      <div className="sm:hidden flex justify-between">
+        <div className="">
+          <div className="text-base flex items-center gap-1">
+            Điểm xanh
+            <Tooltip
+              content={
+                <div>
+                  Điểm xanh sẽ được cập nhật lên điểm đỏ <br /> sau các giải đấu
+                </div>
+              }
+            >
+              <div className="">
+                <FaInfoCircle
+                  size={12}
+                  className="text-default-700 cursor-pointer"
+                />
+              </div>
+            </Tooltip>
+          </div>
+        </div>
         <div className="flex justify-end items-center col-span-6 sm:col-span-4 text-2xl font-black text-[#0555e4d9]">
           {roundExcel(total, -1)}
         </div>

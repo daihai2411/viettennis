@@ -17,7 +17,7 @@ const TermAndPolicy = ({ register, errors, keyInput, setValue }) => {
         isSelected={isSelected}
         onValueChange={onValueChange}
       >
-        <div className="inline-block text-base">
+        <div className="inline-block text-sm sm:text-base ml-2 sm:ml-0">
           <Link
             href={"/page/term_and_conditions"}
             className="inline-block hover:underline text-[#1677ff]"

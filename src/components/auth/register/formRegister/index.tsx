@@ -77,7 +77,7 @@ const FormRegister = () => {
 
   return (
     <div className="flex min-h-full flex-col justify-center px-2 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-8 rounded-2xl">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-5 sm:p-8 rounded-2xl">
         <div className="flex justify-center mb-11 mt-6">
           <Image src="/logo.svg" alt="logo" />
         </div>
@@ -145,7 +145,7 @@ const FormRegister = () => {
         </div>
         <div className="w-full grid gap-2">
           <Button
-            className="border border-stone-300 bg-gray-50 w-full"
+            className="border border-stone-300 bg-gray-50 w-full text-xs sm:text-base"
             onClick={() =>
               signIn("google", {
                 redirect: true,
@@ -157,7 +157,7 @@ const FormRegister = () => {
             Đăng nhập bằng Google
           </Button>
           <Button
-            className="border border-stone-300 bg-gray-50 w-full"
+            className="border border-stone-300 bg-gray-50 w-full text-xs sm:text-base"
             onClick={() =>
               signIn("facebook", {
                 redirect: true,
@@ -168,7 +168,7 @@ const FormRegister = () => {
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
           </Button>
-          {/* <Button className="border border-stone-300 bg-gray-50 w-full">
+          {/* <Button className="border border-stone-300 bg-gray-50 w-full text-xs sm:text-base">
             <Image src="/icon-apple.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Apple
           </Button> */}
