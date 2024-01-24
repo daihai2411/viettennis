@@ -59,7 +59,7 @@ export const getMessSchema = ({
       return `Định dạng tệp không hợp lệ cho ${fieldName}. Vui lòng tải lên tệp ${kindFormat}.`;
 
     case "MS_11":
-      return `Mât khẩu cần chứa 1 ký tự viết hoa, 1 ký tự viết thường, 1 chữ số.`;
+      return `Mật khẩu cần chứa 1 ký tự viết hoa, 1 ký tự viết thường, 1 chữ số.`;
 
     case "MS_12":
       return `${fieldName} đã nhập không trùng khớp.`;

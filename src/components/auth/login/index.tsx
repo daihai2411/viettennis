@@ -102,7 +102,7 @@ const LoginModule = () => {
 
   return (
     <div className="flex min-h-full flex-col justify-center px-4 sm:px-6 py-12 lg:px-8 bg-[#F2F2F2]">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-8 rounded-2xl">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-5 sm:p-8 rounded-2xl">
         <div className="flex justify-center mb-11 mt-6">
           <Image src="/logo.svg" alt="logo" />
         </div>
@@ -129,7 +129,7 @@ const LoginModule = () => {
             type="password"
             onSubmit={onSubmit}
           />
-          <div className="flex py-2 px-1 justify-end text-[15px]">
+          <div className="flex py-2 px-1 justify-end text-sm sm:text-[15px]">
             <Link
               className="w-fit cursor-pointer hover:underline"
               href={"/auth/forgot-password"}
@@ -156,20 +156,20 @@ const LoginModule = () => {
         </div>
         <div className="w-full grid gap-2">
           <Button
-            className="border border-stone-300 bg-gray-50 w-full"
+            className="border border-stone-300 bg-gray-50 w-full text-xs sm:text-base"
             onClick={() => signIn("google", { redirect: false })}
           >
             <Image src="/icon-gg.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Google
           </Button>
           <Button
-            className="border border-stone-300 bg-gray-50 w-full"
+            className="border border-stone-300 bg-gray-50 w-full text-xs sm:text-base"
             onClick={() => signIn("facebook", { redirect: false })}
           >
             <Image src="/icon-fb.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Facebook
           </Button>
-          {/* <Button className="border border-stone-300 bg-gray-50 w-full">
+          {/* <Button className="border border-stone-300 bg-gray-50 w-full text-xs sm:text-base">
             <Image src="/icon-apple.png" alt="icon social" className="h-5" />
             Đăng nhập bằng Apple
           </Button> */}
