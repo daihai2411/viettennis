@@ -49,7 +49,7 @@ export const schemaRegister = {
     )
     .matches(
       /^[a-zA-Z0-9]+$/,
-      "Tên đang nhập không được chứa khoảng trắng, ký tự đặc biệt hoặc ký tự tiếng Việt."
+      "Tên đăng nhập không được chứa khoảng trắng, ký tự đặc biệt hoặc ký tự tiếng Việt."
     ),
   password: Yup.string()
     .required(getMessSchema({ type: "MS_01", fieldName: "Mật khẩu" }))
@@ -137,7 +137,7 @@ export const schemaAdditionInformation = {
     )
     .matches(
       /^[a-zA-Z0-9]+$/,
-      "Tên đang nhập không được chứa khoảng trắng, ký tự đặc biệt hoặc ký tự tiếng Việt."
+      "Tên đăng nhập không được chứa khoảng trắng, ký tự đặc biệt hoặc ký tự tiếng Việt."
     ),
   dob: Yup.string().required(
     getMessSchema({ type: "MS_01", fieldName: "Ngày sinh" })
