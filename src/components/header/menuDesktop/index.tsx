@@ -12,7 +12,7 @@ const MenuDesktop = () => {
 
   return (
     <NavbarContent
-      className="hidden lg:flex gap-10 !text-[17px]"
+      className="hidden lg:flex gap-8 xl:gap-10 !text-[17px]"
       justify="center"
     >
       {headers.map((item) => (

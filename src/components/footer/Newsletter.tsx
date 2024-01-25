@@ -16,10 +16,10 @@ const Newsletter = () => {
             Đăng ký nhận bản tin Viettennis
           </div>
           <div className="text-white text-sm font-normal">
-            Nhận thông tin liên lạc chính thức từ WTA được gửi thẳng đến e-mail
-            của bạn! Chúng tôi sẽ thông báo cho bạn tất cả những gì bạn cần
-            biết, bao gồm tin tức, người chơi, giải đấu, tính năng, cuộc thi, ưu
-            đãi và hơn thế nữa.
+            Nhận thông tin liên lạc chính thức từ Viettennis được gửi thẳng đến
+            e-mail của bạn! Chúng tôi sẽ thông báo cho bạn tất cả những gì bạn
+            cần biết, bao gồm tin tức, người chơi, giải đấu, tính năng, cuộc
+            thi, ưu đãi và hơn thế nữa.
           </div>
         </div>
         <div className="text-white text-sm font-bold z-10">

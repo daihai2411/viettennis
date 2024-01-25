@@ -62,6 +62,24 @@ export const headers = [
       },
     ],
   },
+  {
+    key: 6,
+    label: "Hướng dẫn",
+    route: ROUTERS.INSTRUCTION.path,
+    disableClick: true,
+    children: [
+      {
+        key: 6.1,
+        label: "Hướng dẫn đăng nhập - đăng ký ",
+        route: ROUTERS.INSTRUCTION.children.LOGIN_REGISTER,
+      },
+      {
+        key: 6.2,
+        label: "Hướng dẫn nhập điểm cá nhân",
+        route: ROUTERS.INSTRUCTION.children.PERSONAL_POINT,
+      },
+    ],
+  },
   // {
   //   key: 6,
   //   label: "Thống kê",

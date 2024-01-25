@@ -17,7 +17,7 @@ const Left = () => {
       </div>
       <div className="flex py-[10px] hover:bg-white hover:text-green-common2 cursor-pointer px-3 items-center delay-100">
         <div className="text-center text-base font-semibold font-['Arial'] tracking-wide mr-[2px]">
-          Ứng dụng WTA
+          Viettennis App
         </div>
         <RiShareBoxLine />
       </div>

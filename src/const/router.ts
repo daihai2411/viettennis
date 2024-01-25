@@ -28,6 +28,13 @@ export const ROUTERS = {
       VIDEO: "/video",
     },
   },
+  INSTRUCTION: {
+    path: "/instruction",
+    children: {
+      LOGIN_REGISTER: "/page/instruction_login_register",
+      PERSONAL_POINT: "/page/instruction_personal_point",
+    },
+  },
   STATS: "/stats",
   WTA: "/wta",
   PERSONAL_INFO: "/personal-info",
