@@ -33,11 +33,11 @@ export const schemaLogin = {
         min: 8,
         max: 35,
       })
-    )
-    .matches(
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
-      getMessSchema({ type: "MS_11" })
     ),
+  // .matches(
+  //   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
+  //   getMessSchema({ type: "MS_11" })
+  // ),
 };
 
 export const schemaRegister = {
