@@ -216,12 +216,17 @@ export const schemaAdditionInformation = {
 
 export const schemaSentInfo = {
   username: Yup.string()
-    .required("Vui lòng nhập số điện thoại/ email để đặt lại mật khẩu")
-    .max(256, "Tối đa 256 ký tự, vui lòng nhập giá trị hợp lệ.")
-    .matches(
-      /^0\d{9}$/,
-      "Số điện thoại/ email không hợp lệ, vui lòng kiểm tra lại"
-    ),
+    .required(getMessSchema({ type: "MS_01", fieldName: "Email" }))
+    .max(256, getMessSchema({ type: "MS_03_03", fieldName: "email", max: 256 }))
+    .test({
+      message: getMessSchema({ type: "MS_02_01" }),
+      test: (value: any) => {
+        if (!value) return true;
+        const valueTest = (value || "").trim();
+        const email = /^[\w-\\.-\\+]{4,64}@([\w-]+\.)+[\w-]{1,190}$/gi;
+        return email.test(valueTest);
+      },
+    }),
 };
 
 export const schemaRestorePass = {

@@ -26,6 +26,14 @@ class AuthProxy extends ProxyBase {
   socialLogin(params: any) {
     return this.post("social-login", params, "", {}, true);
   }
+
+  forgotPassword(params: any) {
+    return this.post("forgot-password", params);
+  }
+
+  changePassword(params: any) {
+    return this.post("change-password", params);
+  }
 }
 
 const authProxy = new AuthProxy();

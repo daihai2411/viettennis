@@ -20,12 +20,20 @@ class AuthService extends ServiceBase {
     return this.getData(() => authProxy.generateOtp(params));
   }
 
-  verifyOtp(params: { phone: string; otp: string, email:string }) {
+  verifyOtp(params: { phone: string; otp: string; email: string }) {
     return this.getData(() => authProxy.verifyOtp(params));
   }
 
   socialLogin(params: any) {
     return this.getData(() => authProxy.socialLogin(params));
+  }
+
+  forgotPassword(params: any) {
+    return this.getData(() => authProxy.forgotPassword(params));
+  }
+
+  changePassword(params: any) {
+    return this.getData(() => authProxy.changePassword(params));
   }
 }
 
