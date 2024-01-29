@@ -57,11 +57,10 @@ const LoginModule = () => {
   const handleCheckRedirect = async () => {
     const user = (await saveSession()) as any;
     if (user?.id) {
-      // if (user.force_reset_password) {
-      //   router.push("/auth/change-password");
-      //   dispatch(getProfileThunk({}));
-      // } else
-      if (!user?.is_phone_verified) {
+      if (user.force_reset_password) {
+        router.push("/auth/change-password");
+        dispatch(getProfileCheck({}));
+      } else if (!user?.is_phone_verified) {
         dispatch(changeStep(steps.VERIFY));
         dispatch(changePhoneNumber(user?.phone));
         dispatch(changeEmail(user?.email));

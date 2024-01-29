@@ -238,7 +238,7 @@ export const schemaRestorePass = {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*`])[A-Za-z\d!@#$%^&*`]+$/,
       "Mật khẩu cần chứa tối thiểu 1 ký tự viết hoa ,1 ký tự viết thường, 1 chữ số"
     ),
-  confirmPassword: Yup.string().oneOf(
+  password_confirmation: Yup.string().oneOf(
     [Yup.ref("password"), undefined],
     "Mật khẩu xác nhận không trùng khớp, vui lòng nhập đúng giá trị mật khẩu đã tạo."
   ),

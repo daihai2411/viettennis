@@ -32,7 +32,7 @@ class AuthProxy extends ProxyBase {
   }
 
   changePassword(params: any) {
-    return this.post("change-password", params);
+    return this.post("auth/change-password", params);
   }
 }
 
